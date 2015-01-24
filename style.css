@@ -1,0 +1,109 @@
+* {
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+margin: 0;
+padding: 0;
+background-repeat: no-repeat;
+background-attachment:local;
+}
+
+h1 {
+font-size: 200%;
+float: right;
+/* -ms-transform: rotate(90deg); 
+-webkit-transform: rotate(90deg);
+transform: rotate(90deg); */
+border: 0;
+outline: 0;
+}
+
+div { 
+  width:40%;
+  margin: 10px 50px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity:0.6;
+  /* filter:alpha(opacity=60); For IE8 and earlier */ 
+}
+
+ul {
+list-style-type: none;
+text-align: justify;
+margin: 0 5px 20px 50px;
+position: relative;
+z-index: 1;
+}
+
+body {
+background-color: #000000;
+margin: 0;
+padding: 0;
+text-align: center;
+background-repeat: no-repeat;
+font-size: 20px;
+margin: 1em 0 4em 0;
+}
+
+html {
+  min-width: 1040px;
+  margin: 0;
+}
+
+.bg {
+  position: fixed;
+  background-image: url(img/cow.jpg);
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 10s;
+  pointer-events: none;
+}
+
+li {  
+list-style:none;
+} 
+
+.contact {
+  display:inline-block;
+}
+
+.contact li.in a{
+  background: url(img/in.png);
+}
+
+.contact li.git a{
+  background: url(img/GitHub.png);
+}
+
+.contact li.mail a{
+  background: url(img/email.png);
+}
+
+li a { 
+text-align:center;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+letter-spacing:1px;
+color:#000; 
+text-decoration:none;
+transition: 10s;
+width: 100%;
+}
+       
+.menu li:nth-child(2):hover ~ .bg {
+  background-image: url(img/MAflare.jpg);
+}
+.menu li:nth-child(3):hover ~ .bg {
+  background-image: url(img/subrig.jpg);
+}
+.menu li:nth-child(4):hover ~ .bg {
+  background-image: url(img/smoke.jpg);
+
+}
+.menu li:nth-child(5):hover ~ .bg {
+  background-image: url(img/guate.jpg);
+}
+.menu li:nth-child(6):hover ~ .bg {
+  background-image: url(img/trees.jpg);
+}
+
