@@ -1,0 +1,123 @@
+* {
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+margin: 0;
+padding: 0;
+background-repeat: no-repeat;
+background-attachment:local;
+}
+
+iframe {
+  float: right;
+  z-index: -2;
+}
+
+h1 {
+font-size: 200%;
+float: right;
+border: 0;
+outline: 0;
+}
+
+dl {
+list-style-type: none;
+text-align: justify;
+margin: 0 5px 20px 50px;
+position: relative;
+z-index: 1;
+}
+
+dt {
+font-size: 125%; 
+width: 400px;
+}
+
+body {
+background-color: #000000;
+margin: 0;
+padding: 0;
+text-align: center;
+background-repeat: no-repeat;
+font-size: 14px;
+margin: 1em 0 4em 0;
+}
+
+html {
+  min-width: 1040px;
+  margin: 0;
+}
+
+dd.sub {
+  font-size:85%;
+}
+
+.bg {
+  position: fixed;
+  background-image: url(img/cow.jpg);
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 5s;
+  pointer-events: none;
+}
+
+dd {  
+list-style:none;
+} 
+
+.contact {
+  display:inline;
+}
+
+.contact ul.in a{
+  background-image: url(img/in.png);
+}
+
+.contact ul.git a{
+  background-image: url(img/GitHub.png);
+}
+
+.contact ul.mail a{
+  background-image: url(img/email.png);
+}
+
+dd a { 
+text-align:center;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+letter-spacing:1px;
+color:#000; 
+text-decoration:none;
+transition: 5s;
+width: 100%;
+}
+       
+.menu dd:nth-child(2):hover ~ .bg {
+  background-image: url(img/MAflare.jpg);
+}
+.menu dd:nth-child(3):hover ~ .bg {
+  background-image: url(img/MAflare.jpg);
+}
+.menu dd:nth-child(4):hover ~ .bg {
+  background-image: url(img/subrig.jpg);
+}
+.menu dd:nth-child(5):hover ~ .bg {
+  background-image: url(img/subrig.jpg);
+}
+.menu dd:nth-child(6):hover~ .bg {
+  background-image: url(img/smoke.jpg);
+
+}
+.menu dd:nth-child(7):hover ~ .bg {
+  background-image: url(img/guate.jpg);
+}
+.menu dd:nth-child(9):hover ~ .bg {
+  background-image: url(img/rigs.jpg);
+}
+
+.menu dd:nth-child(10):hover ~ .bg {
+  background-image: url(img/curtido.jpg);
+}
+.menu dd:nth-child(11):hover ~ .bg {
+  background-image: url(img/trees.jpg);
+}
