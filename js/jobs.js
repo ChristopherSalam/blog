@@ -14,7 +14,7 @@
         // User defined buttons must have the following:
         // previous button: class="slidesjs-previous slidesjs-navigation"
         // next button: class="slidesjs-next slidesjs-navigation"
-      effect: "slide"
+      effect: "fade"
         // [string] Can be either "slide" or "fade".
     }
   });
@@ -26,7 +26,7 @@ $(function(){
       active: true,
         // [boolean] Create pagination items.
         // You cannot use your own pagination. Sorry.
-      effect: "slide"
+      effect: "fade"
         // [string] Can be either "slide" or "fade".
     }
   });
