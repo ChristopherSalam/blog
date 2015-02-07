@@ -1,3 +1,35 @@
+/* Added for Chris Salam's resume website */
+ul li.chris {
+  font-size: 200%;
+  font-weight:bold;
+}
+
+ul.menu{
+  list-style-type: none;
+}
+
+ul.menu lh {
+  font-size: 150%;
+  font-weight: bold;
+  z-index: -1;
+}
+
+ul li.tools {
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+}
+
+.slides{
+
+}
 /*!
  * Bootstrap v2.2.2
  *
