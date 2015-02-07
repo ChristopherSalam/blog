@@ -1,34 +1,88 @@
+    /* For tablets & smart phones */
+    @media (max-width: 767px) {
+      body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .container {
+        /* width: auto */
+      }
+    }
+
+    /* For smartphones */
+    @media (max-width: 480px) {
+      .container {
+         width: auto
+      }
+      ul{
+        /* font-size: 90%; */
+      }
+    }
+
+    /* For smaller displays like laptops */
+    @media (min-width: 768px) and (max-width: 979px) {
+      .container {
+        width: 725px
+      }
+    }
+
+    /* For larger displays */
+    @media (min-width: 1200px) {
+      .container {
+        width: 1050px
+      }
+    }
+
+
 /* Added for Chris Salam's resume website */
 ul li.chris {
-  font-size: 200%;
+  font-size: 150%;
   font-weight:bold;
+}
+
+.text-fade {
+    margin-right: -40px;
 }
 
 ul.menu{
   list-style-type: none;
+  list-style-position: inside;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+  position: relative;
+
 }
 
 ul.menu lh {
-  font-size: 150%;
+  font-size: 125%;
   font-weight: bold;
-  z-index: -1;
 }
 
 ul li.tools {
   font-weight: bold;
 }
 
-.overlay {
+.underneath {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: -10;
+  z-index: -1;
+  position: fixed;
 }
 
-.slides{
-
+.fade{
+  background: rgba(255, 255, 255, 0.75);
+  width: 400px;
+  max-height: 520px;
+  margin-left: 20px;
+  padding:none;
+  border-radius: 3%;
+  z-index: 1;
+  position: relative;
 }
 /*!
  * Bootstrap v2.2.2
