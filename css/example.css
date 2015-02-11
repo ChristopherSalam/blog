@@ -90,11 +90,11 @@
 
     .slidesjs-pagination li a.active,
     .slidesjs-pagination li a:hover.active {
-      background-position: 0 -13px
+      background-position: 0 -13px;
     }
 
     .slidesjs-pagination li a:hover {
-      background-position: 0 -26px
+      background-position: 0 -26px;
     }
 
     #slides a:link,
@@ -126,30 +126,33 @@
         padding-right: 20px;
       }
       .container {
-        width: auto
+        width: auto;
       }
     }
 
     /* For smartphones */
     @media (max-width: 480px) {
       .container {
-        width: auto
+        width: auto;
       }
     }
 
     /* For smaller displays like laptops */
     @media (min-width: 768px) and (max-width: 979px) {
       .container {
-        width: 724px
+        width: 724px;
       }
     }
 
     /* For larger displays */
     @media (min-width: 1200px) {
       .container {
-        width: 1170px
+        width: 1170px;
       }
-    }
+    }    
+
+
+
 
 /*!
  * Bootstrap v2.2.2
@@ -160,7 +163,6 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
- 
 .clearfix {
   *zoom: 1;
 }
@@ -1894,6 +1896,7 @@ a.btn {
 #footer .span8 {
   padding-top:20px;
 }
+
 
 ul li.chris {
   font-size: 150%;
