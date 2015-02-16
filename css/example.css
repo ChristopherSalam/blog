@@ -1803,7 +1803,7 @@ body {
 }
 
 .nav li {
-    marign: 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -1829,22 +1829,6 @@ body {
     text-shadow: 0 -1px 0 rgba(0,0,0,.2);
     box-shadow: 0 1px 2px rgba(255,255,255,.1),inset 0 -1px 4px rgba(0,0,0,1);
     background-color: #111;
-}
-
-/* Ad Packs */
-#ad_packs {
-    margin: 45px 0 30px 0;
-    width: 298px;
-    overflow: hidden;
-}
-
-#footer.small #ad_packs {
-  margin:0;
-}
-
-#bsap_aplink {
-    float: right;
-    font-size: 10px;
 }
 
 /* Type styles */
@@ -1938,4 +1922,16 @@ ul li.tools {
   border-radius: 3%;
   z-index: 1;
   position: fixed;
+}
+
+.linkbar {
+  padding: 10px;
+  list-style-type: none;
+  display: block;
+}
+
+.linkbar li {
+  padding: 5px;
+  list-style-position: inside;
+  display: inline;
 }
