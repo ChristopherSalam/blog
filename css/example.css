@@ -1935,3 +1935,10 @@ ul li.tools {
   list-style-position: inside;
   display: inline;
 }
+
+form.inline {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
