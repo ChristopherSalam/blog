@@ -1887,7 +1887,7 @@ ul li.chris {
   font-weight:bold;
 }
 
-ul.menu{
+ul#menu{
   list-style-type: none;
   list-style-position: inside;
   z-index: 2;
@@ -1895,7 +1895,7 @@ ul.menu{
 
 }
 
-ul.menu lh {
+ul#menu lh {
   font-size: 125%;
   font-weight: bold;
 }

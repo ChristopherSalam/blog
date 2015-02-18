@@ -10,31 +10,31 @@
 </head>
 <body>
   <div class="fade">
-    <ul class="menu">
+    <ul id="menu">
       <li class="chris">Christopher Salam<br></li>
     <lh>Professional Experience</lh>  
-      <li>
+      <li id="dig">
         <a href="http://www.barstowslongviewfarm.com/anaerobic-digester/" target="_blank">Agricultural Engineer &#8212 RCM Digesters</a>
       </li>
-      <li>
+      <li id="rig">
         <a href="http://maps.conservation.ca.gov/doggr/index.html#openModal" target="_blank">Petroleum Engineer &#8212 State of California</a>
       </li>
-      <li>
+      <li id="cec">
         <a href="http://www.energy.ca.gov/ab1103/background.html" target="_blank">Intern &#8212 California Energy Commission</a>
       </li>
-      <li>
+      <li id="aidg">
         <a href="https://www.youtube.com/watch?v=eel28RmpuGA" target="_blank">Agricultural Engineer &#8212 Appropriate <br>&nbsp; Infrastructure Development Group </a>
       </li>
     <lh>Education &amp; Certification</lh>
-      <li>
+      <li id="ud">
         <a href="http://cfpub.epa.gov/ncer_abstracts/index.cfm/fuseaction/display.highlight/abstract/8697" target="_blank">
         B.S. Environmental Engineering UC Riverside</a>
       </li>
-      <li>
+      <li id="gd">
         <a href="http://adsabs.harvard.edu/abs/2011PhDT.......144S" target="_blank">
         M.S. Biological Systems Engineering UC Davis</a>
       </li>
-      <li>
+      <li id="pe">
         <a href="http://www2.dca.ca.gov/pls/wllpub/WLLQRYNA$LCEV2.QueryView?P_LICENSE_NUMBER=6606&P_LTE_ID=742" target="_blank">
         Professional Engineer Registered in CA</a>
       </li>
@@ -81,10 +81,10 @@
   <div class="container underneath">
     <div id="slides">
       <img src="img/start_cow.jpg" alt="cow">
-<a href="http://www.barstowslongviewfarm.com/anaerobic-digester/" target="_blank">
-      <img src="img/dig1.jpg"alt="flare"></a>
 <a href="http://maps.conservation.ca.gov/doggr/index.html#openModal" target="_blank">
       <img src="img/rig1.jpg"alt="rig"></a>
+<a href="http://www.barstowslongviewfarm.com/anaerobic-digester/" target="_blank">
+      <img src="img/dig1.jpg"alt="flare"></a>
 <a href="http://www.americanbiogascouncil.org/biogas_what.asp" target="_blank">
       <img src="img/smoke.jpg"alt="exhaust" target="_blank"></a>
 <a href="http://www.watertowndailytimes.com/article/20080829/NEWS05/308299956/Farmer+rethinking+methane+project" target="_blank">
@@ -101,10 +101,10 @@
       <img src="img/rig4.jpg"alt="pickles"></a>
 <a href="http://www.energy.ca.gov/ab1103/background.html" target="_blank">
       <img src="img/dig5.jpg"alt="pickles">
-<a href="http://www.cee.ucr.edu/undergrad/sdesign.html" target="_blank">
-      <img src="img/rig5.jpg"alt="pickles"></a> 
 <a href="http://bagginsend.net/" target="_blank">
       <img src="img/tractor.jpg"alt="pickles"></a>
+<a href="http://www.cee.ucr.edu/undergrad/sdesign.html" target="_blank">
+      <img src="img/rig5.jpg"alt="pickles"></a> 
 <a href="http://www.gourmet.com/recipes/2000s/2009/06/guatemalan-red-cabbage-relish" target="_blank">
       <img src="img/curtido.jpg"alt="pickles"></a>
     </div>
@@ -126,15 +126,45 @@
           swap: true,
           pauseOnHover: true,
           restartDelay: 5000
-        }//,
-        // callback: {
-        //   start: function(2){
-        //       document.getElementById("chris").style.listStyle = "circle"
-        //   }
-        // }
+        },
+        callback: {
+          loaded: function(number) {
+            console.log('SlidesJS: Loaded with slide #' + number);
+            $('#slidesjs-log .slidesjs-slide-number').text(number);
+          },
+          complete: function(number) {
+            console.log('SlidesJS: Current slide is #' + number);
+            function clear(){
+              document.getElementById("dig").style.listStyleImage = "none";
+              document.getElementById("rig").style.listStyleImage = "none";
+              document.getElementById("aidg").style.listStyleImage = "none";
+              document.getElementById("cec").style.listStyleImage = "none";
+              document.getElementById("menu").style.listStyle = "none";
+              document.getElementById("ud").style.listStyle = "none";
+              document.getElementById("gd").style.listStyle = "none";
+              document.getElementById("pe").style.listStyle = "none";
+            }
+              clear();
+              if (number != 1 && number % 2 == 1) {
+              document.getElementById("dig").style.listStyleImage = "url('img/bulb.png')";
+              document.getElementById("gd").style.listStyleImage = "url('img/bulb.png')";
+            } else if (number != 4 && number < 12 && number % 2 == 0) {
+              document.getElementById("rig").style.listStyleImage = "url('img/bulb.png')";
+              document.getElementById("ud").style.listStyleImage = "url('img/bulb.png')";
+            } else if (number == 12 || number == 14) {
+              document.getElementById("aidg").style.listStyleImage = "url('img/bulb.png')";
+              document.getElementById("gd").style.listStyleImage = "url('img/bulb.png')";
+            } else if (number == 4) {
+              document.getElementById("cec").style.listStyleImage = "url('img/bulb.png')";
+              document.getElementById("pe").style.listStyleImage = "url('img/bulb.png')";
+            }
+          }
+        }
       });
     });
-  </script>  
+  </script>
+
+
 
 </body>
 </html>
