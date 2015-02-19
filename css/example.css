@@ -1942,3 +1942,128 @@ form.inline {
   padding: 0;
 }
 
+#slides .slidesjs-previous {
+    position: absolute;
+    top: 68%;
+    left: 7%;
+    z-index:9999;
+}
+#slides .slidesjs-next{
+    position: absolute;
+    top: 68%;
+    left: 10%;
+    z-index:9999;
+}
+
+#slides .slidesjs-play{
+    position: absolute;
+    top: 68%;
+    left: 15%;
+    z-index:9999;
+}
+
+#slides .slidesjs-stop{
+    position: absolute;
+    top: 68%;
+    left: 15%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:first-child{
+    position: absolute;
+    top: 69%;
+    left: 19%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(2){
+    position: absolute;
+    top: 69%;
+    left: 21%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(3){
+    position: absolute;
+    top: 69%;
+    left: 23%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(4){
+    position: absolute;
+    top: 69%;
+    left: 25%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(5){
+    position: absolute;
+    top: 69%;
+    left: 27%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(6){
+    position: absolute;
+    top: 69%;
+    left: 29%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(7){
+    position: absolute;
+    top: 69%;
+    left: 31%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(8){
+    position: absolute;
+    top: 69%;
+    left: 33%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(9){
+    position: absolute;
+    top: 69%;
+    left: 35%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(10){
+    position: absolute;
+    top: 69%;
+    left: 37%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(11){
+    position: absolute;
+    top: 69%;
+    left: 39%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(12){
+    position: absolute;
+    top: 69%;
+    left: 41%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(13){
+    position: absolute;
+    top: 69%;
+    left: 43%;
+    z-index:9999;
+}
+
+#slides .slidesjs-pagination-item:nth-child(14){
+    position: absolute;
+    top: 69%;
+    left: 45%;
+    z-index:9999;
+}
+
