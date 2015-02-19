@@ -29,18 +29,20 @@
               document.getElementById("pe").style.listStyle = "none";
             }
               clear();
-              if (number != 1 && number % 2 == 1) {
+              if (number != 1 && number != 13 && number != 9 && number % 2 == 1 ) {
               document.getElementById("dig").style.listStyleImage = "url('img/bulb.png')";
-              document.getElementById("gd").style.listStyleImage = "url('img/bulb.png')";
-            } else if (number != 4 && number < 12 && number % 2 == 0) {
+            } else if (number == 2 || number == 10 || number == 8) {
               document.getElementById("rig").style.listStyleImage = "url('img/bulb.png')";
+            } else if (number == 13) {
+              document.getElementById("pe").style.listStyleImage = "url('img/bulb.png')";
+            } else if (number == 6) {
               document.getElementById("ud").style.listStyleImage = "url('img/bulb.png')";
-            } else if (number == 12 || number == 14) {
+            }  else if (number == 12 || number == 14) {
               document.getElementById("aidg").style.listStyleImage = "url('img/bulb.png')";
+            } else if (number == 9) {
               document.getElementById("gd").style.listStyleImage = "url('img/bulb.png')";
             } else if (number == 4) {
               document.getElementById("cec").style.listStyleImage = "url('img/bulb.png')";
-              document.getElementById("pe").style.listStyleImage = "url('img/bulb.png')";
             }
           }
         }
