@@ -1,7 +1,5 @@
     $(function() {
       $('#slides').slidesjs({
-        width: 1100,
-        height: 800,
         play: {
           active: true,
           effect:"fade",

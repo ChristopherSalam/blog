@@ -119,37 +119,6 @@
       margin: 0 auto
     }
 
-    /* For tablets & smart phones */
-    @media (max-width: 767px) {
-      .container {
-        width: auto;
-      }
-    }
-
-    /* For smartphones */
-    @media (max-width: 480px) {
-      .container {
-        width: auto;
-      }
-    }
-
-    /* For smaller displays like laptops */
-    @media (min-width: 768px) and (max-width: 979px) {
-      .container {
-        width: 724px;
-      }
-    }
-
-    /* For larger displays */
-    @media (min-width: 1200px) {
-      .container {
-        width: 1170px;
-      }
-    }    
-
-
-
-
 /*!
  * Bootstrap v2.2.2
  *
@@ -1903,7 +1872,7 @@ ul li.tools {
 .underneath {
   top: 0;
   height: 100%;
-  width: 100%;
+  width: 120%;
   z-index: 0;
   position: absolute;
 } 
@@ -1917,7 +1886,7 @@ ul li.tools {
   position: relative; 
   }
 
-  @media (min-width: 650px) {
+  @media (min-width: 550px) {
 
     .fade {
       margin-left: 20px;
@@ -2008,23 +1977,50 @@ ul li.tools {
 }
 
     /* For smartphones */
-    @media (max-width: 480px) {
+    @media (max-width: 460px) {
+        .fade {
+          margin: 260px auto 0;
+        }
+    }
+
+    @media (max-width: 480px)  and (min-width: 461px) {
+        .fade {
+          margin: 280px auto 0;
+        }
+    }
+
+    @media (max-width: 510px)  and (min-width: 481px) {
         .fade {
           margin: 300px auto 0;
         }
     }
 
-    @media (max-width: 540px) and (min-width: 481px) {
+    @media (max-width: 550px) and (min-width: 511px) {
         .fade {
-          margin: 350px auto 0;
+          margin: 330px auto 0;
         }
     }
 
-    @media (max-width: 650px) and (min-width: 541px) {
+    @media (min-width: 1425px) {
         .fade {
-          margin: 420px auto 0;
+          position:fixed;
+          margin-left: 300px;
+          margin-top: 80px;
         }
+        .container {
+          width: 1425px;
+        } 
+        .underneath {
+          position: relative;
+          top: 0%;
+        }
+
+      #slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
+    #slides .slidesjs-stop, #slides .slidesjs-pagination-item{
+        top: 0.3%;
     }
+
+    } 
 
 .linkbar {
   padding: 10px;
