@@ -1,5 +1,6 @@
-    $(function() {
-      $('#slides').slidesjs({
+$( document ).ready(function() {
+  $(function() {
+    $('#slides').slidesjs({
         play: {
           active: true,
           effect:"fade",
@@ -42,7 +43,8 @@
             } else if (number == 4) {
               document.getElementById("cec").style.listStyleImage = "url('css/img/bulb.png')";
             }
-          }
         }
-      });
+      }
     });
+  });
+});
