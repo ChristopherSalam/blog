@@ -1,14 +1,14 @@
-$( document ).ready(function() {
+window.onload = function() {
   $(function() {
     $('#slides').slidesjs({
         play: {
           active: true,
           effect:"fade",
           auto: true,
-          interval: 10000,
+          interval: 8000,
           swap: true,
           pauseOnHover: true,
-          restartDelay: 5000
+          restartDelay: 4000
         },
         callback: {
           loaded: function(number) {
@@ -47,4 +47,4 @@ $( document ).ready(function() {
       }
     });
   });
-});
+};
