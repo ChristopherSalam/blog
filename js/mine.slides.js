@@ -1,4 +1,4 @@
-window.onload = function() {
+
   $(function() {
     $('#slides').slidesjs({
         play: {
@@ -47,4 +47,3 @@ window.onload = function() {
       }
     });
   });
-};
