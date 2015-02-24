@@ -5,7 +5,7 @@ $( document ).ready(function() {
           active: true,
           effect:"fade",
           auto: true,
-          interval: 4000,
+          interval: 10000,
           swap: true,
           pauseOnHover: true,
           restartDelay: 5000
