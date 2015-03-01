@@ -37,18 +37,11 @@ ul li.tools {
   max-height: 600px;
   border-radius: 3%;
   z-index: 1;
-  position: relative; 
+  position: relative;
+  padding: 2px;
   }
 
-  @media (min-width: 550px) {
-
-    .fade {
-      margin-left: 20px;
-    }
-
-      .container {
-        padding-top: 50px;
-      }
+/*Experiment*/
 
       #slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
     #slides .slidesjs-stop, #slides .slidesjs-pagination-item{
@@ -128,30 +121,44 @@ ul li.tools {
     #slides .slidesjs-pagination-item:nth-child(14){
         left: 59%;
     }
+
+      .container {
+        padding-top: 50px;
+      }
+
+  @media (min-width: 550px) {
+
+    .fade {
+      margin-left: 20px;
+    }
+
+      .container {
+        padding-top: 50px;
+      }
 }
 
     /* For smartphones */
     @media (max-width: 460px) {
         .fade {
-          margin: 260px auto 0;
+          margin: 250px auto 0;
         }
     }
 
     @media (max-width: 480px)  and (min-width: 461px) {
         .fade {
-          margin: 280px auto 0;
+          margin: 270px auto 0;
         }
     }
 
     @media (max-width: 510px)  and (min-width: 481px) {
         .fade {
-          margin: 300px auto 0;
+          margin: 290px auto 0;
         }
     }
 
     @media (max-width: 550px) and (min-width: 511px) {
         .fade {
-          margin: 330px auto 0;
+          margin: 320px auto 0;
         }
     }
 
