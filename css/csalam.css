@@ -67,11 +67,11 @@ ul li.tools {
     }
 
     #slides .slidesjs-pagination-item:first-child{
-        left: 20%;
+        left: 18%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(2){
-        left: 23%;
+        left: 22%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(3){
@@ -79,47 +79,55 @@ ul li.tools {
     }
 
     #slides .slidesjs-pagination-item:nth-child(4){
-        left: 29%;
+        left: 30%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(5){
-        left: 32%;
+        left: 34%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(6){
-        left: 35%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(7){
         left: 38%;
     }
 
+    #slides .slidesjs-pagination-item:nth-child(7){
+        left: 42%;
+    }
+
     #slides .slidesjs-pagination-item:nth-child(8){
-        left: 41%;
+        left: 46%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(9){
-        left: 44%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(10){
-        left: 47%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(11){
         left: 50%;
     }
 
+    #slides .slidesjs-pagination-item:nth-child(10){
+        left: 54%;
+    }
+
+    #slides .slidesjs-pagination-item:nth-child(11){
+        left: 58%;
+    }
+
     #slides .slidesjs-pagination-item:nth-child(12){
-        left: 53%;
+        left: 62%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(13){
-        left: 56%;
+        left: 66%;
     }
 
     #slides .slidesjs-pagination-item:nth-child(14){
-        left: 59%;
+        left: 70%;
+    }
+
+    #slides .slidesjs-pagination-item:nth-child(15){
+        left: 74%;
+    }
+
+    #slides .slidesjs-pagination-item:nth-child(16){
+        left: 78%;
     }
 
       .container {

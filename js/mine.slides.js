@@ -25,20 +25,17 @@
               document.getElementById("menu").style.listStyle = "none";
               document.getElementById("ud").style.listStyle = "none";
               document.getElementById("gd").style.listStyle = "none";
-              document.getElementById("pe").style.listStyle = "none";
             }
               clear();
-              if (number != 1 && number != 13 && number != 9 && number % 2 == 1 ) {
+              if (number == 1 || number == 3 || number == 5 || number == 8 || number == 10 || number == 12) {
               document.getElementById("dig").style.listStyleImage = "url('css/img/bulb.png')";
-            } else if (number == 2 || number == 10 || number == 8) {
+            } else if (number == 2 || number == 7 || number == 11 || number == 15) {
               document.getElementById("rig").style.listStyleImage = "url('css/img/bulb.png')";
-            } else if (number == 13) {
-              document.getElementById("pe").style.listStyleImage = "url('css/img/bulb.png')";
-            } else if (number == 6) {
+            } else if (number == 16) {
               document.getElementById("ud").style.listStyleImage = "url('css/img/bulb.png')";
-            }  else if (number == 12 || number == 14) {
+            }  else if (number == 6 || number == 14) {
               document.getElementById("aidg").style.listStyleImage = "url('css/img/bulb.png')";
-            } else if (number == 9) {
+            } else if (number == 9 || number == 13) {
               document.getElementById("gd").style.listStyleImage = "url('css/img/bulb.png')";
             } else if (number == 4) {
               document.getElementById("cec").style.listStyleImage = "url('css/img/bulb.png')";
