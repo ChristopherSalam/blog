@@ -8,7 +8,7 @@
           interval: 12000,
           swap: true,
           pauseOnHover: true,
-          restartDelay: 12000
+          restartDelay: 6000
         },
         callback: {
           loaded: function(number) {
@@ -90,7 +90,7 @@
               }
               if (number == 13) {
               $("#location").html("Quetzaltenango, Guatemala.");
-              $("#textbox").html("My interest in fermentation peaked during my time in Guatemala, where the food was often not safe enough to eat without experiencing some stomach upset. Pickling vegetables, called 'Curtido' was a strategy I learned there.");
+              $("#textbox").html("AIDG is no longer in operation. AIDG, or the Appropriate Infrastructure Development Group aimed to aid start for profit green businesses in Guatemala and Haiti. In this photo, I am teaching a workshop on composting. Click the link to see some of their legacy material.");
               }
               if (number == 14) {
               $("#location").html("Porterville, CA");
@@ -98,7 +98,7 @@
               }
               if (number == 15) {
               $("#location").html("Quetzaltenango, Guatemala.");
-              $("#textbox").html("AIDG is no longer in operation. AIDG, or the Appropriate Infrastructure Development Group aimed to aid start for profit green businesses in Guatemala and Haiti. In this photo, I am teaching a workshop on composting. Click the link to see some of their legacy material.");
+              $("#textbox").html("My interest in fermentation peaked during my time in Guatemala, where the food was often not safe enough to eat without experiencing some stomach upset. Pickling vegetables, called 'Curtido' was a strategy I learned there.");
               }
               if (number == 16) {
               $("#location").html("Riverside, CA");
