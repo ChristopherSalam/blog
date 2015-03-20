@@ -127,8 +127,8 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
     .fade {
       margin: 0 auto;
       top: 50px;
+        }
     }
-}
 
     /* For smartphones */
     @media (max-width: 460px) {
@@ -159,7 +159,7 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
         .container {
           width: 1425px;
         } 
-  }
+    }
 
 form.inline {
   display: inline;
@@ -195,13 +195,14 @@ form.inline {
 
 /* flip speed goes here */
 .flipper {
-  transition: 1.6s;
+  transition: 2.5s;
   transform-style: preserve-3d;
   position: relative;
 }
 
 /* hide back of pane during swap */
 .front, .back {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
 }

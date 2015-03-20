@@ -5,10 +5,10 @@
           active: true,
           effect:"fade",
           auto: true,
-          interval: 8000,
+          interval: 12000,
           swap: true,
           pauseOnHover: true,
-          //restartDelay: 4000
+          restartDelay: 12000
         },
         callback: {
           loaded: function(number) {
@@ -46,7 +46,7 @@
               }
               if (number == 2) {
               $("#location").html("Bakersfield, CA. ");
-              $("#textbox").html("Oil wells within communities are subject to additional safety measures.");
+              $("#textbox").html("Oil wells within communities are subject to additional safety measures. This oil well sited in a suburban community is under numerous expanded regulations and government site visits. Homeowners are also compensated if an unexpected hazard occurs at the ground level.");
               }
               if (number == 3) {
               $("#location").html("Hadley, MA.");
@@ -58,7 +58,7 @@
               }
               if (number == 5) {
               $("#location").html("Canton, NY.");
-              $("#textbox").html("RCM Scrubber System attached to RCM Digester.");
+              $("#textbox").html("RCM Scrubber System attached to RCM Digester. The two tanks on the left are regenerable biological reactors, the third tank is full of a chemical filter. Combining these two media allows for superior and cost effective Hydrogen Sulfide Protection.");
               }
               if (number == 6) {
               $("#location").html("Quetzaltenango, Guatemala.");
@@ -78,15 +78,15 @@
               }
               if (number == 10) {
               $("#location").html("Winona, Minnesota.");
-              $("#textbox").html("What is biogas? Here's a primer.");
+              $("#textbox").html("This photo is from a recently constructed digester in Minnesota. Dairy Digesters are responsible for processing manure waste, reducing bacteria, producing methane in the form of biogas. What is biogas? Click the digester for a primer.");
               }
               if (number == 11) {
               $("#location").html("Wasco, Califonia.");
-              $("#textbox").html("Self-reporting and the internet has led to safety gains in continually evolving energy industries.");
+              $("#textbox").html("Self-reporting and the internet has led to safety gains in continually evolving energy industries. Click to learn about ad-hoc injury reporting from energy jobs in the central valley.");
               }
               if (number == 12) {
               $("#location").html("San Leandro, California");
-              $("#textbox").html("Biogas projects at breweries are being investigated.");
+              $("#textbox").html("Biogas projects at breweries are being investigated. Projects at breweries are particularly difficult processes because alcohol can kill bacteria and be difficult to digest. In addition, successful brewery digester projects happen where clean-in-place (CIP) or waste separation occurs. Cleaning chemicals and other standard residues, as well as aroma sensitive locations can derail a brewery digester project.");
               }
               if (number == 13) {
               $("#location").html("Quetzaltenango, Guatemala.");
@@ -98,7 +98,7 @@
               }
               if (number == 15) {
               $("#location").html("Porterville, CA");
-              $("#textbox").html("Oil & Agriculture, interwoven but not interdependent. Montgomery Article.");
+              $("#textbox").html("Oil & Agriculture, interwoven but not interdependent. This is a very old struggle, and both represent two lifestyles and profession that are becoming less common in the United States. Click to read an article by Montgomery.");
               }
               if (number == 16) {
               $("#location").html("Riverside, CA");
