@@ -1,6 +1,5 @@
 /*These are my styles*/
 
-
 ul li.chris {
   font-size: 150%;
   font-weight:bold;
@@ -9,46 +8,40 @@ ul li.chris {
 ul#menu{
   list-style-type: none;
   list-style-position: inside;
-  z-index: 2;
+  z-index: 1;
   position: relative;
-
+  padding: 30px;
 }
 
 ul#menu lh {
   font-size: 125%;
-  font-weight: bold;
 }
 
-ul li.tools {
+ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
   font-weight: bold;
 }
 
 .underneath {
-  top: 0;
+  top: 30px;
   height: 100%;
   width: 100%;
-  z-index: 0;
+  z-index: -1; 
   position: absolute;
 } 
 
-.fade{
+.fade {
   background: rgba(255, 255, 255, 0.8);
   width: 400px;
   max-height: 600px;
-  border-radius: 3%;
-  z-index: 1;
+  z-index: 0;
   position: relative;
-  padding: 2px;
-  }
+}
 
-/*Experiment*/
-
-      #slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
+#slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
     #slides .slidesjs-stop, #slides .slidesjs-pagination-item{
         position: absolute;
         top: 1.5%;
-        z-index:99;
-    }
+}
 
     #slides .slidesjs-previous{
         left: 3.5%;
@@ -130,19 +123,11 @@ ul li.tools {
         left: 78%;
     }
 
-      .container {
-        padding-top: 50px;
-      }
-
-  @media (min-width: 550px) {
-
+  @media (min-width: 551px) {
     .fade {
-      margin-left: 20px;
+      margin: 0 auto;
+      top: 50px;
     }
-
-      .container {
-        padding-top: 50px;
-      }
 }
 
     /* For smartphones */
@@ -171,25 +156,16 @@ ul li.tools {
     }
 
     @media (min-width: 1425px) {
-        .fade {
-          position:fixed;
-          margin-left: 300px;
-          margin-top: 80px;
-        }
         .container {
           width: 1425px;
         } 
-        .underneath {
-          position: relative;
-          top: 0%;
-        }
+  }
 
-      #slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
-    #slides .slidesjs-stop, #slides .slidesjs-pagination-item{
-        top: 0.3%;
-    }
-
-    } 
+form.inline {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
 
 .linkbar {
   padding: 10px;
@@ -198,13 +174,50 @@ ul li.tools {
 }
 
 .linkbar li {
-  padding: 10px;
+  padding: 12px;
   list-style-position: inside;
   display: inline;
 }
 
-form.inline {
-  display: inline;
-  margin: 0;
-  padding: 0;
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000;
+}
+/* flip the pane when hovered */
+  .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 400px;
+  max-height: 600px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 1.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+
+.cen {
+  text-align: center;
 }

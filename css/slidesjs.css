@@ -5,14 +5,15 @@
       -webkit-font-smoothing: antialiased;
       font: normal 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #232525;
-      padding-top:70px;
+      padding-top:0;
+      margin: 0;
     }
 
     #slides {
       display: none
     }
 
-    #slides .slidesjs-navigation {
+     #slides .slidesjs-navigation {
       margin-top:5px;
     }
 
