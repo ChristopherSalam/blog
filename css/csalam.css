@@ -11,6 +11,7 @@ ul#menu{
   z-index: 1;
   position: relative;
   padding: 30px;
+  padding-top: 0;
 }
 
 ul#menu lh {
@@ -169,6 +170,7 @@ form.inline {
 
 .linkbar {
   padding: 10px;
+  padding-top: 0;
   list-style-type: none;
   display: block;
 }
