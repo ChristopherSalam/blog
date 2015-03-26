@@ -197,6 +197,7 @@ form.inline {
 .flip-container, .front, .back {
   width: 360px;
   max-height: 600px;
+  border-radius: 6%;
 }
 
 /* flip speed goes here */
@@ -246,6 +247,7 @@ form.inline {
     -o-transform: rotateY(-180deg);
     -ms-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
+    height: 480px;
 }
 
 .cen {

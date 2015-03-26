@@ -5,7 +5,7 @@
           active: true,
           effect:"fade",
           auto: true,
-          interval: 12000,
+          interval: 16000,
           swap: true,
           pauseOnHover: true,
           restartDelay: 6000
@@ -46,35 +46,35 @@
               }
               if (number == 2) {
               $("#location").html("Bakersfield, California. ");
-              $("#textbox").html("Oil wells within communities are subject to additional safety measures. This oil well sited in a suburban community is under numerous expanded regulations and government site visits. Homeowners are also compensated if an unexpected hazard occurs at the ground level.");
+              $("#textbox").html("Oil wells within communities are subject to additional safety measures. This oil well sited in a suburban community is under numerous expanded regulations and government site visits. Click to see interactive maps of the wells in the California central valley.");
               }
               if (number == 3) {
               $("#location").html("Hadley, Massachusetts.");
-              $("#textbox").html("This is a hybrid hydrogen sulfide scrubber system, following the anaerobic digestion process. This scrubber uses biological and chemical means to remove the sour gas from methane to prepare it for combustion.");
+              $("#textbox").html("This is a hybrid hydrogen sulfide scrubber system, following the anaerobic digestion process. This scrubber removes the sour gas from methane to prepare it for combustion. Click to learn more.");
               }
               if (number == 4) {
               $("#location").html("Sacramento, California.");
-              $("#textbox").html("Insulation investment during construction can reduce energy use significantly over the life of the project. Barriers to this are split incentives for homebuilders and homeowners. Government programs such as Energy Upgrade California and AB 1103 try to work around these barriers to reduce energy use.");
+              $("#textbox").html("Insulation investment during construction can reduce energy use significantly over the life of the project. Barriers to this are split incentives for homebuilders and homeowners. Government programs try to combat these split incentives, click to learn about AB 1103.");
               }
               if (number == 5) {
               $("#location").html("Canton, New York.");
-              $("#textbox").html("RCM Scrubber System attached to RCM Digester. The two tanks on the left are regenerable biological reactors, the third tank is full of a chemical filter. Combining these two media allows for superior and cost effective Hydrogen Sulfide Protection.");
+              $("#textbox").html("RCM Scrubber System attached to RCM Digester. Using biological & chemical filters, these two media allows for superior and cost effective Hydrogen Sulfide Protection. Click to read about the project.");
               }
               if (number == 6) {
               $("#location").html("Quetzaltenango, Guatemala.");
-              $("#textbox").html("This is a digester contructed by Xelateco, a for profit green energy company that was supported by AIDG in Guatemala. This project takes waste from a small farm with pigs and cows and processes the waste for reuse on soil and produces cooking heat as a co-product. Click to see a sample video demonstrating this and other technologies from AIDG.");
+              $("#textbox").html("This is a digester contructed by Xelateco, a for profit green energy company that was supported by AIDG in Guatemala. This project uses animal waste, sanitizes it, and produces cooking heat as a co-product. Click to see a sample video demonstrating this and other technologies from AIDG.");
               }
               if (number == 7) {
               $("#location").html("Kern County, California");
-              $("#textbox").html("The true danger in petroleum is driving, not drilling. In my experience, I'd have to agree.");
+              $("#textbox").html("The true danger in petroleum is driving, not drilling. In my experience, I'd have to agree. Click to read an New York Times article on the topic.");
               }
               if (number == 8) {
               $("#location").html("Canton, New York.");
-              $("#textbox").html("Farmers' hesitation on anaerobic digester projects are well documented. Between a complex process and little or no support from installers, the projects carry big risks.");              
+              $("#textbox").html("Farmers' hesitation on anaerobic digester projects are well documented. Between a complex process and little or no support from installers, the projects carry big risks. Click to learn more.");              
               }
               if (number == 9) {
               $("#location").html("Bakersfield & Davis, California.");
-              $("#textbox").html("Agricultural Engineers don't really get many chances to use tractors. This image is from my time in agricultural living coops, where I got to experience first hand some of the stuff I learned in class. The link provided goes towards the Domes coop in Davis, CA. I lived here went I went during graduate school.");
+              $("#textbox").html("Agricultural Engineers don't really get many chances to use tractors. This image is from my time in agricultural living coops, where I got to experience first hand some of the stuff I learned in class. Click to see the Domes coop at UCD where I lived in graduate school.");
               }
               if (number == 10) {
               $("#location").html("Winona, Minnesota.");
@@ -86,7 +86,7 @@
               }
               if (number == 12) {
               $("#location").html("San Leandro, California");
-              $("#textbox").html("Biogas projects at breweries are being investigated. Projects at breweries are particularly difficult processes because alcohol can kill bacteria and be difficult to digest. In addition, successful brewery digester projects happen where clean-in-place (CIP) or waste separation occurs. Cleaning chemicals and other standard residues, as well as aroma sensitive locations can derail a brewery digester project.");
+              $("#textbox").html("Biogas projects at breweries are being investigated. Projects at breweries are particularly difficult processes because alcohol can kill bacteria and be difficult to digest. Click to learn more.");
               }
               if (number == 13) {
               $("#location").html("Quetzaltenango, Guatemala.");
@@ -94,7 +94,7 @@
               }
               if (number == 14) {
               $("#location").html("Porterville, CA");
-              $("#textbox").html("Oil & Agriculture, interwoven but not interdependent. This is a very old struggle, and both represent two lifestyles and profession that are becoming less common in the United States. Click to read an article by Montgomery.");
+              $("#textbox").html("Oil & Agriculture, interwoven but not interdependent. This is a very old struggle, and both represent two lifestyles and professions that are becoming less common in the United States. Click to read an article on this topic.");
               }
               if (number == 15) {
               $("#location").html("Quetzaltenango, Guatemala.");
@@ -102,7 +102,7 @@
               }
               if (number == 16) {
               $("#location").html("Riverside, CA");
-              $("#textbox").html("The capstone senior design project is one of the main times to really explore your interests during your undergraduate degree. Our choice to pursue zero-waste biodiesel really combined our main interests as a group: D-I-Y solutions to real problems and resource efficiency.");
+              $("#textbox").html("The capstone senior design project is one of the main times to really explore your interests during your undergraduate degree. Click to learn more about our cproject: Zero-Waste Biodiesel.");
               }
         }
       }
