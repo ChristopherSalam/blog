@@ -31,8 +31,8 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 } 
 
 .fade {
-  background: rgba(255, 255, 255, 0.8);
-  width: 400px;
+  background: rgba(255, 255, 255, 0.75);
+  max-width: 360px;
   max-height: 600px;
   z-index: 0;
   position: relative;
@@ -169,14 +169,14 @@ form.inline {
 }
 
 .linkbar {
-  padding: 10px;
+  padding: 8px;
   padding-top: 0;
   list-style-type: none;
   display: block;
 }
 
 .linkbar li {
-  padding: 12px;
+  padding: 8px;
   list-style-position: inside;
   display: inline;
 }
@@ -195,7 +195,7 @@ form.inline {
 }
 
 .flip-container, .front, .back {
-  width: 400px;
+  width: 360px;
   max-height: 600px;
 }
 
