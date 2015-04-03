@@ -23,7 +23,6 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 }
 
 .underneath {
-  /*top: 30px;*/
   height: 100%;
   width: 100%;
   z-index: -1; 
@@ -131,7 +130,7 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 
     @media (max-width: 830px) and (min-width: 591px) {
         .fade {
-          margin: 0 auto 0;
+          margin: 10px auto 0;
         }
         .front {
           margin-left: 80px;
@@ -150,10 +149,22 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
         }
     }
 
+    @media (min-width: 830px) {
+        .fade {
+          margin: 20px auto 0;
+        }
+        .front {
+          margin-left: 20px;
+        }
+        .back {
+          margin-left: -20px;
+        }
+    }
+
     @media (min-width: 1425px) {
         .container {
           width: 1425px;
-        } 
+        }
     }
 
 form.inline {

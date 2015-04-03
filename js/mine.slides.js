@@ -79,23 +79,7 @@
               if (number == 10) {
               $("#location").html("San Leandro, California");
               $("#textbox").html("Biogas projects at breweries are being investigated. Projects at breweries are particularly difficult processes because alcohol can kill bacteria and be difficult to digest.");
-              } /*
-              if (number == 13) {
-              $("#location").html("Quetzaltenango, Guatemala.");
-              $("#textbox").html("AIDG is no longer in operation. AIDG, or the Appropriate Infrastructure Development Group aimed to aid start for profit green businesses in Guatemala and Haiti. In this photo, I am teaching a workshop on composting. Click the link to see some of their legacy material.");
-              }
-              if (number == 14) {
-              $("#location").html("Porterville, CA");
-              $("#textbox").html("Oil & Agriculture, interwoven but not interdependent. This is a very old struggle, and both represent two lifestyles and professions that are becoming less common in the United States. Click to read an article on this topic.");
-              }
-              if (number == 15) {
-              $("#location").html("Quetzaltenango, Guatemala.");
-              $("#textbox").html("My interest in fermentation peaked during my time in Guatemala, where the food was often not safe enough to eat without experiencing some stomach upset. Pickling vegetables, called 'Curtido' was a strategy I learned there.");
-              }
-              if (number == 16) {
-              $("#location").html("Riverside, CA");
-              $("#textbox").html("The capstone senior design project is one of the main times to really explore your interests during your undergraduate degree. Click to learn more about our cproject: Zero-Waste Biodiesel.");
-              } */
+              } 
         }
       }
     });
