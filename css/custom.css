@@ -33,81 +33,12 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 .fade {
   background: rgba(255, 255, 255, 0.75);
   max-width: 360px;
-  max-height: 485px;
+  max-height: 445px;
   z-index: 0;
   position: relative;
 }
-/*
-#slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
-    #slides .slidesjs-stop, #slides .slidesjs-pagination-item{
-        position: absolute;
-        top: 1.5%;
-}
+/* For smartphones */
 
-    #slides .slidesjs-previous{
-        left: 3.5%;
-    }
-
-    #slides .slidesjs-next{
-        left: 7.5%;
-    }
-
-    #slides .slidesjs-play, #slides .slidesjs-stop{
-        left: 11.5%;
-    }
-
-    #slides .slidesjs-pagination-item{
-        top: 2.5%;
-    }
-
-    #slides .slidesjs-pagination-item:first-child{
-        left: 18%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(2){
-        left: 22%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(3){
-        left: 26%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(4){
-        left: 30%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(5){
-        left: 34%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(6){
-        left: 38%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(7){
-        left: 42%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(8){
-        left: 46%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(9){
-        left: 50%;
-    }
-
-    #slides .slidesjs-pagination-item:nth-child(10){
-        left: 54%;
-    }
-
-  @media (min-width: 551px) {
-    .fade {
-      margin: 0 auto;
-      top: 50px;
-        }
-    }
-*/
-    /* For smartphones */
     @media (max-width: 330px) {
         .fade {
           margin: 210px auto 0;
@@ -128,13 +59,25 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 
     @media (max-width: 450px)  and (min-width: 411px) {
         .fade {
-          margin: 275px auto 0;
+          margin-top: 275px;
+        }
+        .front {
+          margin-left: 20px;
+        }
+        .back {
+          margin-left: -20px;
         }
     }
 
     @media (max-width: 480px)  and (min-width: 451px) {
         .fade {
           margin: 300px auto 0;
+        }        
+        .front {
+          margin-left: 40px;
+        } 
+        .back {
+          margin-left: -40px;
         }
     }
 
@@ -142,11 +85,23 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
         .fade {
           margin: 315px auto 0;
         }
-    }
+        .front {
+          margin-left: 60px;
+        }
+        .back {
+          margin-left: -60px;
+        }
+    }  
 
     @media (max-width: 550px) and (min-width: 511px) {
         .fade {
           margin: 330px auto 0;
+        }
+        .front {
+          margin-left: 80px;
+        }
+        .back {
+          margin-left: -80px;
         }
     }
 
@@ -154,47 +109,44 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
         .fade {
           margin: 350px auto 0;
         }
+        .front {
+          margin-left: 80px;
+        }
+        .back {
+          margin-left: -80px;
+        }
     }
 
     @media (max-width: 590px) and (min-width: 571px) {
         .fade {
           margin: 370px auto 0;
         }
-    }
-
-    @media (max-width: 620px) and (min-width: 591px) {
-        .fade {
-          margin: 390px auto 0;
+        .front {
+          margin-left: 80px;
+        }
+        .back {
+          margin-left: -80px;
         }
     }
 
-    @media (max-width: 650px) and (min-width: 621px) {
+    @media (max-width: 830px) and (min-width: 591px) {
         .fade {
-          margin: 410px auto 0;
+          margin: 0 auto 0;
+        }
+        .front {
+          margin-left: 80px;
+        }
+        .back {
+          margin-left: -80px;
         }
     }
 
-    @media (max-width: 680px) and (min-width: 651px) {
-        .fade {
-          margin: 430px auto 0;
+    @media (max-width: 830px) and (min-width: 801px) {
+        .front {
+          margin-left: 40px;
         }
-    }
-
-    @media (max-width: 730px) and (min-width: 681px) {
-        .fade {
-          margin: 455px auto 0;
-        }
-    }
-
-    @media (max-width: 800px) and (min-width: 731px) {
-        .fade {
-          margin: 480px auto 0;
-        }
-    }
-
-    @media (max-width: 850px) and (min-width: 801px) {
-        .fade {
-          margin: 500px auto 0;
+        .back {
+          margin-left: -40px;
         }
     }
 
@@ -239,7 +191,7 @@ form.inline {
 
 .flip-container, .front, .back {
   width: 360px;
-  max-height: 485px;
+  max-height: 445px;
   border-radius: 6%;
 }
 
@@ -290,7 +242,7 @@ form.inline {
     -o-transform: rotateY(-180deg);
     -ms-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
-    height: 485px;
+    height: 445px;
 }
 
 .cen {
