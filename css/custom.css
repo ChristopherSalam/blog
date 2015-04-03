@@ -23,7 +23,7 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 }
 
 .underneath {
-  top: 30px;
+  /*top: 30px;*/
   height: 100%;
   width: 100%;
   z-index: -1; 
@@ -33,11 +33,11 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 .fade {
   background: rgba(255, 255, 255, 0.75);
   max-width: 360px;
-  max-height: 600px;
+  max-height: 500px;
   z-index: 0;
   position: relative;
 }
-
+/*
 #slides .slidesjs-previous, #slides .slidesjs-next, #slides .slidesjs-play, 
     #slides .slidesjs-stop, #slides .slidesjs-pagination-item{
         position: absolute;
@@ -106,17 +106,23 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
       top: 50px;
         }
     }
-
+*/
     /* For smartphones */
-    @media (max-width: 460px) {
+    @media (max-width: 370px) {
         .fade {
-          margin: 250px auto 0;
+          margin: 230px auto 0;
+        }
+    }
+
+    @media (max-width: 460px)  and (min-width: 371px) {
+        .fade {
+          margin: 270px auto 0;
         }
     }
 
     @media (max-width: 480px)  and (min-width: 461px) {
         .fade {
-          margin: 270px auto 0;
+          margin: 280px auto 0;
         }
     }
 
@@ -128,7 +134,55 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 
     @media (max-width: 550px) and (min-width: 511px) {
         .fade {
-          margin: 320px auto 0;
+          margin: 330px auto 0;
+        }
+    }
+
+    @media (max-width: 570px) and (min-width: 551px) {
+        .fade {
+          margin: 360px auto 0;
+        }
+    }
+
+    @media (max-width: 590px) and (min-width: 571px) {
+        .fade {
+          margin: 390px auto 0;
+        }
+    }
+
+    @media (max-width: 620px) and (min-width: 591px) {
+        .fade {
+          margin: 410px auto 0;
+        }
+    }
+
+    @media (max-width: 650px) and (min-width: 621px) {
+        .fade {
+          margin: 430px auto 0;
+        }
+    }
+
+    @media (max-width: 680px) and (min-width: 651px) {
+        .fade {
+          margin: 446px auto 0;
+        }
+    }
+
+    @media (max-width: 730px) and (min-width: 681px) {
+        .fade {
+          margin: 465px auto 0;
+        }
+    }
+
+    @media (max-width: 780px) and (min-width: 731px) {
+        .fade {
+          margin: 480px auto 0;
+        }
+    }
+
+    @media (max-width: 850px) and (min-width: 781px) {
+        .fade {
+          margin: 500px auto 0;
         }
     }
 
@@ -147,6 +201,7 @@ form.inline {
 .linkbar {
   padding: 8px;
   padding-top: 0;
+  margin-top: 8px;
   list-style-type: none;
   display: block;
 }
@@ -172,7 +227,7 @@ form.inline {
 
 .flip-container, .front, .back {
   width: 360px;
-  max-height: 600px;
+  max-height: 500px;
   border-radius: 6%;
 }
 
@@ -187,22 +242,22 @@ form.inline {
 
 /* hide back of pane during swap */
 .front, .back {
-  -webkit-transition: 0.6s;
+  -webkit-transition: 2.5s;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   
-  -moz-transition: 0.6s;
+  -moz-transition: 2.5s;
   -moz-transform-style: preserve-3d;
   -moz-backface-visibility: hidden;
   
-  -o-transition: 0.6s;
+  -o-transition: 2.5s;
   -o-transform-style: preserve-3d;
   -o-backface-visibility: hidden;
   
-  -ms-transition: 0.6s;
+  -ms-transition: 2.5s;
   -ms-transform-style: preserve-3d;
 
-  transition: 0.6s;
+  transition: 2.5s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
 
@@ -223,7 +278,7 @@ form.inline {
     -o-transform: rotateY(-180deg);
     -ms-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
-    height: 480px;
+    height: 500px;
 }
 
 .cen {
