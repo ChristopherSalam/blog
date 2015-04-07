@@ -32,7 +32,7 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
 .fade {
   background: rgba(255, 255, 255, 0.75);
   max-width: 360px;
-  max-height: 445px;
+  max-height: 460px;
   z-index: 0;
   position: relative;
 }
@@ -202,7 +202,7 @@ form.inline {
 
 .flip-container, .front, .back {
   width: 360px;
-  max-height: 445px;
+  max-height: 460px;
   border-radius: 6%;
 }
 
@@ -253,7 +253,7 @@ form.inline {
     -o-transform: rotateY(-180deg);
     -ms-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
-    height: 445px;
+    height: 460px;
 }
 
 .cen {
