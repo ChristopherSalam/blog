@@ -162,9 +162,25 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
     }
 
     @media (min-width: 1425px) {
+        .fade {
+          margin: 30px auto 0;
+        }
+        .front {
+          margin-left: 30px;
+        }
+        .back {
+          margin-left: -30px;
+        }
         .container {
           width: 1425px;
+          margin: auto auto;
+          position: absolute;
+          top: 4%; 
+          left: 0; 
+          bottom: 0; 
+          right: 0;
         }
+
     }
 
 form.inline {
