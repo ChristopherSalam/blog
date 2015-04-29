@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="1.5;URL=http://chrissalam.com">
+  <!--<meta http-equiv="refresh" content="5;URL=http://chrissalam.com">-->
       <title>Christopher Salam</title>
 <!--This site uses SlidesJS and Bootstrap-->
   <meta name="license for SlidesJS" content="Nathan Searles">
   <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="css/bootstrap2.2.2+SlidesJS.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://christophersalam.github.io/css/bootstrap2.2.2+SlidesJS.css">
+    <link rel="stylesheet" href="http://christophersalam.github.io/css/custom.css">
+    <link rel="stylesheet" href="http://christophersalam.github.io/css/font-awesome.min.css">
 </head>
 <body>
 <div class="flip-container" id="flip-container">
@@ -48,8 +48,13 @@
         <lh style="color:#000"><a href="css/img/Resume 2015 Chris Salam.pdf" title="In PDF form"download>Download Printable Resume&nbsp;<img src="css/img/tiles/pdf.png"> </a></lh>
       </ul>
     </div>
-<!--Picture Caption, hidden behind resume-->
   </div>
 </div>
+<!--<p> The time is <?php
+  date_default_timezone_set("America/Los_Angeles").
+  $timestamp = date("H:i:s a");
+  //echo $timestamp;
+    ?>
+</p>-->
 </body>
 </html>
