@@ -36,6 +36,13 @@ ul#menu li, ul li.tools, ul#menu lh, ul li.chris {
   z-index: 0;
   position: relative;
 }
+
+.underneath {
+  height: 100%;
+  width: 100%;
+  z-index: -1; 
+  position: absolute;
+} 
 /* For smartphones */
 
     @media (max-width: 330px) {
