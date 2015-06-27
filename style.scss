@@ -68,6 +68,11 @@ p {
   margin: 15px 0;
 }
 
+p > img {
+  display: block;
+  margin: 0 auto;
+}
+
 a {
   color: $blue;
   text-decoration: none;
@@ -208,6 +213,12 @@ img {
   @include mobile {
     margin: 3px 0;
   }
+}
+
+@media (min-width:641px){
+ .site-description {
+  padding-left: 16px;
+ } 
 }
 
 nav {
