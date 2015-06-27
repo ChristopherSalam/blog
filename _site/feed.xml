@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Christopher Salam</title>
+    <description>Engineer and Web Developer from Berkeley California</description>
+    <link>ChristopherSalam.github.io</link>
+    <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>First Post!</title>
+        <description>&lt;p&gt;This is my first post! Does it work?&lt;/p&gt;
+</description>
+        <pubDate>Mon, 03 Mar 2014 00:00:00 -0800</pubDate>
+        <link>ChristopherSalam.github.io/Hello-World/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Hello-World/</guid>
+      </item>
+    
+  </channel>
+</rss>
