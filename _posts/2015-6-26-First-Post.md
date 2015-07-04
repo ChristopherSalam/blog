@@ -3,7 +3,8 @@ layout: post
 title: First Post!
 ---
 
-I'm very excited to get this blog up and running and write my first post! Today is an important day for many in our country, gay marriage was declared legal all over our country, by the U.S. supreme court. As someone with many LGBTQ friends and some family, I feel a deep connection and am proud that our country will allow any two kinds of people to receive the over 1,000 benefits that marriage bestows. <br /> <br /> 
+I'm very excited to get this blog up and running and write my first post! Today is an important day for many in our country, gay marriage was declared legal all over our country, by the U.S. supreme court. As someone with many LGBTQ friends and some family, I feel a deep connection and am proud that our country will allow any two kinds of people to receive the over 1,000 benefits that marriage bestows. 
+<br /> <br /> 
 
 I'm also about to embark upon a new chapter in my life, I've been unemployed and studying computer science diligently since being laid off from RCM Digesters, and starting on Monday, I will be attending <a href="http://www.telegraphacademy.com" target="_blank">Telegraph Academy</a>, which is a JavaScript focused web development accelerated course in Berkeley, CA. <br /> <br /> 
 
