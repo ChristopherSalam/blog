@@ -326,8 +326,7 @@ nav a {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: #A45A52;
-  /*#CE2029*/
+  background-color: #fff;
 }
 
 * {
@@ -379,12 +378,13 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  background-image: url(sand.jpg);
+  /*background-image: url(sand.jpg);*/
   overflow: hidden;
   visibility: visible;
   line-height: 400px;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.25em;
+  background-color: #A4010C;
   color: #fff;
   text-shadow: 1px 1px #000;
   transform: rotate(-60deg);
@@ -413,7 +413,7 @@ li:nth-child(5) span {
 
 .hexagon-in2:hover {
   background-position: -565px center;
-  color: #FCE001;
+  color: #ccff00;
 }
 
 ul.hex {
