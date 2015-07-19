@@ -1,26 +1,21 @@
 ---
 layout: default
 ---
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div class="posts">
 
 	<h1>{{site.title}}</h1>
 
-	<ul style="list-style-type:none">
+	<ul class="hex">
 
 		{% for post in site.posts %}
-		<!-- <article class="post"> -->
-		<li>
-			<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}
+		<li class="hexagon">
+			<a class="hexagon-in1" href="{{ post.url | prepend: site.baseurl }}">
+				<span class="hexagon-in2">
+				  {{ post.title }}
+				</span>
 			</a>
 		</li>
-		<!-- <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2> -->
-
-		<!-- <div class="entry"> -->
-		<!-- {{ post.excerpt }} -->
-		<!-- </div> -->
-		<!--<a href="{{ site.baseurl }}{{ post.url }}" >Read More</a>-->
-		<!-- </article> -->
 		{% endfor %}
 
 	</ul>

@@ -252,6 +252,10 @@ nav {
 // .main
 //
 
+.posts > ul {
+  list-style-type:none;
+}
+
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
@@ -272,6 +276,10 @@ nav {
     font-style: italic;
   }
 
+  ul {
+    list-style-type:none;
+  }
+
   .comments {
     margin-top: 10px;
   }
@@ -288,6 +296,81 @@ nav {
   border-bottom: 1px solid #ddd;
   background-color: #A45A52; /*#CE2029*/
 }
+
+ * {
+   margin: 0; padding: 0; border: none; position: relative;
+  }
+*, *::before, *::after {
+   box-sizing: inherit;}
+html {
+   background-size: cover;
+   background-position: 0 30%;
+   background-attachment: fixed;
+   width: 100%;
+   height: 100%;
+   box-sizing: border-box;
+  }
+body {
+   width: 100%;
+   height: 100%;
+   background: rgba(255,255,255,.3);
+}
+.hexagon {
+    width: 200px;
+    height: 400px;
+    overflow: hidden;
+    visibility: hidden;
+    transform: rotate(120deg);
+    display: inline-block;
+    list-style-type: none;
+    }
+
+.hexagon-in1 {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-60deg);
+    text-decoration: none;
+    }
+
+.hexagon-in2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(sand.jpg);
+    overflow: hidden;
+    visibility: visible;
+    line-height: 400px;
+    font-family: $helvetica;
+    font-size: 1.25em;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+    transform: rotate(-60deg);
+    transition: 1.5s ease-out;
+    }
+
+li:nth-child(1) span {
+    background-position: -15px center;
+  }
+li:nth-child(2) span {
+    background-position: -115px center;
+  }
+li:nth-child(3) span {
+    background-position: -215px center;
+  }
+li:nth-child(4) span {
+    background-position: -315px center;
+  }
+li:nth-child(5) span {
+    background-position: -415px center;
+  }
+
+.hexagon-in2:hover {
+    background-position: -565px center;
+    color: #FCE001;
+  }
+ul.hex {text-align: center;}
 
 footer {
   padding: 20px 0;
