@@ -9,9 +9,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. Live coding is a programming practice centered on the use of improvising interactive programming. Rather than slides or contrived exercises or doing the problem myself, it helps to see that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. For example, I have been struggling with the concept of call, apply, and bind and a snippet of live coding in class went a long way towards demistifying it for me. Open your console and try this out: 
+    <meta name="description" content="In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. Live coding is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time.  One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, I connect with the live-coder and it gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. For example, I have been struggling with the concept of call, apply, and bind and a live coding session in class went a long way towards demistifying it for me. Here&#39;s an expanded look at it! Open your console and try this out: 
 " />
-    <meta property="og:description" content="In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. Live coding is a programming practice centered on the use of improvising interactive programming. Rather than slides or contrived exercises or doing the problem myself, it helps to see that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. For example, I have been struggling with the concept of call, apply, and bind and a snippet of live coding in class went a long way towards demistifying it for me. Open your console and try this out: 
+    <meta property="og:description" content="In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. Live coding is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time.  One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, I connect with the live-coder and it gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. For example, I have been struggling with the concept of call, apply, and bind and a live coding session in class went a long way towards demistifying it for me. Here&#39;s an expanded look at it! Open your console and try this out: 
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -56,54 +56,71 @@
   <h1>Live Coding</h1>
 
   <div class="entry">
-    <p>In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. <a href="https://en.wikipedia.org/wiki/Live_coding" target="_blank">Live coding</a> is a programming practice centered on the use of improvising interactive programming. Rather than slides or contrived exercises or doing the problem myself, it helps to see that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. <br /><br />For example, I have been struggling with the concept of call, apply, and bind and a snippet of live coding in class went a long way towards demistifying it for me. Open your console and try this out: <br /><br /></p>
+    <p>In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. <a href="https://en.wikipedia.org/wiki/Live_coding" target="_blank">Live coding</a> is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time. <br /><br /> One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, I connect with the live-coder and it gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. <br /><br />For example, I have been struggling with the concept of call, apply, and bind and a live coding session in class went a long way towards demistifying it for me. Here&#39;s an expanded look at it! Open your console and try this out: <br /></p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">alice</span> <span class="o">=</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span><span class="s2">&quot;dirty&quot;</span><span class="p">};</span>
 </code></pre></div>
-<p>Alice is a javaScript object with dirty teeth. She needs to brush, and we&#39;ve decided this needs to be method of Alice.</p>
+<p>Alice is a javaScript object with dirty teeth. She needs to up her dental hygiene game, and we&#39;ve decided Alice needs a native method to help her.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">alice</span><span class="p">.</span><span class="nx">brush</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span> <span class="p">}</span>
 </code></pre></div>
-<p>90% of the time &#39;this&#39; refers to the object to the left of the dot during the invocation of the function, meaning for us, alice.</p>
+<p>90% of the time <strong>this</strong> refers to the object to the left of the dot during the invocation of the function, meaning for us, alice.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">alice</span><span class="p">.</span><span class="nx">brush</span><span class="p">()</span>
 <span class="nx">alice</span> <span class="o">--&gt;</span> 
-            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;clean&quot;</span><span class="p">}</span>
+             <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;clean&quot;</span><span class="p">}</span>
 </code></pre></div>
-<p>This will change the teeth property of the alice object. What if we wanted to change the condition of alice&#39;s teeth without using a native method? Let&#39;s bring in mouthwash.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mouthwash</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span> <span class="p">}</span>
+<p>This will change the teeth property of the alice object. What if we wanted to change the condition of alice&#39;s teeth without using a native method? Let&#39;s bring in floss.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">floss</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span> <span class="p">}</span>
 </code></pre></div>
-<p>Calling alice.mouthwash() will not work anymore. Mouthwash is not available to alice, and the this is not targeting alice, it is incorrectly targetting the window. We can use either the method <strong>call</strong> or <strong>apply</strong> to reset this, and make it target the first argument of call or apply. Assuming alice&#39;s teeth have been reverted to dirty:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mouthwash</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">alice</span><span class="p">)</span> <span class="c1">// or mouthwash.apply (alice) </span>
+<p>Calling alice.floss() will not work anymore. Floss is not available to alice, and the <strong>this</strong> is not targeting alice, it is incorrectly targeting the window, the global default value. We can use either the method <strong>call</strong> or <strong>apply</strong> to reset <strong>this</strong>, and make the function target the first argument of <strong>call</strong> or <strong>apply</strong> instead of the window. Assuming alice&#39;s teeth have been reverted to dirty:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">floss</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">alice</span><span class="p">)</span> <span class="c1">// or floss.apply (alice) </span>
 <span class="nx">alice</span> <span class="o">--&gt;</span>
-            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;clean&quot;</span><span class="p">}</span>
+        <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;clean&quot;</span><span class="p">}</span>
 </code></pre></div>
-<p>There&#39;s more good things that happen with <strong>call</strong> and <strong>apply</strong>, they allow us to add arguments. Call let&#39;s us additional arguments as additional parameters. Here&#39;s an example using flavored mouthwash: </p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">flavoredMouthwash</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">isCoolMint</span><span class="p">,</span> <span class="nx">isSoftMint</span><span class="p">)</span> <span class="p">{</span> 
-  <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isCoolMint</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;cool mint clean&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="nx">isSoftMint</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;soft mint clean&quot;</span> <span class="o">:</span> <span class="s2">&quot;clean&quot;</span> <span class="p">}</span>
+<p>There&#39;s more good things that happen with <strong>call</strong> and <strong>apply</strong>, they allow us to add arguments. Call lets us add our arguments as additional parameters. Here&#39;s an example using mouthwash: </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mouthwash</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">isCoolMint</span><span class="p">,</span> <span class="nx">isFresh</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isCoolMint</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;cool mint clean&quot;</span> <span class="o">:</span> <span class="s2">&quot;clean&quot;</span> 
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isFresh</span><span class="p">)</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;so fresh and so clean&quot;</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
-<span class="nx">flavoredMouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="o">--&gt;</span>
-            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;cool mint clean&quot;</span><span class="p">}</span>
-<span class="nx">flavoredMouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="o">--&gt;</span>
-            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;soft mint clean&quot;</span><span class="p">}</span>
+<span class="nx">mouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="o">--&gt;</span>
+             <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;cool mint clean&quot;</span><span class="p">}</span>
+<span class="nx">mouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="o">--&gt;</span>
+             <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;so fresh and so clean&quot;</span><span class="p">}</span>
 </code></pre></div>
-<p>Call lets us capture our arguments from the function and apply them as arguments following the redirected &quot;this&quot;. Apply is a similar function that lets us capture the arguments of our function.
-<code>javascript
-potentMouthwash = function() {
-var howClean = &quot;&quot;
-    for (var i in arguments) {
-      console.log(&quot;swish&quot;);
-      howClean = howClean + &quot;very &quot;
-    } 
-  this.teeth = howClean + &quot;clean&quot;;
-}
-</code>
- The arguments of a function is an array-like object which keeps track of all the additional information passed in at call time. For us, using potentMouthwash, this will keep track of how much extra work the mouthwash will do.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="nx">potentMouthwash</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">alice</span><span class="p">,[</span><span class="s2">&quot;extra&quot;</span><span class="p">,</span><span class="s2">&quot;extra&quot;</span><span class="p">,</span><span class="s2">&quot;extra&quot;</span><span class="p">])</span> <span class="o">--&gt;</span>
-            <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="nx">swish</span>
+<p><strong>Call</strong> lets us capture our arguments from the function and use them as parameters following the redirected <strong>this</strong>. <strong>Apply</strong> is a similar function that lets us capture the arguments of our function, but instead as an array.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">heavyDutyMouthwash</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">howClean</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">arguments</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;swish&quot;</span><span class="p">);</span> <span class="c1">// potency!</span>
+      <span class="nx">howClean</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot; &amp; &quot;</span><span class="p">)</span>
+    <span class="p">}</span> 
+  <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="nx">howClean</span> <span class="o">+</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The arguments of a function is an array-like object which keeps track of all parameters passed in at call time. Apply will allow us to use each member of this array as arguments.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="kd">var</span> <span class="nx">neopolitan</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fresh&quot;</span><span class="p">,</span><span class="s2">&quot;mint&quot;</span><span class="p">,</span><span class="s2">&quot;soft&quot;</span><span class="p">]</span>
+ <span class="nx">heavyDutyMouthwash</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span><span class="nx">neopolitan</span><span class="p">)</span> <span class="o">--&gt;</span>
+        <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="nx">swish</span>
  <span class="nx">alice</span> <span class="o">--&gt;</span>
-            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;very very very clean&quot;</span><span class="p">}</span>
+        <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;fresh &amp; mint &amp; soft &amp; clean&quot;</span><span class="p">}</span>
 </code></pre></div>
-<p><br /><br />
-I will return shortly to discuss bind...
-<br /><br /></p>
+<p>Using call on heavyDutyMouthwash would have processed the neopolitan array as a single array, being less effective at eliminating tooth decay and also forcing the array to a string and producing a different result: </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="kd">var</span> <span class="nx">neopolitan</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fresh&quot;</span><span class="p">,</span><span class="s2">&quot;mint&quot;</span><span class="p">,</span><span class="s2">&quot;soft&quot;</span><span class="p">]</span>
+ <span class="nx">heavyDutyMouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span><span class="nx">neopolitan</span><span class="p">)</span> <span class="o">--&gt;</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="nx">swish</span>
+ <span class="nx">alice</span> <span class="o">--&gt;</span>
+        <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;fresh,mint,soft clean&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Bind</strong> is the last of the <strong>this</strong> adjusting functions I&#39;m going to talk about, it is certainly the most intimidating and most powerful. Bind delivers a new function that is ready to be called, and it&#39;s first argument also adjusts the <strong>this</strong>. I heard many times without really processing what that meant: we finally have a mechanism to make Alice&#39;s teeth be taken care of indefinitely! We will also use set interval, using the function made by bind and a time interval.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">alice</span><span class="p">.</span><span class="nx">brush</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> 
+  <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;brushing...&quot;</span><span class="p">)</span> <span class="c1">//add to indicate routine</span>
+<span class="p">}</span>
+<span class="nx">alice</span><span class="p">.</span><span class="nx">routine</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> 
+  <span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">brush</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span><span class="mi">1000</span><span class="p">)</span> 
+<span class="p">}</span>
+<span class="nx">alice</span><span class="p">.</span><span class="nx">routine</span><span class="p">()</span> <span class="o">--&gt;</span>
+     <span class="c1">//Try this out and see what happens!</span>
+</code></pre></div>
+<p>Hope you enjoyed this live coding snippet! It&#39;s been super helpful for me to work through a thought exercise with these functions and I hope it helps you too.</p>
 
   </div>
 
