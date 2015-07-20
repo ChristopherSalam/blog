@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Live Coding – Christopher Salam – Engineer and Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. Live coding is a programming practice centered on the use of improvising interactive programming. Rather than slides or contrived exercises or doing the problem myself, it helps to see that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. For example, I have been struggling with the concept of call, apply, and bind and a snippet of live coding in class went a long way towards demistifying it for me. Open your console and try this out: 
+" />
+    <meta property="og:description" content="In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. Live coding is a programming practice centered on the use of improvising interactive programming. Rather than slides or contrived exercises or doing the problem myself, it helps to see that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. For example, I have been struggling with the concept of call, apply, and bind and a snippet of live coding in class went a long way towards demistifying it for me. Open your console and try this out: 
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="Live Coding" />
+    <meta property="twitter:title" content="Live Coding" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - Engineer and Web Developer" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">Engineer and Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Live Coding</h1>
+
+  <div class="entry">
+    <p>In in my few weeks in Telegraph Academy, I&#39;ve discovered I learn best from live coding. <a href="https://en.wikipedia.org/wiki/Live_coding" target="_blank">Live coding</a> is a programming practice centered on the use of improvising interactive programming. Rather than slides or contrived exercises or doing the problem myself, it helps to see that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for and methods of approaching the problem. <br /><br />For example, I have been struggling with the concept of call, apply, and bind and a snippet of live coding in class went a long way towards demistifying it for me. Open your console and try this out: <br /><br /></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">alice</span> <span class="o">=</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span><span class="s2">&quot;dirty&quot;</span><span class="p">};</span>
+</code></pre></div>
+<p>Alice is a javaScript object with dirty teeth. She needs to brush, and we&#39;ve decided this needs to be method of Alice.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">alice</span><span class="p">.</span><span class="nx">brush</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
+<p>90% of the time &#39;this&#39; refers to the object to the left of the dot during the invocation of the function, meaning for us, alice.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">alice</span><span class="p">.</span><span class="nx">brush</span><span class="p">()</span>
+<span class="nx">alice</span> <span class="o">--&gt;</span> 
+            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;clean&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p>This will change the teeth property of the alice object. What if we wanted to change the condition of alice&#39;s teeth without using a native method? Let&#39;s bring in mouthwash.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mouthwash</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="s2">&quot;clean&quot;</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
+<p>Calling alice.mouthwash() will not work anymore. Mouthwash is not available to alice, and the this is not targeting alice, it is incorrectly targetting the window. We can use either the method <strong>call</strong> or <strong>apply</strong> to reset this, and make it target the first argument of call or apply. Assuming alice&#39;s teeth have been reverted to dirty:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mouthwash</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">alice</span><span class="p">)</span> <span class="c1">// or mouthwash.apply (alice) </span>
+<span class="nx">alice</span> <span class="o">--&gt;</span>
+            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;clean&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p>There&#39;s more good things that happen with <strong>call</strong> and <strong>apply</strong>, they allow us to add arguments. Call let&#39;s us additional arguments as additional parameters. Here&#39;s an example using flavored mouthwash: </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">flavoredMouthwash</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">isCoolMint</span><span class="p">,</span> <span class="nx">isSoftMint</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="k">this</span><span class="p">.</span><span class="nx">teeth</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isCoolMint</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;cool mint clean&quot;</span> <span class="o">:</span> <span class="p">(</span><span class="nx">isSoftMint</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;soft mint clean&quot;</span> <span class="o">:</span> <span class="s2">&quot;clean&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">flavoredMouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="o">--&gt;</span>
+            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;cool mint clean&quot;</span><span class="p">}</span>
+<span class="nx">flavoredMouthwash</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">alice</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="o">--&gt;</span>
+            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;soft mint clean&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p>Call lets us capture our arguments from the function and apply them as arguments following the redirected &quot;this&quot;. Apply is a similar function that lets us capture the arguments of our function.
+<code>javascript
+potentMouthwash = function() {
+var howClean = &quot;&quot;
+    for (var i in arguments) {
+      console.log(&quot;swish&quot;);
+      howClean = howClean + &quot;very &quot;
+    } 
+  this.teeth = howClean + &quot;clean&quot;;
+}
+</code>
+ The arguments of a function is an array-like object which keeps track of all the additional information passed in at call time. For us, using potentMouthwash, this will keep track of how much extra work the mouthwash will do.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="nx">potentMouthwash</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">alice</span><span class="p">,[</span><span class="s2">&quot;extra&quot;</span><span class="p">,</span><span class="s2">&quot;extra&quot;</span><span class="p">,</span><span class="s2">&quot;extra&quot;</span><span class="p">])</span> <span class="o">--&gt;</span>
+            <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="nx">swish</span>
+ <span class="nx">alice</span> <span class="o">--&gt;</span>
+            <span class="nb">Object</span> <span class="p">{</span><span class="nx">teeth</span><span class="o">:</span> <span class="s2">&quot;very very very clean&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p><br /><br />
+I will return shortly to discuss bind...
+<br /><br /></p>
+
+  </div>
+
+  <div class="date">
+    Written on July 19, 2015
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christopher.salam@gmail.com"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

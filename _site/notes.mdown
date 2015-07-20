@@ -3,9 +3,3 @@
 iTerm and other terminal shortcuts --> .bash_profile and ordering...
 
 Make alice brush her teeth --> Bind, Apply, Call
-
-Slide for Newbs --> started merge with slide for newbs
-
-#Blog Issues --> Fix Picture routing
- 
-#Blog Issues --> Fix read more structure/post structure
