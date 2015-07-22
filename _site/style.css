@@ -65,7 +65,7 @@ html {
 
 body {
   background: #fff;
-  font: 18px/1.4 Helvetica, Arial, sans-serif;
+  font: 18px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #000;
 }
 
@@ -130,7 +130,7 @@ a:hover, a:active {
 
 ul, ol {
   margin: 15px 0;
-  padding-left: 30px;
+  /*padding-left: 30px;*/
 }
 
 ul {
@@ -382,10 +382,24 @@ body {
   overflow: hidden;
   visibility: visible;
   line-height: 400px;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
-  background-color: #A4010C;
-  color: #fff;
+  /* background-color: #A4010C; */
+  background: #f6e6b4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f6e6b4 0%, #ed9017 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f6e6b4), color-stop(100%, #ed9017));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f6e6b4 0%, #ed9017 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f6e6b4 0%, #ed9017 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f6e6b4 0%, #ed9017 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f6e6b4 0%, #ed9017 100%);
+  /* W3C */
+  color: #A4010C;
   text-shadow: 1px 1px #000;
   transform: rotate(-60deg);
   transition: 1.5s ease-out;
@@ -412,8 +426,9 @@ li:nth-child(5) span {
 }
 
 .hexagon-in2:hover {
-  background-position: -565px center;
-  color: #ccff00;
+  /*background-position: -565px center; */
+  color: #eee;
+  /* background-color: #A4010C; */
 }
 
 ul.hex {

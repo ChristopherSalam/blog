@@ -3,7 +3,7 @@ layout: post
 title: Live Coding I
 ---
 
-In in my few weeks in Telegraph Academy, I've discovered I learn best from live coding and I want to bring some of that that feel to my blog <a href="https://en.wikipedia.org/wiki/Live_coding" target="_blank">Live coding</a> is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time. <br /><br /> One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, I connect with the live-coder and it gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Live coding also helps me establish patterns to look for, make practical examples and use methods of approaching the problem. <br /><br />For example, I have been struggling with the concept of call, apply, and bind and a live coding session in class went a long way towards demistifying it for me. Here's an expanded look at it! Open your console and try this out: <br />
+In my few weeks in Telegraph Academy, I've discovered I learn best from live coding and I want to bring some of that feel to my blog <a href="https://en.wikipedia.org/wiki/Live_coding" target="_blank">Live coding</a> is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time. <br /><br /> One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, the live-coder puts on a show and gives me a chance to see an idea take shape. It also gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Finally, live coding also helps me establish patterns to look for and makes practical and succinct examples. <br /><br />For example, I have been struggling with the concept of **call**, **apply**, and **bind** and a live coding session in class went a long way towards demistifying it for me. Here's an expanded look at it! Open your console and try this out: <br />
 
 ```javascript
 var alice = {teeth:"dirty"};
@@ -32,7 +32,7 @@ floss = function () {
   console.log("flossing...")
 }
 ```
-Calling alice.floss() will not work anymore. Floss is not available to alice, and the **this** is not targeting alice, it is incorrectly targeting the window, the global default value. We can use either the method **call** or **apply** to reset **this**, and make the function target the first argument of **call** or **apply** instead of the window. Assuming alice's teeth have been reverted to dirty:
+Calling alice.floss() will not work!. Try it! Floss is not available to alice, and the **this** is not targeting alice, it has no logical target and instead targets the window, the global default value. We can use either the method **call** or **apply** to reset **this**, and make the function target the first argument of **call** or **apply** instead of the window. Assuming alice's teeth have been reverted to dirty:
 
 ```javascript
 floss.call (alice) // or floss.apply (alice) 
@@ -40,7 +40,7 @@ floss.call (alice) // or floss.apply (alice)
 alice -->
         Object {teeth: "clean"}
 ```
-There's more good things that happen with **call** and **apply**, they allow us to add arguments. Call lets us add our arguments as additional parameters. Here's an example using mouthwash: 
+There's more good things that happen with **call** and **apply**, they allow us to utilize additional arguments. **Call** lets us add our arguments as additional parameters. Here's an example using mouthwash: 
 
 ```javascript
 mouthwash = function (isCoolMint, isFresh) { 
@@ -53,7 +53,7 @@ mouthwash.call(alice, false, true); -->
 			 Object {teeth: "so fresh and so clean"}
 ```
 
-**Call** lets us capture our arguments from the function and use them as parameters following the redirected **this**. **Apply** is a similar function that lets us capture the arguments of our function, but instead as an array.
+**Call** lets us capture our arguments from the function and use them as parameters following the redirected **this**. **Apply** is a similar function that lets us capture the arguments of our function, but instead as an array. One method that always helps me is to remember that **(A)pply** helps you work with an (A)rray of arguments, and **(C)all** helps with arguments with (C)ommas.
 
 ```javascript
 heavyDutyMouthwash = function() {
@@ -65,7 +65,7 @@ var howClean = ""
   this.teeth = howClean + "clean";
 }
 ```
- The arguments of a function is an array-like object which keeps track of all parameters passed in at call time. Apply will allow us to use each member of this array as arguments.
+ The arguments of a function is an array-like object which keeps track of all parameters passed in at call time. **Apply** will allow us to use each member of this array as arguments.
 
  ```javascript
  var neopolitan = ["fresh","mint","soft"]
@@ -75,7 +75,7 @@ var howClean = ""
         Object {teeth: "fresh & mint & soft & clean"}
 ```
 
-Using call on heavyDutyMouthwash would have processed the neopolitan array as a single array, being less effective at eliminating tooth decay and also forcing the array to a string and producing a different result: 
+Using **call** on heavyDutyMouthwash would have processed the neopolitan array as a single array, being less effective at eliminating tooth decay and also forcing the array to a string and producing a different result: 
 
  ```javascript
  var neopolitan = ["fresh","mint","soft"]
@@ -85,7 +85,7 @@ Using call on heavyDutyMouthwash would have processed the neopolitan array as a 
         Object {teeth: "fresh,mint,soft clean"}
 ```
 
-**Bind** is the last of the **this** adjusting functions I'm going to talk about, it is certainly the most intimidating and most powerful. Bind delivers a new function that is ready to be called, and it's first argument also adjusts the **this**. I heard many times without really processing what that meant: we finally have a mechanism to make Alice's teeth be taken care of indefinitely! We will also use set interval, using the function made by bind and a time interval.
+**Bind** is the last of the **this** adjusting functions I'm going to talk about, it is certainly the most intimidating and most powerful. **Bind** delivers a new function that is ready to be called, and it's first argument also adjusts the **this**. I heard many times without really processing what that meant: we finally have a mechanism to make Alice's teeth be taken care of indefinitely! We will also use set interval, using the function made by **bind** and a time interval.
 
  ```javascript
 alice.routineBrushing = function(){ 
@@ -119,7 +119,7 @@ alice.routineFlossing = function(){
 alice.routineFlossing() -->
 ```
 
-This is not exactly what is happening to bind under the hood, take a close look at the bind prototype, but it is similar somewhat, but applied on the function and using this.
+This is not exactly what is happening to **bind** under the hood, take a close look at the **bind** prototype, but it is similar somewhat, but applied on the function and using this.
 
  ```javascript
 Function.prototype.bind = function (scope) {
@@ -131,4 +131,4 @@ Function.prototype.bind = function (scope) {
 }
 ```
 
- As a closing note, Live coding is something I find helpful and so do others: <a href="https://www.livecoding.tv/"> here is a link to a site focused on it. </a> Call, apply, and bind are hard especially if you are new to programming, but these three functions are powerful features I am excited to use and learn more about. It helped me to spend some time coding through this exercise and inventing new scenarios for alice and her dental woes and I hope it helps you.
+ As a closing note, Live coding is something I find helpful and so do others: <a href="https://www.livecoding.tv/" target="_blank"> here is a link to a site focused on it. </a> **Call**, **apply**, and **bind** are hard especially if you are new to programming, but these three functions are powerful features I am excited to use and learn more about. It helped me to spend some time coding through this exercise and inventing new scenarios for alice and her dental woes and I hope it helps you.
