@@ -345,14 +345,15 @@ body {
     font-family: $helveticaNeue;
     font-size: 1.25em;
  /* background-color: #A4010C; */
-    background: rgb(246,230,180); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(246,230,180,1) 0%, rgba(237,144,23,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(246,230,180,1)), color-stop(100%,rgba(237,144,23,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* W3C */
-    color: #A4010C;
+background: #f1d0bf; /* Old browsers */
+background: -moz-linear-gradient(top,  #f1d0bf 0%, #dc553a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1d0bf), color-stop(100%,#dc553a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f1d0bf 0%,#dc553a 100%); /* W3C */
+
+    color: #f6e6b4;
     text-shadow: 1px 1px #000;
     transform: rotate(-60deg);
     transition: 1.5s ease-out;
@@ -376,7 +377,7 @@ li:nth-child(5) span {
 
 .hexagon-in2:hover {
     /*background-position: -565px center; */
-    color: #eee;
+    color: #444;    
     /* background-color: #A4010C; */
   }
 ul.hex {text-align: center;}
@@ -390,3 +391,7 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+.center {
+  text-align: center;
+}
