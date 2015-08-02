@@ -11,8 +11,8 @@ var alice = {teeth:"dirty"};
 alice is a javaScript object with dirty teeth. She needs to up her dental hygiene game, and we've decided alice needs a native method to help her.
 
 ```javascript
-alice.brush = function () { 
-  this.teeth = "clean"; 
+alice.brush = function () {
+  this.teeth = "clean";
   console.log("brushing...")
 }
 ```
@@ -27,24 +27,24 @@ alice -->
 This will change the teeth property of the alice object. What if we wanted to change the condition of alice's teeth without using a native method? Let's bring in floss.
 
 ```javascript
-floss = function () { 
-  this.teeth = "clean"; 
+floss = function () {
+  this.teeth = "clean";
   console.log("flossing...")
 }
 ```
 Calling alice.floss() will not work!. Try it! Floss is not available to alice, and the **this** is not targeting alice, it has no logical target and instead targets the window, the global default value. We can use either the method **call** or **apply** to reset **this**, and make the function target the first argument of **call** or **apply** instead of the window. Assuming alice's teeth have been reverted to dirty:
 
 ```javascript
-floss.call (alice) // or floss.apply (alice) 
+floss.call (alice) // or floss.apply (alice)
         (1) flossing
 alice -->
         Object {teeth: "clean"}
 ```
-There's more good things that happen with **call** and **apply**, they allow us to utilize additional arguments. **Call** lets us add our arguments as additional parameters. Here's an example using mouthwash: 
+There's more good things that happen with **call** and **apply**, they allow us to utilize additional arguments. **Call** lets us add our arguments as additional parameters. Here's an example using mouthwash:
 
 ```javascript
-mouthwash = function (isCoolMint, isFresh) { 
-  this.teeth = (isCoolMint) ? "cool mint clean" : "clean" 
+mouthwash = function (isCoolMint, isFresh) {
+  this.teeth = (isCoolMint) ? "cool mint clean" : "clean"
   if (isFresh) { this.teeth = "so fresh and so clean"; }
 }
 mouthwash.call(alice, true); -->
@@ -61,7 +61,7 @@ var howClean = ""
     for (var i in arguments) {
       console.log("swish"); // potency!
       howClean += (arguments[i]+" & ")
-    } 
+    }
   this.teeth = howClean + "clean";
 }
 ```
@@ -75,7 +75,7 @@ var howClean = ""
         Object {teeth: "fresh & mint & soft & clean"}
 ```
 
-Using **call** on heavyDutyMouthwash would have processed the neopolitan array as a single array, being less effective at eliminating tooth decay and also forcing the array to a string and producing a different result: 
+Using **call** on heavyDutyMouthwash would have processed the neopolitan array as a single array, being less effective at eliminating tooth decay and also forcing the array to a string and producing a different result:
 
  ```javascript
  var neopolitan = ["fresh","mint","soft"]
@@ -88,18 +88,18 @@ Using **call** on heavyDutyMouthwash would have processed the neopolitan array a
 **Bind** is the last of the **this** adjusting functions I'm going to talk about, it is certainly the most intimidating and most powerful. **Bind** delivers a new function that is ready to be called, and it's first argument also adjusts the **this**. I heard many times without really processing what that meant: we finally have a mechanism to make Alice's teeth be taken care of indefinitely! We will also use set interval, using the function made by **bind** and a time interval.
 
  ```javascript
-alice.routineBrushing = function(){ 
-  setInterval(this.brush,1000) 
+alice.routineBrushing = function(){
+  setInterval(this.brush,1000)
 }
 alice.routineBrushing() -->
      //Try this out and see what happens!
 ```
-*this.brush* is a function definition that is waiting to be executed by 
+*this.brush* is a function definition that is waiting to be executed by
 As cool as this is what about flossing? As someone who has had lots of maxillofacial work and cavities, I know this isn't enough. Let's get alice to floss consistently. See if you can do this without reading ahead.
 
  ```javascript
-alice.routineFlossing = function(){ 
-  setInterval(floss.bind(this),2000) 
+alice.routineFlossing = function(){
+  setInterval(floss.bind(this),2000)
 }
 alice.routineFlossing() -->
      //Try this out and see what happens!
@@ -108,13 +108,13 @@ alice.routineFlossing() -->
 This line delivers a line of code that not only converts floss.bind(this) into an anonymous function ready to be invoked, it also adjusts this to take advantage of the floss method. Another way to picture the function is:
 
  ```javascript
-alice.routineFlossing = function(){ 
-  setInterval(function(){ 
+alice.routineFlossing = function(){
+  setInterval(function(){
     var fn = floss
     return function() {
       fn.apply(this, arguments)
-    } 
-  }(),2000) 
+    }
+  }(),2000)
 }
 alice.routineFlossing() -->
 ```
@@ -124,7 +124,7 @@ This is not exactly what is happening to **bind** under the hood, take a close l
  ```javascript
 Function.prototype.bind = function (scope) {
   var fn = this;
-  
+
   return function () {
       return fn.apply(scope);
   };

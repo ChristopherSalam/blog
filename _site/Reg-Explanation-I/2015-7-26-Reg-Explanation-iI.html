@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>(RegExp)lanation  part II – Christopher Salam – Engineer and Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Engineer and Web Developer">
+    <meta property="og:description" content="Engineer and Web Developer" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="(RegExp)lanation  part II" />
+    <meta property="twitter:title" content="(RegExp)lanation  part II" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - Engineer and Web Developer" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">Engineer and Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>(RegExp)lanation  part II</h1>
+
+  <div class="entry">
+    <p>I wanted to start off this part of the tutorial by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only affective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fasincated with it. Here are some explanations of recent approaches.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">firstNonRepeatedCharacter</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//begin travelling through each member of the string</span>
+    <span class="c1">//create a checking string for each character, and search globally</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">string</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">string</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="s1">&#39;g&#39;</span><span class="p">)).</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// if any match produces exactly one answer, it&#39;s perfect.</span>
+      <span class="k">return</span> <span class="nx">string</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="c1">// if none of them do, i.e. all singletons or multiples</span>
+  <span class="p">}</span> <span class="k">return</span> <span class="s2">&quot;none&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Write a function <code>f(a, b)</code> which takes two strings as arguments and returns a string containing the characters found in both strings (without duplication), in the order that they appeared in <code>a</code>. Remember to skip spaces and characters you have already encountered!
+Example: commonCharacters(&#39;acexivou&#39;, &#39;aegihobu&#39;)
+Returns: &#39;aeiou&#39;</p>
+
+<p>Extra credit: Extend your function to handle more than two input strings.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">commonCharacters</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">string1</span><span class="p">,</span> <span class="nx">string2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">myReg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="nx">string1</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">),</span> <span class="c1">// regExp</span>
+    <span class="nx">set</span> <span class="o">=</span> <span class="nx">string2</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">myReg</span><span class="p">),</span>
+    <span class="nx">setUniq</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">//this loop removes duplicates in the solution</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">set</span><span class="p">)</span> <span class="p">{</span> <span class="nx">setUniq</span><span class="p">[</span><span class="nx">set</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">setUniq</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">commonCharacters</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">strings</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">//extra credit</span>
+    <span class="nx">myReg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">),</span> <span class="c1">// regExp</span>
+    <span class="nx">setUniq</span> <span class="o">=</span> <span class="p">{},</span> <span class="c1">//duplicates</span>
+    <span class="nx">set</span><span class="p">;</span> <span class="c1">// extra credit, first for loops througb string2 to stringx...</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">strings</span><span class="p">)</span> <span class="p">{</span> <span class="nx">set</span> <span class="o">=</span> <span class="nx">strings</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">match</span><span class="p">(</span><span class="nx">myReg</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>  <span class="p">}</span>
+    <span class="c1">//this loop removes duplicates in the solution</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">set</span><span class="p">)</span> <span class="p">{</span> <span class="nx">setUniq</span><span class="p">[</span><span class="nx">set</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">setUniq</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="p">};</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">longestRun</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">length</span><span class="p">,</span>
+    <span class="nx">targetIndex</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">string</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">+</span> <span class="s1">&#39;{2,}&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">string</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">length</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="nx">targetIndex</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">).</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">targetIndex</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="nx">targetIndex</span><span class="p">,</span> <span class="nx">targetIndex</span> <span class="o">+</span> <span class="nx">length</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">longestRun</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">theRun</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/([a-zA-Z])\1{1,}/</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">theRun</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span> <span class="nx">theRun</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="nx">theRun</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span> <span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div>
+  </div>
+
+  <div class="date">
+    Written on 
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christopher.salam@gmail.com"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

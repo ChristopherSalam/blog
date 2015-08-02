@@ -2,4 +2,30 @@
 
 iTerm and other terminal shortcuts --> .bash_profile and ordering...
 
-Make alice brush her teeth --> Bind, Apply, Call
+RegExplanation -->
+
+Live Coding II -->
+
+Asynchronous -->
+
+Shortcuts and installs -->
+
+  Shortcuts:
+
+  Link Wyatt
+
+  Vimium
+
+  Sublime Linter, JS Hint, Node build in the sublime text, emmet,
+
+  adding whitespace remover to sublime
+
+  $$, $, fetch
+
+RegExplantion:
+
+  short five minute review of ideas
+
+  wowing presentation
+
+  The next step
