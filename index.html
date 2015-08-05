@@ -8,13 +8,21 @@ layout: default
 	<ul class="hex">
 
 		{% for post in site.posts %}
+		
 		<li class="hexagon">
+			
 			<a class="hexagon-in1" href="{{ post.url | prepend: site.baseurl }}">
+
 				<span class="hexagon-in2">
+
 				  {{ post.title }}
+
 				</span>
+
 			</a>
+
 		</li>
+		
 		{% endfor %}
 
 	</ul>
