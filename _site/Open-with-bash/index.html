@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Open with bash – Christopher Salam – Engineer and Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="There are many benefits to working your computer from the terminal. I&#39;ve been experimenting with opening tabs and running chains of commands from the terminal. One way to open a tab from the terminal is:
+" />
+    <meta property="og:description" content="There are many benefits to working your computer from the terminal. I&#39;ve been experimenting with opening tabs and running chains of commands from the terminal. One way to open a tab from the terminal is:
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="Open with bash" />
+    <meta property="twitter:title" content="Open with bash" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - Engineer and Web Developer" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">Engineer and Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Open with bash</h1>
+
+  <div class="entry">
+    <p>There are many benefits to working your computer from the terminal. I&#39;ve been experimenting with opening tabs and running chains of commands from the terminal. One way to open a tab from the terminal is:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">newtab() {
+    osascript -e &#39;tell application &quot;iTerm&quot; to activate&#39; -e &#39;tell application &quot;System Events&quot; to tell process &quot;iTerm&quot; to keystroke &quot;t&quot; using command down&#39;
+}
+</code></pre></div>
+<p>From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&#39;s server, the watch function, opening the site in the brower and opening the file to edit it, preferribly with one bash command. However, timing is difficult because certain commands do not allow the current window to work. To get around this I reseached starting a new tab in bash.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">blg () {
+  cd ~/Documents/ChristopherSalam.github.io
+  jekyll build --watch
+}
+</code></pre></div>
+<p>This command changes to the blog&#39;s directory, and then begin&#39;s jekyll&#39;s built in watch and recompile process. Without this command, I can see my blog initially but it won&#39;t update for any changes.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">blgs () {
+  jekyll server
+}
+
+blgo () {
+  open &quot;http://127.0.0.1:4000/&quot;
+  cd ~/Documents/ChristopherSalam.github.io
+  sublime .
+}
+
+blg! () {
+  blgo &amp;&amp; newtab &amp;&amp; blgs &amp;&amp; newtab &amp;&amp; blgo
+}
+</code></pre></div>
+<p>&amp;&amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. Ultimately, chaining and running tasks through terminal seems clumsy and automating this process through gulp or grunt seems like a better option.</p>
+
+  </div>
+
+  <div class="date">
+    Written on August  2, 2015
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christopher.salam@gmail.com"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
