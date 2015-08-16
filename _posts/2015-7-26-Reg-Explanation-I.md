@@ -37,15 +37,24 @@ In JavaScript, the regular expression is a distinct type of Object, and can be c
 
 Search matches to first index and disregards the global tag. Brackets around any number of characters indicate optionality. [tr] means the same as t || r, in our case, it matched for the t in the zeroth index first, and never gets to find the fifth indexed r.
 
- --EXEC--&--TEXT--
+ --TEXT--
 
 ```javascript
-  /S/i.exec('swamp')              // -->    ["s"]
+  /s/.test('swamp')              // -->    ["s"]
   /S/i.test('swamp')              // -->    true;
-  / /.exec('underground sea')     // -->    [" "]
 ```
 
-The i flag used above is useful for case insensitive matching. Exec and Test are similar functions that are native to a regex object, exec similar to search in that global checks are ignored, and test returning simply true and false rather than a complete match object.  What exactly is a complete match object?
+The i flag used above is useful for case insensitive matching. Test is a useful function for quick checks as it returns true or false rather than a match object. A match object contains many special parameters but appears visually as an array, with brackets rather than curly braces.
+
+--EXEC--
+
+```javascript
+  /(.+).jpg/.exec("swamp.jpg")[1] // -->    "swamp"
+  /S/i.test('swamp')              // -->    true;
+```
+
+Execute is a function of any regexp pattern and will run a function with the parameter being the string to test. For match, the syntax is reversed, the string to match goes first and match is called on it with a pattern is it's parameter. Additionally exec is typically used to strip the file type from a file. The above example matches 'swamp.jpg' and 'swamp', but accessing the '1' key gave us just swamp by itself, which we can use.
+What exactly is a complete match object?
 
  --MATCH--
 
@@ -115,9 +124,8 @@ You can search for all alphabetic characters in a range.
              "$4", "$5", "$6", "$7", "$8", "$9"]
 ```
 
-RegExp is something I immediately think of when the problem being asked of me involves string matching with a distinct pattern or something that could possibly be a pattern.
-
 <img alt="Plaza Hotel NYC NYPL Digital Gallery. Licensed under Public Domain" src="https://upload.wikimedia.org/wikipedia/commons/6/61/Plaza_Hotel_NYC.jpg" />
+
 
 ```javascript
 var plotSummary = 'As the summer progresses, Nick eventually..... receives an invitation to one of Gatsby\'s parties. Nick encounters Jordan Baker at the party, and they meet Gatsby himself, an aloof and surprisingly young man who recognizes Nick from their same division in World War I. Through Jordan, Nick later learns that Gatsby knew Daisy from a romantic encounter in 1917 and is deeply in love with her. He spends many nights staring at the green light at the end of her dock, across the bay from his mansion, hoping to one day rekindle their lost romance. Gatsby\'s extravagant lifestyle and wild parties are an attempt to impress Daisy in the hope that she will one day appear again at Gatsby\'s doorstep. Gatsby now wants Nick to arrange a reunion between himself and Daisy. Nick invites Daisy to have tea at his house, without telling her that Gatsby will also be there. After an initially awkward reunion, Gatsby and Daisy reestablish their connection. They begin an affair and, after a short time, Tom grows increasingly suspicious of his wife\'s relationship with Gatsby. At a luncheon at the Buchanans\' house, Daisy speaks to Gatsby with such undisguised intimacy that Tom realizes she is in love with Gatsby. Though Tom is himself involved in an extramarital affair, he is outraged by his wife\'s infidelity. He forces the group to drive into New York City and confronts Gatsby in a suite at the Plaza Hotel, asserting that he and Daisy have a history that Gatsby could never understand. In addition to that, he announces to his wife that Gatsby is a criminal whose fortune comes from bootlegging alcohol and other illegal activities. Daisy realizes that her allegiance is to Tom, and Tom contemptuously sends her back to East Egg with Gatsby, attempting to prove that Gatsby cannot hurt him.'
@@ -129,8 +137,4 @@ plotSummary.match(/\d+/g)            // --> 1917
 plotSummary.match(/\w+/g).length         // --> 308
 ```
 
-<a target="_blank" href="http://bjorn.tipling.com/state-and-regular-expressions-in-javascript"> Helpful link </a>
-
-<a target="_blank" href="http://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149"> Helpful link 2 </a>
-
-<a target="_blank" href="http://geniuscarrier.com/common-regular-expressions-in-javascript/" >  Helpful link 3 </a>
+I'm interested in wrting more about regular expressions, and I hope you appreciated that this started at the absolute beginning. There's a few other links that I've found that have helped me get really into regexp and I've included them here. <a target="_blank" href="http://bjorn.tipling.com/state-and-regular-expressions-in-javascript"> This is a javascript specific link that goes into lots of detail inner functionality. </a> To answer the bigger question of why should I bother learning regular expressions, here's a helpful link that shows some of the most commonly used regexp that are used  <a target="_blank" href="http://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149"> for validation.</a> <a target="_blank" href="http://geniuscarrier.com/common-regular-expressions-in-javascript/" > Here's a similar link.</a>
