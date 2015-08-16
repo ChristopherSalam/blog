@@ -57,34 +57,49 @@ and all these can be added as nodes and relationships. For now, let&amp;#39;s ge
     
       <item>
         <title>Open with bash</title>
-        <description>&lt;p&gt;There are many benefits to working your computer from the terminal. I&amp;#39;ve been experimenting with opening tabs and running chains of commands from the terminal. One way to open a tab from the terminal is:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;newtab() {
-    osascript -e &amp;#39;tell application &amp;quot;iTerm&amp;quot; to activate&amp;#39; -e &amp;#39;tell application &amp;quot;System Events&amp;quot; to tell process &amp;quot;iTerm&amp;quot; to keystroke &amp;quot;t&amp;quot; using command down&amp;#39;
-}
+        <description>&lt;p&gt;There are many obvious benefits to working your computer from the terminal. I&amp;#39;ve been experimenting with opening tabs and running chains of commands from the terminal. First, let&amp;#39;s discuss a few different ways of opening a tab on your terminal from your command line functions within your bash profile. These are written in applescript, and I&amp;#39;m not going to delve on the details but here are two I like and use:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;newtab &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  osascript -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;tell application \&amp;quot;Terminal\&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;#osascript -e &amp;quot;tell application \&amp;quot;iTerm\&amp;quot;&amp;quot; \&lt;/span&gt;
+  -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;tell application \&amp;quot;System Events\&amp;quot; to keystroke \&amp;quot;t\&amp;quot; using {command down}&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;do script \&amp;quot;cd $pwd; clear\&amp;quot; in front window&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;end tell&amp;quot;&lt;/span&gt;
+  &amp;gt; /dev/null
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the watch function, opening the site in the brower and opening the file to edit it, preferribly with one bash command. However, timing is difficult because certain commands do not allow the current window to work. To get around this I reseached starting a new tab in bash.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;blg () {
-  cd ~/Documents/ChristopherSalam.github.io
+&lt;p&gt;I found this on stack overflow, and have been poking around to link the author and when I find it I plan to update it here. 
+I use iTerm but I included that line in comments so you can use either.
+&lt;a href=&quot;https://tomafro.net/2009/08/tip-open-new-tab-in-osx-terminal&quot; &gt;There are a few other ways as well, here&amp;#39;s another I&amp;#39;ve not gotten to work.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the jekyll build &amp;amp; watch function, opening the site in the brower and opening the file to edit it, preferribly with one bash command. However, timing is difficult because certain commands do not allow the current window to work. This was my starting point.
+If you try to use these commands, be sure to change blog to what your folder is called.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blg &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
+  git pull origin master
   jekyll build --watch
-}
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This command changes to the blog&amp;#39;s directory, and then begin&amp;#39;s jekyll&amp;#39;s built in watch and recompile process. Without this command, I can see my blog initially but it won&amp;#39;t update for any changes.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;blgs () {
+&lt;p&gt;This command changes to the blog&amp;#39;s directory, update, and then begin&amp;#39;s jekyll&amp;#39;s built in watch and recompile process. Without this command, I can see my blog initially but it won&amp;#39;t update for any changes. The blgs command starts the jekyll server, and the blgo command opened a window in chrome to see blog changes and opened the text file to edit it.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blgs &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   jekyll server
-}
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-blgo () {
-  open &amp;quot;http://127.0.0.1:4000/&amp;quot;
-  cd ~/Documents/ChristopherSalam.github.io
+blgo &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  open &lt;span class=&quot;s2&quot;&gt;&amp;quot;http://127.0.0.1:4000/&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   sublime .
-}
-
-blg! () {
-  blgo &amp;amp;&amp;amp; newtab &amp;amp;&amp;amp; blgs &amp;amp;&amp;amp; newtab &amp;amp;&amp;amp; blgo
-}
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;amp;&amp;amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. Ultimately, chaining and running tasks through terminal seems clumsy and automating this process through gulp or grunt seems like a better option.&lt;/p&gt;
-</description>
+&lt;p&gt;My first attempt to chain all these commands was something like this...&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blg! &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  blgo &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; newtab &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; blgs &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; newtab &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; blgo
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;amp;&amp;amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. Ultimately, chaining and running tasks through terminal seems clumsy and automating this process through gulp or grunt seems like a better option. I was near a point of giving up this exercise when I chanced onto this combination: &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Sun, 02 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Open-with-bash/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/Open-with-bash/</guid>
