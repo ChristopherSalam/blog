@@ -65,7 +65,7 @@
   -e <span class="s2">&quot;do script \&quot;cd $pwd; clear\&quot; in front window&quot;</span> <span class="se">\</span>
   -e <span class="s2">&quot;end tell&quot;</span>
   &gt; /dev/null
-<span class="o">}</span>
+<span class="o">}</span> <span class="c">#in use</span>
 </code></pre></div>
 <p>I found this on stack overflow, and have been poking around to link the author and when I find it I plan to update it here. 
 I use iTerm but I included that line in comments so you can use either.
@@ -77,27 +77,51 @@ If you try to use these commands, be sure to change blog to what your folder is 
   <span class="nb">cd</span> ~/Documents/blog
   git pull origin master
   jekyll build --watch
-<span class="o">}</span>
+<span class="o">}</span> <span class="c">#conceptual</span>
 </code></pre></div>
 <p>This command changes to the blog&#39;s directory, update, and then begin&#39;s jekyll&#39;s built in watch and recompile process. Without this command, I can see my blog initially but it won&#39;t update for any changes. The blgs command starts the jekyll server, and the blgo command opened a window in chrome to see blog changes and opened the text file to edit it.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">blgs <span class="o">()</span> <span class="o">{</span>
   <span class="nb">cd</span> ~/Documents/blog
   jekyll server
-<span class="o">}</span>
+<span class="o">}</span> <span class="c">#conceptual</span>
 
 blgo <span class="o">()</span> <span class="o">{</span>
   open <span class="s2">&quot;http://127.0.0.1:4000/&quot;</span>
   <span class="nb">cd</span> ~/Documents/blog
   sublime .
-<span class="o">}</span>
+<span class="o">}</span> <span class="c">#conceptual</span>
 </code></pre></div>
 <p>My first attempt to chain all these commands was something like this...</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">blg! <span class="o">()</span> <span class="o">{</span>
   blgo <span class="o">&amp;&amp;</span> newtab <span class="o">&amp;&amp;</span> blgs <span class="o">&amp;&amp;</span> newtab <span class="o">&amp;&amp;</span> blgo
-<span class="o">}</span>
+<span class="o">}</span> <span class="c">#conceptual</span>
 </code></pre></div>
-<p>&amp;&amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. Ultimately, chaining and running tasks through terminal seems clumsy and automating this process through gulp or grunt seems like a better option. I was near a point of giving up this exercise when I chanced onto this combination: </p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">
+<p>&amp;&amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. I was near a point of giving up this exercise when I chanced onto this combination: </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">blg <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/ChristopherSalam.github.io
+  <span class="o">(</span>jekyll server<span class="o">)</span> <span class="p">&amp;</span> newtab
+  <span class="o">(</span>open <span class="s1">&#39;http://localhost:4000&#39;</span><span class="o">)</span> <span class="p">&amp;</span>
+  <span class="o">(</span>jekyll build --watch<span class="o">)</span> 
+<span class="o">}</span> <span class="c">#in use</span>
+</code></pre></div>
+<p>There is an error message or two in there, but in the end it accomplishes my three goals so I have left it in the bash profile.
+Here are a few other commands I use for good measure.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">blgv <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  open <span class="s1">&#39;http://localhost:4000&#39;</span>
+<span class="o">}</span> <span class="c">#in use</span>
+blgw <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  sublime .
+<span class="o">}</span> <span class="c">#in use</span>
+blgpl <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  git pull origin master
+<span class="o">}</span> <span class="c">#in use</span>
+blgpu <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  git push origin master
+<span class="o">}</span> <span class="c">#in use</span>
 </code></pre></div>
   </div>
 

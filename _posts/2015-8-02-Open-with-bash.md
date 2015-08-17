@@ -14,7 +14,7 @@ newtab () {
   -e "do script \"cd $pwd; clear\" in front window" \
   -e "end tell"
   > /dev/null
-}
+} #in use
 ```
 I found this on stack overflow, and have been poking around to link the author and when I find it I plan to update it here. 
 I use iTerm but I included that line in comments so you can use either.
@@ -28,7 +28,7 @@ blg () {
   cd ~/Documents/blog
   git pull origin master
   jekyll build --watch
-}
+} #conceptual
 ```
 
 This command changes to the blog's directory, update, and then begin's jekyll's built in watch and recompile process. Without this command, I can see my blog initially but it won't update for any changes. The blgs command starts the jekyll server, and the blgo command opened a window in chrome to see blog changes and opened the text file to edit it.
@@ -37,31 +37,31 @@ This command changes to the blog's directory, update, and then begin's jekyll's 
 blgs () {
   cd ~/Documents/blog
   jekyll server
-}
+} #conceptual
 
 blgo () {
   open "http://127.0.0.1:4000/"
   cd ~/Documents/blog
   sublime .
-}
+} #conceptual
 ```
 My first attempt to chain all these commands was something like this...
 
 ```bash
 blg! () {
   blgo && newtab && blgs && newtab && blgo
-}
+} #conceptual
 ```
 
 && allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. I was near a point of giving up this exercise when I chanced onto this combination: 
 
  ```bash
-blog () {
+blg () {
   cd ~/Documents/ChristopherSalam.github.io
-  (jekyll server) & tup
+  (jekyll server) & newtab
   (open 'http://localhost:4000') &
   (jekyll build --watch) 
-}
+} #in use
  ```
 There is an error message or two in there, but in the end it accomplishes my three goals so I have left it in the bash profile.
 Here are a few other commands I use for good measure.
@@ -70,17 +70,17 @@ Here are a few other commands I use for good measure.
 blgv () {
   cd ~/Documents/blog
   open 'http://localhost:4000'
-}
+} #in use
 blgw () {
   cd ~/Documents/blog
-  o
-}
+  sublime .
+} #in use
 blgpl () {
   cd ~/Documents/blog
   git pull origin master
-}
+} #in use
 blgpu () {
   cd ~/Documents/blog
   git push origin master
-}
+} #in use
 ```
