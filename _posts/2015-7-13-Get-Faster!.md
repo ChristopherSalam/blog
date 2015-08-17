@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Get Faster!
+tags:
+- newb
 ---
 The Command Key (⌘) & Shortcuts and Development tools.
 

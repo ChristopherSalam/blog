@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Open with bash
+tags:
+- bash
+- jekyll
 ---
 
 There are many obvious benefits to working your computer from the terminal. I've been experimenting with opening tabs and running chains of commands from the terminal. First, let's discuss a few different ways of opening a tab on your terminal from your command line functions within your bash profile. These are written in applescript, and I'm not going to delve on the details but here are two I like and use:
@@ -16,7 +19,7 @@ newtab () {
   > /dev/null
 }
 ```
-I found this on stack overflow, and have been poking around to link the author and when I find it I plan to update it here. 
+I found this on stack overflow, and have been poking around to link the author and when I find it I plan to update it here.
 I use iTerm but I included that line in comments so you can use either.
 <a href="https://tomafro.net/2009/08/tip-open-new-tab-in-osx-terminal" >There are a few other ways as well, here's another I've not gotten to work.</a>
 
@@ -53,14 +56,14 @@ blg! () {
 }
 ```
 
-&& allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. I was near a point of giving up this exercise when I chanced onto this combination: 
+&& allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. I was near a point of giving up this exercise when I chanced onto this combination:
 
  ```bash
 blog () {
   cd ~/Documents/ChristopherSalam.github.io
   (jekyll server) & tup
   (open 'http://localhost:4000') &
-  (jekyll build --watch) 
+  (jekyll build --watch)
 }
  ```
 There is an error message or two in there, but in the end it accomplishes my three goals so I have left it in the bash profile.
