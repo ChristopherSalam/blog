@@ -78,13 +78,13 @@ The match for a single or any other object is looks alot like an array. It is no
 These keys are available to you as a object even though the result looks like array.
 If you match to more than one item successfully, the object will lose this formatting.
 
-```javascript
+<!-- ```javascript
   var quote = "Enter this palace-gate and ask the news of
   greatness fallen into dust and clay."
-  quote.match(/(and)/)            // --> ["and","and"]
-```
+  quote.match(/(and)/)            ["and","and"]
 
-Here I am using a group for the first time. The group (and) or /and/g will only return global matches for groups that are "and". Using /[and]/ would get you matches for a, n or d, and /and/g will get you all of them. /and/ will get you the first and in the string.
+Here I am using a group for the first time. The group (and) or /and/g will only return global matches for groups that are "and". Using /[and]/ would get you matches for a, n or d, and /and/g will get you all of them. /and/ will get you the first and in the string. -->
+
 
 ```javascript
   quote.match(/[and]/g);

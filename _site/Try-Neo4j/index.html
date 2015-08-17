@@ -9,9 +9,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="Neo4J is a graph database and it specializes in showing relationships between each data node. It can be a bit intimidating to learn and make a project with this database within a week, but that&#39;s exactly what we did at Telegraph Academy this week. If you are interested in databases, please try this one out. Our group did not find many project interests and political interests that intersected after some discussion but thankfully we all shared an interest in sports, specifically NBA basketball. From there, we discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping player relationships just had we had done. We also learned about Neo4j, and found that it&#39;s built-in &quot;shortest path&quot; query would do exactly what we wanted, so we set out to learn the database.
+    <meta name="description" content="
 " />
-    <meta property="og:description" content="Neo4J is a graph database and it specializes in showing relationships between each data node. It can be a bit intimidating to learn and make a project with this database within a week, but that&#39;s exactly what we did at Telegraph Academy this week. If you are interested in databases, please try this one out. Our group did not find many project interests and political interests that intersected after some discussion but thankfully we all shared an interest in sports, specifically NBA basketball. From there, we discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping player relationships just had we had done. We also learned about Neo4j, and found that it&#39;s built-in &quot;shortest path&quot; query would do exactly what we wanted, so we set out to learn the database.
+    <meta property="og:description" content="
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -56,11 +56,19 @@
   <h1>Try Neo4J</h1>
 
   <div class="entry">
-    <p>Neo4J is a graph database and it specializes in showing relationships between each data node. It can be a bit intimidating to learn and make a project with this database within a week, but that&#39;s exactly what we did at Telegraph Academy this week. If you are interested in databases, please try this one out. Our group did not find many project interests and political interests that intersected after some discussion but thankfully we all shared an interest in sports, specifically NBA basketball. From there, we discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping player relationships just had we had done. We also learned about Neo4j, and found that it&#39;s built-in &quot;shortest path&quot; query would do exactly what we wanted, so we set out to learn the database.</p>
+    <p><img src="portland.jpg"/></p>
+
+<p>Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&#39;s exactly what we did at Telegraph Academy this week. If you are interested in mapping relationships between your data, please try this one out. Our group did not find many project interests and political interests that intersected after some discussion but thankfully we all shared an interest in sports, specifically NBA basketball. From there, we discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&#39;s built-in &quot;shortest path&quot; query would do exactly what we wanted, so we set out to learn the database, and build &quot;Six Dribbles&quot;</p>
 
 <p>I have prepared a very simple dataset that contains just 3 points of information: The player&#39;s name, the year they played for a certain team, and the team&#39;s name. Each time a player was traded or played for two teams, both were mapped for that year, a more sophistocated database could have taken into account the date of the games played to refine the accuracy of the relationship, but we did say it was a week-long project right?</p>
 
-<p>Go to neo4j.com&#39;s built in browser, or you can install the program and use the console on your localhost. I will include a complete set of instructions for installing the software here. From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.</p>
+<p>This blog post will let you grab our initial dataset and try out some queries on the Neo4J brower. The neo4J browser has a fun GUI powered by D3 that really lets you see all the data. For example, to see each team Lebron has played on, you could ask the database and your return would be this:</p>
+
+<p><img src="lebron.png" /></p>
+
+<p>Hovering on the console would show you the yearly information and confirm to you that while the nodes for each year in Cleveland and Miami looked identical, they were separate for each year, as we wanted them to be in our dataset. It&#39;s possible to treat the team as a giant node and store the year information differently, but as you&#39;ll see shortly the graphs created in this style help us see more relationships.</p>
+
+<p>Go to neo4j.com&#39;s built in browser, or you can install the program and use the console on your localhost. I will include a complete set of instructions for installing the software here. From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website. This is a helpful link I found to get started *pull this from the slack website * You will need to have java version 1.7 installed on your computer and this may be challenging.</p>
 
 <p>Command 1 - this loads the file and declares the player node with a name, and the team node with a name and year.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">USING PERIODIC COMMIT
@@ -69,16 +77,14 @@ MERGE <span class="o">(</span>p:Player <span class="o">{</span>name:line<span cl
 MERGE <span class="o">(</span>g:Team <span class="o">{</span>name:line<span class="o">[</span>2<span class="o">]</span>, year:line<span class="o">[</span>1<span class="o">]})</span>
 <span class="k">return</span> p,g<span class="p">;</span>
 </code></pre></div>
-<p>USING PERIODIC COMMIT   // this lets the file come in chunks
-LOAD CSV FROM &#39;http://chrissalam.com/six/MasterDB.csv&#39; as line
-MERGE (p:Player {name:line[0]}) // this loads the file and lets players name be defined by the first column of data
-MERGE (g:Team {name:line[2], year:line[1]}) //this lets the Team node be defined here.
-return p, g // this returns the dataset to the users. this command will take a while to process.
-There will be error messages and it might not parse initially but it will eventually make it over.
-Every person in the graph is a node. The player has it&#39;s own node, and the team has multiple nodes for every year
-it&#39;s been alive. MERGE is used here instead of create to remove duplicates.</p>
+<p><strong>USING PERIODIC COMMIT</strong> lets the file come in chunks. <strong>LOAD CSV FROM &#39;http://chrissalam.com/six/MasterDB.csv&#39; as line
+MERGE (p:Player {name:line[0]})</strong> loads the file and lets players name be defined by the first column of data. <strong>MERGE (g:Team {name:line[2], year:line[1]})</strong> defines teams nodes. and <strong>return p, g</strong> returns the dataset to the users.</p>
 
-<p>Command 2</p>
+<p>This command will take a while to process. There will be error messages and it might not parse initially but it will eventually make it over. Every person in the graph is a node. The player has it&#39;s own node, and the team has multiple nodes for every year
+it&#39;s been active. This database is complete however, we&#39;ve not corrected for duplicate names so there is some short circuiting at the moment. <strong>MERGE</strong> is used here instead of create to remove duplicates.</p>
+
+<p>Command 2 - this uses the CSV to create relationships between the players and the team, creating a relationship data type for
+the overlap in data.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">USING PERIODIC COMMIT
 LOAD CSV FROM <span class="s1">&#39;http://chrissalam.com/six/MasterDB.csv&#39;</span> as line
 MATCH <span class="o">(</span>p:Player<span class="o">)</span>, <span class="o">(</span>t:Team<span class="o">)</span>
@@ -86,17 +92,12 @@ WHERE p.name <span class="o">=</span> line<span class="o">[</span>0<span class="
 CREATE <span class="o">(</span>p<span class="o">)</span>-<span class="o">[</span>r:PLAYS_IN<span class="o">]</span>-&gt;<span class="o">(</span>t<span class="o">)</span>
 <span class="k">return</span> p, t
 </code></pre></div>
-<p>USING PERIODIC COMMIT
-LOAD CSV FROM &#39;http://chrissalam.com/six/MasterDB.csv&#39; as line
-MATCH (p:Player), (t:Team)  //The relationship process seemed to be helped with including the
-original file. I will try to run this without the first two lines to see if it is required.
-The match line begins the process of selecting our data prior to the creation of a relationship, a new data type.
-WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1]
-CREATE (p)-[r:PLAYS<em>IN]-&gt;(t)         // these lines create the match, PLAYS</em>IN
-return p, t</p>
+<p><strong>USING PERIODIC COMMIT LOAD CSV FROM &#39;http://chrissalam.com/six/MasterDB.csv&#39; as line
+MATCH (p:Player), (t:Team)</strong> This will use the CSV to look at how the plays-in relationship should be defined.
+<strong>WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1] CREATE (p)-[r:PLAYS_IN]-&gt;(t)</strong> and these lines create the match, PLAYS_IN and this
+<strong>return p, t</strong> returns it.</p>
 
-<p>This is all barely touching the tip of what Neo4J can do and that was by design. From here, I hope to create other relationships, father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game. Some of my group members love college basketball and wanted to include that, some were also interested in baby mommas,
-and all these can be added as nodes and relationships. For now, let&#39;s get to query building!</p>
+<p>This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course Carrie Brownstein. Some of my group members love college basketball and wanted to include that, some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. For now, let&#39;s get to query building!</p>
 
   </div>
 

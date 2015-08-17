@@ -96,8 +96,32 @@ blgo <span class="o">()</span> <span class="o">{</span>
   blgo <span class="o">&amp;&amp;</span> newtab <span class="o">&amp;&amp;</span> blgs <span class="o">&amp;&amp;</span> newtab <span class="o">&amp;&amp;</span> blgo
 <span class="o">}</span>
 </code></pre></div>
-<p>&amp;&amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. Ultimately, chaining and running tasks through terminal seems clumsy and automating this process through gulp or grunt seems like a better option. I was near a point of giving up this exercise when I chanced onto this combination: </p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">
+<p>&amp;&amp; allows us to chain blog commands, however, the starting of the serve and watch events makes it such that the blg! is not effective. I have to ctrl and exit to make each command work. I was near a point of giving up this exercise when I chanced onto this combination: </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">blog <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/ChristopherSalam.github.io
+  <span class="o">(</span>jekyll server<span class="o">)</span> <span class="p">&amp;</span> tup
+  <span class="o">(</span>open <span class="s1">&#39;http://localhost:4000&#39;</span><span class="o">)</span> <span class="p">&amp;</span>
+  <span class="o">(</span>jekyll build --watch<span class="o">)</span> 
+<span class="o">}</span>
+</code></pre></div>
+<p>There is an error message or two in there, but in the end it accomplishes my three goals so I have left it in the bash profile.
+Here are a few other commands I use for good measure.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">blgv <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  open <span class="s1">&#39;http://localhost:4000&#39;</span>
+<span class="o">}</span>
+blgw <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  o
+<span class="o">}</span>
+blgpl <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  git pull origin master
+<span class="o">}</span>
+blgpu <span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> ~/Documents/blog
+  git push origin master
+<span class="o">}</span>
 </code></pre></div>
   </div>
 

@@ -114,11 +114,13 @@ What exactly is a complete match object?</p>
 </code></pre></div>
 <p>These keys are available to you as a object even though the result looks like array.
 If you match to more than one item successfully, the object will lose this formatting.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">quote</span> <span class="o">=</span> <span class="s2">&quot;Enter this palace-gate and ask the news of</span>
-<span class="s2">  greatness fallen into dust and clay.&quot;</span>
-  <span class="nx">quote</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/(and)/</span><span class="p">)</span>            <span class="c1">// --&gt; [&quot;and&quot;,&quot;and&quot;]</span>
-</code></pre></div>
-<p>Here I am using a group for the first time. The group (and) or /and/g will only return global matches for groups that are &quot;and&quot;. Using /[and]/ would get you matches for a, n or d, and /and/g will get you all of them. /and/ will get you the first and in the string.</p>
+
+<!-- ```javascript
+  var quote = "Enter this palace-gate and ask the news of
+  greatness fallen into dust and clay."
+  quote.match(/(and)/)            ["and","and"]
+
+Here I am using a group for the first time. The group (and) or /and/g will only return global matches for groups that are "and". Using /[and]/ would get you matches for a, n or d, and /and/g will get you all of them. /and/ will get you the first and in the string. -->
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="nx">quote</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/[and]/g</span><span class="p">);</span>
   <span class="c1">//   --&gt; [&quot;n&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;n&quot;, &quot;d&quot;,</span>
   <span class="c1">//        &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;n&quot;,</span>
