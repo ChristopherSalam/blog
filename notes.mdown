@@ -29,3 +29,7 @@ RegExplantion:
   wowing presentation
 
   The next step
+
+
+
+  There is an function called autocd within bash version 4 that allows users to skip typing cd altogether when changing directories. There is some ambiguity with this and how it will collide with other command line tools of programs, but I'm thrilled to continue to learn more and find out ways I can make new tools for myself.
