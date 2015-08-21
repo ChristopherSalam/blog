@@ -10,17 +10,17 @@
         <title>Try Neo4J</title>
         <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
 
-&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. If you are interested in mapping relationships between your data, please try this one out. Our group did not find many project interests and political interests that intersected after some discussion but thankfully we all shared an interest in sports, specifically NBA basketball. From there, we discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database, and build &amp;quot;Six Dribbles&amp;quot;&lt;/p&gt;
+&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database.&lt;/p&gt;
 
-&lt;p&gt;I have prepared a very simple dataset that contains just 3 points of information: The player&amp;#39;s name, the year they played for a certain team, and the team&amp;#39;s name. Each time a player was traded or played for two teams, both were mapped for that year, a more sophistocated database could have taken into account the date of the games played to refine the accuracy of the relationship, but we did say it was a week-long project right?&lt;/p&gt;
+&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt;This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website. &lt;/p&gt;
+
+&lt;p&gt;I have prepared a very simple dataset that contains just 3 points of information: The player&amp;#39;s name, the year they played for a certain team, and the team&amp;#39;s name. Each time a player was traded or played for two teams, both were mapped for that year.&lt;/p&gt;
 
 &lt;p&gt;This blog post will let you grab our initial dataset and try out some queries on the Neo4J brower. The neo4J browser has a fun GUI powered by D3 that really lets you see all the data. For example, to see each team Lebron has played on, you could ask the database and your return would be this:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;lebron.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Hovering on the console would show you the yearly information and confirm to you that while the nodes for each year in Cleveland and Miami looked identical, they were separate for each year, as we wanted them to be in our dataset. It&amp;#39;s possible to treat the team as a giant node and store the year information differently, but as you&amp;#39;ll see shortly the graphs created in this style help us see more relationships.&lt;/p&gt;
-
-&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. I will include a complete set of instructions for installing the software here. From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website. This is a helpful link I found to get started *pull this from the slack website * You will need to have java version 1.7 installed on your computer and this may be challenging.&lt;/p&gt;
+&lt;p&gt;Hovering on the console would show you the yearly information and confirm to you that while the nodes for each year in Cleveland and Miami looked identical, they were separate for each year, as we wanted them to be in our dataset. It&amp;#39;s possible to create single team nodes and store more data inside the node as well.&lt;/p&gt;
 
 &lt;p&gt;Command 1 - this loads the file and declares the player node with a name, and the team node with a name and year.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
@@ -32,8 +32,7 @@ MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;g:Team &lt;span class=&quot;
 &lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT&lt;/strong&gt; lets the file come in chunks. &lt;strong&gt;LOAD CSV FROM &amp;#39;http://chrissalam.com/six/MasterDB.csv&amp;#39; as line
 MERGE (p:Player {name:line[0]})&lt;/strong&gt; loads the file and lets players name be defined by the first column of data. &lt;strong&gt;MERGE (g:Team {name:line[2], year:line[1]})&lt;/strong&gt; defines teams nodes. and &lt;strong&gt;return p, g&lt;/strong&gt; returns the dataset to the users.&lt;/p&gt;
 
-&lt;p&gt;This command will take a while to process. There will be error messages and it might not parse initially but it will eventually make it over. Every person in the graph is a node. The player has it&amp;#39;s own node, and the team has multiple nodes for every year
-it&amp;#39;s been active. This database is complete however, we&amp;#39;ve not corrected for duplicate names so there is some short circuiting at the moment. &lt;strong&gt;MERGE&lt;/strong&gt; is used here instead of create to remove duplicates.&lt;/p&gt;
+&lt;p&gt;This command will take a while to process. There will be error messages and it might not parse initially but it will eventually make it over. I would run both commands with a distraction ready, it took more than 5 minutes to map the relationships on some machines, but the command runs without tying up the computer. Every person in the graph is a node. The player has it&amp;#39;s own node, and the team has multiple nodes for every year it&amp;#39;s been active. This database is nearly complete, we&amp;#39;ve not corrected for duplicate names so there is some short circuiting at the moment. &lt;strong&gt;MERGE&lt;/strong&gt; is used here instead of create to remove duplicates.&lt;/p&gt;
 
 &lt;p&gt;Command 2 - this uses the CSV to create relationships between the players and the team, creating a relationship data type for
 the overlap in data.&lt;/p&gt;
@@ -49,11 +48,47 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 &lt;strong&gt;WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1] CREATE (p)-[r:PLAYS_IN]-&amp;gt;(t)&lt;/strong&gt; and these lines create the match, PLAYS_IN and this
 &lt;strong&gt;return p, t&lt;/strong&gt; returns it.&lt;/p&gt;
 
-&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course Carrie Brownstein. Some of my group members love college basketball and wanted to include that, some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. For now, let&amp;#39;s get to query building!&lt;/p&gt;
+&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. For now, let&amp;#39;s get to query building!&lt;/p&gt;
 </description>
         <pubDate>Fri, 14 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Try-Neo4j/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/Try-Neo4j/</guid>
+      </item>
+    
+      <item>
+        <title>Open with bash</title>
+        <description>&lt;p&gt;There are many obvious benefits to working your computer from the terminal. I&amp;#39;ve been experimenting with opening tabs and running chains of commands from the terminal. Here&amp;#39;s a command to do exactly this.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;newtab&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    osascript -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;tell application &amp;quot;iTerm&amp;quot; to activate&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;tell application &amp;quot;System Events&amp;quot; to tell process &amp;quot;iTerm2&amp;quot; to keystroke &amp;quot;t&amp;quot; using command down&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using &amp;#39;&amp;amp;&amp;#39; allows us to chain commands. From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the jekyll build &amp;amp; watch function, opening the site in the brower and opening the file to edit it. If you try to use these commands, be sure to change blog to what your folder is called. &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blgv &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
+  open &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:4000&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+blgw &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
+  sublime .
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+blgpl &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
+  git pull origin master
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+blgpu &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
+  git push origin master
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+blg &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  blgpl
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;jekyll build --watch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;open &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:4000&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
+  newtab &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; blgw 
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Sun, 02 Aug 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Open-with-bash/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Open-with-bash/</guid>
       </item>
     
       <item>
@@ -270,9 +305,32 @@ As cool as this is what about flossing? As someone who has had lots of maxillofa
         <title>Bash beginnings</title>
         <description>&lt;p&gt;The Command Key (⌘) &amp;amp; Shortcuts and Development tools.&lt;/p&gt;
 
-&lt;p&gt;Starting a new profession can be overwhelming, especially when you see people dancing accross their keyboards. They are not typing faster than is possible, they&amp;#39;ve just built up an array of shortcuts and helpers that make their typing look magical. I want this magic too.&lt;/p&gt;
+&lt;p&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD:_posts/2015-7-13-Bash-beginnings.md
+Starting a new profession can be overwhelming, especially when you see people dancing accross their keyboards. They are not typing faster than is possible, they&amp;#39;ve just built up an array of shortcuts and helpers that make their typing look magical. I want this magic too.&lt;/p&gt;
 
-&lt;p&gt;To get faster, I&amp;#39;ve begun to take serious note on typing, keyboard-based access software, text editors, and plugins within these editors, and other keyboard shortcuts that help other programmers type quickly and work faster. When starting out, new programmers are overwhelmed with the large amount of programming information they have to learn they neglect to work on the tools of coding, to explore creating items within their bash profile and using keyboard shortcuts. I would like to strongly advise against that here. &lt;strong&gt;ADD A SHORTCUT KEY OR PROFILE FUNCTION TO YOUR ARSENAL DAILY.&lt;/strong&gt; Not only does filling your bash profile with custom functions that loop together actions you use everyday help you work faster, they help you really start to understand what your computer does and that will make you a better programmer and also help you develop a personal style of working. Here I will detail all the things I have learned to do or add to my programs to increase efficiency and have more fun while programming.&lt;/p&gt;
+&lt;h1&gt;To get faster, I&amp;#39;ve begun to take serious note on typing, keyboard-based access software, text editors, and plugins within these editors, and other keyboard shortcuts that help other programmers type quickly and work faster. When starting out, new programmers are overwhelmed with the large amount of programming information they have to learn they neglect to work on the tools of coding, to explore creating items within their bash profile and using keyboard shortcuts. I would like to strongly advise against that here. &lt;strong&gt;ADD A SHORTCUT KEY OR PROFILE FUNCTION TO YOUR ARSENAL DAILY.&lt;/strong&gt; Not only does filling your bash profile with custom functions that loop together actions you use everyday help you work faster, they help you really start to understand what your computer does and that will make you a better programmer and also help you develop a personal style of working. Here I will detail all the things I have learned to do or add to my programs to increase efficiency and have more fun while programming.&lt;/h1&gt;
+
+&lt;p&gt;No one &amp;#39;codes&amp;#39; faster than you, they just use shortcuts.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ADD A SHORTCUT KEY OR PROFILE FUNCTION TO YOUR ARSENAL DAILY.&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;Not only does filling your bash profile with custom functions that loop together actions you use everyday help you work faster, they help you really start to understand what your computer does and that will make you a better programmer and also help you develop a personal style of working. Here I will detail all the things I have learned to do or add to my programs to increase efficiency and have more fun while programming.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Attempting to update remotes with Open with Bash post.:_posts/2015-7-13-Get-Faster!.md&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;OSX and Linux based machines (POSIX based machines) have a program called terminal which if you don&amp;#39;t have on the dock, you should consider adding. Windows uses a command prompt to do similar tasks. This program can access the internet and create and move files and folders onto your computer and run programs. I would advise learning about your particular terminal software, and if you use an extension such as ITerm2, to know how many different bash profiles you have and write your own functions and aliases, which I will go over below. These are files that are run immediately when ever you open a terminal, thus giving your permanent access to a bunch of shortcuts that can run commands to help you use github, to open local servers, and eventually run your automated tasks.&lt;/p&gt;
 

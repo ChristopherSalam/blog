@@ -3,6 +3,7 @@ layout: post
 title: /[RegExp]/lanation
 tags:
 - Regular Expressions
+- JS
 ---
 <div  style="text-align: center;">
 <a href="http://www.catonmat.net/blog/recursive-regular-expressions/"><img src="yo-dawg-regex.jpg"></a>
