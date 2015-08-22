@@ -7,6 +7,26 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Live Coding II</title>
+        <description>&lt;p&gt;Tonight, I watched &lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;Cassandra&amp;#39;s&lt;/a&gt; talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
+
+&lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that 
+
+```javascript
+var newfunc =  R.pipe(func1, func2, func3)
+```
+
+where the newfunc(args_provided_to_function_one) =  --&gt;
+</description>
+        <pubDate>Fri, 21 Aug 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Live-Coding-II/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Live-Coding-II/</guid>
+      </item>
+    
+      <item>
         <title>Try Neo4J</title>
         <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
 
@@ -63,29 +83,41 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Using &amp;#39;&amp;amp;&amp;#39; allows us to chain commands. From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the jekyll build &amp;amp; watch function, opening the site in the brower and opening the file to edit it. If you try to use these commands, be sure to change blog to what your folder is called. &lt;/p&gt;
+
+&lt;p&gt;The main trick is that you have to call the newtab early in the process, the tab will not let you call any commands after you start the server, so the new tab is where you will be able to keep typing in commands.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blgv &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   open &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:4000&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
 blgw &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
-  sublime .
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+  sublime . 
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
 blgpl &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   git pull origin master
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
 blgpu &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   git push origin master
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-blg &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  blgpl
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;jekyll build --watch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;open &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:4000&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
-  newtab &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; blgw 
+
+blog &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  newtab
+  blgpl &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
+  blgv &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
+  blgw &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; 
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;jekyll build --watch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;blg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;blog&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;notes: sublime is the shortcut word added by a CLI to open sublime text.
+Most of the other commands are written as short cuts on my terminal but have been written out for clarity. &lt;/p&gt;
+</description>
         <pubDate>Sun, 02 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Open-with-bash/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/Open-with-bash/</guid>
