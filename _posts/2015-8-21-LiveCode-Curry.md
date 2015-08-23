@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Live Coding II
+title: LiveCode Curry
 tags:
 - js
 ---
@@ -13,7 +13,7 @@ I would recommend going to Ramda.js's website and pulling up a console there. An
 <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js"></script>
 ```
 
-<!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that 
+<!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
 
 ```javascript
 var newfunc =  R.pipe(func1, func2, func3)

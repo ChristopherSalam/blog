@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Live Coding I
+title: LiveCode Bind
 tags:
 - newb
 - js
