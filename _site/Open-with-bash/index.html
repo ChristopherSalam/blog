@@ -79,7 +79,7 @@
 </code></pre></div>
 <p>Using &#39;&amp;&#39; allows us to chain commands. From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&#39;s server, the jekyll build &amp; watch function, opening the site in the brower and opening the file to edit it. If you try to use these commands, be sure to change blog to what your folder is called. </p>
 
-<p>The main trick is that you have to call the newtab early in the process, the tab will not let you call any commands after you start the server, so the new tab is where you will be able to keep typing in commands.</p>
+<p>The main trick is that you have to call the newtab early in the process, the tab will not let you call any commands after a process that is continuous such as the jekyll server or the build watch function. I&#39;m excited to use these for webpack and other continuous processes in my site building processes.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">blgv <span class="o">()</span> <span class="o">{</span>
   <span class="nb">cd</span> ~/Documents/blog
   open <span class="s1">&#39;http://localhost:4000&#39;</span>
@@ -100,6 +100,12 @@ blgpu <span class="o">()</span> <span class="o">{</span>
   git push origin master
 <span class="o">}</span>
 
+blgsrv<span class="o">()</span> <span class="o">{</span>
+  newtab
+  <span class="nb">cd</span> ~/Documents/ChristopherSalam.github.io
+  jekyll server
+<span class="o">}</span>
+
 blog <span class="o">()</span> <span class="o">{</span>
   newtab
   blgpl <span class="p">&amp;</span>
@@ -110,8 +116,9 @@ blog <span class="o">()</span> <span class="o">{</span>
 
 <span class="nb">alias </span><span class="nv">blg</span><span class="o">=</span><span class="s2">&quot;blog&quot;</span>
 </code></pre></div>
-<p>notes: sublime is the shortcut word added by a CLI to open sublime text.
-Most of the other commands are written as short cuts on my terminal but have been written out for clarity. </p>
+<p>To start my jekyll blog and everything else I need to get blogging, I type in blgsrv, followed by blg and all the tools I need are ready.</p>
+
+<p>notes: sublime is the shortcut word added by a CLI to open sublime text. Most of the other commands are written as short cuts on my terminal but have been written out for clarity. </p>
 
   </div>
 

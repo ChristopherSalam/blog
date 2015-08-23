@@ -84,7 +84,7 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Using &amp;#39;&amp;amp;&amp;#39; allows us to chain commands. From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the jekyll build &amp;amp; watch function, opening the site in the brower and opening the file to edit it. If you try to use these commands, be sure to change blog to what your folder is called. &lt;/p&gt;
 
-&lt;p&gt;The main trick is that you have to call the newtab early in the process, the tab will not let you call any commands after you start the server, so the new tab is where you will be able to keep typing in commands.&lt;/p&gt;
+&lt;p&gt;The main trick is that you have to call the newtab early in the process, the tab will not let you call any commands after a process that is continuous such as the jekyll server or the build watch function. I&amp;#39;m excited to use these for webpack and other continuous processes in my site building processes.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blgv &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   open &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:4000&amp;#39;&lt;/span&gt;
@@ -105,6 +105,12 @@ blgpu &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quo
   git push origin master
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
+blgsrv&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  newtab
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/ChristopherSalam.github.io
+  jekyll server
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
 blog &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   newtab
   blgpl &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
@@ -115,8 +121,9 @@ blog &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot
 
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;blg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;blog&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;notes: sublime is the shortcut word added by a CLI to open sublime text.
-Most of the other commands are written as short cuts on my terminal but have been written out for clarity. &lt;/p&gt;
+&lt;p&gt;To start my jekyll blog and everything else I need to get blogging, I type in blgsrv, followed by blg and all the tools I need are ready.&lt;/p&gt;
+
+&lt;p&gt;notes: sublime is the shortcut word added by a CLI to open sublime text. Most of the other commands are written as short cuts on my terminal but have been written out for clarity. &lt;/p&gt;
 </description>
         <pubDate>Sun, 02 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Open-with-bash/</link>
