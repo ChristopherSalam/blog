@@ -13,6 +13,8 @@ I would recommend going to Ramda.js's website and pulling up a console there. An
 <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js"></script>
 ```
 
+**This is a stub... there's more to come**
+
 <!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
 
 ```javascript

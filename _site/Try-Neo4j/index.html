@@ -74,7 +74,7 @@
 
 <p>Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&#39;s built-in &quot;shortest path&quot; query would do exactly what we wanted, so we set out to learn the database.</p>
 
-<p>Go to neo4j.com&#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  <a href="https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/">This post went a long way for us. </a> From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website. </p>
+<p>Go to neo4j.com&#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  <a href="https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/">This post went a long way for us. </a> From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.</p>
 
 <p>I have prepared a very simple dataset that contains just 3 points of information: The player&#39;s name, the year they played for a certain team, and the team&#39;s name. Each time a player was traded or played for two teams, both were mapped for that year.</p>
 
@@ -111,6 +111,8 @@ MATCH (p:Player), (t:Team)</strong> This will use the CSV to look at how the pla
 <strong>return p, t</strong> returns it.</p>
 
 <p>This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. For now, let&#39;s get to query building!</p>
+
+<p><strong>This is a stub... there&#39;s more to come</strong></p>
 
   </div>
 

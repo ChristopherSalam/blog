@@ -13,6 +13,8 @@
 &lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+
 &lt;!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
 
 ```javascript
@@ -32,7 +34,7 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 
 &lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database.&lt;/p&gt;
 
-&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt;This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website. &lt;/p&gt;
+&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt;This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.&lt;/p&gt;
 
 &lt;p&gt;I have prepared a very simple dataset that contains just 3 points of information: The player&amp;#39;s name, the year they played for a certain team, and the team&amp;#39;s name. Each time a player was traded or played for two teams, both were mapped for that year.&lt;/p&gt;
 
@@ -69,6 +71,8 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 &lt;strong&gt;return p, t&lt;/strong&gt; returns it.&lt;/p&gt;
 
 &lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. For now, let&amp;#39;s get to query building!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 14 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Try-Neo4j/</link>
@@ -82,7 +86,9 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
     osascript -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;tell application &amp;quot;iTerm&amp;quot; to activate&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;tell application &amp;quot;System Events&amp;quot; to tell process &amp;quot;iTerm2&amp;quot; to keystroke &amp;quot;t&amp;quot; using command down&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Using &amp;#39;&amp;amp;&amp;#39; allows us to chain commands. From this process you can only imagine what possibilities are out there. I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the jekyll build &amp;amp; watch function, opening the site in the brower and opening the file to edit it. If you try to use these commands, be sure to change blog to what your folder is called. &lt;/p&gt;
+&lt;p&gt;Using &amp;#39;&amp;amp;&amp;#39; allows us to chain commands. From this process you can only imagine what possibilities are out there. I have been annoyed that whenever you start a server or a watch builder, the process requires you to open a new tab, so I wanted to add this to my bash functions to automatically open a new tab for me. If you haven&amp;#39;t gotten your jekyll server to work yet, &lt;a href=&quot;https://github.com/holman/left/issues/34&quot;&gt; it&amp;#39;s likely due to this error &lt;/a&gt;, so be sure to fix it first.&lt;/p&gt;
+
+&lt;p&gt;I have been trying to chain functions in bash, for practical purposes such starting my blog&amp;#39;s server, the jekyll build &amp;amp; watch function, opening the site in the brower and opening the file to edit it. If you try to use these commands, be sure to change blog to what your folder is called.&lt;/p&gt;
 
 &lt;p&gt;The main trick is that you have to call the newtab early in the process, the tab will not let you call any commands after a process that is continuous such as the jekyll server or the build watch function. I&amp;#39;m excited to use these for webpack and other continuous processes in my site building processes.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;blgv &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -92,7 +98,7 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 
 blgw &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
-  sublime . 
+  sublime .
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 blgpl &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -107,7 +113,7 @@ blgpu &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quo
 
 blgsrv&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   newtab
-  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/ChristopherSalam.github.io
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Documents/blog
   jekyll server
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
@@ -115,15 +121,15 @@ blog &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot
   newtab
   blgpl &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
   blgv &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
-  blgw &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; 
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;jekyll build --watch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+  blgw &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;jekyll build --watch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;blg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;blog&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To start my jekyll blog and everything else I need to get blogging, I type in blgsrv, followed by blg and all the tools I need are ready.&lt;/p&gt;
 
-&lt;p&gt;notes: sublime is the shortcut word added by a CLI to open sublime text. Most of the other commands are written as short cuts on my terminal but have been written out for clarity. &lt;/p&gt;
+&lt;p&gt;notes: sublime is the shortcut word added by a CLI to open sublime text. Most of the other commands are written as short cuts on my terminal but have been written out for clarity.&lt;/p&gt;
 </description>
         <pubDate>Sun, 02 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Open-with-bash/</link>

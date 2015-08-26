@@ -3,7 +3,7 @@ layout: post
 title: (RegExp)lanation  part II
 ---
 
-I wanted to start off this part of the tutorial by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only affective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fasincated with it. Here are some explanations of recent approaches.
+I wanted to start off this part of the tutorial by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only effective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fasincated with it. Here are some explanations of recent approaches.
 
 ```javascript
 var firstNonRepeatedCharacter = function (string) {
