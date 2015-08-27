@@ -3,7 +3,7 @@ layout: post
 title: /n complexity
 tags:
 - regexp
-- js  
+- js
 ---
 
 I wanted to start off by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only effective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fascinated with it!
@@ -100,7 +100,7 @@ console.log(longestRun("abbcc"));
                   // --> [ 1, 2 ]
 ```
 
-JavaScript's replace function takes a callback. Here, I hijack the replace function, and add a max finder to it. You have to return the set or else you will modify the function so I am searching for a more elegant way to do this without re-writing the exec or other javascript functions, as I've seen. This way, each match get's processed rather than each iteration, and the match contains what I need to return the information. The ternary at the end is a little clumsy, here's an alternative method:
+JavaScript's replace function takes a callback. Here, I hijack the replace function, and add a max finder to it. You have to return the set or else you will modify the input string so I am searching for a more elegant way to do this without re-writing the exec or other javascript functions, as <a href="http://blog.magnetiq.com/post/2723860058/syntactic-sugar-rexexpexec-with-callbacks" >I've seen </a>. This way, each match get's processed rather than each iteration, and the match contains what I need to return the information. The ternary at the end is a little clumsy, here's an alternative method:
 
 ```javascript
   if (max === 0) {return [0, 0]; }
@@ -110,6 +110,6 @@ JavaScript's replace function takes a callback. Here, I hijack the replace funct
   }
 ```
 
-Here's examples of some gnarly knotted solutions that try out new ideas and take extra time to get there. It's about the journey right? Unless you are actually working on the production solution I guess.
+Here's examples of some gnarly knotted solutions that try out new ideas and take extra time to get there. It's about the journey right? Unless you are actually working on the production solution...
 
 **This is a stub, there's more coming**

@@ -39,4 +39,10 @@ console.log(longestRun("abc"));
 console.log(longestRun("abbcc"));
                   // --> 'aeiou'
 
+classic personality studies.... use methods
+
+/\w+(?=\.jpg)/g images
+
+                  "dirtyimage.jpg cleanimage.jpg image.png".match(/\w+(?=\.jpg)/g)
+
                     // return set.replace(/(\w+)\1+/gi,function(set){return set[0]});
