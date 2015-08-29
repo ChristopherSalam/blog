@@ -221,7 +221,7 @@ img {
   }
 }
 .site-avatar img {
-  border-radius: 5px;
+  border-radius: 75%;
 }
 
 .site-info {
@@ -385,12 +385,12 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
   /*  background-color: #A4010C; */
-  /*  background: #f1d0bf; 
-      background: -moz-linear-gradient(top,  #f1d0bf 0%, #dc553a 100%); 
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1d0bf), color-stop(100%,#dc553a)); 
-      background: -webkit-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%); 
-      background: -o-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%); 
-      background: -ms-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%); 
+  /*  background: #f1d0bf;
+      background: -moz-linear-gradient(top,  #f1d0bf 0%, #dc553a 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1d0bf), color-stop(100%,#dc553a));
+      background: -webkit-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%);
+      background: -o-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%);
+      background: -ms-linear-gradient(top,  #f1d0bf 0%,#dc553a 100%);
       background: linear-gradient(to bottom,  #f1d0bf 0%,#dc553a 100%); */
   background: #7d7e7d;
   /* Old browsers */
@@ -413,6 +413,12 @@ body {
   transition: 1.5s ease-out;
 }
 
+@media screen and (max-width: 500px) {
+  .hexagon-in2 {
+    color: #333;
+    background: none;
+  }
+}
 li:nth-child(1) span {
   background-position: -15px center;
 }

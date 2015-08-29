@@ -20,15 +20,8 @@
     <meta property="og:title" content="LiveCode Curry" />
     <meta property="twitter:title" content="LiveCode Curry" />
     
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <link rel="alternate" type="application/rss+xml" title="Christopher Salam - Engineer and Web Developer" href="/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
 
   <body>
@@ -43,10 +36,10 @@
           </div>
 
           <nav>
-            <a href="/">Posts</a>
+            <!--<a href="/">Posts</a>-->
             <a href="/tags">byTopic</a>
             <a href="/about">About</a>
-            <a href="http://chrissalam.com" target="_blank">Slideshow</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
           </nav>
         </header>
       </div>
@@ -70,11 +63,38 @@
   </div>
 
   <div class="entry">
-    <p>Tonight, I watched <a href="http://alicekamada.github.io/" >Cassandra&#39;s</a> talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!</p>
+    <p>Tonight, I watched Cassandra&#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!</p>
 
 <p>I would recommend going to Ramda.js&#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate <a href="http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html">Jamil</a>. You can also grab it from CDN via</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div>
+<!-- Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.
+
+```javascript
+function area(height, width) { return height * width; }
+var curryArea = R.curry(area);
+
+curryArea(2);    // [function]
+curryArea(2)(5); // 10
+
+```
+Why is this useful?
+
+```javascript
+function that invokes
+var lines = R.invoker(1, 'split')('/n');
+var split = R.split('/n');
+```
+var getItems = R.compose(
+  R.filter(R.propEq('eventType',"ITEM_DESTROYED")),
+  R.flatten,
+  R.map(R.prop('events'))
+)
+-->
+
+<p><a href="http://alicekamada.github.io/" >&quot;Pointfree Code is code that never refers to the code it handles:
+it focuses on the logic, easier to reason about, and never have to wonder about the state.&quot;</a></p>
+
 <p><strong>This is a stub... there&#39;s more to come</strong></p>
 
 <!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that

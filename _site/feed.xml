@@ -7,7 +7,7 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>/n complexity</title>
+        <title>nl complexity</title>
         <description>&lt;p&gt;I wanted to start off by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only effective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fascinated with it!&lt;/p&gt;
 
 &lt;p&gt;A time complexity optimized solution will having the fewest amount of operations.
@@ -105,17 +105,44 @@ RegExp solutions offer a chance at &lt;a href=&quot;https://en.wikipedia.org/wik
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 28 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/%5Cn%20complexity/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/%5Cn%20complexity/</guid>
+        <link>ChristopherSalam.github.io/nl%20complexity/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/nl%20complexity/</guid>
       </item>
     
       <item>
         <title>LiveCode Curry</title>
-        <description>&lt;p&gt;Tonight, I watched &lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;Cassandra&amp;#39;s&lt;/a&gt; talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
+        <description>&lt;p&gt;Tonight, I watched Cassandra&amp;#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
 
 &lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.
+
+```javascript
+function area(height, width) { return height * width; }
+var curryArea = R.curry(area);
+
+curryArea(2);    // [function]
+curryArea(2)(5); // 10
+
+```
+Why is this useful?
+
+```javascript
+function that invokes
+var lines = R.invoker(1, &#39;split&#39;)(&#39;/n&#39;);
+var split = R.split(&#39;/n&#39;);
+```
+var getItems = R.compose(
+  R.filter(R.propEq(&#39;eventType&#39;,&quot;ITEM_DESTROYED&quot;)),
+  R.flatten,
+  R.map(R.prop(&#39;events&#39;))
+)
+--&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&amp;quot;Pointfree Code is code that never refers to the code it handles:
+it focuses on the logic, easier to reason about, and never have to wonder about the state.&amp;quot;&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 
 &lt;!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
