@@ -73,7 +73,7 @@ Some of the other links that we have used so far.
 
 <a href="https://github.com/brentvatne/react-native-svg">React Native & SVG</a>
 
-**Firebase & OAuth**
+**Firebase, OAuth & D3**
 
 <a href="https://www.firebase.com/blog/2015-05-29-react-native.html">React Native & FireBase</a>
 
@@ -82,6 +82,8 @@ Some of the other links that we have used so far.
 <a href="https://www.firebase.com/docs/rest/guide/saving-data.html">Saving Data in FireBase</a>
 
 <a href="https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d">OAuth 2</a>
+
+<a href="http://ahmadchatha.com/writings/article1.html">D3</a>
 
 **Here's us**
 
