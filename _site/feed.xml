@@ -7,6 +7,25 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Try React Native</title>
+        <description>&lt;p&gt;Our group of three sat down to discuss what we wanted to pursue for our Telegraph Academy senior project. We created a venn diagram and put up our different goals, technology interests, and interests. We discussed our goals for after the program and a few different proposals before settling in on a social app that uses React Native, d3, Firebase, the Facebook API.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;venn.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Then we thought... can we pull this off in four weeks?&lt;/p&gt;
+
+&lt;p&gt;A few days later, the thought is certainly that we definitely can and that we will contribute to the work that will lead to making react native and firebase even more successful. Kent, one of my teammates, already has &lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;corrected a blog &lt;/a&gt; that we&amp;#39;ve used and we are going to keep adding to the blog posts and links that have helped us.&lt;/p&gt;
+
+&lt;p&gt;Some of the other links that we have used so far.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 31 Aug 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Try-React-Native/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Try-React-Native/</guid>
+      </item>
+    
+      <item>
         <title>nl complexity</title>
         <description>&lt;p&gt;I wanted to start off by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only effective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fascinated with it!&lt;/p&gt;
 
@@ -104,7 +123,7 @@ RegExp solutions offer a chance at &lt;a href=&quot;https://en.wikipedia.org/wik
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 28 Aug 2015 00:00:00 -0700</pubDate>
+        <pubDate>Sat, 22 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/nl%20complexity/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/nl%20complexity/</guid>
       </item>
@@ -153,7 +172,7 @@ var newfunc =  R.pipe(func1, func2, func3)
 
 where the newfunc(args_provided_to_function_one) =  --&gt;
 </description>
-        <pubDate>Fri, 21 Aug 2015 00:00:00 -0700</pubDate>
+        <pubDate>Sat, 15 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/LiveCode-Curry/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/LiveCode-Curry/</guid>
       </item>
@@ -164,7 +183,7 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 
 &lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database.&lt;/p&gt;
 
-&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt;This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.&lt;/p&gt;
+&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt; This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.&lt;/p&gt;
 
 &lt;p&gt;I have prepared a very simple dataset that contains just 3 points of information: The player&amp;#39;s name, the year they played for a certain team, and the team&amp;#39;s name. Each time a player was traded or played for two teams, both were mapped for that year.&lt;/p&gt;
 
@@ -204,7 +223,7 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 14 Aug 2015 00:00:00 -0700</pubDate>
+        <pubDate>Sun, 09 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Try-Neo4j/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/Try-Neo4j/</guid>
       </item>
