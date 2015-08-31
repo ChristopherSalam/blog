@@ -20,77 +20,73 @@
 
 &lt;p&gt;&lt;strong&gt;On choosing between angular ionic and react native.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker&quot;&gt;Angular versus React&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic&quot;&gt;iOS to Ionic&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://news.ycombinator.com/item?id=9857580&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=9857580&quot;&gt;Why React&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/&quot;&gt;React uses... React!&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://wix.github.io/react-templates/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://wix.github.io/react-templates/&quot;&gt;React Templates&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js&quot;&gt;Build twitter stream with react&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/&quot;&gt;Sample app with Cordova&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;React Native&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;http://ryanclark.me/going-native-with-react/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://ryanclark.me/going-native-with-react/&quot;&gt;Going native with react&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://facebook.github.io/react-native/docs/getting-started.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/getting-started.html&quot;&gt;Getting started with React&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html&quot;&gt;Testing&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Bulid primer&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://devdactic.com/react-native-for-beginners/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;... for Beginners&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://devdactic.com/react-native-tab-bar/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-tab-bar/&quot;&gt;Tab Bar sample&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://devdactic.com/react-native-resources/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-resources/&quot;&gt;Resources&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://facebook.github.io/react-native/docs/navigatorios.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/navigatorios.html&quot;&gt;Navigator iOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://github.com/leecade/react-native-swiper&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/leecade/react-native-swiper&quot;&gt;Swiper&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://github.com/johanneslumpe/react-native-gesture-recognizers&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/johanneslumpe/react-native-gesture-recognizers&quot;&gt;Gesture Recognizers&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://github.com/enaqx/awesome-react#server-client-with-react&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/enaqx/awesome-react#server-client-with-react&quot;&gt;Server-Client&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Xcode &amp;amp; Apple&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;https://developer.apple.com/programs/enroll/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/programs/enroll/&quot;&gt;Enroll&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://developer.apple.com/library/ios/recipes/xcode&lt;em&gt;help-image&lt;/em&gt;catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html&quot;&gt;XCode&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html&quot;&gt;Icon Matrix&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://developers.facebook.com/docs/facebook-login/ios&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developers.facebook.com/docs/facebook-login/ios&quot;&gt;iOS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1&quot;&gt;iOS documentation for User Experience/a&amp;gt;&lt;/p&gt;
 
-&lt;p&gt;https://github.com/brentvatne/react-native-svg&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/brentvatne/react-native-svg&quot;&gt;React Native &amp;amp; SVG&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Firebase &amp;amp; Sockets&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Firebase &amp;amp; OAuth&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;https://www.firebase.com/blog/2015-05-29-react-native.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/blog/2015-05-29-react-native.html&quot;&gt;React Native &amp;amp; FireBase&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/NetworkingTopics/Articles/UsingSocketsandSocketStreams.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/firebase/reactfire/tree/master/examples/todoApp&quot;&gt;Examples&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://github.com/firebase/reactfire/tree/master/examples/todoApp&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/docs/rest/guide/saving-data.html&quot;&gt;Saving Data in FireBase&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://www.firebase.com/docs/rest/guide/saving-data.html&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;OAuth&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d&quot;&gt;OAuth 2&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Here&amp;#39;s us&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;http://katfish.me/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://katfish.me/ (nothing much here yet)...&quot;&gt;Katfish us!&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Long story made short: We found all this in less than 2 days. We&amp;#39;ve been able to parse through it, learn quickly and help others. Even as a new technology, it&amp;#39;s clear that the framework achieves it&amp;#39;s goal: it makes it easier to make applications and early adopters are excited about it and helping each other. Don&amp;#39;t be discouraged to take on anything new!&lt;/p&gt;
 

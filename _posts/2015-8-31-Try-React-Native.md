@@ -19,77 +19,73 @@ Some of the other links that we have used so far.
 
 **On choosing between angular ionic and react native.**
 
-https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker
+<a href="https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker">Angular versus React</a>
 
-https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic
+<a href="https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic">iOS to Ionic</a>
 
-https://news.ycombinator.com/item?id=9857580
+<a href="https://news.ycombinator.com/item?id=9857580">Why React</a>
 
 **React**
 
-http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/
+<a href="http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/">React uses... React!</a>
 
-http://wix.github.io/react-templates/
+<a href="http://wix.github.io/react-templates/">React Templates</a>
 
-https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js
+<a href="https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js">Build twitter stream with react</a>
 
-http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/
+<a href="http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/">Sample app with Cordova</a>
 
 **React Native**
 
-http://ryanclark.me/going-native-with-react/
+<a href="http://ryanclark.me/going-native-with-react/">Going native with react</a>
 
-https://facebook.github.io/react-native/docs/getting-started.html
+<a href="https://facebook.github.io/react-native/docs/getting-started.html">Getting started with React</a>
 
-http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html
+<a href="http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html">Testing</a>
 
-http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript
+<a href="http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript">Bulid primer</a>
 
-http://devdactic.com/react-native-for-beginners/
+<a href="http://devdactic.com/react-native-for-beginners/">... for Beginners</a>
 
-http://devdactic.com/react-native-tab-bar/
+<a href="http://devdactic.com/react-native-tab-bar/">Tab Bar sample</a>
 
-http://devdactic.com/react-native-resources/
+<a href="http://devdactic.com/react-native-resources/">Resources</a>
 
-https://facebook.github.io/react-native/docs/navigatorios.html
+<a href="https://facebook.github.io/react-native/docs/navigatorios.html">Navigator iOS</a>
 
-https://github.com/leecade/react-native-swiper
+<a href="https://github.com/leecade/react-native-swiper">Swiper</a>
 
-https://github.com/johanneslumpe/react-native-gesture-recognizers
+<a href="https://github.com/johanneslumpe/react-native-gesture-recognizers">Gesture Recognizers</a>
 
-https://github.com/enaqx/awesome-react#server-client-with-react
+<a href="https://github.com/enaqx/awesome-react#server-client-with-react">Server-Client</a>
 
 **Xcode & Apple**
 
-https://developer.apple.com/programs/enroll/
+<a href="https://developer.apple.com/programs/enroll/">Enroll</a>
 
-https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html
+<a href="https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html">XCode</a>
 
-https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html
+<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html">Icon Matrix</a>
 
-https://developers.facebook.com/docs/facebook-login/ios
+<a href="https://developers.facebook.com/docs/facebook-login/ios">iOS</a>
 
-https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1
+<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1">iOS documentation for User Experience/a>
 
-https://github.com/brentvatne/react-native-svg
+<a href="https://github.com/brentvatne/react-native-svg">React Native & SVG</a>
 
-**Firebase & Sockets**
+**Firebase & OAuth**
 
-https://www.firebase.com/blog/2015-05-29-react-native.html
+<a href="https://www.firebase.com/blog/2015-05-29-react-native.html">React Native & FireBase</a>
 
-https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/NetworkingTopics/Articles/UsingSocketsandSocketStreams.html
+<a href="https://github.com/firebase/reactfire/tree/master/examples/todoApp">Examples</a>
 
-https://github.com/firebase/reactfire/tree/master/examples/todoApp
+<a href="https://www.firebase.com/docs/rest/guide/saving-data.html">Saving Data in FireBase</a>
 
-https://www.firebase.com/docs/rest/guide/saving-data.html
-
-**OAuth**
-
-https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d
+<a href="https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d">OAuth 2</a>
 
 **Here's us**
 
-http://katfish.me/
+<a href="http://katfish.me/ (nothing much here yet)...">Katfish us!</a>
 
 Long story made short: We found all this in less than 2 days. We've been able to parse through it, learn quickly and help others. Even as a new technology, it's clear that the framework achieves it's goal: it makes it easier to make applications and early adopters are excited about it and helping each other. Don't be discouraged to take on anything new!
 
