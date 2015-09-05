@@ -110,6 +110,18 @@ cln <span class="o">()</span> <span class="o">{</span>
 
 <p>Bash profile shortcuts, coupled with learning the different ways to use your text editor, file system, and other parts of your computer are not extra features for a programmer, they are utterly required. Try to install tools to aid productivity in each piece of software you use, and try to bring all the different things you need to do into terminal or your editor. I&#39;ve sped up tremendously in the last few weeks and most of that isn&#39;t do to learning frameworks or language patterns, it&#39;s because I&#39;ve used shortcuts to eliminate fluffy and unesscessary typing. Thanks for reading!</p>
 
+<hr>
+
+<p>This is a bit of a extra bit of information, don&#39;t have a full post for it yet but basically when accidently running duplicate servers, you can run this command to find the process behind the extra server and kill it </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">lsof -i tcp:*8080* 
+                 <span class="c"># or the problem port</span>
+
+                 <span class="c"># followed by </span>
+<span class="nb">kill</span> -9 *processNumber*
+
+                 <span class="c"># another way to</span>
+ps ax <span class="p">|</span> grep node is another way to find all the node instances
+</code></pre></div>
   </div>
 
   

@@ -39,6 +39,18 @@ var getItems = R.compose(
 <a href="http://alicekamada.github.io/" >"Pointfree Code is code that never refers to the code it handles:
 it focuses on the logic, easier to reason about, and never have to wonder about the state."</a>
 
+This isn't exactly related but another helpful trick I've learned after doing alot of data transforms in the console is to save the data object or array as a global variable and then to copy the temporary variable.
+
+```javascript
+/*in console*/
+Data Object = {...}; 
+            // right click on the edge of the Object
+            // store as a temporary variable
+            // creates 'temp1'
+copy(temp1) // and this is available for 
+            // pasting in text editor.
+```
+
 **This is a stub... there's more to come**
 
 <!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
@@ -48,3 +60,4 @@ var newfunc =  R.pipe(func1, func2, func3)
 ```
 
 where the newfunc(args_provided_to_function_one) =  -->
+

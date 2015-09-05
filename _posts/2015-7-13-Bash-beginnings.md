@@ -57,3 +57,18 @@ These commands use captures "$1" to take the text that follows the command and p
 We were given this <a href="http://dsernst.com/2015/01/12/bring-your-own-bash-profile/">blog post as an assignment for TGA </a>, and from here I began to see a bunch of this functions but without context or explanation. I literally had not heard of bash profile at this point, roughly 3 months removed from where I am now. Later, Josh came by and gave a talk and went over a bunch of other tools and gave us this link to his github, which described showed us his bash profile and other tools such as vimium, sublime shortcuts. Here is <a href="https://github.com/joshwyatt/keyboard_shortcuts" >Josh Wyatt's very powerful suite of shortcut commands. </a>  I started with his list of bash shortcuts but commented each out until I understood exactly what they did. Many still remain in commented form, but I will get to them all and decide if I like them or will toss them. I reasoned that if I just cut and pasted them in rather than studying each individually I wouldn't learn them, so there are still of few of the ones here I've never looked at, particually git commands which I have not used yet and I've re-written other commands to fit my needs <a href="http://christophersalam.github.io/Open-with-bash/">(see this subsequent post on Jekyll Blogs and Bash).</a>
 
 Bash profile shortcuts, coupled with learning the different ways to use your text editor, file system, and other parts of your computer are not extra features for a programmer, they are utterly required. Try to install tools to aid productivity in each piece of software you use, and try to bring all the different things you need to do into terminal or your editor. I've sped up tremendously in the last few weeks and most of that isn't do to learning frameworks or language patterns, it's because I've used shortcuts to eliminate fluffy and unesscessary typing. Thanks for reading!
+
+------
+
+This is a bit of a extra bit of information, don't have a full post for it yet but basically when accidently running duplicate servers, you can run this command to find the process behind the extra server and kill it 
+
+```bash
+lsof -i tcp:*8080* 
+                 # or the problem port
+
+                 # followed by 
+kill -9 *processNumber*
+
+                 # another way to
+ps ax | grep node is another way to find all the node instances
+```

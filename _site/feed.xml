@@ -236,6 +236,15 @@ var getItems = R.compose(
 &lt;p&gt;&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&amp;quot;Pointfree Code is code that never refers to the code it handles:
 it focuses on the logic, easier to reason about, and never have to wonder about the state.&amp;quot;&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;This isn&amp;#39;t exactly related but another helpful trick I&amp;#39;ve learned after doing alot of data transforms in the console is to save the data object or array as a global variable and then to copy the temporary variable.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*in console*/&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...};&lt;/span&gt; 
+            &lt;span class=&quot;c1&quot;&gt;// right click on the edge of the Object&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// store as a temporary variable&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// creates &amp;#39;temp1&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// and this is available for &lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// pasting in text editor.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 
 &lt;!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
@@ -615,7 +624,19 @@ cln &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;
 &lt;p&gt;We were given this &lt;a href=&quot;http://dsernst.com/2015/01/12/bring-your-own-bash-profile/&quot;&gt;blog post as an assignment for TGA &lt;/a&gt;, and from here I began to see a bunch of this functions but without context or explanation. I literally had not heard of bash profile at this point, roughly 3 months removed from where I am now. Later, Josh came by and gave a talk and went over a bunch of other tools and gave us this link to his github, which described showed us his bash profile and other tools such as vimium, sublime shortcuts. Here is &lt;a href=&quot;https://github.com/joshwyatt/keyboard_shortcuts&quot; &gt;Josh Wyatt&amp;#39;s very powerful suite of shortcut commands. &lt;/a&gt;  I started with his list of bash shortcuts but commented each out until I understood exactly what they did. Many still remain in commented form, but I will get to them all and decide if I like them or will toss them. I reasoned that if I just cut and pasted them in rather than studying each individually I wouldn&amp;#39;t learn them, so there are still of few of the ones here I&amp;#39;ve never looked at, particually git commands which I have not used yet and I&amp;#39;ve re-written other commands to fit my needs &lt;a href=&quot;http://christophersalam.github.io/Open-with-bash/&quot;&gt;(see this subsequent post on Jekyll Blogs and Bash).&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Bash profile shortcuts, coupled with learning the different ways to use your text editor, file system, and other parts of your computer are not extra features for a programmer, they are utterly required. Try to install tools to aid productivity in each piece of software you use, and try to bring all the different things you need to do into terminal or your editor. I&amp;#39;ve sped up tremendously in the last few weeks and most of that isn&amp;#39;t do to learning frameworks or language patterns, it&amp;#39;s because I&amp;#39;ve used shortcuts to eliminate fluffy and unesscessary typing. Thanks for reading!&lt;/p&gt;
-</description>
+
+&lt;hr&gt;
+
+&lt;p&gt;This is a bit of a extra bit of information, don&amp;#39;t have a full post for it yet but basically when accidently running duplicate servers, you can run this command to find the process behind the extra server and kill it &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;lsof -i tcp:*8080* 
+                 &lt;span class=&quot;c&quot;&gt;# or the problem port&lt;/span&gt;
+
+                 &lt;span class=&quot;c&quot;&gt;# followed by &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -9 *processNumber*
+
+                 &lt;span class=&quot;c&quot;&gt;# another way to&lt;/span&gt;
+ps ax &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep node is another way to find all the node instances
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Mon, 13 Jul 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Bash-beginnings/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/Bash-beginnings/</guid>
