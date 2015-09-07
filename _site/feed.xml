@@ -7,6 +7,35 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title></title>
+        <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now. &lt;/p&gt;
+
+&lt;p&gt;Some people in our class use VI or VIM, but most tend to use sublime text or atom text editor. I currently use Sublime, but am interested in using Atom because I&amp;#39;ve been told it&amp;#39;s supported better and compiles over javascript, rather than python. VIM is a very old text editor that is powerful and purportedly more customizable, but my general experience with it involves cursing. I am also going to check out EMACS eventually, as the politics of a GNU product fits most with my LINUX background, but I believe there is something important to understanding the mainstream before branching out. &lt;/p&gt;
+
+&lt;p&gt;However, packages are available generally across different text editors and should be installed immediately. Even if you don&amp;#39;t learn all the possible ways to use the packages, they benefits they provide can be immediate. If you use Sublime and have not yet installed the package manager, please head to &lt;a href=&quot;https://packagecontrol.io/&quot;&gt;here and follow the instructions on install now&lt;/a&gt;. Browsing the packages here is a great way to know what is trending and what people find helpful.&lt;/p&gt;
+
+&lt;p&gt;I use sublime linter with JSlint and JShint, which is pretty much several blog posts worth of difficulty, so I will pass on describing the process, but these are all helpful so consider installing them. Be patient, as each will take 1 hour to install but is worth the struggle. After installing this, practice setting up different user accounts or save package json&amp;#39;s with an established style guide (I use the AirBNB javascript guideline).&lt;/p&gt;
+
+&lt;p&gt;I use emmet for HTML quick editing. This will eventually go into a short mini tutorial of some of my favorite emmet tricks. Also, show &lt;a href=&quot;https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6&quot;&gt;link to the react emmet plugin.&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;I use Git Gutter to help me keep track of my changes visually.&lt;/p&gt;
+
+&lt;p&gt;I use a sublime build tool to help me with my algorithmic problems, link here to Jamil&amp;#39;s post.&lt;/p&gt;
+
+&lt;p&gt;I use a bracket matching tool to help me keep track of the (), {}, and []. &lt;/p&gt;
+
+&lt;p&gt;I use color sublime, which keeps me from going crazy with the boring color pallette of text editing. &lt;/p&gt;
+
+&lt;p&gt;I use the a white space removal tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 07 Sep 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Packages-To-Install/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Packages-To-Install/</guid>
+      </item>
+    
+      <item>
         <title>Try React Native</title>
         <description>&lt;p&gt;Our group of three sat down to discuss what we wanted to pursue for our Telegraph Academy senior project. We created a venn diagram and put up our different goals, technology interests, and interests. We discussed our goals for after the program and a few different proposals before settling in on a social app that uses React Native, d3, Firebase, the Facebook API.&lt;/p&gt;
 
@@ -650,15 +679,6 @@ ps ax &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep node is another way to
         <pubDate>Tue, 07 Jul 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/For%20Newbs/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/For%20Newbs/</guid>
-      </item>
-    
-      <item>
-        <title>First Post</title>
-        <description>&lt;p&gt;I&amp;#39;m very excited to get this blog up and running and write my first post! Today is an important day in our country, gay marriage was declared legal all over our country, by the U.S. supreme court. As someone with many LGBTQ friends and some family, I feel a deep connection and am proud that our country will allow any two kinds of people to receive the over 1,000 benefits that marriage bestows. &lt;br /&gt; &lt;br /&gt; I&amp;#39;m also about to embark upon a new chapter in my life, I&amp;#39;ve been unemployed and studying computer science diligently for a few months, and soon I will be attending &lt;a href=&quot;http://www.telegraphacademy.com&quot; target=&quot;_blank&quot;&gt;Telegraph Academy&lt;/a&gt;, which is a JavaScript focused web development accelerated course in Berkeley, CA. &lt;br /&gt; &lt;br /&gt; This is one of the many coding bootcamps emerging in the Bay Area, but what makes mine different is that the school is most interested in training students who identify as people of color. I&amp;#39;m thrilled at having this opportunity, and I&amp;#39;ve already met people whom I know will be great lifelong friends and collegues. I&amp;#39;ll be blogging here about things I learn about coding and general observations about software, engineering, building applications that harness my expertises, and my involvement in the development of a more representative workforce. Thanks for reading! &lt;br /&gt; &lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 26 Jun 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/First-Post/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/First-Post/</guid>
       </item>
     
   </channel>
