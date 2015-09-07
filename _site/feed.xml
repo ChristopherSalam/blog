@@ -7,7 +7,7 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title></title>
+        <title>Packages</title>
         <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now. &lt;/p&gt;
 
 &lt;p&gt;Some people in our class use VI or VIM, but most tend to use sublime text or atom text editor. I currently use Sublime, but am interested in using Atom because I&amp;#39;ve been told it&amp;#39;s supported better and compiles over javascript, rather than python. VIM is a very old text editor that is powerful and purportedly more customizable, but my general experience with it involves cursing. I am also going to check out EMACS eventually, as the politics of a GNU product fits most with my LINUX background, but I believe there is something important to understanding the mainstream before branching out. &lt;/p&gt;
@@ -31,8 +31,8 @@
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/Packages-To-Install/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Packages-To-Install/</guid>
+        <link>ChristopherSalam.github.io/Packages/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Packages/</guid>
       </item>
     
       <item>
