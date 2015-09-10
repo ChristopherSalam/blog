@@ -2,7 +2,7 @@
 layout: post
 title: Packages
 tags: 
-- newb
+- text-editors
 - packages
 ---
 

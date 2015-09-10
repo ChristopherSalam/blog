@@ -4,10 +4,10 @@ title: About
 permalink: /about/
 ---
 
-My name is Christopher Salam, and I am an engineer and developer with experience in the energy and agricultural sectors. I'm interested in technologies and software that better the environment and enable local access to resources. I have worked as a freelance web developer with my partner <a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a>, and I am in the first class of Telegraph Academy, which is an accelerated JavaScript course in Berkeley, CA.
+My name is Christopher Salam and I am a software engineer. 
 
-### Contact me
+I was in the first cohort of <a href="http://www.telegraphacademy.com/">Telegraph Academy </a>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA.
 
-skype: christopher.salam
+I work as a freelance developer with <a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a>.
 
-[christopher.salam@gmail.com](mailto:christopher.salam@gmail.com)
+I blog about my interests at <a href="http://chrissalam.com"> chrissalam.com </a>
