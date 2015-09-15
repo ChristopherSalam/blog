@@ -7,3 +7,4 @@ Gracias a Kseso, yo uso una idea de tuyo que busca en CodePen por los hexagones.
 Chris
 
 Use this later: http://bl.ocks.org/mbostock/7607535
+# blog
