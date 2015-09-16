@@ -1,10 +1,9 @@
 ---
 layout: post
-title: Try React Native
+title: Try ReactNative
 tags:
 - react
 - native
-- firebase
 ---
 
 Our group of three sat down to discuss what we wanted to pursue for our Telegraph Academy senior project. We created a venn diagram and put up our different goals, technology interests, and interests. We discussed our goals for after the program and a few different proposals before settling in on a social app that uses React Native, d3, Firebase, the Facebook API.
