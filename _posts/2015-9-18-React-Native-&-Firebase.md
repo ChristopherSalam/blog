@@ -62,7 +62,7 @@ render() {
 
 In an other part of the application we access firebase using a function between the (this.state.loaded) and the ('return loadingView') but that has lead to some funny errors when the database is changed (see some database misfires below) Our plan is the change all calls over to the style above. 
 
-<img src="phones.png"/>
+<img src="phones.jpg"/>
 
 Send me an email if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have a simpler connection soon. 
 

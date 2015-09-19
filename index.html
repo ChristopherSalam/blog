@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 <div class="posts">
 
 	<h1>{{site.title}}</h1>
@@ -8,9 +9,9 @@ layout: default
 	<ul class="hex">
 
 		{% for post in site.posts %}
-		
+
 		<li class="hexagon">
-			
+
 			<a class="hexagon-in1" href="{{ post.url | prepend: site.baseurl }}">
 
 				<span class="hexagon-in2">
@@ -22,9 +23,19 @@ layout: default
 			</a>
 
 		</li>
-		
+
 		{% endfor %}
 
 	</ul>
 
 </div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+	document.querySelector('#infobox');
+
+});
+
+</script>

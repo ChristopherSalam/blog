@@ -11,3 +11,6 @@ I was in the first cohort of <a href="http://www.telegraphacademy.com/">Telegrap
 I work as a freelance developer with <a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a>.
 
 I blog about my interests at <a href="http://chrissalam.com"> chrissalam.com </a>
+
+Things I am into:
+

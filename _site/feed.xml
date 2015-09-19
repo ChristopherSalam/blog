@@ -58,7 +58,7 @@
 
 &lt;p&gt;In an other part of the application we access firebase using a function between the (this.state.loaded) and the (&amp;#39;return loadingView&amp;#39;) but that has lead to some funny errors when the database is changed (see some database misfires below) Our plan is the change all calls over to the style above. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;phones.png&quot;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;phones.jpg&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Send me an email if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have a simpler connection soon. &lt;/p&gt;
 
@@ -372,7 +372,7 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 
 &lt;p&gt;Command 1 - this loads the file and declares the player node with a name, and the team node with a name and year.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
-LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/six/MasterDB.csv&amp;#39;&lt;/span&gt; as line
+LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4J/MasterDB.csv&amp;#39;&lt;/span&gt; as line
 MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p:Player &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;name:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;]})&lt;/span&gt;
 MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;g:Team &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;name:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, year:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]})&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; p,g&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -385,7 +385,7 @@ MERGE (p:Player {name:line[0]})&lt;/strong&gt; loads the file and lets players n
 &lt;p&gt;Command 2 - this uses the CSV to create relationships between the players and the team, creating a relationship data type for
 the overlap in data.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
-LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/six/MasterDB.csv&amp;#39;&lt;/span&gt; as line
+LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4J/MasterDB.csv&amp;#39;&lt;/span&gt; as line
 MATCH &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p:Player&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t:Team&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 WHERE p.name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; AND t.name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; AND t.year &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 CREATE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;r:PLAYS_IN&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;-&amp;gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;

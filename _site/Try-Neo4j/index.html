@@ -82,7 +82,7 @@
 
 <p>Command 1 - this loads the file and declares the player node with a name, and the team node with a name and year.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">USING PERIODIC COMMIT
-LOAD CSV FROM <span class="s1">&#39;http://chrissalam.com/six/MasterDB.csv&#39;</span> as line
+LOAD CSV FROM <span class="s1">&#39;http://chrissalam.com/Try-Neo4J/MasterDB.csv&#39;</span> as line
 MERGE <span class="o">(</span>p:Player <span class="o">{</span>name:line<span class="o">[</span>0<span class="o">]})</span>
 MERGE <span class="o">(</span>g:Team <span class="o">{</span>name:line<span class="o">[</span>2<span class="o">]</span>, year:line<span class="o">[</span>1<span class="o">]})</span>
 <span class="k">return</span> p,g<span class="p">;</span>
@@ -95,7 +95,7 @@ MERGE (p:Player {name:line[0]})</strong> loads the file and lets players name be
 <p>Command 2 - this uses the CSV to create relationships between the players and the team, creating a relationship data type for
 the overlap in data.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">USING PERIODIC COMMIT
-LOAD CSV FROM <span class="s1">&#39;http://chrissalam.com/six/MasterDB.csv&#39;</span> as line
+LOAD CSV FROM <span class="s1">&#39;http://chrissalam.com/Try-Neo4J/MasterDB.csv&#39;</span> as line
 MATCH <span class="o">(</span>p:Player<span class="o">)</span>, <span class="o">(</span>t:Team<span class="o">)</span>
 WHERE p.name <span class="o">=</span> line<span class="o">[</span>0<span class="o">]</span> AND t.name <span class="o">=</span> line<span class="o">[</span>2<span class="o">]</span> AND t.year <span class="o">=</span> line<span class="o">[</span>1<span class="o">]</span>
 CREATE <span class="o">(</span>p<span class="o">)</span>-<span class="o">[</span>r:PLAYS_IN<span class="o">]</span>-&gt;<span class="o">(</span>t<span class="o">)</span>
