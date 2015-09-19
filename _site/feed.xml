@@ -70,6 +70,44 @@
       </item>
     
       <item>
+        <title>Neo4j Queries</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://chrissalam.com/Try-Neo4j/&quot;&gt;part 1&lt;/a&gt; This is part 2 of a three part series. [part x]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!&lt;/p&gt;
+
+&lt;p&gt;The 2 commands we ran in part 1 brought all the data in as nodes then mapped relationships between them. Now we will explore the shortest path query, the golden gem of any six degrees of separation project. Throughout the process of this project, I found myself typing in Kobe and Lebron on loop to test the query. The moment the database produced the intended result it was like fireworks.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;lbjkobe.png&quot;/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; 
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;MATCH&lt;/strong&gt; Is the powerful cypher statement that lets us join our information together and get back relationships.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(p1:Player {name:&amp;quot;lebron james&amp;quot; }),&lt;/strong&gt; is the way we give cypher our starting point,
+&lt;strong&gt;(p2:Player{name:&amp;quot;kobe bryant&amp;quot; }),&lt;/strong&gt; is the end point,
+&lt;strong&gt;p = shortestPath((p1)-[*]-(p2))&lt;/strong&gt; is the key part of the query
+&lt;strong&gt;RETURN EXTRACT(n in nodes(p) | n.name),&lt;/strong&gt; tells us what to return once the match is made.
+&lt;strong&gt;EXTRACT(n in nodes(p) | n.year),&lt;/strong&gt; We like to use the name in the first query, 
+&lt;strong&gt;RELATIONSHIPS(p)&lt;/strong&gt; then years in the second, and relationships third.&lt;/p&gt;
+
+&lt;p&gt;The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 13 Sep 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Neo4j-Queries/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Neo4j-Queries/</guid>
+      </item>
+    
+      <item>
         <title>Packages</title>
         <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now. &lt;/p&gt;
 
@@ -353,12 +391,14 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
       </item>
     
       <item>
-        <title>Try Neo4J</title>
-        <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
+        <title>Try Neo4j</title>
+        <description>&lt;p&gt;This is part 1 of a three part series. &lt;a href=&quot;http://chrissalam.com/Neo4j-Queries/&quot;&gt;part 2&lt;/a&gt; [part x]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database.&lt;/p&gt;
 
-&lt;p&gt;You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;! If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our dataset!&lt;/p&gt;
+&lt;p&gt;You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;! If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In part 2 I will teach you how to pull some of those images from a neo4j browser, using our dataset, but first, let&amp;#39;s get you set up!&lt;/p&gt;
 
 &lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt; This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.&lt;/p&gt;
 
@@ -372,12 +412,12 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 
 &lt;p&gt;Command 1 - this loads the file and declares the player node with a name, and the team node with a name and year.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
-LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4J/MasterDB.csv&amp;#39;&lt;/span&gt; as line
+LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39;&lt;/span&gt; as line
 MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p:Player &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;name:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;]})&lt;/span&gt;
 MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;g:Team &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;name:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, year:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]})&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; p,g&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT&lt;/strong&gt; lets the file come in chunks. &lt;strong&gt;LOAD CSV FROM &amp;#39;http://chrissalam.com/six/MasterDB.csv&amp;#39; as line
+&lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT&lt;/strong&gt; lets the file come in chunks. &lt;strong&gt;LOAD CSV FROM &amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39; as line
 MERGE (p:Player {name:line[0]})&lt;/strong&gt; loads the file and lets players name be defined by the first column of data. &lt;strong&gt;MERGE (g:Team {name:line[2], year:line[1]})&lt;/strong&gt; defines teams nodes. and &lt;strong&gt;return p, g&lt;/strong&gt; returns the dataset to the users.&lt;/p&gt;
 
 &lt;p&gt;This command will take a while to process. There will be error messages and it might not parse initially but it will eventually make it over. I would run both commands with a distraction ready, it took more than 5 minutes to map the relationships on some machines, but the command runs without tying up the computer. Every person in the graph is a node. The player has it&amp;#39;s own node, and the team has multiple nodes for every year it&amp;#39;s been active. This database is nearly complete, we&amp;#39;ve not corrected for duplicate names so there is some short circuiting at the moment. &lt;strong&gt;MERGE&lt;/strong&gt; is used here instead of create to remove duplicates.&lt;/p&gt;
@@ -385,18 +425,18 @@ MERGE (p:Player {name:line[0]})&lt;/strong&gt; loads the file and lets players n
 &lt;p&gt;Command 2 - this uses the CSV to create relationships between the players and the team, creating a relationship data type for
 the overlap in data.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
-LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4J/MasterDB.csv&amp;#39;&lt;/span&gt; as line
+LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39;&lt;/span&gt; as line
 MATCH &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p:Player&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t:Team&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 WHERE p.name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; AND t.name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; AND t.year &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 CREATE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;r:PLAYS_IN&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;-&amp;gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; p, t
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT LOAD CSV FROM &amp;#39;http://chrissalam.com/six/MasterDB.csv&amp;#39; as line
+&lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT LOAD CSV FROM &amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39; as line
 MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how the plays-in relationship should be defined.
 &lt;strong&gt;WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1] CREATE (p)-[r:PLAYS_IN]-&amp;gt;(t)&lt;/strong&gt; and these lines create the match, PLAYS_IN and this
 &lt;strong&gt;return p, t&lt;/strong&gt; returns it.&lt;/p&gt;
 
-&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with a query building post and also a section on the CORS problems I worked on for this project using the Seraph library. &lt;/p&gt;
+&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in &lt;a href=&quot;http://chrissalam.com/Neo4j-Queries/&quot;&gt;part 2&lt;/a&gt;, collision repair in part 3, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library. &lt;/p&gt;
 </description>
         <pubDate>Sun, 09 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/Try-Neo4j/</link>
@@ -668,70 +708,6 @@ As cool as this is what about flossing? As someone who has had lots of maxillofa
         <pubDate>Sun, 19 Jul 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/LiveCode-Bind/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/LiveCode-Bind/</guid>
-      </item>
-    
-      <item>
-        <title>Bash beginnings</title>
-        <description>&lt;p&gt;The Command Key (⌘) &amp;amp; Shortcuts and Development tools.&lt;/p&gt;
-
-&lt;p&gt;Starting a new profession can be overwhelming, especially when you see people dancing accross their keyboards. They are not typing faster than is possible, they&amp;#39;ve just built up an array of shortcuts and helpers that make their typing look magical. I want this magic too.&lt;/p&gt;
-
-&lt;p&gt;To get faster, I&amp;#39;ve begun to take serious note on typing, keyboard-based access software, text editors, and plugins within these editors, and other keyboard shortcuts that help other programmers type quickly and work faster. When starting out, new programmers are overwhelmed with the large amount of programming information they have to learn they neglect to work on the tools of coding, to explore creating items within their bash profile and using keyboard shortcuts. I would like to strongly advise against that here. &lt;strong&gt;ADD A SHORTCUT KEY OR PROFILE FUNCTION TO YOUR ARSENAL DAILY.&lt;/strong&gt; Not only does filling your bash profile with custom functions that loop together actions you use everyday help you work faster, they help you really start to understand what your computer does and that will make you a better programmer and also help you develop a personal style of working. Here I will detail all the things I have learned to do or add to my programs to increase efficiency and have more fun while programming.&lt;/p&gt;
-
-&lt;p&gt;OSX and Linux based machines (POSIX based machines) have a program called terminal which if you don&amp;#39;t have on the dock, you should consider adding. Windows uses a command prompt to do similar tasks. This program can access the internet and create and move files and folders onto your computer and run programs. I would advise learning about your particular terminal software, and if you use an extension such as ITerm2, to know how many different bash profiles you have and write your own functions and aliases, which I will go over below. These are files that are run immediately when ever you open a terminal, thus giving your permanent access to a bunch of shortcuts that can run commands to help you use github, to open local servers, and eventually run your automated tasks.&lt;/p&gt;
-
-&lt;p&gt;One method for getting faster is to open your bash profile and add things to it. This can be done by typing ls -a in your ~ folder and looking for { .bash_profile, .bashrc ,.mkshrc, .zshrc}. The first step is to create a method of getting into the bash profile, which can be your first function or aliases. The format for an alias is:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;the command as you would otherwise type it&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Two must have aliases for any hopeful bash profile user are a way to open the profile and a way to reload the terminal, otherwise you would have to restart your terminal to try out changes to your bash profile. The third function I included here is a simple server I seem to use alot. I would never remember the whole sentence, thankfully I don&amp;#39;t have to anymore.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prof&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;sublime ~/.bash_profile&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;. ~/.bash_profile&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;python -m SimpleHTTPServer&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;sublime is another alias I use to open a text editor, ~/.bash_profile opens the file in the editor and I can edit and add commands. r reloads the bash profile. Explain this more.&lt;/p&gt;
-
-&lt;p&gt;The other main method of adding complex features to bash involve functions. Functions are generally used for broader commands and for chaining events such as opening tabs or stringing a bunch of aliases or command line tools for programs together. I&amp;#39;m sure you&amp;#39;ll end up writing a bunch for yourself. The format of a function is:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;functionName &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;folder/of/interest
-  alias1 &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; alias2
-  doOtherPowerfulStuff
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Examples of must have functionality are functions to jump around to folders you commonly use, and methods to open your common applications. I have functions that open files I need using finder, chrome, sublime, and git all in my bash profile. Shortcuts, as Hacker in Residence Josh McKeown told us early on at Telegraph Academy, take about as long to write as it takes to type out. Quit typing them out! Examples of functions I like and use are:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkcd &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  mkdir &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-too &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  touch &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-  sublime &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-cln &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  git clone &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;These commands use captures &amp;quot;$1&amp;quot; to take the text that follows the command and process it with the function. mkcd newFolder would make a new folder called newFolder, and change the directory so that you would end up within the directory upon making it. too newFile is my command for &amp;quot;touch and open&amp;quot;. touch newFile makes a new file called newFile, and sublime opens it in text editor. sublime is also aliases down to the letter o elsewhere in my bash, for &amp;quot;opening&amp;quot;. cln is a command that I wished I made earlier, I was constantly cloning down repos and not realizing they didn&amp;#39;t automatically cd me into the file, and I&amp;#39;d start a server or open the text editor on my documents folder at first (Yikes! being a rookie...).&lt;/p&gt;
-
-&lt;p&gt;We were given this &lt;a href=&quot;http://dsernst.com/2015/01/12/bring-your-own-bash-profile/&quot;&gt;blog post as an assignment for TGA &lt;/a&gt;, and from here I began to see a bunch of this functions but without context or explanation. I literally had not heard of bash profile at this point, roughly 3 months removed from where I am now. Later, Josh came by and gave a talk and went over a bunch of other tools and gave us this link to his github, which described showed us his bash profile and other tools such as vimium, sublime shortcuts. Here is &lt;a href=&quot;https://github.com/joshwyatt/keyboard_shortcuts&quot; &gt;Josh Wyatt&amp;#39;s very powerful suite of shortcut commands. &lt;/a&gt;  I started with his list of bash shortcuts but commented each out until I understood exactly what they did. Many still remain in commented form, but I will get to them all and decide if I like them or will toss them. I reasoned that if I just cut and pasted them in rather than studying each individually I wouldn&amp;#39;t learn them, so there are still of few of the ones here I&amp;#39;ve never looked at, particually git commands which I have not used yet and I&amp;#39;ve re-written other commands to fit my needs &lt;a href=&quot;http://christophersalam.github.io/Open-with-bash/&quot;&gt;(see this subsequent post on Jekyll Blogs and Bash).&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Bash profile shortcuts, coupled with learning the different ways to use your text editor, file system, and other parts of your computer are not extra features for a programmer, they are utterly required. Try to install tools to aid productivity in each piece of software you use, and try to bring all the different things you need to do into terminal or your editor. I&amp;#39;ve sped up tremendously in the last few weeks and most of that isn&amp;#39;t do to learning frameworks or language patterns, it&amp;#39;s because I&amp;#39;ve used shortcuts to eliminate fluffy and unesscessary typing. Thanks for reading!&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;This is a bit of a extra bit of information, don&amp;#39;t have a full post for it yet but basically when accidently running duplicate servers, you can run this command to find the process behind the extra server and kill it &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;lsof -i tcp:*8080* 
-                 &lt;span class=&quot;c&quot;&gt;# or the problem port&lt;/span&gt;
-
-                 &lt;span class=&quot;c&quot;&gt;# followed by &lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -9 *processNumber*
-
-                 &lt;span class=&quot;c&quot;&gt;# another way to&lt;/span&gt;
-ps ax &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep node is another way to find all the node instances
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Mon, 13 Jul 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/Bash-beginnings/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Bash-beginnings/</guid>
       </item>
     
   </channel>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Neo4j Queries – Christopher Salam – thoughts on software and engineering</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="part 1 This is part 2 of a three part series. [part x]
+" />
+    <meta property="og:description" content="part 1 This is part 2 of a three part series. [part x]
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="Neo4j Queries" />
+    <meta property="twitter:title" content="Neo4j Queries" />
+    
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">Neo4j Queries</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#neo4j">neo4j</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on September 13, 2015
+  </div>
+
+  <div class="entry">
+    <p><a href="http://chrissalam.com/Try-Neo4j/">part 1</a> This is part 2 of a three part series. [part x]</p>
+
+<p><img src="portland.jpg"/></p>
+
+<p>Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at <a href="http://six-dribbles.herokuapp.com">six-dribbles</a>. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!</p>
+
+<p>The 2 commands we ran in part 1 brought all the data in as nodes then mapped relationships between them. Now we will explore the shortest path query, the golden gem of any six degrees of separation project. Throughout the process of this project, I found myself typing in Kobe and Lebron on loop to test the query. The moment the database produced the intended result it was like fireworks.</p>
+
+<p><br></p>
+
+<p><img src="lbjkobe.png"/></p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">(</span><span class="n">p1</span><span class="p">:</span><span class="n">Player</span> <span class="err">{</span><span class="n">name</span><span class="p">:</span><span class="ss">&quot;lebron james&quot;</span> <span class="err">}</span><span class="p">),</span>
+      <span class="p">(</span><span class="n">p2</span><span class="p">:</span><span class="n">Player</span><span class="err">{</span><span class="n">name</span><span class="p">:</span><span class="ss">&quot;kobe bryant&quot;</span> <span class="err">}</span><span class="p">),</span>
+       <span class="n">p</span> <span class="o">=</span> <span class="n">shortestPath</span><span class="p">((</span><span class="n">p1</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p2</span><span class="p">))</span> <span class="k">RETURN</span> 
+       <span class="k">EXTRACT</span><span class="p">(</span><span class="n">n</span> <span class="k">in</span> <span class="n">nodes</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">|</span> <span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">),</span> 
+       <span class="k">EXTRACT</span><span class="p">(</span><span class="n">n</span> <span class="k">in</span> <span class="n">nodes</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">|</span> <span class="n">n</span><span class="p">.</span><span class="k">year</span><span class="p">),</span> 
+       <span class="n">RELATIONSHIPS</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>MATCH</strong> Is the powerful cypher statement that lets us join our information together and get back relationships.</p>
+
+<p><strong>(p1:Player {name:&quot;lebron james&quot; }),</strong> is the way we give cypher our starting point,
+<strong>(p2:Player{name:&quot;kobe bryant&quot; }),</strong> is the end point,
+<strong>p = shortestPath((p1)-[*]-(p2))</strong> is the key part of the query
+<strong>RETURN EXTRACT(n in nodes(p) | n.name),</strong> tells us what to return once the match is made.
+<strong>EXTRACT(n in nodes(p) | n.year),</strong> We like to use the name in the first query, 
+<strong>RELATIONSHIPS(p)</strong> then years in the second, and relationships third.</p>
+
+<p>The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.</p>
+
+<p><strong>This is a stub... there&#39;s more to come</strong></p>
+
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christopher.salam@gmail.com"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
