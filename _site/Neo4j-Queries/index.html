@@ -75,6 +75,19 @@
 <p><br></p>
 
 <p><img src="lbjkobe.png"/></p>
+
+<p>Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&#39;s console directly to our app so people can play with it live. We don&#39;t really have the time right now, we&#39;ve been working on a React Native app, but in the mean time, build some queries and move the dots around and build towards the shortest path query.</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">()</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">RETURN</span> <span class="n">r</span> <span class="k">LIMIT</span> <span class="mi">25</span>
+</code></pre></div>
+<p><img src="LAL.png"/></p>
+
+<p>This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&#39;s pretty random and I&#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&#39;s some more for effect.</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">()</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">RETURN</span> <span class="n">r</span> <span class="k">LIMIT</span> <span class="mi">50</span>
+</code></pre></div>
+<p><img src="LAL2.png"/></p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">()</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">RETURN</span> <span class="n">r</span> <span class="k">LIMIT</span> <span class="mi">100</span>
+</code></pre></div>
+<p><img src="LAL3.png"/></p>
 <div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">(</span><span class="n">p1</span><span class="p">:</span><span class="n">Player</span> <span class="err">{</span><span class="n">name</span><span class="p">:</span><span class="ss">&quot;lebron james&quot;</span> <span class="err">}</span><span class="p">),</span>
       <span class="p">(</span><span class="n">p2</span><span class="p">:</span><span class="n">Player</span><span class="err">{</span><span class="n">name</span><span class="p">:</span><span class="ss">&quot;kobe bryant&quot;</span> <span class="err">}</span><span class="p">),</span>
        <span class="n">p</span> <span class="o">=</span> <span class="n">shortestPath</span><span class="p">((</span><span class="n">p1</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p2</span><span class="p">))</span> <span class="k">RETURN</span> 
@@ -111,7 +124,7 @@
 
 <a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
 
-<a href="https://www.linkedin.com/in/christopher.salam@gmail.com"><i class="svg-icon linkedin"></i></a>
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
 
 
 

@@ -17,6 +17,31 @@ The 2 commands we ran in part 1 brought all the data in as nodes then mapped rel
 
 <img src="lbjkobe.png"/>
 
+Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j's console directly to our app so people can play with it live. We don't really have the time right now, we've been working on a React Native app, but in the mean time, build some queries and move the dots around and build towards the shortest path query.
+
+```sql
+MATCH ()-[r:PLAYS_IN]->() RETURN r LIMIT 25
+```
+<img src="LAL.png"/>
+
+This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It's pretty random and I'm not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here's some more for effect.
+
+
+```sql
+MATCH ()-[r:PLAYS_IN]->() RETURN r LIMIT 50
+```
+
+<img src="LAL2.png"/>
+
+```sql
+MATCH ()-[r:PLAYS_IN]->() RETURN r LIMIT 100
+```
+
+<img src="LAL3.png"/>
+
+
+
+
 ```sql
 MATCH (p1:Player {name:"lebron james" }),
       (p2:Player{name:"kobe bryant" }),
