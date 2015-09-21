@@ -889,3 +889,23 @@ code {
 .center-align {
   text-align: center;
 }
+
+.node circle {
+  fill: #fff;
+  stroke: darkred;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 14px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #806641;
+  stroke-width: 3px;
+}
+
+svg {
+  margin: 0 auto;
+}
