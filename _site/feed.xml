@@ -14,7 +14,7 @@
 
 &lt;p&gt;We have no servers in our application.* Currently we use react references and listen for changes directly where is needed. There are libraries such as react-fire, angular-fire, et al., but there were none for us when we started this project, so we proceeded to write out our calls in vanilla RN.&lt;/p&gt;
 
-&lt;p&gt;This is what we had initially for fetching our data. &lt;/p&gt;
+&lt;p&gt;This is what we had initially for fetching our data.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;fetchData&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;REQUEST_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -132,15 +132,15 @@
 
 &lt;p&gt;I use emmet for HTML quick editing. This will eventually go into a short mini tutorial of some of my favorite emmet tricks. Also, show &lt;a href=&quot;https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6&quot;&gt;link to the react emmet plugin.&lt;/a&gt; &lt;/p&gt;
 
-&lt;p&gt;I use Git Gutter to help me keep track of my changes visually.&lt;/p&gt;
+&lt;p&gt;I use &lt;a href=&quot;https://packagecontrol.io/packages/GitGutter&quot;&gt; Git Gutter &lt;/a&gt; to help me keep track of my changes visually.&lt;/p&gt;
 
-&lt;p&gt;I use a sublime build tool to help me with my algorithmic problems, link here to Jamil&amp;#39;s post.&lt;/p&gt;
+&lt;p&gt;I use a &lt;a href-&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;sublime build tool &lt;/a&gt;, that my friend Jamil help me install to help me with my algorithmic problems.&lt;/p&gt;
 
-&lt;p&gt;I use a bracket matching tool to help me keep track of the (), {}, and []. &lt;/p&gt;
+&lt;p&gt;I use a &lt;a href=&quot;https://packagecontrol.io/packages/BracketHighlighter&quot;&gt;bracket matching &lt;/a&gt; tool to help me keep track of the (), {}, and []. &lt;/p&gt;
 
-&lt;p&gt;I use color sublime, which keeps me from going crazy with the boring color pallette of text editing. &lt;/p&gt;
+&lt;p&gt;I use &lt;a href=&quot;http://colorsublime.com/&quot;&gt;color sublime&lt;/a&gt;, which keeps me from going crazy with the boring color pallette of text editing. &lt;/p&gt;
 
-&lt;p&gt;I use the a white space removal tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.&lt;/p&gt;
+&lt;p&gt;I use the a &lt;a href=&quot;http://logicmason.com/2013/strip-trailing-whitespace-every-time-you-save-a-file-in-sublime-text/&quot;&gt; white space removal &lt;/a&gt; tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>

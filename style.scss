@@ -447,8 +447,8 @@ footer {
   stroke-width: 3px;
 }
 
-.node text { 
-  font: 14px sans-serif; 
+.node text {
+  font: 11px sans-serif;
 }
 
 .link {
@@ -458,5 +458,9 @@ footer {
 }
 
 svg {
-  margin: 0 auto;
+}
+
+div#diagram {
+  display: table;
+  margin: -75px auto -150px;;
 }

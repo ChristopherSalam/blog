@@ -16,14 +16,14 @@ I use sublime linter with JSlint and JShint, which is pretty much several blog p
 
 I use emmet for HTML quick editing. This will eventually go into a short mini tutorial of some of my favorite emmet tricks. Also, show <a href="https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6">link to the react emmet plugin.</a> 
 
-I use Git Gutter to help me keep track of my changes visually.
+I use <a href="https://packagecontrol.io/packages/GitGutter"> Git Gutter </a> to help me keep track of my changes visually.
 
-I use a sublime build tool to help me with my algorithmic problems, link here to Jamil's post.
+I use a <a href-"http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html">sublime build tool </a>, that my friend Jamil help me install to help me with my algorithmic problems.
 
-I use a bracket matching tool to help me keep track of the (), {}, and []. 
+I use a <a href="https://packagecontrol.io/packages/BracketHighlighter">bracket matching </a> tool to help me keep track of the (), {}, and []. 
 
-I use color sublime, which keeps me from going crazy with the boring color pallette of text editing. 
+I use <a href="http://colorsublime.com/">color sublime</a>, which keeps me from going crazy with the boring color pallette of text editing. 
 
-I use the a white space removal tool I found at logic mason's website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.
+I use the a <a href="http://logicmason.com/2013/strip-trailing-whitespace-every-time-you-save-a-file-in-sublime-text/"> white space removal </a> tool I found at logic mason's website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.
 
 **This is a stub... there's more to come**

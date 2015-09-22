@@ -13,7 +13,7 @@ I've been using firebase for small projects and I was really interested in using
 
 We have no servers in our application.* Currently we use react references and listen for changes directly where is needed. There are libraries such as react-fire, angular-fire, et al., but there were none for us when we started this project, so we proceeded to write out our calls in vanilla RN.
 
-This is what we had initially for fetching our data. 
+This is what we had initially for fetching our data.
 
 ```javascript
 fetchData () {

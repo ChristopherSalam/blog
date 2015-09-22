@@ -897,7 +897,7 @@ code {
 }
 
 .node text {
-  font: 14px sans-serif;
+  font: 11px sans-serif;
 }
 
 .link {
@@ -906,6 +906,7 @@ code {
   stroke-width: 3px;
 }
 
-svg {
-  margin: 0 auto;
+div#diagram {
+  display: table;
+  margin: -75px auto -150px;
 }
