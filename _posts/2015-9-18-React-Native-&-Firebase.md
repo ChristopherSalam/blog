@@ -7,11 +7,11 @@ tags:
 - firebase
 ---
 
-We have doing a senior thesis project for Telegraph Academy's first class which builds a simple mobile app using React Native, a new framework/tool which has been open source for 3 months for iOS and a few days for Android. I'm pretty excited to take our nearly complete application for iOS and port it over to Android... but first thing's first, we have to make the database talk to the application's front end.
+We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I'm going to share them here. 
 
 I've been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.
 
-We have no servers in our application.* Currently we use react references and listen for changes directly where is needed. There are libraries such as react-fire, angular-fire, et al., but there were none for us when we started this project, so we proceeded to write out our calls in vanilla RN.
+We have no servers in our application. Currently we use React and F irebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there's a change.
 
 This is what we had initially for fetching our data.
 
@@ -60,10 +60,10 @@ render() {
 
 <img src="beforeafter.png"/>
 
-In an other part of the application we access firebase using a function between the (this.state.loaded) and the ('return loadingView') but that has lead to some funny errors when the database is changed (see some database misfires below) Our plan is the change all calls over to the style above. 
+In an other part of the application we access firebase using a function between the (this.state.loaded) and the ('return loadingView') but that has lead to some funny errors when the database is changed (see some database misfires below). We have already fixed the error shown below and I'll post about that in a part 2.
 
 <img src="phones.jpg"/>
 
-Send me an email if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have a simpler connection soon. 
+Send me an email if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
 
 <!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook's new Graph API doesn't issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we'll have to start over.* -->
