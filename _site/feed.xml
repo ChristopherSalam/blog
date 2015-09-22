@@ -60,7 +60,7 @@
 
 &lt;p&gt;&lt;img src=&quot;phones.jpg&quot;/&gt;&lt;/p&gt;
 
-&lt;p&gt;Send me an email if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. &lt;/p&gt;
+&lt;p&gt;Send me an email or talk to &lt;a href=&quot;http://kent10ou.github.io&quot;&gt; Kent &lt;/a&gt; or Casey if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. &lt;/p&gt;
 
 &lt;!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook&#39;s new Graph API doesn&#39;t issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we&#39;ll have to start over.* --&gt;
 </description>
