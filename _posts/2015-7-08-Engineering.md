@@ -3,7 +3,7 @@ layout: post
 title: Engineering
 ---
 
-Customer success roles? 
+<!--Customer success roles? 
 
 Become familiar with all problem with it. 
 
@@ -45,4 +45,4 @@ Traditional engineering is something that I'm hopeful is on the way to dying. As
 
 I am attending a software engineering bootcamp, primarily to learn the trade but also because I believe in the education model. I think that mutual investment, market demand, and connections force people adapt quickly and churn out people as useful products, and I hope this eventually becomes more representative of the education marketplace. There are numerous drawbacks to this, I understand the middle class is eroding very quickly in the United States, and the jobs of University staff and faculty are strong members of the middle class, another union being dissolved, but there simply is not enough accountability and responsivity to the market. 
 
-I do think there is a powerful value to the education that I did obtain, I found some of my best friends, and I found and developed many of my passions: transportation, energy, the environment, agriculture, and complicated split-incentive problems. However, there really isn't a feedback mechanism for teaching us the most valuable skills and removing the classes that are filler and the professors that haven't kept up with the times. 
+I do think there is a powerful value to the education that I did obtain, I found some of my best friends, and I found and developed many of my passions: transportation, energy, the environment, agriculture, and complicated split-incentive problems. However, there really isn't a feedback mechanism for teaching us the most valuable skills and removing the classes that are filler and the professors that haven't kept up with the times. -->
