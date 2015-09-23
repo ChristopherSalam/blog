@@ -1,6 +1,6 @@
 ---
 layout: post
-title: nl complexity
+title: RegExp complexity
 tags:
 - regexp
 - js

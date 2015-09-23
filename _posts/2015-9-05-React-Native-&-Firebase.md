@@ -64,6 +64,6 @@ In an other part of the application we access firebase using a function between 
 
 <img src="phones.jpg"/>
 
-Send me an email or talk to <a href="http://kent10ou.github.io"> Kent </a> or Casey if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
+Send me an email or talk to <a href="http://kent10ou.github.io"> Kent </a> or <a href="http://ceditoph.github.io/"> Casey </a> if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
 
 <!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook's new Graph API doesn't issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we'll have to start over.* -->

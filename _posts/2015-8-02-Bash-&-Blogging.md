@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Open with bash
+title: Bash & Blogging
 tags:
 - bash
 - jekyll

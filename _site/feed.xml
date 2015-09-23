@@ -7,243 +7,7 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>ReactNative &amp; Firebase</title>
-        <description>&lt;p&gt;We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I&amp;#39;m going to share them here. &lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ve been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.&lt;/p&gt;
-
-&lt;p&gt;We have no servers in our application. Currently we use React and F irebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there&amp;#39;s a change.&lt;/p&gt;
-
-&lt;p&gt;This is what we had initially for fetching our data.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;fetchData&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;REQUEST_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;responseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderLoadingView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderTraits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The REQUEST_URL was our firebase url of interest. Which is all fine and dandy, except that this only works when we start our application. We wanted live updating and the best way to do it is to place a listener right in a certain spot...&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderLoadingView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderTraits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;quot;var that = this&amp;quot; resets the context. The database ref listens and uses that.setState to change the view and update our information. It would have been nice to have a react native firebase library to be written out for us, but thankfully we were able to use vanilla firebase and react native to address our pretty simple needs. This is probably the best way, we&amp;#39;ve had no mistriggers using this approach. &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Here&amp;#39;s a demo!&lt;/strong&gt; The top file shows the iOS simulator of the app on the left and the open firebase database on the right. I&amp;#39;m manually adding information in the database and the update of the information triggers and causes the bottom image. The same works when the application sends information to update the database from within the app. It&amp;#39;s pretty exciting to do all this without sending this information through a server, just listeners and firebase calls going back and forth. I&amp;#39;ll add a post discussing those triggers soon!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;beforeafter.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;In an other part of the application we access firebase using a function between the (this.state.loaded) and the (&amp;#39;return loadingView&amp;#39;) but that has lead to some funny errors when the database is changed (see some database misfires below). We have already fixed the error shown below and I&amp;#39;ll post about that in a part 2.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;phones.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Send me an email or talk to &lt;a href=&quot;http://kent10ou.github.io&quot;&gt; Kent &lt;/a&gt; or Casey if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. &lt;/p&gt;
-
-&lt;!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook&#39;s new Graph API doesn&#39;t issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we&#39;ll have to start over.* --&gt;
-</description>
-        <pubDate>Fri, 18 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/React-Native-&-Firebase/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/React-Native-&-Firebase/</guid>
-      </item>
-    
-      <item>
-        <title>Neo4j Queries</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://chrissalam.com/Try-Neo4j/&quot;&gt;part 1&lt;/a&gt; This is part 2 of a three part series. [part x]&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!&lt;/p&gt;
-
-&lt;p&gt;The 2 commands we ran in part 1 brought all the data in as nodes then mapped relationships between them. Now we will explore the shortest path query, the golden gem of any six degrees of separation project. Throughout the process of this project, I found myself typing in Kobe and Lebron on loop to test the query. The moment the database produced the intended result it was like fireworks.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;lbjkobe.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&amp;#39;s console directly to our app so people can play with it live. We don&amp;#39;t really have the time right now, we&amp;#39;ve been working on a React Native app, but in the mean time, build some queries and move the dots around and build towards the shortest path query.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&amp;#39;s pretty random and I&amp;#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&amp;#39;s some more for effect.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL2.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL3.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; 
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-       &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;MATCH&lt;/strong&gt; Is the powerful cypher statement that lets us join our information together and get back relationships.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;(p1:Player {name:&amp;quot;lebron james&amp;quot; }),&lt;/strong&gt; is the way we give cypher our starting point,
-&lt;strong&gt;(p2:Player{name:&amp;quot;kobe bryant&amp;quot; }),&lt;/strong&gt; is the end point,
-&lt;strong&gt;p = shortestPath((p1)-[*]-(p2))&lt;/strong&gt; is the key part of the query
-&lt;strong&gt;RETURN EXTRACT(n in nodes(p) | n.name),&lt;/strong&gt; tells us what to return once the match is made.
-&lt;strong&gt;EXTRACT(n in nodes(p) | n.year),&lt;/strong&gt; We like to use the name in the first query, 
-&lt;strong&gt;RELATIONSHIPS(p)&lt;/strong&gt; then years in the second, and relationships third.&lt;/p&gt;
-
-&lt;p&gt;The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 13 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/Neo4j-Queries/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Neo4j-Queries/</guid>
-      </item>
-    
-      <item>
-        <title>Packages</title>
-        <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now. &lt;/p&gt;
-
-&lt;p&gt;Some people in our class use VI or VIM, but most tend to use sublime text or atom text editor. I currently use Sublime, but am interested in using Atom because I&amp;#39;ve been told it&amp;#39;s supported better and compiles over javascript, rather than python. VIM is a very old text editor that is powerful and purportedly more customizable, but my general experience with it involves cursing. I am also going to check out EMACS eventually, as the politics of a GNU product fits most with my LINUX background, but I believe there is something important to understanding the mainstream before branching out. &lt;/p&gt;
-
-&lt;p&gt;However, packages are available generally across different text editors and should be installed immediately. Even if you don&amp;#39;t learn all the possible ways to use the packages, they benefits they provide can be immediate. If you use Sublime and have not yet installed the package manager, please head to &lt;a href=&quot;https://packagecontrol.io/&quot;&gt;here and follow the instructions on install now&lt;/a&gt;. Browsing the packages here is a great way to know what is trending and what people find helpful.&lt;/p&gt;
-
-&lt;p&gt;I use sublime linter with JSlint and JShint, which is pretty much several blog posts worth of difficulty, so I will pass on describing the process, but these are all helpful so consider installing them. Be patient, as each will take 1 hour to install but is worth the struggle. After installing this, practice setting up different user accounts or save package json&amp;#39;s with an established style guide (I use the AirBNB javascript guideline).&lt;/p&gt;
-
-&lt;p&gt;I use emmet for HTML quick editing. This will eventually go into a short mini tutorial of some of my favorite emmet tricks. Also, show &lt;a href=&quot;https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6&quot;&gt;link to the react emmet plugin.&lt;/a&gt; &lt;/p&gt;
-
-&lt;p&gt;I use &lt;a href=&quot;https://packagecontrol.io/packages/GitGutter&quot;&gt; Git Gutter &lt;/a&gt; to help me keep track of my changes visually.&lt;/p&gt;
-
-&lt;p&gt;I use a &lt;a href-&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;sublime build tool &lt;/a&gt;, that my friend Jamil help me install to help me with my algorithmic problems.&lt;/p&gt;
-
-&lt;p&gt;I use a &lt;a href=&quot;https://packagecontrol.io/packages/BracketHighlighter&quot;&gt;bracket matching &lt;/a&gt; tool to help me keep track of the (), {}, and []. &lt;/p&gt;
-
-&lt;p&gt;I use &lt;a href=&quot;http://colorsublime.com/&quot;&gt;color sublime&lt;/a&gt;, which keeps me from going crazy with the boring color pallette of text editing. &lt;/p&gt;
-
-&lt;p&gt;I use the a &lt;a href=&quot;http://logicmason.com/2013/strip-trailing-whitespace-every-time-you-save-a-file-in-sublime-text/&quot;&gt; white space removal &lt;/a&gt; tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 07 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/Packages/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Packages/</guid>
-      </item>
-    
-      <item>
-        <title>Try ReactNative</title>
-        <description>&lt;p&gt;Our group of three sat down to discuss what we wanted to pursue for our Telegraph Academy senior project. We created a venn diagram and put up our different goals, technology interests, and interests. We discussed our goals for after the program and a few different proposals before settling in on a social app that uses React Native, d3, Firebase, the Facebook API.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;venn.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Then we thought... can we pull this off in four weeks?&lt;/p&gt;
-
-&lt;p&gt;A few days later, the thought is certainly that we definitely can and that we will contribute to the work that will lead to making react native and firebase even more successful. Kent, one of my teammates, already has &lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;corrected a blog &lt;/a&gt; that we&amp;#39;ve used and we are going to keep adding to the blog posts and links that have helped us.&lt;/p&gt;
-
-&lt;p&gt;Some of the other links that we have used so far.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;On choosing between angular ionic and react native.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker&quot;&gt;Angular versus React&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic&quot;&gt;iOS to Ionic&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=9857580&quot;&gt;Why React&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/&quot;&gt;React uses... React!&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://wix.github.io/react-templates/&quot;&gt;React Templates&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js&quot;&gt;Build twitter stream with react&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/&quot;&gt;Sample app with Cordova&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;React Native&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://ryanclark.me/going-native-with-react/&quot;&gt;Going native with react&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/getting-started.html&quot;&gt;Getting started with React&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html&quot;&gt;Testing&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Bulid primer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;... for Beginners&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-tab-bar/&quot;&gt;Tab Bar sample&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-resources/&quot;&gt;Resources&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/navigatorios.html&quot;&gt;Navigator iOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/leecade/react-native-swiper&quot;&gt;Swiper&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/johanneslumpe/react-native-gesture-recognizers&quot;&gt;Gesture Recognizers&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/enaqx/awesome-react#server-client-with-react&quot;&gt;Server-Client&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Xcode &amp;amp; Apple&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/programs/enroll/&quot;&gt;Enroll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html&quot;&gt;XCode&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html&quot;&gt;Icon Matrix&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developers.facebook.com/docs/facebook-login/ios&quot;&gt;iOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1&quot;&gt;iOS documentation for User Experience/a&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/brentvatne/react-native-svg&quot;&gt;React Native &amp;amp; SVG&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Firebase, OAuth &amp;amp; D3&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/blog/2015-05-29-react-native.html&quot;&gt;React Native &amp;amp; FireBase&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/firebase/reactfire/tree/master/examples/todoApp&quot;&gt;Examples&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/docs/rest/guide/saving-data.html&quot;&gt;Saving Data in FireBase&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d&quot;&gt;OAuth 2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://ahmadchatha.com/writings/article1.html&quot;&gt;D3&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Here&amp;#39;s us&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://katfish.me/ (nothing much here yet)...&quot;&gt;Katfish us!&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Long story made short: We found all this in less than 2 days. We&amp;#39;ve been able to parse through it, learn quickly and help others. Even as a new technology, it&amp;#39;s clear that the framework achieves it&amp;#39;s goal: it makes it easier to make applications and early adopters are excited about it and helping each other. Don&amp;#39;t be discouraged to take on anything new!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 31 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/Try-React-Native/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Try-React-Native/</guid>
-      </item>
-    
-      <item>
-        <title>nl complexity</title>
+        <title>RegExp complexity</title>
         <description>&lt;p&gt;I wanted to start off by saying succinctly and firmly that I believe using regular expressions are often more time complex, certainly less intuitive, and often only effective for niche situations when it comes to solving coding challenges and interview questions... however, I am still fascinated with it!&lt;/p&gt;
 
 &lt;p&gt;A time complexity optimized solution will having the fewest amount of operations.
@@ -340,13 +104,76 @@ RegExp solutions offer a chance at &lt;a href=&quot;https://en.wikipedia.org/wik
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sat, 22 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/nl%20complexity/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/nl%20complexity/</guid>
+        <pubDate>Fri, 11 Sep 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/RegExp-complexity/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/RegExp-complexity/</guid>
       </item>
     
       <item>
-        <title>LiveCode Curry</title>
+        <title>ReactNative &amp; Firebase</title>
+        <description>&lt;p&gt;We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I&amp;#39;m going to share them here. &lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ve been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.&lt;/p&gt;
+
+&lt;p&gt;We have no servers in our application. Currently we use React and F irebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there&amp;#39;s a change.&lt;/p&gt;
+
+&lt;p&gt;This is what we had initially for fetching our data.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;fetchData&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;REQUEST_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;responseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderLoadingView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderTraits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The REQUEST_URL was our firebase url of interest. Which is all fine and dandy, except that this only works when we start our application. We wanted live updating and the best way to do it is to place a listener right in a certain spot...&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderLoadingView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderTraits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;quot;var that = this&amp;quot; resets the context. The database ref listens and uses that.setState to change the view and update our information. It would have been nice to have a react native firebase library to be written out for us, but thankfully we were able to use vanilla firebase and react native to address our pretty simple needs. This is probably the best way, we&amp;#39;ve had no mistriggers using this approach. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Here&amp;#39;s a demo!&lt;/strong&gt; The top file shows the iOS simulator of the app on the left and the open firebase database on the right. I&amp;#39;m manually adding information in the database and the update of the information triggers and causes the bottom image. The same works when the application sends information to update the database from within the app. It&amp;#39;s pretty exciting to do all this without sending this information through a server, just listeners and firebase calls going back and forth. I&amp;#39;ll add a post discussing those triggers soon!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;beforeafter.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;In an other part of the application we access firebase using a function between the (this.state.loaded) and the (&amp;#39;return loadingView&amp;#39;) but that has lead to some funny errors when the database is changed (see some database misfires below). We have already fixed the error shown below and I&amp;#39;ll post about that in a part 2.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;phones.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Send me an email or talk to &lt;a href=&quot;http://kent10ou.github.io&quot;&gt; Kent &lt;/a&gt; or &lt;a href=&quot;http://ceditoph.github.io/&quot;&gt; Casey &lt;/a&gt; if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. &lt;/p&gt;
+
+&lt;!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook&#39;s new Graph API doesn&#39;t issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we&#39;ll have to start over.* --&gt;
+</description>
+        <pubDate>Sat, 05 Sep 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/React-Native-&-Firebase/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/React-Native-&-Firebase/</guid>
+      </item>
+    
+      <item>
+        <title>Function Currying</title>
         <description>&lt;p&gt;Tonight, I watched Cassandra&amp;#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
 
 &lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
@@ -398,9 +225,182 @@ var newfunc =  R.pipe(func1, func2, func3)
 
 where the newfunc(args_provided_to_function_one) =  --&gt;
 </description>
+        <pubDate>Mon, 31 Aug 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Function-Currying/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Function-Currying/</guid>
+      </item>
+    
+      <item>
+        <title>Neo4j Queries</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://chrissalam.com/Try-Neo4j/&quot;&gt;part 1&lt;/a&gt; This is part 2 of a three part series. [part x]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!&lt;/p&gt;
+
+&lt;p&gt;The 2 commands we ran in part 1 brought all the data in as nodes then mapped relationships between them. Now we will explore the shortest path query, the golden gem of any six degrees of separation project. Throughout the process of this project, I found myself typing in Kobe and Lebron on loop to test the query. The moment the database produced the intended result it was like fireworks.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;lbjkobe.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&amp;#39;s console directly to our app so people can play with it live. We don&amp;#39;t really have the time right now, we&amp;#39;ve been working on a React Native app, but in the mean time, build some queries and move the dots around and build towards the shortest path query.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;LAL.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&amp;#39;s pretty random and I&amp;#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&amp;#39;s some more for effect.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;LAL2.png&quot;/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;LAL3.png&quot;/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; 
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;MATCH&lt;/strong&gt; Is the powerful cypher statement that lets us join our information together and get back relationships.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(p1:Player {name:&amp;quot;lebron james&amp;quot; }),&lt;/strong&gt; is the way we give cypher our starting point,
+&lt;strong&gt;(p2:Player{name:&amp;quot;kobe bryant&amp;quot; }),&lt;/strong&gt; is the end point,
+&lt;strong&gt;p = shortestPath((p1)-[*]-(p2))&lt;/strong&gt; is the key part of the query
+&lt;strong&gt;RETURN EXTRACT(n in nodes(p) | n.name),&lt;/strong&gt; tells us what to return once the match is made.
+&lt;strong&gt;EXTRACT(n in nodes(p) | n.year),&lt;/strong&gt; We like to use the name in the first query, 
+&lt;strong&gt;RELATIONSHIPS(p)&lt;/strong&gt; then years in the second, and relationships third.&lt;/p&gt;
+
+&lt;p&gt;The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 26 Aug 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Neo4j-Queries/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Neo4j-Queries/</guid>
+      </item>
+    
+      <item>
+        <title>Try ReactNative</title>
+        <description>&lt;p&gt;Our group of three sat down to discuss what we wanted to pursue for our Telegraph Academy senior project. We created a venn diagram and put up our different goals, technology interests, and interests. We discussed our goals for after the program and a few different proposals before settling in on a social app that uses React Native, d3, Firebase, the Facebook API.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;venn.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Then we thought... can we pull this off in four weeks?&lt;/p&gt;
+
+&lt;p&gt;A few days later, the thought is certainly that we definitely can and that we will contribute to the work that will lead to making react native and firebase even more successful. Kent, one of my teammates, already has &lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;corrected a blog &lt;/a&gt; that we&amp;#39;ve used and we are going to keep adding to the blog posts and links that have helped us.&lt;/p&gt;
+
+&lt;p&gt;Some of the other links that we have used so far.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;On choosing between angular ionic and react native.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker&quot;&gt;Angular versus React&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic&quot;&gt;iOS to Ionic&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=9857580&quot;&gt;Why React&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/&quot;&gt;React uses... React!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://wix.github.io/react-templates/&quot;&gt;React Templates&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js&quot;&gt;Build twitter stream with react&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/&quot;&gt;Sample app with Cordova&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;React Native&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://ryanclark.me/going-native-with-react/&quot;&gt;Going native with react&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/getting-started.html&quot;&gt;Getting started with React&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html&quot;&gt;Testing&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Bulid primer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;... for Beginners&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-tab-bar/&quot;&gt;Tab Bar sample&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-resources/&quot;&gt;Resources&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/navigatorios.html&quot;&gt;Navigator iOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/leecade/react-native-swiper&quot;&gt;Swiper&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/johanneslumpe/react-native-gesture-recognizers&quot;&gt;Gesture Recognizers&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/enaqx/awesome-react#server-client-with-react&quot;&gt;Server-Client&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Xcode &amp;amp; Apple&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/programs/enroll/&quot;&gt;Enroll&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html&quot;&gt;XCode&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html&quot;&gt;Icon Matrix&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developers.facebook.com/docs/facebook-login/ios&quot;&gt;iOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1&quot;&gt;iOS documentation for User Experience/a&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/brentvatne/react-native-svg&quot;&gt;React Native &amp;amp; SVG&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Firebase, OAuth &amp;amp; D3&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/blog/2015-05-29-react-native.html&quot;&gt;React Native &amp;amp; FireBase&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/firebase/reactfire/tree/master/examples/todoApp&quot;&gt;Examples&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/docs/rest/guide/saving-data.html&quot;&gt;Saving Data in FireBase&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d&quot;&gt;OAuth 2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://ahmadchatha.com/writings/article1.html&quot;&gt;D3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Here&amp;#39;s us&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://katfish.me/ (nothing much here yet)...&quot;&gt;Katfish us!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Long story made short: We found all this in less than 2 days. We&amp;#39;ve been able to parse through it, learn quickly and help others. Even as a new technology, it&amp;#39;s clear that the framework achieves it&amp;#39;s goal: it makes it easier to make applications and early adopters are excited about it and helping each other. Don&amp;#39;t be discouraged to take on anything new!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 19 Aug 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/Try-ReactNative/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Try-ReactNative/</guid>
+      </item>
+    
+      <item>
+        <title>Packages</title>
+        <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now. &lt;/p&gt;
+
+&lt;p&gt;Some people in our class use VI or VIM, but most tend to use sublime text or atom text editor. I currently use Sublime, but am interested in using Atom because I&amp;#39;ve been told it&amp;#39;s supported better and compiles over javascript, rather than python. VIM is a very old text editor that is powerful and purportedly more customizable, but my general experience with it involves cursing. I am also going to check out EMACS eventually, as the politics of a GNU product fits most with my LINUX background, but I believe there is something important to understanding the mainstream before branching out. &lt;/p&gt;
+
+&lt;p&gt;However, packages are available generally across different text editors and should be installed immediately. Even if you don&amp;#39;t learn all the possible ways to use the packages, they benefits they provide can be immediate. If you use Sublime and have not yet installed the package manager, please head to &lt;a href=&quot;https://packagecontrol.io/&quot;&gt;here and follow the instructions on install now&lt;/a&gt;. Browsing the packages here is a great way to know what is trending and what people find helpful.&lt;/p&gt;
+
+&lt;p&gt;I use sublime linter with JSlint and JShint, which is pretty much several blog posts worth of difficulty, so I will pass on describing the process, but these are all helpful so consider installing them. Be patient, as each will take 1 hour to install but is worth the struggle. After installing this, practice setting up different user accounts or save package json&amp;#39;s with an established style guide (I use the AirBNB javascript guideline).&lt;/p&gt;
+
+&lt;p&gt;I use emmet for HTML quick editing. This will eventually go into a short mini tutorial of some of my favorite emmet tricks. Also, show &lt;a href=&quot;https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6&quot;&gt;link to the react emmet plugin.&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;I use &lt;a href=&quot;https://packagecontrol.io/packages/GitGutter&quot;&gt; Git Gutter &lt;/a&gt; to help me keep track of my changes visually.&lt;/p&gt;
+
+&lt;p&gt;I use a &lt;a href-&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;sublime build tool &lt;/a&gt;, that my friend Jamil help me install to help me with my algorithmic problems.&lt;/p&gt;
+
+&lt;p&gt;I use a &lt;a href=&quot;https://packagecontrol.io/packages/BracketHighlighter&quot;&gt;bracket matching &lt;/a&gt; tool to help me keep track of the (), {}, and []. &lt;/p&gt;
+
+&lt;p&gt;I use &lt;a href=&quot;http://colorsublime.com/&quot;&gt;color sublime&lt;/a&gt;, which keeps me from going crazy with the boring color pallette of text editing. &lt;/p&gt;
+
+&lt;p&gt;I use the a &lt;a href=&quot;http://logicmason.com/2013/strip-trailing-whitespace-every-time-you-save-a-file-in-sublime-text/&quot;&gt; white space removal &lt;/a&gt; tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+</description>
         <pubDate>Sat, 15 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/LiveCode-Curry/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/LiveCode-Curry/</guid>
+        <link>ChristopherSalam.github.io/Packages/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Packages/</guid>
       </item>
     
       <item>
@@ -457,7 +457,7 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
       </item>
     
       <item>
-        <title>Open with bash</title>
+        <title>Bash &amp; Blogging</title>
         <description>&lt;p&gt;There are many obvious benefits to working your computer from the terminal. I&amp;#39;ve been experimenting with opening tabs and running chains of commands from the terminal. Here&amp;#39;s a command to do exactly this.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;newtab&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     osascript -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;tell application &amp;quot;iTerm&amp;quot; to activate&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;tell application &amp;quot;System Events&amp;quot; to tell process &amp;quot;iTerm2&amp;quot; to keystroke &amp;quot;t&amp;quot; using command down&amp;#39;&lt;/span&gt;
@@ -509,12 +509,12 @@ blog &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot
 &lt;p&gt;notes: sublime is the shortcut word added by a CLI to open sublime text. Most of the other commands are written as short cuts on my terminal but have been written out for clarity.&lt;/p&gt;
 </description>
         <pubDate>Sun, 02 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/Open-with-bash/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Open-with-bash/</guid>
+        <link>ChristopherSalam.github.io/Bash-&-Blogging/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Bash-&-Blogging/</guid>
       </item>
     
       <item>
-        <title>RegExp.lanation</title>
+        <title>Try RegExp</title>
         <description>&lt;div  style=&quot;text-align: center;&quot;&gt;
 &lt;a href=&quot;http://www.catonmat.net/blog/recursive-regular-expressions/&quot;&gt;&lt;img src=&quot;yo-dawg-regex.jpg&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -614,12 +614,12 @@ You can search for all alphabetic characters in a range.&lt;/p&gt;
 &lt;p&gt;I&amp;#39;m interested in wrting more about regular expressions, and I hope you appreciated that this started at the absolute beginning. There&amp;#39;s a few other links that I&amp;#39;ve found that have helped me get really into regexp and I&amp;#39;ve included them here. &lt;a target=&quot;_blank&quot; href=&quot;http://bjorn.tipling.com/state-and-regular-expressions-in-javascript&quot;&gt; This is a javascript specific link that goes into lots of detail inner functionality. &lt;/a&gt; To answer the bigger question of why should I bother learning regular expressions, here&amp;#39;s a helpful link that shows some of the most commonly used regexp that are used  &lt;a target=&quot;_blank&quot; href=&quot;http://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149&quot;&gt; for validation.&lt;/a&gt; &lt;a target=&quot;_blank&quot; href=&quot;http://geniuscarrier.com/common-regular-expressions-in-javascript/&quot; &gt; Here&amp;#39;s a similar link.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 26 Jul 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/RegExp.lanation/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/RegExp.lanation/</guid>
+        <link>ChristopherSalam.github.io/Try-RegExp/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Try-RegExp/</guid>
       </item>
     
       <item>
-        <title>LiveCode Bind</title>
+        <title>Function Binding</title>
         <description>&lt;p&gt;In my few weeks in Telegraph Academy, I&amp;#39;ve discovered I learn best from live coding and I want to bring some of that feel to my blog. &lt;a href=&quot;https://en.wikipedia.org/wiki/Live_coding&quot; target=&quot;_blank&quot;&gt;Live coding&lt;/a&gt; is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time. &lt;br /&gt;&lt;br /&gt; One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, the live-coder puts on a show and gives me a chance to see an idea take shape. It also gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Finally, live coding also helps me establish patterns to look for and makes practical and succinct examples. &lt;br /&gt;&lt;br /&gt;For example, I have been struggling with the concept of &lt;strong&gt;call&lt;/strong&gt;, &lt;strong&gt;apply&lt;/strong&gt;, and &lt;strong&gt;bind&lt;/strong&gt; and a live coding session in class went a long way towards demistifying it for me. Here&amp;#39;s an expanded look at it! Open your console and try this out: &lt;br /&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;teeth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;dirty&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -719,8 +719,8 @@ As cool as this is what about flossing? As someone who has had lots of maxillofa
 &lt;p&gt;As a closing note, Live coding is something I find helpful and so do others: &lt;a href=&quot;https://www.livecoding.tv/&quot; target=&quot;_blank&quot;&gt; here is a link to a site focused on it. &lt;/a&gt; &lt;strong&gt;Call&lt;/strong&gt;, &lt;strong&gt;apply&lt;/strong&gt;, and &lt;strong&gt;bind&lt;/strong&gt; are hard especially if you are new to programming, but these three functions are powerful features I am excited to use and learn more about. It helped me to spend some time coding through this exercise and inventing new scenarios for alice and her dental woes and I hope it helps you.&lt;/p&gt;
 </description>
         <pubDate>Sun, 19 Jul 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/LiveCode-Bind/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/LiveCode-Bind/</guid>
+        <link>ChristopherSalam.github.io/Function-Binding/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Function-Binding/</guid>
       </item>
     
   </channel>

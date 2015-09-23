@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>ChristopherSalam.github.io/RegExp-complexity/</loc>
+    <lastmod>2015-09-11T00:00:00-07:00</lastmod>
+  </url>
+  <url>
     <loc>ChristopherSalam.github.io/React-Native-&-Firebase/</loc>
-    <lastmod>2015-09-18T00:00:00-07:00</lastmod>
+    <lastmod>2015-09-05T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Neo4j-Queries/</loc>
-    <lastmod>2015-09-13T00:00:00-07:00</lastmod>
-  </url>
-  <url>
-    <loc>ChristopherSalam.github.io/Packages/</loc>
-    <lastmod>2015-09-07T00:00:00-07:00</lastmod>
-  </url>
-  <url>
-    <loc>ChristopherSalam.github.io/Try-React-Native/</loc>
+    <loc>ChristopherSalam.github.io/Function-Currying/</loc>
     <lastmod>2015-08-31T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/nl%20complexity/</loc>
-    <lastmod>2015-08-22T00:00:00-07:00</lastmod>
+    <loc>ChristopherSalam.github.io/Neo4j-Queries/</loc>
+    <lastmod>2015-08-26T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/LiveCode-Curry/</loc>
+    <loc>ChristopherSalam.github.io/Try-ReactNative/</loc>
+    <lastmod>2015-08-19T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/Packages/</loc>
     <lastmod>2015-08-15T00:00:00-07:00</lastmod>
   </url>
   <url>
@@ -29,27 +29,31 @@
     <lastmod>2015-08-09T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Open-with-bash/</loc>
+    <loc>ChristopherSalam.github.io/Bash-&-Blogging/</loc>
     <lastmod>2015-08-02T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/RegExp.lanation/</loc>
+    <loc>ChristopherSalam.github.io/Try-RegExp/</loc>
     <lastmod>2015-07-26T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/LiveCode-Bind/</loc>
+    <loc>ChristopherSalam.github.io/Function-Binding/</loc>
     <lastmod>2015-07-19T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Bash-beginnings/</loc>
+    <loc>ChristopherSalam.github.io/Try-Bash/</loc>
     <lastmod>2015-07-13T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/For%20Newbs/</loc>
-    <lastmod>2015-07-07T00:00:00-07:00</lastmod>
+    <loc>ChristopherSalam.github.io/Engineering/</loc>
+    <lastmod>2015-07-08T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/First-Post/</loc>
+    <loc>ChristopherSalam.github.io/Newb-Resources/</loc>
+    <lastmod>2015-07-03T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/Software/</loc>
     <lastmod>2015-06-26T00:00:00-07:00</lastmod>
   </url>
   <url>

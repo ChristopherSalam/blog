@@ -1,6 +1,6 @@
 ---
 layout: post
-title: LiveCode Curry
+title: Function Currying
 tags:
 - js
 ---

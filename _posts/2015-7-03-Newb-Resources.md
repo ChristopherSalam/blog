@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Links For Newbs
+title: Newb Resources
 tags:
 - newb
 ---
