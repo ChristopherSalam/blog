@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Neo4j Queries
+title: query neo4j
 tags:
 - neo4j
+- database
 ---
 
 [part 1](http://chrissalam.com/Try-Neo4j/) This is part 2 of a three part series. [part x]

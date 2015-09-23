@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Packages
+title: packages
 tags: 
 - text-editors
 - packages

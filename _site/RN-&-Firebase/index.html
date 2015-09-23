@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReactNative & Firebase – Christopher Salam – thoughts on software and engineering</title>
+    <title>RN & Firebase – Christopher Salam – thoughts on software and engineering</title>
 
         <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -17,8 +17,8 @@
     <meta name="author" content="Christopher Salam" />
 
     
-    <meta property="og:title" content="ReactNative & Firebase" />
-    <meta property="twitter:title" content="ReactNative & Firebase" />
+    <meta property="og:title" content="RN & Firebase" />
+    <meta property="twitter:title" content="RN & Firebase" />
     
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
@@ -48,7 +48,7 @@
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1 class="center-align">ReactNative & Firebase</h1>
+  <h1 class="center-align">RN & Firebase</h1>
   <div class="center-align"><div class="post-tags">
   Tags:
   
@@ -57,9 +57,13 @@
   
   <a href="/tags/#react">react</a>,
   
-  <a href="/tags/#native">native</a>,
+  <a href="/tags/#reactnative">reactnative</a>,
   
-  <a href="/tags/#firebase">firebase</a>
+  <a href="/tags/#firebase">firebase</a>,
+  
+  <a href="/tags/#database">database</a>,
+  
+  <a href="/tags/#javascript">javascript</a>
   
 </div></div>
 
@@ -72,7 +76,7 @@
 
 <p>I&#39;ve been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.</p>
 
-<p>We have no servers in our application. Currently we use React and F irebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there&#39;s a change.</p>
+<p>We have no servers in our application. Currently we use React and Firebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there&#39;s a change.</p>
 
 <p>This is what we had initially for fetching our data.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fetchData</span> <span class="p">()</span> <span class="p">{</span>

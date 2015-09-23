@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Try RegExp
+title: try regexp
 tags:
 - regexp
 - js

@@ -1,60 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>ChristopherSalam.github.io/RegExp-complexity/</loc>
-    <lastmod>2015-09-11T00:00:00-07:00</lastmod>
-  </url>
-  <url>
-    <loc>ChristopherSalam.github.io/React-Native-&-Firebase/</loc>
+    <loc>ChristopherSalam.github.io/RN-&-Firebase/</loc>
     <lastmod>2015-09-05T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Function-Currying/</loc>
+    <loc>ChristopherSalam.github.io/curry-f(x)/</loc>
     <lastmod>2015-08-31T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Neo4j-Queries/</loc>
+    <loc>ChristopherSalam.github.io/query-neo4j/</loc>
     <lastmod>2015-08-26T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Try-ReactNative/</loc>
+    <loc>ChristopherSalam.github.io/try-RN/</loc>
     <lastmod>2015-08-19T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Packages/</loc>
+    <loc>ChristopherSalam.github.io/packages/</loc>
     <lastmod>2015-08-15T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Try-Neo4j/</loc>
+    <loc>ChristopherSalam.github.io/try-neo4j/</loc>
     <lastmod>2015-08-09T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Bash-&-Blogging/</loc>
+    <loc>ChristopherSalam.github.io/bash-&-blog/</loc>
     <lastmod>2015-08-02T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Try-RegExp/</loc>
-    <lastmod>2015-07-26T00:00:00-07:00</lastmod>
+    <loc>ChristopherSalam.github.io/O(r)/</loc>
+    <lastmod>2015-07-25T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Function-Binding/</loc>
+    <loc>ChristopherSalam.github.io/bind-f(x)/</loc>
     <lastmod>2015-07-19T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Try-Bash/</loc>
+    <loc>ChristopherSalam.github.io/try-bash/</loc>
     <lastmod>2015-07-13T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Engineering/</loc>
-    <lastmod>2015-07-08T00:00:00-07:00</lastmod>
+    <loc>ChristopherSalam.github.io/try-regexp/</loc>
+    <lastmod>2015-07-04T00:00:00-07:00</lastmod>
   </url>
   <url>
-    <loc>ChristopherSalam.github.io/Newb-Resources/</loc>
-    <lastmod>2015-07-03T00:00:00-07:00</lastmod>
-  </url>
-  <url>
-    <loc>ChristopherSalam.github.io/Software/</loc>
+    <loc>ChristopherSalam.github.io/for-newbs/</loc>
     <lastmod>2015-06-26T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/notes/2015-6-26-Software.html</loc>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/notes/2015-7-08-Engineering.html</loc>
   </url>
   <url>
     <loc>ChristopherSalam.github.io/404.html</loc>

@@ -897,12 +897,18 @@ code {
 }
 
 .node text {
-  font: 11px sans-serif;
+  font: 13px sans-serif;
+                       /*
+z-index: 99;
+background-color:white;
+-ms-transform: rotate(-45deg); 
+-webkit-transform: rotate(-45deg); 
+transform: rotate(-45deg); */
 }
 
 .link {
   fill: none;
-  stroke: #806641;
+  stroke: #000;
   stroke-width: 3px;
 }
 
@@ -910,5 +916,4 @@ div#diagram {
   display: table;
   padding: 20px;
   margin: 0px auto;
-  /*margin: -75px auto -150px;*/
 }

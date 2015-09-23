@@ -1,17 +1,19 @@
 ---
 layout: post
-title: ReactNative & Firebase
+title: RN & Firebase
 tags:
 - react
-- native
+- reactnative
 - firebase
+- database
+- javascript
 ---
 
 We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I'm going to share them here. 
 
 I've been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.
 
-We have no servers in our application. Currently we use React and F irebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there's a change.
+We have no servers in our application. Currently we use React and Firebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there's a change.
 
 This is what we had initially for fetching our data.
 

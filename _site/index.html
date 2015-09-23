@@ -51,65 +51,115 @@
 
 var treeData = [
   {
-    "name": "Chris Salam",
+    "name": "#intro",
     "parent": "null",
     "children": [
       {
-        "name": "Software",
-        "parent": "Chris Salam",
-        "children": [
+        "name":"packages",
+        "parent": "",
+        "children":[
           {
-            "name": "neo4j",
-            "parent": "Software"
-          },
-          {
-            "name": "JavaScript",
-            "parent": "Software",
-            "children":[
-              {
-                "name": "React Native",
-                "parent": "Engineering"
-              },
-              {
-                "name": "RegExp",
-                "parent": "Engineering"
-              },
-              {
-                "name": "firebase",
-                "parent": "Engineering"
+          "name": "#neo4j",
+          "parent": "packages",
+          "children": [
+            {
+              "name": "try-neo4j",
+              "parent": "neo4j",
+              "children": [
+                {
+                  "name": "query-neo4j",
+                  "parent": "neo4j",
+                }
+                  ]
               }
             ]
-          },
-          {
-            "name": "Bash",
-            "parent": "Software"
           }
         ]
       },
       {
-        "name": "Engineering",
-        "parent": "Chris Salam"
-          // {
-          //   "name": "Energy",
-          //   "parent": "Engineering"
-          // }
-          // {
-          //   "name": "Agriculture",
-          //   "parent": "Engineering"
-          // },
-          // {
-          //   "name": "Environment",
-          //   "parent": "Engineering"
-          // }
-      }
+        "name": "#javascript",
+        "parent": "Chris Salam",
+        "children":[
+          {
+            "name": "#regexp",
+            "parent": "javascript",
+            "children":[
+              {
+                "name": "try-regexp",
+                "parent": "regexp",
+                "children":[
+                  {
+                    "name": "O(r)",
+                    "parent": "regexp"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "#reactnative",
+            "parent": "Chris Salam",
+            "children": [
+              {
+                "name": "try-RN",
+                "parent": "reactnative",
+                "children": [
+                  {
+                    "name": "RN-&-firebase",
+                    "parent": "reactnative",
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "#f(x)",
+            "parent": "javascript",
+            "children": [
+              {
+                "name": "bind-f(x)",
+                "parent": "functions",
+                "children": [
+                  {
+                    "name": "curry-f(x)",
+                    "parent": "functions"
+                  }
+                ]
+              }
+            ]
+          },
+        ]
+      },
+      {
+        "name":"for-newbs",
+        "parent": "Chris Salam",
+        "children":[
+            {
+            "name": "#bash",
+            "parent": "Chris Salam",
+            "children":[
+              {
+                "name": "try-bash",
+                "parent": "bash",
+                "children": [
+                  {
+                    "name": "bash-&-blog",
+                    "parent": "bash"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
     ]
   }
 ];
 
 // ************** Generate the tree diagram  *****************
-var margin = {top: 5, right: 60, bottom: 5, left: 60},
- width = 600 - margin.right - margin.left,
- height = 850 - margin.top - margin.bottom;
+var margin = {top: 80, right: 15, bottom: 5, left: 15},
+ width = 450 - margin.right - margin.left,
+ height = 840 - margin.top - margin.bottom;
 
 var i = 0;
 
@@ -136,7 +186,7 @@ function update(source) {
    links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 150; });
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
 
   // Declare the nodesâ€¦
   var node = svg.selectAll("g.node")
@@ -149,8 +199,7 @@ function update(source) {
     return "translate(" + d.x + "," + d.y + ")"; });
 
   nodeEnter.append("circle")
-   .attr("r", 35)
-   .style("fill", "#fff");
+   .attr("r", 37)
 
   nodeEnter.append("text")
    .attr("x", function(d) {
@@ -161,7 +210,14 @@ function update(source) {
     return "middle";
   })
    .text(function(d) { return d.name; })
-   .style("fill-opacity", 1);
+   .style("fill-opacity", 1)
+   .attr("class", "hyper").on("click", function (d) {
+        var url;
+        if (d.name.match(/#/)) { url = 'http://localhost:4000/tags/' + d.name; }
+        // var url = 'http://chrissalam.com/#'+d.name
+        else { url = 'http://localhost:4000/' + d.name; }
+        window.location = url;
+    });
 
   // Declare the linksâ€¦
   var link = svg.selectAll("path.link")
@@ -186,11 +242,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/RegExp-complexity/">
+			<a class="hexagon-in1" href="/RN-&-Firebase/">
 
 				<span class="hexagon-in2">
 
-				  RegExp complexity
+				  RN & Firebase
 
 				</span>
 
@@ -202,11 +258,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/React-Native-&-Firebase/">
+			<a class="hexagon-in1" href="/curry-f(x)/">
 
 				<span class="hexagon-in2">
 
-				  ReactNative & Firebase
+				  curry f(x)
 
 				</span>
 
@@ -218,11 +274,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Function-Currying/">
+			<a class="hexagon-in1" href="/query-neo4j/">
 
 				<span class="hexagon-in2">
 
-				  Function Currying
+				  query neo4j
 
 				</span>
 
@@ -234,11 +290,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Neo4j-Queries/">
+			<a class="hexagon-in1" href="/try-RN/">
 
 				<span class="hexagon-in2">
 
-				  Neo4j Queries
+				  try RN
 
 				</span>
 
@@ -250,11 +306,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Try-ReactNative/">
+			<a class="hexagon-in1" href="/packages/">
 
 				<span class="hexagon-in2">
 
-				  Try ReactNative
+				  packages
 
 				</span>
 
@@ -266,11 +322,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Packages/">
+			<a class="hexagon-in1" href="/try-neo4j/">
 
 				<span class="hexagon-in2">
 
-				  Packages
+				  try neo4j
 
 				</span>
 
@@ -282,11 +338,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Try-Neo4j/">
+			<a class="hexagon-in1" href="/bash-&-blog/">
 
 				<span class="hexagon-in2">
 
-				  Try Neo4j
+				  bash & blog
 
 				</span>
 
@@ -298,11 +354,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Bash-&-Blogging/">
+			<a class="hexagon-in1" href="/O(r)/">
 
 				<span class="hexagon-in2">
 
-				  Bash & Blogging
+				  O(r)
 
 				</span>
 
@@ -314,11 +370,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Try-RegExp/">
+			<a class="hexagon-in1" href="/bind-f(x)/">
 
 				<span class="hexagon-in2">
 
-				  Try RegExp
+				  bind f(x)
 
 				</span>
 
@@ -330,11 +386,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Function-Binding/">
+			<a class="hexagon-in1" href="/try-bash/">
 
 				<span class="hexagon-in2">
 
-				  Function Binding
+				  try bash
 
 				</span>
 
@@ -346,11 +402,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Try-Bash/">
+			<a class="hexagon-in1" href="/try-regexp/">
 
 				<span class="hexagon-in2">
 
-				  Try Bash
+				  try regexp
 
 				</span>
 
@@ -362,43 +418,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Engineering/">
+			<a class="hexagon-in1" href="/for-newbs/">
 
 				<span class="hexagon-in2">
 
-				  Engineering
-
-				</span>
-
-			</a>
-
-		</li>
-
-		
-
-		<li class="hexagon">
-
-			<a class="hexagon-in1" href="/Newb-Resources/">
-
-				<span class="hexagon-in2">
-
-				  Newb Resources
-
-				</span>
-
-			</a>
-
-		</li>
-
-		
-
-		<li class="hexagon">
-
-			<a class="hexagon-in1" href="/Software/">
-
-				<span class="hexagon-in2">
-
-				  Software
+				  for newbs
 
 				</span>
 

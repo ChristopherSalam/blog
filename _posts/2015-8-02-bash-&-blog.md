@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bash & Blogging
+title: bash & blog
 tags:
 - bash
 - jekyll
