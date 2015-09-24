@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RN & Firebase
+title: RN-firebase
 tags:
 - react
 - reactnative

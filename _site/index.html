@@ -49,186 +49,175 @@
 
 <script>
 
-var treeData = [
+  var treeData = [
   {
-    "name": "#intro",
+    "name": "#javascript",
     "parent": "null",
+    "children":[
+    {
+      "name": "binding",
+      "parent": "#javascript"
+    },
+    {
+      "name": "#reactnative",
+      "parent": "Chris Salam",
+      "children": [
+      {
+        "name": "try-RN",
+        "parent": "#reactnative"
+      },
+      {
+        "name": "RN-firebase",
+        "parent": "#reactnative",
+      }
+        ]
+    },
+    {
+      "name": "currying",
+      "parent": "#javascript"
+    }
+    ]
+  },
+  {
+  "name": "#intro",
+  "parent": "null",
+  "children": [
+  {
+    "name":"packages",
+    "parent": "#intro",
+  },
+  {
+    "name": "#bash",
+    "parent": "#intro",
     "children": [
-      {
-        "name":"packages",
-        "parent": "",
-        "children":[
-          {
-          "name": "#neo4j",
-          "parent": "packages",
-          "children": [
-            {
-              "name": "try-neo4j",
-              "parent": "neo4j",
-              "children": [
-                {
-                  "name": "query-neo4j",
-                  "parent": "neo4j",
-                }
-                  ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "#javascript",
-        "parent": "Chris Salam",
-        "children":[
-          {
-            "name": "#regexp",
-            "parent": "javascript",
-            "children":[
-              {
-                "name": "try-regexp",
-                "parent": "regexp",
-                "children":[
-                  {
-                    "name": "O(r)",
-                    "parent": "regexp"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "#reactnative",
-            "parent": "Chris Salam",
-            "children": [
-              {
-                "name": "try-RN",
-                "parent": "reactnative",
-                "children": [
-                  {
-                    "name": "RN-&-firebase",
-                    "parent": "reactnative",
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "#f(x)",
-            "parent": "javascript",
-            "children": [
-              {
-                "name": "bind-f(x)",
-                "parent": "functions",
-                "children": [
-                  {
-                    "name": "curry-f(x)",
-                    "parent": "functions"
-                  }
-                ]
-              }
-            ]
-          },
-        ]
-      },
-      {
-        "name":"for-newbs",
-        "parent": "Chris Salam",
-        "children":[
-            {
-            "name": "#bash",
-            "parent": "Chris Salam",
-            "children":[
-              {
-                "name": "try-bash",
-                "parent": "bash",
-                "children": [
-                  {
-                    "name": "bash-&-blog",
-                    "parent": "bash"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
+    {
+      "name": "try-bash",
+      "parent": "#bash"
+    },
+    {
+      "name": "bash-&-blog",
+      "parent": "#intro"
+    }
+    ]
+  },
+  {
+    "name":"for-newbs",
+    "parent": "#intro"
+  }
+  ]
+  },
+  {
+    "name": "#neo4j",
+    "parent": "packages",
+    "children": [
+    {
+      "name": "try-neo4j",
+      "parent": "neo4j"
+    },
+    {
+      "name": "query-neo4j",
+      "parent": "neo4j",
+    }
+    ]
+  },
+  {
+    "name": "#regexp",
+    "parent": "javascript",
+    "children":[
+    {
+      "name": "try-regexp",
+      "parent": "regexp"
+    },
+    {
+      "name": "O(r)",
+      "parent": "regexp"
+    }
     ]
   }
 ];
 
 // ************** Generate the tree diagram  *****************
-var margin = {top: 80, right: 15, bottom: 5, left: 15},
- width = 450 - margin.right - margin.left,
- height = 840 - margin.top - margin.bottom;
 
-var i = 0;
+function makeMeSomeTrees(eachRoot){
+  var margin = {top: 80, right: 15, bottom: 5, left: 15},
+  width = 420 - margin.right - margin.left,
+  height = 510 - margin.top - margin.bottom;
 
-var tree = d3.layout.tree()
- .size([width, height]);
+  var i = 0;
 
-var diagonal = d3.svg.diagonal()
+  var tree = d3.layout.tree()
+  .size([width, height]);
+
+  var diagonal = d3.svg.diagonal()
  // .projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("#diagram").append("svg")
+ var svg = d3.select("#diagram").append("div").append("svg")
  .attr("width", width + margin.right + margin.left)
  .attr("height", height + margin.top + margin.bottom)
  .append("g")
  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-root = treeData[0];
+ root = treeData[eachRoot];
 
-update(root);
+ update(root);
 
-function update(source) {
+ function update(source) {
 
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),
-   links = tree.links(nodes);
+  links = tree.links(nodes);
 
   // Normalize for fixed-depth.
   nodes.forEach(function(d) { d.y = d.depth * 180; });
 
   // Declare the nodesâ€¦
   var node = svg.selectAll("g.node")
-   .data(nodes, function(d) { return d.id || (d.id = ++i); });
+  .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
   // Enter the nodes.
   var nodeEnter = node.enter().append("g")
-   .attr("class", "node")
-   .attr("transform", function(d) {
+  .attr("class", "node")
+  .attr("transform", function(d) {
     return "translate(" + d.x + "," + d.y + ")"; });
 
   nodeEnter.append("circle")
-   .attr("r", 37)
+  .attr("r", 50)
 
   nodeEnter.append("text")
-   .attr("x", function(d) {
+  .attr("x", function(d) {
     return 0;
   })
-   .attr("dy", ".35em")
-   .attr("text-anchor", function(d) {
+  .attr("dy", ".35em")
+  .attr("text-anchor", function(d) {
     return "middle";
   })
-   .text(function(d) { return d.name; })
-   .style("fill-opacity", 1)
-   .attr("class", "hyper").on("click", function (d) {
-        var url;
-        if (d.name.match(/#/)) { url = 'http://localhost:4000/tags/' + d.name; }
+  .text(function(d) { return d.name; })
+  .style("fill-opacity", 1)
+  .attr("class", "hyper").on("click", function (d) {
+    var url;
+    if (d.name.match(/#/)) { url = 'http://chrissalam.com/tags/' + d.name; }
         // var url = 'http://chrissalam.com/#'+d.name
-        else { url = 'http://localhost:4000/' + d.name; }
+        else { url = 'http://chrissalam.com/' + d.name; }
         window.location = url;
-    });
+      });
 
   // Declare the linksâ€¦
   var link = svg.selectAll("path.link")
-   .data(links, function(d) { return d.target.id; });
+  .data(links, function(d) { return d.target.id; });
 
   // Enter the links.
   link.enter().insert("path", "g")
-   .attr("class", "link")
-   .attr("d", diagonal);
+  .attr("class", "link")
+  .attr("d", diagonal);
 
 }
+
+}
+
+for (var q = 0; q < treeData.length; q++) {
+  makeMeSomeTrees(q);
+}
+
 
 </script>
 
@@ -242,11 +231,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/RN-&-Firebase/">
+			<a class="hexagon-in1" href="/RN-firebase/">
 
 				<span class="hexagon-in2">
 
-				  RN & Firebase
+				  RN-firebase
 
 				</span>
 
@@ -258,11 +247,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/curry-f(x)/">
+			<a class="hexagon-in1" href="/currying/">
 
 				<span class="hexagon-in2">
 
-				  curry f(x)
+				  currying
 
 				</span>
 
@@ -370,11 +359,11 @@ function update(source) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/bind-f(x)/">
+			<a class="hexagon-in1" href="/binding/">
 
 				<span class="hexagon-in2">
 
-				  bind f(x)
+				  binding
 
 				</span>
 

@@ -7,7 +7,7 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>RN &amp; Firebase</title>
+        <title>RN-firebase</title>
         <description>&lt;p&gt;We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I&amp;#39;m going to share them here. &lt;/p&gt;
 
 &lt;p&gt;I&amp;#39;ve been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.&lt;/p&gt;
@@ -65,12 +65,12 @@
 &lt;!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook&#39;s new Graph API doesn&#39;t issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we&#39;ll have to start over.* --&gt;
 </description>
         <pubDate>Sat, 05 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/RN-&-Firebase/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/RN-&-Firebase/</guid>
+        <link>ChristopherSalam.github.io/RN-firebase/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/RN-firebase/</guid>
       </item>
     
       <item>
-        <title>curry f(x)</title>
+        <title>currying</title>
         <description>&lt;p&gt;Tonight, I watched Cassandra&amp;#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
 
 &lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
@@ -123,8 +123,8 @@ var newfunc =  R.pipe(func1, func2, func3)
 where the newfunc(args_provided_to_function_one) =  --&gt;
 </description>
         <pubDate>Mon, 31 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/curry-f(x)/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/curry-f(x)/</guid>
+        <link>ChristopherSalam.github.io/currying/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/currying/</guid>
       </item>
     
       <item>
@@ -514,7 +514,7 @@ RegExp solutions offer a chance at &lt;a href=&quot;https://en.wikipedia.org/wik
       </item>
     
       <item>
-        <title>bind f(x)</title>
+        <title>binding</title>
         <description>&lt;p&gt;In my few weeks in Telegraph Academy, I&amp;#39;ve discovered I learn best from live coding and I want to bring some of that feel to my blog. &lt;a href=&quot;https://en.wikipedia.org/wiki/Live_coding&quot; target=&quot;_blank&quot;&gt;Live coding&lt;/a&gt; is a programming practice centered on the use of improvising interactive programming, there are live websites with many free, live tutorials and others simply challenging them to build something in a short period of time. &lt;br /&gt;&lt;br /&gt; One reason I find them valuable is unlike slides, contrived exercises or doing the problem on your own, the live-coder puts on a show and gives me a chance to see an idea take shape. It also gives me confidence knowing that a quote-enquote professional programmer also makes typos, forgets keywords, and needs a moment to look at documentation. Finally, live coding also helps me establish patterns to look for and makes practical and succinct examples. &lt;br /&gt;&lt;br /&gt;For example, I have been struggling with the concept of &lt;strong&gt;call&lt;/strong&gt;, &lt;strong&gt;apply&lt;/strong&gt;, and &lt;strong&gt;bind&lt;/strong&gt; and a live coding session in class went a long way towards demistifying it for me. Here&amp;#39;s an expanded look at it! Open your console and try this out: &lt;br /&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;teeth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;dirty&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -614,8 +614,8 @@ As cool as this is what about flossing? As someone who has had lots of maxillofa
 &lt;p&gt;As a closing note, Live coding is something I find helpful and so do others: &lt;a href=&quot;https://www.livecoding.tv/&quot; target=&quot;_blank&quot;&gt; here is a link to a site focused on it. &lt;/a&gt; &lt;strong&gt;Call&lt;/strong&gt;, &lt;strong&gt;apply&lt;/strong&gt;, and &lt;strong&gt;bind&lt;/strong&gt; are hard especially if you are new to programming, but these three functions are powerful features I am excited to use and learn more about. It helped me to spend some time coding through this exercise and inventing new scenarios for alice and her dental woes and I hope it helps you.&lt;/p&gt;
 </description>
         <pubDate>Sun, 19 Jul 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/bind-f(x)/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/bind-f(x)/</guid>
+        <link>ChristopherSalam.github.io/binding/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/binding/</guid>
       </item>
     
       <item>

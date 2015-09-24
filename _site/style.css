@@ -893,23 +893,24 @@ code {
 .node circle {
   fill: #fff;
   stroke: darkred;
-  stroke-width: 3px;
+  stroke-width: 4px;
 }
 
 .node text {
-  font: 13px sans-serif;
-                       /*
-z-index: 99;
-background-color:white;
+  font-size: 16px;
+  font-family: 'Helvetica Neue';
+  z-index: 99;
+  background-color: white;
+                        /*
 -ms-transform: rotate(-45deg); 
 -webkit-transform: rotate(-45deg); 
-transform: rotate(-45deg); */
+transform: rotate(-45deg);  */
 }
 
 .link {
   fill: none;
   stroke: #000;
-  stroke-width: 3px;
+  stroke-width: 4px;
 }
 
 div#diagram {

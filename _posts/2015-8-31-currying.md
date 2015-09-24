@@ -1,9 +1,8 @@
 ---
 layout: post
-title: curry f(x)
+title: currying
 tags:
 - javascript
-- f(x)
 ---
 
 Tonight, I watched Cassandra's talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!
