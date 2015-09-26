@@ -12,5 +12,3 @@ I work as a freelance developer with <a href="http://www.amyyoshitsu.com" target
 
 I blog about my interests at <a href="http://chrissalam.com"> chrissalam.com </a>
 
-Things I am into:
-

@@ -296,8 +296,8 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 15 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/packages/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/packages/</guid>
+        <link>ChristopherSalam.github.io/Packages/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Packages/</guid>
       </item>
     
       <item>
@@ -349,8 +349,8 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 &lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in &lt;a href=&quot;http://chrissalam.com/Neo4j-Queries/&quot;&gt;part 2&lt;/a&gt;, collision repair in part 3, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library. &lt;/p&gt;
 </description>
         <pubDate>Sun, 09 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/try-neo4j/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/try-neo4j/</guid>
+        <link>ChristopherSalam.github.io/Try-Neo4j/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Try-Neo4j/</guid>
       </item>
     
       <item>
@@ -678,8 +678,8 @@ cln &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;
 ps ax &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep node is another way to find all the node instances
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Mon, 13 Jul 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/try-bash/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/try-bash/</guid>
+        <link>ChristopherSalam.github.io/Try-Bash/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/Try-Bash/</guid>
       </item>
     
   </channel>
