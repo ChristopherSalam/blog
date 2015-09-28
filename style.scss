@@ -18,9 +18,11 @@ html {
 }
 
 body {
-	background: $white;
+	background: #3D5B43;
+  height: 100%;
+  width: 100%;
   font: 18px/1.4 $helveticaNeue;
-  color: $black;
+  color: #F0F4F7;
 }
 
 .container {
@@ -32,7 +34,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+  color: #fff;
   font-weight: bold;
 
   line-height: 1.7;
@@ -74,7 +76,7 @@ p > img {
 }
 
 a {
-  color: #B22222;
+  color: #A082BD;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
@@ -197,7 +199,7 @@ img {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: #E6EFF5;
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
@@ -207,7 +209,7 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $gray;
+  color: #fff;
   font-size: 16px;
 
   @include mobile {
@@ -236,7 +238,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: #fff;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -294,7 +296,7 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: #fff/*#A4010C*/
+  background-color: #3D5B43
 }
 
  * {
@@ -310,11 +312,6 @@ html {
    height: 100%;
    box-sizing: border-box;
   }
-body {
-   width: 100%;
-   height: 100%;
-   background: rgba(255,255,255,.3);
-}
 .hexagon {
     width: 200px;
     height: 400px;
@@ -442,16 +439,16 @@ footer {
   text-align: center;
 }
 .node circle {
-  fill: #fff;
-  stroke: darkred;
-  stroke-width: 4px;
+  fill: rgba(255,255,255,.8); /*
+  stroke: #fff;
+  stroke-width: 4px;*/
 }
 
 .node text {
   font-size: 16px;
   font-family: 'Helvetica Neue';
   z-index: 99;
-  background-color:white; /*
+  background-color: #E6EFF5; /*
   -ms-transform: rotate(-45deg); 
   -webkit-transform: rotate(-45deg); 
   transform: rotate(-45deg);  */
@@ -459,7 +456,7 @@ footer {
 
 .link {
   fill: none;
-  stroke: #000;
+  stroke: #fff;
   stroke-width: 4px;
 }
 
