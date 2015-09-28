@@ -65,11 +65,14 @@ html {
 
 body {
   background: #1f6e6a;
+  /*green*/
   height: 100%;
   width: 100%;
-  font-size: 18px/1.4;
-  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px/1.6;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   color: #F0F4F7;
+  line-height: 1.2;
 }
 
 .container {
@@ -80,7 +83,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #a5c5c3;
   font-weight: bold;
   line-height: 1.7;
@@ -123,12 +126,16 @@ p > img {
 }
 
 a {
-  color: #629996;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 a:hover, a:active {
-  color: #a5c5c3;
+  color: #330F53;
+}
+
+pre {
+  color: #000;
 }
 
 ul, ol {
@@ -171,6 +178,7 @@ img {
 .date {
   font-style: italic;
   color: #7b708e;
+  font-weight: 600;
 }
 
 ::-moz-selection {
@@ -197,12 +205,12 @@ img {
 /* LAYOUT / SECTIONS */
 /*********************/
 .wrapper-masthead {
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
 }
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 0px solid #eee;
 }
 @media screen and (max-width: 640px) {
   .masthead {
@@ -252,8 +260,8 @@ img {
 .site-description {
   margin: -5px 0 0 0;
   color: #fff;
-  font-size: 16px;
-  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-family: "Megrim", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media screen and (max-width: 640px) {
   .site-description {
@@ -269,7 +277,7 @@ img {
 nav {
   float: right;
   margin-top: 23px;
-  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Megrim", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
 @media screen and (max-width: 640px) {
@@ -282,7 +290,7 @@ nav {
 }
 nav a {
   margin-left: 20px;
-  color: #44093c;
+  color: #fff;
   text-align: right;
   font-weight: 300;
   letter-spacing: 1px;
@@ -329,9 +337,10 @@ nav a {
 
 .wrapper-footer {
   margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 0px solid #ddd;
+  border-bottom: 0px solid #ddd;
   background-color: #1f6e6a;
+  /*green*/
 }
 
 * {
@@ -897,14 +906,15 @@ stroke-width: 4px;*/
 }
 
 .node text:hover {
-  fill: #629996;
+  fill: #330F53;
 }
 
 .node text {
-  font-size: .90rem;
+  font-size: .85rem;
   font-family: 'Montserrat Alternates', 'Helvetica Neue';
   z-index: 99;
   fill: #1f6e6a;
+  /*green*/
   background-color: #E6EFF5;
                            /*
 -ms-transform: rotate(-45deg); 
@@ -913,7 +923,7 @@ transform: rotate(-45deg);  */
 }
 @media screen and (max-width: 640px) {
   .node text {
-    font-size: .60rem;
+    font-size: .55rem;
   }
 }
 
