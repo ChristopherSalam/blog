@@ -67,7 +67,8 @@ body {
   background: #1f6e6a;
   height: 100%;
   width: 100%;
-  font: 18px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px/1.4;
+  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #F0F4F7;
 }
 
@@ -80,7 +81,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #fff;
+  color: #a5c5c3;
   font-weight: bold;
   line-height: 1.7;
   margin: 1em 0 15px;
@@ -122,12 +123,12 @@ p > img {
 }
 
 a {
-  color: #8a9c8e;
+  color: #629996;
   text-decoration: none;
   cursor: pointer;
 }
 a:hover, a:active {
-  color: #c4cdc6;
+  color: #a5c5c3;
 }
 
 ul, ol {
@@ -241,9 +242,10 @@ img {
   margin: 0;
   color: #E6EFF5;
   cursor: pointer;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Megrim", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 28px;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
@@ -251,6 +253,7 @@ img {
   margin: -5px 0 0 0;
   color: #fff;
   font-size: 16px;
+  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media screen and (max-width: 640px) {
   .site-description {
@@ -266,7 +269,7 @@ img {
 nav {
   float: right;
   margin-top: 23px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
 @media screen and (max-width: 640px) {
@@ -328,7 +331,7 @@ nav a {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: #3D5B43;
+  background-color: #1f6e6a;
 }
 
 * {
@@ -894,19 +897,24 @@ stroke-width: 4px;*/
 }
 
 .node text:hover {
-  fill: #8a9c8e;
+  fill: #629996;
 }
 
 .node text {
-  font-size: 16px;
-  font-family: 'Helvetica Neue';
+  font-size: .90rem;
+  font-family: 'Montserrat Alternates', 'Helvetica Neue';
   z-index: 99;
-  fill: #3D5B43;
+  fill: #1f6e6a;
   background-color: #E6EFF5;
                            /*
 -ms-transform: rotate(-45deg); 
 -webkit-transform: rotate(-45deg); 
 transform: rotate(-45deg);  */
+}
+@media screen and (max-width: 640px) {
+  .node text {
+    font-size: .60rem;
+  }
 }
 
 .link {
@@ -917,6 +925,6 @@ transform: rotate(-45deg);  */
 
 div#diagram {
   display: table;
-  padding: 20px;
+  padding: 0px;
   margin: 0px auto;
 }
