@@ -64,7 +64,7 @@ html {
 }
 
 body {
-  background: #3D5B43;
+  background: #1f6e6a;
   height: 100%;
   width: 100%;
   font: 18px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -122,12 +122,12 @@ p > img {
 }
 
 a {
-  color: #A082BD;
+  color: #8a9c8e;
   text-decoration: none;
   cursor: pointer;
 }
 a:hover, a:active {
-  color: #666;
+  color: #c4cdc6;
 }
 
 ul, ol {
@@ -169,7 +169,7 @@ img {
 
 .date {
   font-style: italic;
-  color: #666;
+  color: #7b708e;
 }
 
 ::-moz-selection {
@@ -279,7 +279,7 @@ nav {
 }
 nav a {
   margin-left: 20px;
-  color: #fff;
+  color: #44093c;
   text-align: right;
   font-weight: 300;
   letter-spacing: 1px;
@@ -287,7 +287,7 @@ nav a {
 @media screen and (max-width: 640px) {
   nav a {
     margin: 0 10px;
-    color: #4183C4;
+    color: #fff;
   }
 }
 
@@ -893,10 +893,15 @@ stroke: #fff;
 stroke-width: 4px;*/
 }
 
+.node text:hover {
+  fill: #8a9c8e;
+}
+
 .node text {
   font-size: 16px;
   font-family: 'Helvetica Neue';
   z-index: 99;
+  fill: #3D5B43;
   background-color: #E6EFF5;
                            /*
 -ms-transform: rotate(-45deg); 

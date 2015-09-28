@@ -18,7 +18,7 @@ html {
 }
 
 body {
-	background: #3D5B43;
+	background: #1f6e6a;
   height: 100%;
   width: 100%;
   font: 18px/1.4 $helveticaNeue;
@@ -76,11 +76,11 @@ p > img {
 }
 
 a {
-  color: #A082BD;
+  color: #8a9c8e;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $gray;
+    color: #c4cdc6;
   }
 }
 
@@ -124,7 +124,7 @@ img {
 
 .date {
   font-style: italic;
-  color: $gray;
+  color: #7b708e;
 }
 
 // Specify the color of the selection
@@ -238,14 +238,15 @@ nav {
 
   a {
     margin-left: 20px;
-    color: #fff;
+    color: #44093c;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {
       margin: 0 10px;
-      color: $blue;
+      color: #fff;
+
     }
   }
 }
@@ -444,10 +445,15 @@ footer {
   stroke-width: 4px;*/
 }
 
+.node text:hover {
+  fill: #8a9c8e;
+}
+
 .node text {
   font-size: 16px;
   font-family: 'Helvetica Neue';
   z-index: 99;
+  fill: #3D5B43;
   background-color: #E6EFF5; /*
   -ms-transform: rotate(-45deg); 
   -webkit-transform: rotate(-45deg); 
