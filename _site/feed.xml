@@ -7,7 +7,7 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>neo4j collisions</title>
+        <title>(neo4j) collision</title>
         <description>&lt;p&gt;Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I&amp;#39;d call &amp;quot;name collision&amp;quot;. Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don&amp;#39;t have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;luke4.png&quot;/&gt;&lt;/p&gt;
@@ -51,8 +51,8 @@
 &lt;p&gt;I&amp;#39;ll be back soon to discuss adding a new node and relationship to the database: NBA Coaches!&lt;/p&gt;
 </description>
         <pubDate>Sat, 12 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/neo4j-collisions/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/neo4j-collisions/</guid>
+        <link>ChristopherSalam.github.io/collision/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/collision/</guid>
       </item>
     
       <item>

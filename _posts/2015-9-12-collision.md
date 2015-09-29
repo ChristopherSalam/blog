@@ -1,6 +1,6 @@
 ---
 layout: post
-title: neo4j collisions
+title: (neo4j) collision
 tags:
 - neo4j
 - database

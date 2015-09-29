@@ -212,7 +212,7 @@ img {
   font-family: 'Megrim', $helveticaNeue;
   font-weight: 300;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 1px;
 }
 
@@ -238,6 +238,7 @@ nav {
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: /*'Montserrat Alternates'*/ 'Megrim', $helveticaNeue;
   font-size: 18px;
+  font-weight:900;
 
   @include mobile {
     float: none;
