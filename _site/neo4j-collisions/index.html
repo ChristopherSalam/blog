@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>neo4j collisions – Christopher Salam – thoughts on software and engineering</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I&#39;d call &quot;name collision&quot;. Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don&#39;t have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.
+" />
+    <meta property="og:description" content="Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I&#39;d call &quot;name collision&quot;. Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don&#39;t have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="neo4j collisions" />
+    <meta property="twitter:title" content="neo4j collisions" />
+    
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">neo4j collisions</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#neo4j">neo4j</a>,
+  
+  <a href="/tags/#database">database</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on September 12, 2015
+  </div>
+
+  <div class="entry">
+    <p>Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I&#39;d call &quot;name collision&quot;. Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don&#39;t have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.</p>
+
+<p><img src="luke4.png"/></p>
+
+<p>It&#39;s pretty clear to me that Luke Jackson probably didn&#39;t play in 1969 and 2004. We probably have two people with the same name. Looking through the dataset confirms this thought. Below we have already changed the much older Luke Jackson to his full name, Lucious.</p>
+
+<p><img src="luke.png"/></p>
+
+<p>Greg Smith was another name that showed up twice and really interrupted some of our processing.</p>
+
+<p><img src="luke2.png"/></p>
+
+<p>Our solution was pretty simple, I went through the data and changed each to be another name that was fitting, either a full name from one player or an initial. None of these players were names I imagined being common queries. </p>
+
+<p>The next step was to remove all the data in the database at first and reload the players. I didn&#39;t do this at first, and no connections were repaired despite all my work. This was because the other nodes were still present, and duplicate nodes formed, making the database have nearly 80,000 nodes. The solution is remove all the data from the database and start over. The command to do that is here, cd into this folder: </p>
+
+<p>/usr/local/Cellar/neo4j/community-x.x.x-unix/libexec/data</p>
+
+<p>and use this command:</p>
+
+<p>rm -rf data/*</p>
+
+<p>There is also a cypher command to do this but I find this a lot faster and easier. </p>
+
+<p>Then reload the data from the corrected CSV. If you go through the steps on this blog in part 1, that file has already been corrected. </p>
+
+<p>The results of the correction are significant.</p>
+
+<p>Here&#39;s a Bob Cousy to James Harden before the change:</p>
+
+<p><img src="cous-hardenWrong.png"/></p>
+
+<p>After correcting the clash with Greg Smith, the query went from being a 4 node relationship to a 6 node relationship.</p>
+
+<p><img src="cous-hardenCORR.png"/></p>
+
+<p>Just for good measure, here&#39;s the longest shortest path query I&#39;ve found yet. It&#39;s between George Mikan, one of the oldest players in the game and Dante Exum, one of the youngest.</p>
+
+<p><img src="danteMikan.png"/></p>
+
+<p>I&#39;ll be back soon to discuss adding a new node and relationship to the database: NBA Coaches!</p>
+
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

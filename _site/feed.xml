@@ -7,6 +7,55 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>neo4j collisions</title>
+        <description>&lt;p&gt;Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I&amp;#39;d call &amp;quot;name collision&amp;quot;. Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don&amp;#39;t have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;luke4.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;#39;s pretty clear to me that Luke Jackson probably didn&amp;#39;t play in 1969 and 2004. We probably have two people with the same name. Looking through the dataset confirms this thought. Below we have already changed the much older Luke Jackson to his full name, Lucious.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;luke.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Greg Smith was another name that showed up twice and really interrupted some of our processing.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;luke2.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Our solution was pretty simple, I went through the data and changed each to be another name that was fitting, either a full name from one player or an initial. None of these players were names I imagined being common queries. &lt;/p&gt;
+
+&lt;p&gt;The next step was to remove all the data in the database at first and reload the players. I didn&amp;#39;t do this at first, and no connections were repaired despite all my work. This was because the other nodes were still present, and duplicate nodes formed, making the database have nearly 80,000 nodes. The solution is remove all the data from the database and start over. The command to do that is here, cd into this folder: &lt;/p&gt;
+
+&lt;p&gt;/usr/local/Cellar/neo4j/community-x.x.x-unix/libexec/data&lt;/p&gt;
+
+&lt;p&gt;and use this command:&lt;/p&gt;
+
+&lt;p&gt;rm -rf data/*&lt;/p&gt;
+
+&lt;p&gt;There is also a cypher command to do this but I find this a lot faster and easier. &lt;/p&gt;
+
+&lt;p&gt;Then reload the data from the corrected CSV. If you go through the steps on this blog in part 1, that file has already been corrected. &lt;/p&gt;
+
+&lt;p&gt;The results of the correction are significant.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s a Bob Cousy to James Harden before the change:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;cous-hardenWrong.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;After correcting the clash with Greg Smith, the query went from being a 4 node relationship to a 6 node relationship.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;cous-hardenCORR.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Just for good measure, here&amp;#39;s the longest shortest path query I&amp;#39;ve found yet. It&amp;#39;s between George Mikan, one of the oldest players in the game and Dante Exum, one of the youngest.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;danteMikan.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ll be back soon to discuss adding a new node and relationship to the database: NBA Coaches!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 12 Sep 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/neo4j-collisions/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/neo4j-collisions/</guid>
+      </item>
+    
+      <item>
         <title>RN-firebase</title>
         <description>&lt;p&gt;We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I&amp;#39;m going to share them here. &lt;/p&gt;
 
@@ -141,25 +190,38 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 
 &lt;p&gt;&lt;img src=&quot;lbjkobe.png&quot;/&gt;&lt;/p&gt;
 
-&lt;p&gt;Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&amp;#39;s console directly to our app so people can play with it live. We don&amp;#39;t really have the time right now, we&amp;#39;ve been working on a React Native app, but in the mean time, build some queries and move the dots around and build towards the shortest path query.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
+&lt;p&gt;Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&amp;#39;s console directly to our app so people can play with it live. We been busy lately, but here we&amp;#39;ll build some queries and move the dots around and build towards the shortest path query.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL.png&quot;/&gt;&lt;/p&gt;
-
 &lt;p&gt;This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&amp;#39;s pretty random and I&amp;#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&amp;#39;s some more for effect.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
+
+&lt;p&gt;&lt;img src=&quot;LAL.png&quot;/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is the same query but for 50 nodes.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;LAL2.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This query is for 100 nodes.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;LAL3.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; 
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-       &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;quot;rasheed wallace&amp;quot;&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So this is only so useful to us. We can find the individual we want with all their connections by using a match where the name is specific. To keep it trailblazer themed, here is every team rasheed wallace played on:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;rash.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;We are building towards what we want but there&amp;#39;s just a little bit we more that we need, and that&amp;#39;s the shortestPath command. shortestPath ((p1)-[*]-(p2)).&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;MATCH&lt;/strong&gt; Is the powerful cypher statement that lets us join our information together and get back relationships.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;(p1:Player {name:&amp;quot;lebron james&amp;quot; }),&lt;/strong&gt; is the way we give cypher our starting point,
@@ -170,8 +232,18 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 &lt;strong&gt;RELATIONSHIPS(p)&lt;/strong&gt; then years in the second, and relationships third.&lt;/p&gt;
 
 &lt;p&gt;The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; 
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This query picks up trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;kobetreylebron.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;More to come!&lt;/p&gt;
 </description>
         <pubDate>Wed, 26 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/query-neo4j/</link>
@@ -616,70 +688,6 @@ As cool as this is what about flossing? As someone who has had lots of maxillofa
         <pubDate>Sun, 19 Jul 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/binding/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/binding/</guid>
-      </item>
-    
-      <item>
-        <title>try bash</title>
-        <description>&lt;p&gt;The Command Key (⌘) &amp;amp; Shortcuts and Development tools.&lt;/p&gt;
-
-&lt;p&gt;Starting a new profession can be overwhelming, especially when you see people dancing accross their keyboards. They are not typing faster than is possible, they&amp;#39;ve just built up an array of shortcuts and helpers that make their typing look magical. I want this magic too.&lt;/p&gt;
-
-&lt;p&gt;To get faster, I&amp;#39;ve begun to take serious note on typing, keyboard-based access software, text editors, and plugins within these editors, and other keyboard shortcuts that help other programmers type quickly and work faster. When starting out, new programmers are overwhelmed with the large amount of programming information they have to learn they neglect to work on the tools of coding, to explore creating items within their bash profile and using keyboard shortcuts. I would like to strongly advise against that here. &lt;strong&gt;ADD A SHORTCUT KEY OR PROFILE FUNCTION TO YOUR ARSENAL DAILY.&lt;/strong&gt; Not only does filling your bash profile with custom functions that loop together actions you use everyday help you work faster, they help you really start to understand what your computer does and that will make you a better programmer and also help you develop a personal style of working. Here I will detail all the things I have learned to do or add to my programs to increase efficiency and have more fun while programming.&lt;/p&gt;
-
-&lt;p&gt;OSX and Linux based machines (POSIX based machines) have a program called terminal which if you don&amp;#39;t have on the dock, you should consider adding. Windows uses a command prompt to do similar tasks. This program can access the internet and create and move files and folders onto your computer and run programs. I would advise learning about your particular terminal software, and if you use an extension such as ITerm2, to know how many different bash profiles you have and write your own functions and aliases, which I will go over below. These are files that are run immediately when ever you open a terminal, thus giving your permanent access to a bunch of shortcuts that can run commands to help you use github, to open local servers, and eventually run your automated tasks.&lt;/p&gt;
-
-&lt;p&gt;One method for getting faster is to open your bash profile and add things to it. This can be done by typing ls -a in your ~ folder and looking for { .bash_profile, .bashrc ,.mkshrc, .zshrc}. The first step is to create a method of getting into the bash profile, which can be your first function or aliases. The format for an alias is:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;the command as you would otherwise type it&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Two must have aliases for any hopeful bash profile user are a way to open the profile and a way to reload the terminal, otherwise you would have to restart your terminal to try out changes to your bash profile. The third function I included here is a simple server I seem to use alot. I would never remember the whole sentence, thankfully I don&amp;#39;t have to anymore.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prof&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;sublime ~/.bash_profile&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;. ~/.bash_profile&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;python -m SimpleHTTPServer&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;sublime is another alias I use to open a text editor, ~/.bash_profile opens the file in the editor and I can edit and add commands. r reloads the bash profile. Explain this more.&lt;/p&gt;
-
-&lt;p&gt;The other main method of adding complex features to bash involve functions. Functions are generally used for broader commands and for chaining events such as opening tabs or stringing a bunch of aliases or command line tools for programs together. I&amp;#39;m sure you&amp;#39;ll end up writing a bunch for yourself. The format of a function is:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;functionName &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;folder/of/interest
-  alias1 &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; alias2
-  doOtherPowerfulStuff
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Examples of must have functionality are functions to jump around to folders you commonly use, and methods to open your common applications. I have functions that open files I need using finder, chrome, sublime, and git all in my bash profile. Shortcuts, as Hacker in Residence Josh McKeown told us early on at Telegraph Academy, take about as long to write as it takes to type out. Quit typing them out! Examples of functions I like and use are:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkcd &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  mkdir &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-too &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  touch &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-  sublime &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-cln &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  git clone &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;These commands use captures &amp;quot;$1&amp;quot; to take the text that follows the command and process it with the function. mkcd newFolder would make a new folder called newFolder, and change the directory so that you would end up within the directory upon making it. too newFile is my command for &amp;quot;touch and open&amp;quot;. touch newFile makes a new file called newFile, and sublime opens it in text editor. sublime is also aliases down to the letter o elsewhere in my bash, for &amp;quot;opening&amp;quot;. cln is a command that I wished I made earlier, I was constantly cloning down repos and not realizing they didn&amp;#39;t automatically cd me into the file, and I&amp;#39;d start a server or open the text editor on my documents folder at first (Yikes! being a rookie...).&lt;/p&gt;
-
-&lt;p&gt;We were given this &lt;a href=&quot;http://dsernst.com/2015/01/12/bring-your-own-bash-profile/&quot;&gt;blog post as an assignment for TGA &lt;/a&gt;, and from here I began to see a bunch of this functions but without context or explanation. I literally had not heard of bash profile at this point, roughly 3 months removed from where I am now. Later, Josh came by and gave a talk and went over a bunch of other tools and gave us this link to his github, which described showed us his bash profile and other tools such as vimium, sublime shortcuts. Here is &lt;a href=&quot;https://github.com/joshwyatt/keyboard_shortcuts&quot; &gt;Josh Wyatt&amp;#39;s very powerful suite of shortcut commands. &lt;/a&gt;  I started with his list of bash shortcuts but commented each out until I understood exactly what they did. Many still remain in commented form, but I will get to them all and decide if I like them or will toss them. I reasoned that if I just cut and pasted them in rather than studying each individually I wouldn&amp;#39;t learn them, so there are still of few of the ones here I&amp;#39;ve never looked at, particually git commands which I have not used yet and I&amp;#39;ve re-written other commands to fit my needs &lt;a href=&quot;http://christophersalam.github.io/Open-with-bash/&quot;&gt;(see this subsequent post on Jekyll Blogs and Bash).&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Bash profile shortcuts, coupled with learning the different ways to use your text editor, file system, and other parts of your computer are not extra features for a programmer, they are utterly required. Try to install tools to aid productivity in each piece of software you use, and try to bring all the different things you need to do into terminal or your editor. I&amp;#39;ve sped up tremendously in the last few weeks and most of that isn&amp;#39;t do to learning frameworks or language patterns, it&amp;#39;s because I&amp;#39;ve used shortcuts to eliminate fluffy and unesscessary typing. Thanks for reading!&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;This is a bit of a extra bit of information, don&amp;#39;t have a full post for it yet but basically when accidently running duplicate servers, you can run this command to find the process behind the extra server and kill it &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;lsof -i tcp:*8080* 
-                 &lt;span class=&quot;c&quot;&gt;# or the problem port&lt;/span&gt;
-
-                 &lt;span class=&quot;c&quot;&gt;# followed by &lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -9 *processNumber*
-
-                 &lt;span class=&quot;c&quot;&gt;# another way to&lt;/span&gt;
-ps ax &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep node is another way to find all the node instances
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Mon, 13 Jul 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/try-bash/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/try-bash/</guid>
       </item>
     
   </channel>
