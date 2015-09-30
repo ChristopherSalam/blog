@@ -68,8 +68,22 @@
         "parent": "#reactnative"
       },
       {
-        "name": "RN firebase",
+        "name": "#firebase",
         "parent": "#reactnative",
+        "children": [
+          {
+            "name": "RN snapshots",
+            "parent": "#firebase"
+          },
+          {
+            "name": "RN updates",
+            "parent": "#firebase"
+          }
+            ]
+      },
+      {
+        "name": "tape tests",
+        "parent": "#reactnative"
       }
         ]
     },
@@ -260,11 +274,11 @@ for (var q = 0; q < treeData.length; q++) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/RN-firebase/">
+			<a class="hexagon-in1" href="/RN-snapshots/">
 
 				<span class="hexagon-in2">
 
-				  RN-firebase
+				  RN snapshots
 
 				</span>
 

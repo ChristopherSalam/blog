@@ -26,8 +26,22 @@ layout: default
         "parent": "#reactnative"
       },
       {
-        "name": "RN firebase",
+        "name": "#firebase",
         "parent": "#reactnative",
+        "children": [
+          {
+            "name": "RN snapshots",
+            "parent": "#firebase"
+          },
+          {
+            "name": "RN updates",
+            "parent": "#firebase"
+          }
+            ]
+      },
+      {
+        "name": "tape tests",
+        "parent": "#reactnative"
       }
         ]
     },

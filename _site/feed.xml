@@ -56,7 +56,7 @@
       </item>
     
       <item>
-        <title>RN-firebase</title>
+        <title>RN snapshots</title>
         <description>&lt;p&gt;We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I&amp;#39;m going to share them here. &lt;/p&gt;
 
 &lt;p&gt;I&amp;#39;ve been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.&lt;/p&gt;
@@ -107,15 +107,15 @@
 
 &lt;p&gt;In an other part of the application we access firebase using a function between the (this.state.loaded) and the (&amp;#39;return loadingView&amp;#39;) but that has lead to some funny errors when the database is changed (see some database misfires below). We have already fixed the error shown below and I&amp;#39;ll post about that in a part 2.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;phones.jpg&quot;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;Phones.jpg&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Send me an email or talk to &lt;a href=&quot;http://kent10ou.github.io&quot;&gt; Kent &lt;/a&gt; or &lt;a href=&quot;http://ceditoph.github.io/&quot;&gt; Casey &lt;/a&gt; if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. &lt;/p&gt;
 
 &lt;!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook&#39;s new Graph API doesn&#39;t issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we&#39;ll have to start over.* --&gt;
 </description>
         <pubDate>Sat, 05 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/RN-firebase/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/RN-firebase/</guid>
+        <link>ChristopherSalam.github.io/RN-snapshots/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/RN-snapshots/</guid>
       </item>
     
       <item>

@@ -1,11 +1,10 @@
 ---
 layout: post
-title: RN-firebase
+title: RN snapshots
 tags:
 - react
 - reactnative
 - firebase
-- database
 - javascript
 ---
 
@@ -64,7 +63,7 @@ render() {
 
 In an other part of the application we access firebase using a function between the (this.state.loaded) and the ('return loadingView') but that has lead to some funny errors when the database is changed (see some database misfires below). We have already fixed the error shown below and I'll post about that in a part 2.
 
-<img src="phones.jpg"/>
+<img src="Phones.jpg"/>
 
 Send me an email or talk to <a href="http://kent10ou.github.io"> Kent </a> or <a href="http://ceditoph.github.io/"> Casey </a> if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
 
