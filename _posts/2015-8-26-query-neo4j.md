@@ -6,8 +6,6 @@ tags:
 - database
 ---
 
-[part 1](http://chrissalam.com/Try-Neo4j/) This is part 2 of a three part series. [part x]
-
 <img src="portland.jpg"/>
 
 Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at <a href="http://six-dribbles.herokuapp.com">six-dribbles</a>. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!
@@ -81,7 +79,11 @@ MATCH (p1:Player {name:"lebron james" }),
        RELATIONSHIPS(p)
 ```
 
-This query picks up trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?
+Yeah! Here's the query in the browser
+
+<img src="kobeshaqlebron.png"/>
+
+Sometimes this query picks up someone else in the middle, i.e. trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?
 
 <img src="kobetreylebron.png"/>
 

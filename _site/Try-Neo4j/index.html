@@ -11,9 +11,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="This is part 1 of a three part series. part 2 [part x]
+    <meta name="description" content="
 " />
-    <meta property="og:description" content="This is part 1 of a three part series. part 2 [part x]
+    <meta property="og:description" content="
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -68,9 +68,7 @@
   </div>
 
   <div class="entry">
-    <p>This is part 1 of a three part series. <a href="http://chrissalam.com/Neo4j-Queries/">part 2</a> [part x]</p>
-
-<p><img src="portland.jpg"/></p>
+    <p><img src="portland.jpg"/></p>
 
 <p>Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&#39;s built-in &quot;shortest path&quot; query would do exactly what we wanted, so we set out to learn the database.</p>
 
@@ -112,7 +110,15 @@ MATCH (p:Player), (t:Team)</strong> This will use the CSV to look at how the pla
 <strong>WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1] CREATE (p)-[r:PLAYS_IN]-&gt;(t)</strong> and these lines create the match, PLAYS_IN and this
 <strong>return p, t</strong> returns it.</p>
 
-<p>This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in <a href="http://chrissalam.com/Neo4j-Queries/">part 2</a>, collision repair in part 3, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library. </p>
+<p>Here&#39;s an image from when we finally figured this out on a sample 2 season dataset. Joy!</p>
+
+<p><img src="connection.jpg"/></p>
+
+<p>This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in <a href="http://chrissalam.com/query-neo4j/">part 2</a>, collision repair in <a href="http://chrissalam.com/collision/">part 3</a>, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library.</p>
+
+<p>Here&#39;s a little preview...</p>
+
+<p><img src="preview.png" /></p>
 
   </div>
 

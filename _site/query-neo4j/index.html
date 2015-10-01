@@ -11,9 +11,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="part 1 This is part 2 of a three part series. [part x]
+    <meta name="description" content="
 " />
-    <meta property="og:description" content="part 1 This is part 2 of a three part series. [part x]
+    <meta property="og:description" content="
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -68,9 +68,7 @@
   </div>
 
   <div class="entry">
-    <p><a href="http://chrissalam.com/Try-Neo4j/">part 1</a> This is part 2 of a three part series. [part x]</p>
-
-<p><img src="portland.jpg"/></p>
+    <p><img src="portland.jpg"/></p>
 
 <p>Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at <a href="http://six-dribbles.herokuapp.com">six-dribbles</a>. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!</p>
 
@@ -129,7 +127,11 @@
        <span class="k">EXTRACT</span><span class="p">(</span><span class="n">n</span> <span class="k">in</span> <span class="n">nodes</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">|</span> <span class="n">n</span><span class="p">.</span><span class="k">year</span><span class="p">),</span> 
        <span class="n">RELATIONSHIPS</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </code></pre></div>
-<p>This query picks up trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?</p>
+<p>Yeah! Here&#39;s the query in the browser</p>
+
+<p><img src="kobeshaqlebron.png"/></p>
+
+<p>Sometimes this query picks up someone else in the middle, i.e. trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?</p>
 
 <p><img src="kobetreylebron.png"/></p>
 

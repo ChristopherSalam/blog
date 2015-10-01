@@ -8,7 +8,10 @@
     
       <item>
         <title>tape tests</title>
-        <description>&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;Tape testing is hella boss! Tape testing in React Native works like a dream. Well...
+more like a dream in the way that Inception was a dream. There are some constant asychronous issues but it was for us one of the best ways to test our application. I recommend it as a way to get testing into your React Native pages. I didn&amp;#39;t really try Jest, but others in our group did for React and expressed that it was difficult. I will attempt to take a look at Jest before finally writing it off.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 23 Sep 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/tape-tests/</link>
@@ -17,7 +20,9 @@
     
       <item>
         <title>RN updates</title>
-        <description>&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 19 Sep 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/RN-updates/</link>
@@ -196,9 +201,7 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
     
       <item>
         <title>query neo4j</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://chrissalam.com/Try-Neo4j/&quot;&gt;part 1&lt;/a&gt; This is part 2 of a three part series. [part x]&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!&lt;/p&gt;
 
@@ -257,7 +260,11 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
        &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
        &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This query picks up trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?&lt;/p&gt;
+&lt;p&gt;Yeah! Here&amp;#39;s the query in the browser&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;kobeshaqlebron.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Sometimes this query picks up someone else in the middle, i.e. trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;kobetreylebron.png&quot;/&gt;&lt;/p&gt;
 
@@ -392,9 +399,7 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
     
       <item>
         <title>try neo4j</title>
-        <description>&lt;p&gt;This is part 1 of a three part series. &lt;a href=&quot;http://chrissalam.com/Neo4j-Queries/&quot;&gt;part 2&lt;/a&gt; [part x]&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database.&lt;/p&gt;
 
@@ -436,7 +441,15 @@ MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how t
 &lt;strong&gt;WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1] CREATE (p)-[r:PLAYS_IN]-&amp;gt;(t)&lt;/strong&gt; and these lines create the match, PLAYS_IN and this
 &lt;strong&gt;return p, t&lt;/strong&gt; returns it.&lt;/p&gt;
 
-&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in &lt;a href=&quot;http://chrissalam.com/Neo4j-Queries/&quot;&gt;part 2&lt;/a&gt;, collision repair in part 3, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library. &lt;/p&gt;
+&lt;p&gt;Here&amp;#39;s an image from when we finally figured this out on a sample 2 season dataset. Joy!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;connection.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in &lt;a href=&quot;http://chrissalam.com/query-neo4j/&quot;&gt;part 2&lt;/a&gt;, collision repair in &lt;a href=&quot;http://chrissalam.com/collision/&quot;&gt;part 3&lt;/a&gt;, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s a little preview...&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;preview.png&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 09 Aug 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/try-neo4j/</link>
