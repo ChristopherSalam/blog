@@ -20,7 +20,126 @@ more like a dream in the way that Inception was a dream. There are some constant
     
       <item>
         <title>RN updates</title>
-        <description>&lt;p&gt;In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it.&lt;/p&gt;
+        <description>&lt;p&gt;In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&amp;#39;ll go through the entire setup and talk about each of the parts. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;Friends.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The final result is this screen shown above, in our program a place you can look up your friend and vote on their qualities, with your unique facebook ID as the key and true as the value. Let&amp;#39;s start at the very beginning of this page. We are going to leave out the tab bar and other parts of this phone and the facebook image and just focus on the listview since that&amp;#39;s where Firebase is involved.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;use strict&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/*========================================================||&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;||   Required sources                                     ||&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;||========================================================*/&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;react-native&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./styles&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./PersonDB&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Firebase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;firebase&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Firebase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;tallyNav&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./tallyNav&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;personRef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We should start every bit of code with &amp;#39;use strict&amp;#39;. 
+tallyNav is another option menu with votes tallied up.
+The main thing to note here is that we reference the database here with &amp;#39;ref&amp;#39;.
+personRef is nested to individuals, or leaf nodes within &amp;#39;ref&amp;#39;.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*========================================================||&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;||   React native variables, used as inline tags          ||&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;||========================================================*/&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ScrollView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;TouchableOpacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here we declare the components needed for React and React Native components in this section. I&amp;#39;ll get to the bones of this after Github Universe.&lt;/p&gt;
+
+&lt;!--
+
+/*========================================================||
+||   Each list item and quality (eventually fetch)        ||
+||========================================================*/
+
+var indents = [],
+  qualities = [&quot;baller&quot;,&quot;leader&quot;,&quot;performer&quot;,&quot;teacher&quot;...]
+
+/*========================================================||
+||   This allows each button to hit the specific quality  ||
+||   Use null to remove items or true to add items        ||
+||   Eventually replace &quot;Test User&quot; with the ID needed.   ||
+||   This calls down specific images and makes the list   ||
+||========================================================*/
+
+class FeaturedNav extends Component {
+
+  getInitialState() {
+    return {
+      opacity: 0.2,
+    }
+  }
+
+  render() {
+    window.FeaturedNav = this;
+    person.shuffle(qualities);
+    this.getTraits();
+    return (
+      &lt;View style={styles.featNavContainer}&gt;
+        &lt;Image source= style=&gt;
+          &lt;TouchableHighlight underlayColor=&#39;transparent&#39;
+            onPress={()=&gt;{ console.log(&quot;See your friend&#39;s stats&quot;)
+              this.props.navigator.push({
+                title: &#39;Stats for &#39;+ person.name,
+                component: tallyNav,
+                leftButtonTitle: &#39;Back&#39;,
+                onLeftButtonPress: () =&gt; this.props.navigator.pop(),
+            })
+          }}&gt;
+            &lt;Image source=
+                 style=&gt;
+              &lt;View style={styles.navOverlay}&gt;
+                &lt;Text style={styles.navChoiceText}&gt;see stats!&lt;/Text&gt;
+              &lt;/View&gt;
+            &lt;/Image&gt;
+          &lt;/TouchableHighlight&gt;
+            &lt;ScrollView
+              onScroll={() =&gt; { console.log(&#39;onScroll!&#39;); }}
+              scrollEventThrottle={200}
+              contentInset=
+              style={styles.scrollView}&gt;
+              {indents}
+            &lt;/ScrollView&gt;
+        &lt;/Image&gt;
+      &lt;/View&gt;
+    );
+  }
+  getTraits(){
+    personRef = ref.child(&quot;pond&quot;).child(person.id);
+    for (var i = 0; i &lt; qualities.length; i++) {
+      var vote = {};
+      vote[window.Katfish.userID] = true;
+      (function runIt(variable){
+        indents.push(
+          &lt;TouchableHighlight style={styles.featNavButton}
+          underlayColor={&#39;rgba(200,28,78,0.2)&#39;}
+          onPress={()=&gt;{
+            personRef.child(variable).update(vote)
+            qualities.splice(qualities.indexOf(vote),1);
+          }}&gt;
+            &lt;Text style={styles.featNavButtonText}&gt;{qualities[i]}&lt;/Text&gt;
+          &lt;/TouchableHighlight&gt;);
+      })(qualities[i])
+    }
+  }
+}
+
+module.exports = FeaturedNav;
+
+--&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
