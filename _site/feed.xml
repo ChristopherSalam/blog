@@ -59,21 +59,21 @@ personRef is nested to individuals, or leaf nodes within &amp;#39;ref&amp;#39;.&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Here we declare the components needed for React and React Native components in this section. I&amp;#39;ll get to the bones of this after Github Universe.&lt;/p&gt;
 
-&lt;!--
-
-/*========================================================||
+&lt;p&gt;/&lt;em&gt;========================================================||
 ||   Each list item and quality (eventually fetch)        ||
-||========================================================*/
+||========================================================&lt;/em&gt;/&lt;/p&gt;
 
-var indents = [],
-  qualities = [&quot;baller&quot;,&quot;leader&quot;,&quot;performer&quot;,&quot;teacher&quot;...]
+&lt;p&gt;var indents = [],
+  qualities = [&amp;quot;baller&amp;quot;,&amp;quot;leader&amp;quot;,&amp;quot;performer&amp;quot;,&amp;quot;teacher&amp;quot;...]&lt;/p&gt;
 
-/*========================================================||
+&lt;p&gt;/&lt;em&gt;========================================================||
 ||   This allows each button to hit the specific quality  ||
 ||   Use null to remove items or true to add items        ||
-||   Eventually replace &quot;Test User&quot; with the ID needed.   ||
+||   Eventually replace &amp;quot;Test User&amp;quot; with the ID needed.   ||
 ||   This calls down specific images and makes the list   ||
-||========================================================*/
+||========================================================&lt;/em&gt;/&lt;/p&gt;
+
+&lt;!--
 
 class FeaturedNav extends Component {
 

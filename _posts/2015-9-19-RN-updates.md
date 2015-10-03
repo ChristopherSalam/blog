@@ -58,8 +58,6 @@ var {
 
 Here we declare the components needed for React and React Native components in this section. I'll get to the bones of this after Github Universe.
 
-<!--
-
 /*========================================================||
 ||   Each list item and quality (eventually fetch)        ||
 ||========================================================*/
@@ -73,6 +71,8 @@ var indents = [],
 ||   Eventually replace "Test User" with the ID needed.   ||
 ||   This calls down specific images and makes the list   ||
 ||========================================================*/
+
+<!--
 
 class FeaturedNav extends Component {
 
