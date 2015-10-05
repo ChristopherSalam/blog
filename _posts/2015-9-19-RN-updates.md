@@ -18,9 +18,9 @@ The final result is this screen shown above, in our program a place you can look
 
 'use strict';
 
-/*========================================================||
-||   Required sources                                     ||
-||========================================================*/
+/*===============================||
+||   Required sources            ||
+||===============================*/
 
 var React = require('react-native'),
   styles = require('./styles'),
@@ -40,9 +40,10 @@ personRef is nested to individuals, or leaf nodes within 'ref'.
 
 ```javascript
 
-/*========================================================||
-||   React native variables, used as inline tags          ||
-||========================================================*/
+/*================================||
+||   React native variables,      ||
+||   used as inline tags          ||
+||================================*/
 
 var {
  View,
@@ -58,19 +59,32 @@ var {
 
 Here we declare the components needed for React and React Native components in this section. I'll get to the bones of this after Github Universe.
 
-/*========================================================||
-||   Each list item and quality (eventually fetch)        ||
-||========================================================*/
+```javascript
+
+/*================================||
+||   Each list item and quality   ||
+||================================*/
 
 var indents = [],
-  qualities = ["baller","leader","performer","teacher"...]
+  qualities = [
+  "baller",
+  "leader",
+  "performer",
+  "teacher"... 
+  ]
 
-/*========================================================||
-||   This allows each button to hit the specific quality  ||
-||   Use null to remove items or true to add items        ||
-||   Eventually replace "Test User" with the ID needed.   ||
-||   This calls down specific images and makes the list   ||
-||========================================================*/
+/*================================||
+||   This menu each button to     ||
+||   hit the specific quality     ||
+||   Use null to remove items     ||
+||   or true to add items         ||
+||================================*/
+
+...
+
+```
+
+Huge update coming... promise! It's being prepared in comments.
 
 <!--
 

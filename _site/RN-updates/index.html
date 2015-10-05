@@ -79,9 +79,9 @@
 <p>The final result is this screen shown above, in our program a place you can look up your friend and vote on their qualities, with your unique facebook ID as the key and true as the value. Let&#39;s start at the very beginning of this page. We are going to leave out the tab bar and other parts of this phone and the facebook image and just focus on the listview since that&#39;s where Firebase is involved.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
 
-<span class="cm">/*========================================================||</span>
-<span class="cm">||   Required sources                                     ||</span>
-<span class="cm">||========================================================*/</span>
+<span class="cm">/*===============================||</span>
+<span class="cm">||   Required sources            ||</span>
+<span class="cm">||===============================*/</span>
 
 <span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-native&#39;</span><span class="p">),</span>
   <span class="nx">styles</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./styles&#39;</span><span class="p">),</span>
@@ -95,9 +95,10 @@
 tallyNav is another option menu with votes tallied up.
 The main thing to note here is that we reference the database here with &#39;ref&#39;.
 personRef is nested to individuals, or leaf nodes within &#39;ref&#39;.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================================||</span>
-<span class="cm">||   React native variables, used as inline tags          ||</span>
-<span class="cm">||========================================================*/</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*================================||</span>
+<span class="cm">||   React native variables,      ||</span>
+<span class="cm">||   used as inline tags          ||</span>
+<span class="cm">||================================*/</span>
 
 <span class="kd">var</span> <span class="p">{</span>
  <span class="nx">View</span><span class="p">,</span>
@@ -110,20 +111,28 @@ personRef is nested to individuals, or leaf nodes within &#39;ref&#39;.</p>
 <span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
 </code></pre></div>
 <p>Here we declare the components needed for React and React Native components in this section. I&#39;ll get to the bones of this after Github Universe.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*================================||</span>
+<span class="cm">||   Each list item and quality   ||</span>
+<span class="cm">||================================*/</span>
 
-<p>/<em>========================================================||
-||   Each list item and quality (eventually fetch)        ||
-||========================================================</em>/</p>
+<span class="kd">var</span> <span class="nx">indents</span> <span class="o">=</span> <span class="p">[],</span>
+  <span class="nx">qualities</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;baller&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;leader&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;performer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;teacher&quot;</span><span class="p">...</span> 
+  <span class="p">]</span>
 
-<p>var indents = [],
-  qualities = [&quot;baller&quot;,&quot;leader&quot;,&quot;performer&quot;,&quot;teacher&quot;...]</p>
+<span class="cm">/*================================||</span>
+<span class="cm">||   This menu each button to     ||</span>
+<span class="cm">||   hit the specific quality     ||</span>
+<span class="cm">||   Use null to remove items     ||</span>
+<span class="cm">||   or true to add items         ||</span>
+<span class="cm">||================================*/</span>
 
-<p>/<em>========================================================||
-||   This allows each button to hit the specific quality  ||
-||   Use null to remove items or true to add items        ||
-||   Eventually replace &quot;Test User&quot; with the ID needed.   ||
-||   This calls down specific images and makes the list   ||
-||========================================================</em>/</p>
+<span class="p">...</span>
+</code></pre></div>
+<p>Huge update coming... promise! It&#39;s being prepared in comments.</p>
 
 <!--
 
