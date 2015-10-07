@@ -45,7 +45,8 @@
 
     <div id="main" role="main" class="container">
       <!-- load the d3.js library -->
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
 <div id="diagram"></div>
 
 <script>
@@ -110,6 +111,24 @@
       "parent": "#bash"
     },
     {
+      "name": "#regexp",
+      "parent": "javascript",
+      "children":[
+      {
+        "name": "try regexp",
+        "parent": "regexp"
+      },
+      {
+        "name": "lookaheads",
+        "parent": "regexp"
+      },
+      {
+        "name": "O(r)",
+        "parent": "regexp"
+      }
+      ]
+    },
+    {
       "name": "bash & blog",
       "parent": "#intro"
     }
@@ -136,20 +155,6 @@
     {
       "name": "collision",
       "parent": "neo4j"
-    }
-    ]
-  },
-  {
-    "name": "#regexp",
-    "parent": "javascript",
-    "children":[
-    {
-      "name": "try regexp",
-      "parent": "regexp"
-    },
-    {
-      "name": "O(r)",
-      "parent": "regexp"
     }
     ]
   }
@@ -253,6 +258,22 @@ for (var q = 0; q < treeData.length; q++) {
 	<h1></h1>
 
 	<ul class="hex">
+
+		
+
+		<li class="hexagon">
+
+			<a class="hexagon-in1" href="/lookaheads/">
+
+				<span class="hexagon-in2">
+
+				  lookaheads(?:\.js)
+
+				</span>
+
+			</a>
+
+		</li>
 
 		
 
@@ -370,7 +391,7 @@ for (var q = 0; q < treeData.length; q++) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Packages/">
+			<a class="hexagon-in1" href="/packages/">
 
 				<span class="hexagon-in2">
 
@@ -386,7 +407,7 @@ for (var q = 0; q < treeData.length; q++) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Try-Neo4j/">
+			<a class="hexagon-in1" href="/try-neo4j/">
 
 				<span class="hexagon-in2">
 
@@ -450,7 +471,7 @@ for (var q = 0; q < treeData.length; q++) {
 
 		<li class="hexagon">
 
-			<a class="hexagon-in1" href="/Try-Bash/">
+			<a class="hexagon-in1" href="/try-bash/">
 
 				<span class="hexagon-in2">
 

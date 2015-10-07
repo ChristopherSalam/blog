@@ -3,7 +3,8 @@ layout: default
 ---
 
 <!-- load the d3.js library -->
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
 <div id="diagram"></div>
 
 <script>
@@ -68,6 +69,24 @@ layout: default
       "parent": "#bash"
     },
     {
+      "name": "#regexp",
+      "parent": "javascript",
+      "children":[
+      {
+        "name": "try regexp",
+        "parent": "regexp"
+      },
+      {
+        "name": "lookaheads",
+        "parent": "regexp"
+      },
+      {
+        "name": "O(r)",
+        "parent": "regexp"
+      }
+      ]
+    },
+    {
       "name": "bash & blog",
       "parent": "#intro"
     }
@@ -94,20 +113,6 @@ layout: default
     {
       "name": "collision",
       "parent": "neo4j"
-    }
-    ]
-  },
-  {
-    "name": "#regexp",
-    "parent": "javascript",
-    "children":[
-    {
-      "name": "try regexp",
-      "parent": "regexp"
-    },
-    {
-      "name": "O(r)",
-      "parent": "regexp"
     }
     ]
   }
