@@ -2,11 +2,12 @@
 layout: post
 title: try regexp
 tags:
+- intro
 - regexp
 - js
 ---
 
-The meme itself is a regular expression in a way. 
+The meme itself is a regular expression in a way.
 
 <div  style="text-align: center;">
 <a href="http://www.catonmat.net/blog/recursive-regular-expressions/"><img src="yo-dawg-regex.jpg"></a>

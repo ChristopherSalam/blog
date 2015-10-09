@@ -10,6 +10,34 @@ layout: default
 <script>
 
   var treeData = [
+    {
+    "name": "#reactnative",
+    "parent": "Chris Salam",
+    "children": [
+    {
+      "name": "try RN",
+      "parent": "#reactnative"
+    },
+    {
+      "name": "#firebase",
+      "parent": "#reactnative",
+      "children": [
+        {
+          "name": "RN snapshots",
+          "parent": "#firebase"
+        },
+        {
+          "name": "RN updates",
+          "parent": "#firebase"
+        }
+          ]
+    },
+    {
+      "name": "tape tests",
+      "parent": "#reactnative"
+    }
+      ]
+  },
   {
     "name": "#javascript",
     "parent": "null",
@@ -19,83 +47,57 @@ layout: default
       "parent": "#javascript"
     },
     {
-      "name": "#reactnative",
-      "parent": "Chris Salam",
-      "children": [
-      {
-        "name": "try RN",
-        "parent": "#reactnative"
-      },
-      {
-        "name": "#firebase",
-        "parent": "#reactnative",
-        "children": [
-          {
-            "name": "RN snapshots",
-            "parent": "#firebase"
-          },
-          {
-            "name": "RN updates",
-            "parent": "#firebase"
-          }
-            ]
-      },
-      {
-        "name": "tape tests",
-        "parent": "#reactnative"
-      }
-        ]
+      "name": "#regexp",
+      "parent": "javascript",
+      "children":[
+        {
+          "name": "try regexp",
+          "parent": "regexp",
+          "children": [
+            {
+              "name": "O(r)",
+              "parent": "regexp"
+            },
+            {
+              "name": "regexp.js",
+              "parent": "regexp"
+            }
+          ]
+        }
+      ]
     },
     {
-      "name": "currying",
+      "name": "trees",
       "parent": "#javascript"
     }
     ]
   },
   {
-  "name": "#intro",
-  "parent": "null",
+  "name": "#setup",
+  "parent": null,
   "children": [
-  {
-    "name":"packages",
-    "parent": "#intro",
-  },
-  {
-    "name": "#bash",
-    "parent": "#intro",
-    "children": [
     {
-      "name": "try bash",
-      "parent": "#bash"
+    "name": "for newbs",
+    "parent": "null"
     },
     {
-      "name": "#regexp",
-      "parent": "javascript",
-      "children":[
+      "name": "#bash",
+      "parent": "#setup",
+      "children": [
       {
-        "name": "try regexp",
-        "parent": "regexp"
+        "name": "try bash",
+        "parent": "#bash"
       },
       {
-        "name": "lookaheads",
-        "parent": "regexp"
-      },
-      {
-        "name": "O(r)",
-        "parent": "regexp"
+        "name": "bash & blog",
+        "parent": "#intro"
       }
       ]
     },
     {
-      "name": "bash & blog",
-      "parent": "#intro"
+      "name":"packages",
+      "parent": "#setup",
     }
-    ]
-  },
-  {
-    "name":"for newbs",
-    "parent": "#intro"
-  }
   ]
   },
   {

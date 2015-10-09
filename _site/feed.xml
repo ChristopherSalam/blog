@@ -7,10 +7,10 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>lookaheads(?:\.js)</title>
+        <title>(?:\.js)</title>
         <description>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://demesheo.github.io/&quot;&gt;Demesheo Wilson II&lt;/a&gt;&lt;/strong&gt; approached me with help on a regexp problem which was a very small part of the for the project his team was working on called &lt;strong&gt;&lt;a href=&quot;http://gogitit.co/&quot;&gt;Go Git it!&lt;/a&gt;&lt;/strong&gt;, which keeps track of the JavaScript frameworks people are using. He needed to match the js files that he parsed through in index.html files and in package.json files. A pretty reasonable enough challenge!&lt;/p&gt;
 
-&lt;p&gt;I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used &lt;strong&gt;&lt;a href=&quot;http://www.maratbn.com/blogs/2011/04/12/regex-lookaheads-str-len/&quot; target=&quot;_blank&quot;&gt;feature of the regular expression syntax &lt;/a&gt;&lt;/strong&gt;, but seemed to be a good way to approach this problem to start. The concept is this, first the regexp matches the lookahead value, then proceeds to match for the rest of the desired search quantity. If the first match doesn&amp;#39;t happen, the second match is not needed. &lt;/p&gt;
+&lt;p&gt;I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used &lt;strong&gt;&lt;a href=&quot;http://www.maratbn.com/blogs/2011/04/12/regex-lookaheads-str-len/&quot; target=&quot;_blank&quot;&gt;feature of the regular expression syntax &lt;/a&gt;&lt;/strong&gt;, but seemed to be a good way to approach this problem to start. The concept is this, first the regexp matches the lookahead value, then proceeds to match for the rest of the desired search quantity. If the first match doesn&amp;#39;t happen, the second match is not needed.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;#39;s the case Demesheo presented to me: how do I read a javascript framework such as react.js from a index.html?&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;react.js
@@ -29,8 +29,8 @@
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Oct 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/lookaheads/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/lookaheads/</guid>
+        <link>ChristopherSalam.github.io/regexp.js/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/regexp.js/</guid>
       </item>
     
       <item>
@@ -297,13 +297,94 @@ module.exports = FeaturedNav;
       </item>
     
       <item>
-        <title>currying</title>
-        <description>&lt;p&gt;Tonight, I watched Cassandra&amp;#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
+        <title>trees</title>
+        <description>&lt;p&gt;True to my nature, if you look closely I&amp;#39;m hugging that tree there.&lt;/p&gt;
 
-&lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;p&gt;Here&amp;#39;s my little hug to you, console users: I&amp;#39;ve learned after doing data transforms in the console that you can save the data object or array as a global variable and then to copy the temporary variable.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*in console*/&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...};&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// right click on the edge of the Object&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// store as a temporary variable&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// creates &amp;#39;temp1&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// and this is available for&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// pasting in text editor.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.
+&lt;p&gt;But this post is mostly about solving trees. which seems to be a very big obsession with the computer science interviewers. I&amp;#39;ll try my best to talk myself into trees, breath first search, depth first search, and binary trees.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Psuedo-classical instantiation&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//Prototypal instantiation&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//This way lets us skip using &amp;#39;new&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//but is generally less efficient.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!--
+
+//methods go here!
+Tree.prototype.addChild = function (value) {
+  this.children.push(Tree(value));
+};
+
+Tree.prototype.contains = function (value) {
+  if (this.value === value) {
+    return true;
+  } else if (this.children !== null) {
+    var result = false, i;
+    for (i = 0; result === false &amp;&amp; i &lt; this.children.length; i++) {
+      result = this.children[i].contains(value);
+    }
+  }
+  return result;
+};
+
+Tree.prototype.DFtraverse = function(process) {
+    process.call(this, this.value);
+    var i;
+    for (i = 0; i &lt; this.children.length; i++) {
+      this.children[i].DFtraverse(process);
+    }
+}
+
+Tree.prototype.size = function() {
+  var size = 0;
+  this.DFtraverse(function(){
+    size++;
+  })
+  return size;
+}
+
+var tree = Tree(0);
+tree.addChild(1);
+tree.addChild(2);
+tree.children[0].addChild(3);
+tree.children[0].children[0].addChild(4);
+tree.children[1].addChild(5);
+// tree.children[1].children[0].addChild(7);
+// console.log(tree.contains(2)); // yields &#39;true&#39;
+// console.log(tree.contains(3)); // yields &#39;true&#39;
+// console.log(tree.contains(0)); // yields &#39;true&#39;
+// console.log(tree.contains(1)); // yields &#39;true&#39;
+// console.log(tree.contains(4)); // yields &#39;false&#39;
+// tree.DFtraverse(console.log);
+console.log(tree.size());--&gt;
+
+&lt;!--
+Tonight, I watched Cassandra&#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!
+
+I would recommend going to Ramda.js&#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via
+
+```html
+&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&quot;&gt;&lt;/script&gt;
+```
+ Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.
 
 ```javascript
 function area(height, width) { return height * width; }
@@ -325,21 +406,10 @@ var getItems = R.compose(
   R.flatten,
   R.map(R.prop(&#39;events&#39;))
 )
+
+&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&quot;Pointfree Code is code that never refers to the code it handles:
+it focuses on the logic, easier to reason about, and never have to wonder about the state.&quot;&lt;/a&gt;
 --&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&amp;quot;Pointfree Code is code that never refers to the code it handles:
-it focuses on the logic, easier to reason about, and never have to wonder about the state.&amp;quot;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This isn&amp;#39;t exactly related but another helpful trick I&amp;#39;ve learned after doing alot of data transforms in the console is to save the data object or array as a global variable and then to copy the temporary variable.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*in console*/&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...};&lt;/span&gt; 
-            &lt;span class=&quot;c1&quot;&gt;// right click on the edge of the Object&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// store as a temporary variable&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// creates &amp;#39;temp1&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// and this is available for &lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// pasting in text editor.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 
 &lt;!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
 
@@ -350,8 +420,8 @@ var newfunc =  R.pipe(func1, func2, func3)
 where the newfunc(args_provided_to_function_one) =  --&gt;
 </description>
         <pubDate>Mon, 31 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/currying/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/currying/</guid>
+        <link>ChristopherSalam.github.io/trees/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/trees/</guid>
       </item>
     
       <item>
@@ -367,29 +437,29 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 &lt;p&gt;&lt;img src=&quot;lbjkobe.png&quot;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&amp;#39;s console directly to our app so people can play with it live. We been busy lately, but here we&amp;#39;ll build some queries and move the dots around and build towards the shortest path query.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&amp;#39;s pretty random and I&amp;#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&amp;#39;s some more for effect.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;LAL.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This is the same query but for 50 nodes.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;LAL2.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This query is for 100 nodes.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;LAL3.png&quot;/&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;quot;rasheed wallace&amp;quot;&lt;/span&gt; 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;quot;rasheed wallace&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;So this is only so useful to us. We can find the individual we want with all their connections by using a match where the name is specific. To keep it trailblazer themed, here is every team rasheed wallace played on:&lt;/p&gt;
@@ -404,15 +474,15 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
 &lt;strong&gt;(p2:Player{name:&amp;quot;kobe bryant&amp;quot; }),&lt;/strong&gt; is the end point,
 &lt;strong&gt;p = shortestPath((p1)-[*]-(p2))&lt;/strong&gt; is the key part of the query
 &lt;strong&gt;RETURN EXTRACT(n in nodes(p) | n.name),&lt;/strong&gt; tells us what to return once the match is made.
-&lt;strong&gt;EXTRACT(n in nodes(p) | n.year),&lt;/strong&gt; We like to use the name in the first query, 
+&lt;strong&gt;EXTRACT(n in nodes(p) | n.year),&lt;/strong&gt; We like to use the name in the first query,
 &lt;strong&gt;RELATIONSHIPS(p)&lt;/strong&gt; then years in the second, and relationships third.&lt;/p&gt;
 
 &lt;p&gt;The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; 
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
        &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Yeah! Here&amp;#39;s the query in the browser&lt;/p&gt;
@@ -525,7 +595,7 @@ where the newfunc(args_provided_to_function_one) =  --&gt;
     
       <item>
         <title>packages</title>
-        <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now. &lt;/p&gt;
+        <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intriguied to try all the different text editors out and develop a feel for what makes each special, but I don&amp;#39;t really have the time right now.&lt;/p&gt;
 
 &lt;p&gt;Some people in our class use VI or VIM, but most tend to use sublime text or atom text editor. I currently use Sublime, but I will transition to Atom because I know it&amp;#39;s better and compiles over javascript, rather than python. VIM and Emacs are two storied, old text editors that are powerful and purportedly more customizable, but my general experience with it involves cursing. Also, one of my favorite ancedotes is my from my classmate Marc, who uses EMACS religiously, and told me one day that he finally got a tree directory to work in EMACS (the thing that comes by default in Atom and Sublime). &lt;strong&gt;YIKES!&lt;/strong&gt;&lt;/p&gt;
 
@@ -540,9 +610,9 @@ Install right now! Even if you don&amp;#39;t learn all the possible ways to use 
 
 &lt;p&gt;I use a &lt;strong&gt;&lt;a href-&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;sublime build tool &lt;/a&gt;&lt;/strong&gt;, that my friend Jamil help me install to help me with my algorithmic problems.&lt;/p&gt;
 
-&lt;p&gt;I use a &lt;strong&gt;&lt;a href=&quot;https://packagecontrol.io/packages/BracketHighlighter&quot;&gt;bracket matching &lt;/a&gt;&lt;/strong&gt; tool to help me keep track of the (), {}, and []. &lt;/p&gt;
+&lt;p&gt;I use a &lt;strong&gt;&lt;a href=&quot;https://packagecontrol.io/packages/BracketHighlighter&quot;&gt;bracket matching &lt;/a&gt;&lt;/strong&gt; tool to help me keep track of the (), {}, and [].&lt;/p&gt;
 
-&lt;p&gt;I use &lt;strong&gt;&lt;a href=&quot;http://colorsublime.com/&quot;&gt;color sublime&lt;/a&gt;&lt;/strong&gt;, which keeps me from going crazy with the boring color pallette of text editing. &lt;/p&gt;
+&lt;p&gt;I use &lt;strong&gt;&lt;a href=&quot;http://colorsublime.com/&quot;&gt;color sublime&lt;/a&gt;&lt;/strong&gt;, which keeps me from going crazy with the boring color pallette of text editing.&lt;/p&gt;
 
 &lt;p&gt;I use the a &lt;strong&gt;&lt;a href=&quot;http://logicmason.com/2013/strip-trailing-whitespace-every-time-you-save-a-file-in-sublime-text/&quot;&gt; white space removal &lt;/a&gt;&lt;/strong&gt; tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages.&lt;/p&gt;
 
