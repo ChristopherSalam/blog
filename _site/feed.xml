@@ -7,24 +7,60 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>(?:\.js)</title>
-        <description>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://demesheo.github.io/&quot;&gt;Demesheo Wilson II&lt;/a&gt;&lt;/strong&gt; approached me with help on a regexp problem which was a very small part of the for the project his team was working on called &lt;strong&gt;&lt;a href=&quot;http://gogitit.co/&quot;&gt;Go Git it!&lt;/a&gt;&lt;/strong&gt;, which keeps track of the JavaScript frameworks people are using. He needed to match the js files that he parsed through in index.html files and in package.json files. A pretty reasonable enough challenge!&lt;/p&gt;
+        <title>regexp(?:\.js)</title>
+        <description>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://demesheo.github.io/&quot;&gt;Demesheo Wilson II&lt;/a&gt;&lt;/strong&gt; approached me with help on a regexp problem which was a very small part of the for the project his team was working on called &lt;strong&gt;&lt;a href=&quot;http://gogitit.co/&quot;&gt;Go Git it!&lt;/a&gt;&lt;/strong&gt;, which keeps track of the JavaScript frameworks people are using. Here&amp;#39;s the case he presented to me: how do I read a javascript framework such as react.js from a cdn call in index.html or a package.json?&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;react.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used feature of the regular expression syntax which match while looking ahead to allow you to remove part of the text from the match.&lt;/p&gt;
 
-&lt;p&gt;I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used &lt;strong&gt;&lt;a href=&quot;http://www.maratbn.com/blogs/2011/04/12/regex-lookaheads-str-len/&quot; target=&quot;_blank&quot;&gt;feature of the regular expression syntax &lt;/a&gt;&lt;/strong&gt;, but seemed to be a good way to approach this problem to start. The concept is this, first the regexp matches the lookahead value, then proceeds to match for the rest of the desired search quantity. If the first match doesn&amp;#39;t happen, the second match is not needed.&lt;/p&gt;
+&lt;p&gt;If you&amp;#39;ve never used &lt;strong&gt;&lt;a href=&quot;http://regexr.com/&quot;&gt;regexr&lt;/a&gt;&lt;/strong&gt;, now&amp;#39;s a good time. I&amp;#39;ll include some screenshots so we can follow along.&lt;/p&gt;
 
-&lt;p&gt;Here&amp;#39;s the case Demesheo presented to me: how do I read a javascript framework such as react.js from a index.html?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;react.js
+&lt;p&gt;Ideally, we just want the word react from the above sentence. This is what ended up working perfectly:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//gets .js including .min.js&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;/[\w.-]+(?=\.js)/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If you&amp;#39;ve never used &lt;strong&gt;&lt;a href=&quot;http://regexr.com/&quot;&gt;regexr&lt;/a&gt;&lt;/strong&gt;, now&amp;#39;s a good time.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;we want to use react.js
+&lt;p&gt;&lt;img src=&quot;final.min.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s through each part one by one.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/-----/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Ideally, we just want the word react from the above sentence.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+(?:\.js)/g&lt;/span&gt;
+&lt;p&gt;Regular Expressions are objects that use the bracket syntax. Anything between these letters is a pattern to match. The g global or g flag says give me all the instances of this match, otherwise we just get the first match.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;will help me look through a code snippet and pull out the framework name needed. \w+ looks for all the words going before the .js, the ?:.js looks for anyword that ends that way. One of the first problems I notice with this method did not pick up all the different queries everyone is making. What about a CDN for a minified JS?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js&lt;/span&gt;
+&lt;p&gt;&lt;img src=&quot;words.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;\w+ looks for all word like characters, and includes numbers for things like d3. This picks up way too much.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This is fine for bringing in the libraries but now the regular expression doesn&amp;#39;t work. Our solution and pick your battles wisely.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;words.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;\w+ looks for all word like characters, and includes numbers for things like d3. This picks up way too much.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+\.js/g&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;same&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;/\w+(\.js)/g&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;noCapture.png&quot;/&gt;
+-is the same as-
+&lt;img src=&quot;needDash.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Adding .js to the Regular Expression does a lot for us. So two big problems to address stick out here. Minified files really throw off this process. Also, dashes need to be addressed. We escape (use ) on the . because . means any character in Regular Expressions, and . means specifically the . character. Parentheses around the .js is needed for the lookahead that&amp;#39;s coming.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+(?=\.js)/g&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;posLook.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;With this step, we&amp;#39;ve removed the .js from the back of the files. Now let&amp;#39;s address min and dash. We need to use brackets to give us options in addition to \w. Lets get \w, periods, and dashes, and use brackets to allow for all three options. We will place the + sign outside the brackets to allow for any combination of them to be matched.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/[\w.-]+(?=\.js)/g&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;dashesdots.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;#39;s nearly there! So the rest I&amp;#39;m not sure how Demesheo ended up processing these files, but one approach just grabs the d3 from d3.min.js but misses the js files.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/[\w-]+(?=\.min\.js)/g&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Another approach is something you can run on your already matched text to remove the &amp;quot;.min&amp;quot;. Don&amp;#39;t run this on the whole document because then you&amp;#39;ll run into the min.css.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//removes min&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;/[\w-]+(?=\.min)/g&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That&amp;#39;s all I got on $(this). Regular expressions are pretty powerful things! Hope this was helpful and has some application for you.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>

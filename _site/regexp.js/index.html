@@ -3,7 +3,7 @@
 <link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
   <head>
-    <title>(?:\.js) – Christopher Salam – thoughts on software and engineering</title>
+    <title>regexp(?:\.js) – Christopher Salam – thoughts on software and engineering</title>
 
         <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -11,16 +11,16 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="Demesheo Wilson II approached me with help on a regexp problem which was a very small part of the for the project his team was working on called Go Git it!, which keeps track of the JavaScript frameworks people are using. He needed to match the js files that he parsed through in index.html files and in package.json files. A pretty reasonable enough challenge!
+    <meta name="description" content="Demesheo Wilson II approached me with help on a regexp problem which was a very small part of the for the project his team was working on called Go Git it!, which keeps track of the JavaScript frameworks people are using. Here&#39;s the case he presented to me: how do I read a javascript framework such as react.js from a cdn call in index.html or a package.json?
 " />
-    <meta property="og:description" content="Demesheo Wilson II approached me with help on a regexp problem which was a very small part of the for the project his team was working on called Go Git it!, which keeps track of the JavaScript frameworks people are using. He needed to match the js files that he parsed through in index.html files and in package.json files. A pretty reasonable enough challenge!
+    <meta property="og:description" content="Demesheo Wilson II approached me with help on a regexp problem which was a very small part of the for the project his team was working on called Go Git it!, which keeps track of the JavaScript frameworks people are using. Here&#39;s the case he presented to me: how do I read a javascript framework such as react.js from a cdn call in index.html or a package.json?
 " />
     
     <meta name="author" content="Christopher Salam" />
 
     
-    <meta property="og:title" content="(?:\.js)" />
-    <meta property="twitter:title" content="(?:\.js)" />
+    <meta property="og:title" content="regexp(?:\.js)" />
+    <meta property="twitter:title" content="regexp(?:\.js)" />
     
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
@@ -50,7 +50,7 @@
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1 class="center-align">(?:\.js)</h1>
+  <h1 class="center-align">regexp(?:\.js)</h1>
   <div class="center-align"><div class="post-tags">
   Tags:
   
@@ -68,23 +68,59 @@
   </div>
 
   <div class="entry">
-    <p><strong><a href="http://demesheo.github.io/">Demesheo Wilson II</a></strong> approached me with help on a regexp problem which was a very small part of the for the project his team was working on called <strong><a href="http://gogitit.co/">Go Git it!</a></strong>, which keeps track of the JavaScript frameworks people are using. He needed to match the js files that he parsed through in index.html files and in package.json files. A pretty reasonable enough challenge!</p>
+    <p><strong><a href="http://demesheo.github.io/">Demesheo Wilson II</a></strong> approached me with help on a regexp problem which was a very small part of the for the project his team was working on called <strong><a href="http://gogitit.co/">Go Git it!</a></strong>, which keeps track of the JavaScript frameworks people are using. Here&#39;s the case he presented to me: how do I read a javascript framework such as react.js from a cdn call in index.html or a package.json?</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;react.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used feature of the regular expression syntax which match while looking ahead to allow you to remove part of the text from the match.</p>
 
-<p>I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used <strong><a href="http://www.maratbn.com/blogs/2011/04/12/regex-lookaheads-str-len/" target="_blank">feature of the regular expression syntax </a></strong>, but seemed to be a good way to approach this problem to start. The concept is this, first the regexp matches the lookahead value, then proceeds to match for the rest of the desired search quantity. If the first match doesn&#39;t happen, the second match is not needed.</p>
+<p>If you&#39;ve never used <strong><a href="http://regexr.com/">regexr</a></strong>, now&#39;s a good time. I&#39;ll include some screenshots so we can follow along.</p>
 
-<p>Here&#39;s the case Demesheo presented to me: how do I read a javascript framework such as react.js from a index.html?</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">react.js
+<p>Ideally, we just want the word react from the above sentence. This is what ended up working perfectly:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//gets .js including .min.js</span>
+<span class="sr">/[\w.-]+(?=\.js)/g</span>
 </code></pre></div>
-<p>If you&#39;ve never used <strong><a href="http://regexr.com/">regexr</a></strong>, now&#39;s a good time.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">we want to use react.js
+<p><img src="final.min.png"/></p>
+
+<p>Let&#39;s through each part one by one.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/-----/g</span>
 </code></pre></div>
-<p>Ideally, we just want the word react from the above sentence.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/\w+(?:\.js)/g</span>
+<p>Regular Expressions are objects that use the bracket syntax. Anything between these letters is a pattern to match. The g global or g flag says give me all the instances of this match, otherwise we just get the first match.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/\w+/g</span>
 </code></pre></div>
-<p>will help me look through a code snippet and pull out the framework name needed. \w+ looks for all the words going before the .js, the ?:.js looks for anyword that ends that way. One of the first problems I notice with this method did not pick up all the different queries everyone is making. What about a CDN for a minified JS?</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">https</span><span class="o">:</span><span class="c1">//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js</span>
+<p><img src="words.png"/></p>
+
+<p>\w+ looks for all word like characters, and includes numbers for things like d3. This picks up way too much.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/\w+/g</span>
 </code></pre></div>
-<p>This is fine for bringing in the libraries but now the regular expression doesn&#39;t work. Our solution and pick your battles wisely.</p>
+<p><img src="words.png"/></p>
+
+<p>\w+ looks for all word like characters, and includes numbers for things like d3. This picks up way too much.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/\w+\.js/g</span>
+<span class="o">-</span><span class="nx">is</span> <span class="nx">the</span> <span class="nx">same</span> <span class="nx">as</span><span class="o">-</span>
+<span class="sr">/\w+(\.js)/g</span>
+</code></pre></div>
+<p><img src="noCapture.png"/>
+-is the same as-
+<img src="needDash.png"/></p>
+
+<p>Adding .js to the Regular Expression does a lot for us. So two big problems to address stick out here. Minified files really throw off this process. Also, dashes need to be addressed. We escape (use ) on the . because . means any character in Regular Expressions, and . means specifically the . character. Parentheses around the .js is needed for the lookahead that&#39;s coming.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/\w+(?=\.js)/g</span>
+</code></pre></div>
+<p><img src="posLook.png"/></p>
+
+<p>With this step, we&#39;ve removed the .js from the back of the files. Now let&#39;s address min and dash. We need to use brackets to give us options in addition to \w. Lets get \w, periods, and dashes, and use brackets to allow for all three options. We will place the + sign outside the brackets to allow for any combination of them to be matched.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/[\w.-]+(?=\.js)/g</span>
+</code></pre></div>
+<p><img src="dashesdots.png"/></p>
+
+<p>That&#39;s nearly there! So the rest I&#39;m not sure how Demesheo ended up processing these files, but one approach just grabs the d3 from d3.min.js but misses the js files.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="sr">/[\w-]+(?=\.min\.js)/g</span>
+</code></pre></div>
+<p>Another approach is something you can run on your already matched text to remove the &quot;.min&quot;. Don&#39;t run this on the whole document because then you&#39;ll run into the min.css.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//removes min</span>
+<span class="sr">/[\w-]+(?=\.min)/g</span>
+</code></pre></div>
+<p>That&#39;s all I got on $(this). Regular expressions are pretty powerful things! Hope this was helpful and has some application for you.</p>
 
 <p><strong>This is a stub... there&#39;s more to come</strong></p>
 
