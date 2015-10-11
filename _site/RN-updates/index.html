@@ -11,9 +11,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&#39;ll go through the entire setup and talk about each of the parts. 
+    <meta name="description" content="In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&#39;ll go through the entire setup and talk about each of the parts.
 " />
-    <meta property="og:description" content="In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&#39;ll go through the entire setup and talk about each of the parts. 
+    <meta property="og:description" content="In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&#39;ll go through the entire setup and talk about each of the parts.
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -72,27 +72,31 @@
   </div>
 
   <div class="entry">
-    <p>In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&#39;ll go through the entire setup and talk about each of the parts. </p>
+    <p>In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&#39;ll go through the entire setup and talk about each of the parts.</p>
 
 <p><img src="Friends.png"/></p>
 
 <p>The final result is this screen shown above, in our program a place you can look up your friend and vote on their qualities, with your unique facebook ID as the key and true as the value. Let&#39;s start at the very beginning of this page. We are going to leave out the tab bar and other parts of this phone and the facebook image and just focus on the listview since that&#39;s where Firebase is involved.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-
-<span class="cm">/*===============================||</span>
+</code></pre></div>
+<p>We should start every bit of code with &#39;use strict&#39;.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*===============================||</span>
 <span class="cm">||   Required sources            ||</span>
 <span class="cm">||===============================*/</span>
-
 <span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-native&#39;</span><span class="p">),</span>
   <span class="nx">styles</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./styles&#39;</span><span class="p">),</span>
   <span class="nx">person</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./PersonDB&#39;</span><span class="p">),</span>
-  <span class="nx">Firebase</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;firebase&#39;</span><span class="p">),</span>
-  <span class="nx">ref</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firebase</span><span class="p">(</span><span class="nx">url</span><span class="p">),</span>
-  <span class="nx">tallyNav</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./tallyNav&#39;</span><span class="p">),</span>
-  <span class="nx">personRef</span><span class="p">;</span>
 </code></pre></div>
-<p>We should start every bit of code with &#39;use strict&#39;. 
-tallyNav is another option menu with votes tallied up.
+<p>Within the PersonDB file, we have information on a specific
+person. Person.id accesses their new generated facebook ID for this application. We can use this unique to our application code to grab a facebook profile image and to use as a unique key for voting.
+<code>javascript
+  Firebase = require(&#39;firebase&#39;),
+  ref = new Firebase(url),
+  tallyNav = require(&#39;./tallyNav&#39;),
+  personRef;
+</code></p>
+
+<p>tallyNav is another option menu with votes tallied up.
 The main thing to note here is that we reference the database here with &#39;ref&#39;.
 personRef is nested to individuals, or leaf nodes within &#39;ref&#39;.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*================================||</span>
@@ -110,7 +114,8 @@ personRef is nested to individuals, or leaf nodes within &#39;ref&#39;.</p>
  <span class="nx">Component</span>
 <span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
 </code></pre></div>
-<p>Here we declare the components needed for React and React Native components in this section. I&#39;ll get to the bones of this after Github Universe.</p>
+<p>This section doesn&#39;t look like traditional javascript and is
+always hard to look at coming from JavaScript 5. This is <strong><a href="http://babeljs.io/docs/learn-es2015/#destructuring">destructuring</a></strong> and conceptually it is adding these items to React and moving forward.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*================================||</span>
 <span class="cm">||   Each list item and quality   ||</span>
 <span class="cm">||================================*/</span>
@@ -120,89 +125,96 @@ personRef is nested to individuals, or leaf nodes within &#39;ref&#39;.</p>
   <span class="s2">&quot;baller&quot;</span><span class="p">,</span>
   <span class="s2">&quot;leader&quot;</span><span class="p">,</span>
   <span class="s2">&quot;performer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;teacher&quot;</span><span class="p">...</span> 
+  <span class="s2">&quot;teacher&quot;</span><span class="p">...</span>
   <span class="p">]</span>
-
-<span class="cm">/*================================||</span>
+</code></pre></div>
+<p>This is the list of traits. Indents is empty, but it will be filled when we prepare the qualities below with update commands that let them access our firebase database.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*================================||</span>
 <span class="cm">||   This menu each button to     ||</span>
 <span class="cm">||   hit the specific quality     ||</span>
 <span class="cm">||   Use null to remove items     ||</span>
 <span class="cm">||   or true to add items         ||</span>
 <span class="cm">||================================*/</span>
-
-<span class="p">...</span>
+<span class="kr">class</span> <span class="nx">FeaturedNav</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">FeaturedNav</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getTraits</span><span class="p">();</span>
 </code></pre></div>
-<p>Huge update coming... promise! It&#39;s being prepared in comments.</p>
+<p>Within this function we make our updaters.
+Anywhere else and these don&#39;t trigger correctly.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">return</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">View</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">background</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">TouchableHighlight</span>
+      <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">&#39;transparent&#39;</span>
+        <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span><span class="o">=&gt;</span><span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;See your friend&#39;s stats&quot;</span><span class="p">)</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Stats for &#39;</span><span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+            <span class="nx">component</span><span class="o">:</span> <span class="nx">tallyNav</span><span class="p">,</span>
+            <span class="nx">leftButtonTitle</span><span class="o">:</span> <span class="s1">&#39;Back&#39;</span><span class="p">,</span>
+            <span class="nx">onLeftButtonPress</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">pop</span><span class="p">(),</span>
+        <span class="p">})</span>
+      <span class="p">}}</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>This section lets us move to another screen, which shows the results of the voting.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//facebook image</span>
+<span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">source</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>This templating in particular really argues with the blogging&#39;s templating, so here&#39;s a screenshot.</p>
 
-<!--
+<p><img src="fbImage.png"/></p>
 
-class FeaturedNav extends Component {
+<p>This section is the logic behind grabbing the facebook profile. If you have an ID generated from your login you are good to go. I&#39;m going to leave blogging about Facebook&#39;s login SDK for React Native to my partners <strong><a href="http://kent10ou.github.io"> Kent </a></strong> and <strong><a href="http://ceditoph.github.io/"> Casey </a></strong>.</p>
 
-  getInitialState() {
-    return {
-      opacity: 0.2,
-    }
-  }
-
-  render() {
-    window.FeaturedNav = this;
-    person.shuffle(qualities);
-    this.getTraits();
-    return (
-      <View style={styles.featNavContainer}>
-        <Image source= style=>
-          <TouchableHighlight underlayColor='transparent'
-            onPress={()=>{ console.log("See your friend's stats")
-              this.props.navigator.push({
-                title: 'Stats for '+ person.name,
-                component: tallyNav,
-                leftButtonTitle: 'Back',
-                onLeftButtonPress: () => this.props.navigator.pop(),
-            })
-          }}>
-            <Image source=
-                 style=>
-              <View style={styles.navOverlay}>
-                <Text style={styles.navChoiceText}>see stats!</Text>
-              </View>
-            </Image>
-          </TouchableHighlight>
-            <ScrollView
-              onScroll={() => { console.log('onScroll!'); }}
-              scrollEventThrottle={200}
-              contentInset=
-              style={styles.scrollView}>
-              {indents}
-            </ScrollView>
-        </Image>
-      </View>
-    );
-  }
-  getTraits(){
-    personRef = ref.child("pond").child(person.id);
-    for (var i = 0; i < qualities.length; i++) {
-      var vote = {};
-      vote[window.Katfish.userID] = true;
-      (function runIt(variable){
-        indents.push(
-          <TouchableHighlight style={styles.featNavButton}
-          underlayColor={'rgba(200,28,78,0.2)'}
-          onPress={()=>{
-            personRef.child(variable).update(vote)
-            qualities.splice(qualities.indexOf(vote),1);
-          }}>
-            <Text style={styles.featNavButtonText}>{qualities[i]}</Text>
-          </TouchableHighlight>);
-      })(qualities[i])
-    }
-  }
-}
-
-module.exports = FeaturedNav;
-
--->
-
-<p><strong>This is a stub... there&#39;s more to come</strong></p>
+<p>This mostly styling, you can gloss over it. The important bit is that I drop in the &quot;indents&quot; variable here. I&#39;ll describe in detail how to fill indents.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">navOverlay</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">navChoiceText</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">see</span> <span class="nx">stats</span><span class="o">!&lt;</span><span class="err">/Text&gt;</span>
+    <span class="o">&lt;</span><span class="err">/View&gt;</span>
+  <span class="o">&lt;</span><span class="err">/Image&gt;</span>
+<span class="o">&lt;</span><span class="err">/TouchableHighlight&gt;</span>
+  <span class="o">&lt;</span><span class="nx">ScrollView</span>
+    <span class="nx">onScroll</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;onScroll!&#39;</span><span class="p">);</span> <span class="p">}}</span>
+    <span class="nx">scrollEventThrottle</span><span class="o">=</span><span class="p">{</span><span class="mi">200</span><span class="p">}</span>
+    <span class="nx">contentInset</span><span class="o">=</span>
+    <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">scrollView</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="nx">indents</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="err">/ScrollView&gt;</span>
+<span class="o">&lt;</span><span class="err">/Image&gt;</span>
+<span class="o">&lt;</span><span class="err">/View&gt;</span>
+<span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the render function, we invoked a getTraits function. Here it is in all it&#39;s glory.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="nx">getTraits</span><span class="p">(){</span>
+    <span class="nx">personRef</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">.</span><span class="nx">child</span><span class="p">(</span><span class="s2">&quot;pond&quot;</span><span class="p">).</span><span class="nx">child</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre></div>
+<p>Here we access the database at the very specific person we are interested with voting on.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">qualities</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">vote</span> <span class="o">=</span> <span class="p">{};</span>
+      <span class="nx">vote</span><span class="p">[</span><span class="nb">window</span><span class="p">.</span><span class="nx">Katfish</span><span class="p">.</span><span class="nx">userID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</code></pre></div>
+<p>Here is the specific information we are voting with. This can be used with any keyvalue pair, but the window.Katfish.userID is specifically who you are in our program. PersonID is who you are voting on and window.Katfish.userID. A true vote helps us add to our firebase database, false is also possible and will be important in the future to prevent &quot;re-voting&quot;, and a null value here would remove the vote from our database if needed. We will only use true to vote here.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="nx">runIt</span><span class="p">(</span><span class="nx">variable</span><span class="p">){</span>
+</code></pre></div>
+<p>This part is super key. Without this function (which is invoked immediately below), we do not have a way to change the place at which we vote in our database on different qualities. This function is absolutely required.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="nx">indents</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">featNavButton</span><span class="p">}</span>
+    <span class="nx">underlayColor</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rgba(200,28,78,0.2)&#39;</span><span class="p">}</span>
+    <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="nx">personRef</span><span class="p">.</span><span class="nx">child</span><span class="p">(</span><span class="nx">variable</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">vote</span><span class="p">)</span>
+      <span class="nx">qualities</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">qualities</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">vote</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}}</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>Here in this crucial section, personRef.child(variable).update(vote) gives the user the ability to vote on various features of a single person, with different types of vote tied to their username.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">      <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">featNavButtonText</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">qualities</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+    <span class="o">&lt;</span><span class="err">/TouchableHighlight&gt;);</span>
+<span class="p">})(</span><span class="nx">qualities</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And here we wrap it up. The {qualities[i]} is simply the text of each feature, however, the immediately invoked function with qualities[i] as an argument is the way that our function fills the scrollview with clickable highlights that work, subbing in for variable. Pretty nifty right? Once we got one of these going, we were able to make a pretty quick application of it. Cheers!</p>
 
   </div>
 

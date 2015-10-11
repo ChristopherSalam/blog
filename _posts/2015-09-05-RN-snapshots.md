@@ -8,7 +8,7 @@ tags:
 - javascript
 ---
 
-We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I'm going to share them here. 
+We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I'm going to share them here.
 
 I've been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.
 
@@ -55,7 +55,7 @@ render() {
   return this.renderTraits(traits);
 }
 ```
-"var that = this" resets the context. The database ref listens and uses that.setState to change the view and update our information. It would have been nice to have a react native firebase library to be written out for us, but thankfully we were able to use vanilla firebase and react native to address our pretty simple needs. This is probably the best way, we've had no mistriggers using this approach. 
+"var that = this" resets the context. The database ref listens and uses that.setState to change the view and update our information. It would have been nice to have a react native firebase library to be written out for us, but thankfully we were able to use vanilla firebase and react native to address our pretty simple needs. This is probably the best way, we've had no mistriggers using this approach.
 
 **Here's a demo!** The top file shows the iOS simulator of the app on the left and the open firebase database on the right. I'm manually adding information in the database and the update of the information triggers and causes the bottom image. The same works when the application sends information to update the database from within the app. It's pretty exciting to do all this without sending this information through a server, just listeners and firebase calls going back and forth. I'll add a post discussing those triggers soon!
 
@@ -65,6 +65,6 @@ In an other part of the application we access firebase using a function between 
 
 <img src="Phones.jpg"/>
 
-Send me an email or talk to <a href="http://kent10ou.github.io"> Kent </a> or <a href="http://ceditoph.github.io/"> Casey </a> if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
+Send me an email or talk to **<a href="http://kent10ou.github.io"> Kent </a>** or **<a href="http://ceditoph.github.io/"> Casey </a>** if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
 
 <!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook's new Graph API doesn't issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we'll have to start over.* -->
