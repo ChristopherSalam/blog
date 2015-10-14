@@ -79,36 +79,36 @@
 <p><img src="lbjkobe.png"/></p>
 
 <p>Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&#39;s console directly to our app so people can play with it live. We been busy lately, but here we&#39;ll build some queries and move the dots around and build towards the shortest path query.</p>
+
+<p>This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&#39;s pretty random and I&#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&#39;s some more for effect.</p>
 <div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">()</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span>
 <span class="k">RETURN</span> <span class="n">r</span>
 <span class="k">LIMIT</span> <span class="mi">25</span>
 </code></pre></div>
-<p>This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&#39;s pretty random and I&#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&#39;s some more for effect.</p>
-
 <p><img src="LAL.png"/></p>
+
+<p>This is the same query but for 50 relationships.</p>
 <div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">()</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span>
 <span class="k">RETURN</span> <span class="n">r</span>
 <span class="k">LIMIT</span> <span class="mi">50</span>
 </code></pre></div>
-<p>This is the same query but for 50 nodes.</p>
-
 <p><img src="LAL2.png"/></p>
+
+<p>This query is for 100 relationships.</p>
 <div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">()</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span>
 <span class="k">RETURN</span> <span class="n">r</span>
 <span class="k">LIMIT</span> <span class="mi">100</span>
 </code></pre></div>
-<p>This query is for 100 nodes.</p>
-
 <p><img src="LAL3.png"/></p>
+
+<p>So this is only so useful to us. We can find the individual we want with all their connections by using a match where the name is specific. To keep it trailblazer themed, here is every team rasheed wallace played on:</p>
 <div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Player</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">PLAYS_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span>
 <span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="ss">&quot;rasheed wallace&quot;</span>
 <span class="k">RETURN</span> <span class="n">r</span>
 </code></pre></div>
-<p>So this is only so useful to us. We can find the individual we want with all their connections by using a match where the name is specific. To keep it trailblazer themed, here is every team rasheed wallace played on:</p>
-
 <p><img src="rash.png"/></p>
 
-<p>We are building towards what we want but there&#39;s just a little bit we more that we need, and that&#39;s the shortestPath command. shortestPath ((p1)-[*]-(p2)).</p>
+<p>We are building towards our Kobe to Lebron query (which was my default test suite command) but there&#39;s just a little bit we more that we need, and that&#39;s the shortestPath command. shortestPath ((p1)-[*]-(p2)).</p>
 
 <p><strong>MATCH</strong> Is the powerful cypher statement that lets us join our information together and get back relationships.</p>
 
