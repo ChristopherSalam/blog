@@ -7,6 +7,140 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>agricultural</title>
+        <description>&lt;p&gt;start this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 10 Nov 2015 00:00:00 -0800</pubDate>
+        <link>ChristopherSalam.github.io/agricultural/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/agricultural/</guid>
+      </item>
+    
+      <item>
+        <title>currying</title>
+        <description>&lt;p&gt;Tonight, I watched Cassandra&amp;#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
+
+&lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;curryArea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;curry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;curryArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// [function]&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;curryArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Why is this useful?&lt;/p&gt;
+
+&lt;p&gt;There&amp;#39;s a few reasons I think of just off the top:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Asynchronous functions fail because answers haven&amp;#39;t returned yet. If we run a function and leave it ready to catch the next argument we can process more asynchronously.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We can break our entire functions into discrete chunks, allowing preprocessing and storage of information in closures that will eventually process. Also, if they don&amp;#39;t end up processing, rather than get functions run with undefined, we have functions we can assess and pull partial information from.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It&amp;#39;s a gateway to understanding partial function application, which is even more powerful.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!--
+
+```javascript
+function that invokes
+var lines = R.invoker(1, &#39;split&#39;)(&#39;/n&#39;);
+var split = R.split(&#39;/n&#39;);
+```
+var getItems = R.compose(
+  R.filter(R.propEq(&#39;eventType&#39;,&quot;ITEM_DESTROYED&quot;)),
+  R.flatten,
+  R.map(R.prop(&#39;events&#39;))
+)
+
+
+--&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&amp;quot;Pointfree Code is code that never refers to the code it handles:
+it focuses on the logic, easier to reason about, and never have to wonder about the state.&amp;quot;&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
+
+```javascript
+var newfunc =  R.pipe(func1, func2, func3)
+```
+
+where the newfunc(args_provided_to_function_one) --&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 04 Nov 2015 00:00:00 -0800</pubDate>
+        <link>ChristopherSalam.github.io/currying/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/currying/</guid>
+      </item>
+    
+      <item>
+        <title>software</title>
+        <description>&lt;p&gt;start this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 26 Oct 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/software/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/software/</guid>
+      </item>
+    
+      <item>
+        <title>console</title>
+        <description>&lt;p&gt;This area I&amp;#39;ve been saving for sundries regarding the console. It&amp;#39;s a pretty powerful little area within the browser you can use to access lots of information. Every now and then you&amp;#39;ll find yourself making a great discovery in the console and you&amp;#39;ll want to grab what you find there and pull it out.&lt;/p&gt;
+
+&lt;p&gt;This is a little trick I found deep on Stack Overflow that hopefully they will make more accessible in the future:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*in console*/&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...};&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// right click on the edge of the Object&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// store as a temporary variable&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// creates &amp;#39;temp1&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// and then run this command&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// to make this is available for&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// pasting in text editor.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 22 Oct 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/console/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/console/</guid>
+      </item>
+    
+      <item>
+        <title>chemical</title>
+        <description>&lt;p&gt;start this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 18 Oct 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/chemical/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/chemical/</guid>
+      </item>
+    
+      <item>
+        <title>environmental</title>
+        <description>&lt;p&gt;start this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Oct 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/environmental/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/environmental/</guid>
+      </item>
+    
+      <item>
+        <title>try neo4j</title>
+        <description>&lt;p&gt;start this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Oct 2015 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/node-neo4j/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/node-neo4j/</guid>
+      </item>
+    
+      <item>
         <title>regexp(?:\.js)</title>
         <description>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://demesheo.github.io/&quot;&gt;Demesheo Wilson II&lt;/a&gt;&lt;/strong&gt; approached me with help on a regexp problem which was a very small part of the for the project his team was working on called &lt;strong&gt;&lt;a href=&quot;http://gogitit.co/&quot;&gt;Go Git it!&lt;/a&gt;&lt;/strong&gt;, which keeps track of the JavaScript frameworks people are using. Here&amp;#39;s the case he presented to me: how do I read a javascript framework such as react.js from a cdn call in index.html or a package.json?&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;react.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
@@ -25,11 +159,6 @@
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/-----/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Regular Expressions are objects that use the bracket syntax. Anything between these letters is a pattern to match. The g global or g flag says give me all the instances of this match, otherwise we just get the first match.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;words.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;\w+ looks for all word like characters, and includes numbers for things like d3. This picks up way too much.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;words.png&quot;/&gt;&lt;/p&gt;
@@ -230,711 +359,6 @@ Anywhere else and these don&amp;#39;t trigger correctly.&lt;/p&gt;
         <pubDate>Sat, 19 Sep 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/RN-updates/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/RN-updates/</guid>
-      </item>
-    
-      <item>
-        <title>(neo4j) collision</title>
-        <description>&lt;p&gt;Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I&amp;#39;d call &amp;quot;name collision&amp;quot;. Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don&amp;#39;t have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;luke4.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;It&amp;#39;s pretty clear to me that Luke Jackson probably didn&amp;#39;t play in 1969 and 2004. We probably have two people with the same name. Looking through the dataset confirms this thought. Below we have already changed the much older Luke Jackson to his full name, Lucious.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;luke.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Greg Smith was another name that showed up twice and really interrupted some of our processing.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;luke2.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Our solution was pretty simple, I went through the data and changed each to be another name that was fitting, either a full name from one player or an initial. None of these players were names I imagined being common queries. &lt;/p&gt;
-
-&lt;p&gt;The next step was to remove all the data in the database at first and reload the players. I didn&amp;#39;t do this at first, and no connections were repaired despite all my work. This was because the other nodes were still present, and duplicate nodes formed, making the database have nearly 80,000 nodes. The solution is remove all the data from the database and start over. The command to do that is here, cd into this folder: &lt;/p&gt;
-
-&lt;p&gt;/usr/local/Cellar/neo4j/community-x.x.x-unix/libexec/data&lt;/p&gt;
-
-&lt;p&gt;and use this command:&lt;/p&gt;
-
-&lt;p&gt;rm -rf data/*&lt;/p&gt;
-
-&lt;p&gt;There is also a cypher command to do this but I find this a lot faster and easier. &lt;/p&gt;
-
-&lt;p&gt;Then reload the data from the corrected CSV. If you go through the steps on this blog in part 1, that file has already been corrected. &lt;/p&gt;
-
-&lt;p&gt;The results of the correction are significant.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s a Bob Cousy to James Harden before the change:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;cous-hardenWrong.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;After correcting the clash with Greg Smith, the query went from being a 4 node relationship to a 6 node relationship.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;cous-hardenCORR.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Just for good measure, here&amp;#39;s the longest shortest path query I&amp;#39;ve found yet. It&amp;#39;s between George Mikan, one of the oldest players in the game and Dante Exum, one of the youngest.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;danteMikan.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ll be back soon to discuss adding a new node and relationship to the database: NBA Coaches!&lt;/p&gt;
-</description>
-        <pubDate>Sat, 12 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/collision/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/collision/</guid>
-      </item>
-    
-      <item>
-        <title>RN snapshots</title>
-        <description>&lt;p&gt;We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I&amp;#39;m going to share them here.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ve been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.&lt;/p&gt;
-
-&lt;p&gt;We have no servers in our application. Currently we use React and Firebase references and listen for changes directly where is needed. Since React Native has CommonJS, iOS fetch API has no CORS restrictions, so we write server style code in our views and go directly from firebase to our views and they update when there&amp;#39;s a change.&lt;/p&gt;
-
-&lt;p&gt;This is what we had initially for fetching our data.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;fetchData&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;REQUEST_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;responseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderLoadingView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderTraits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The REQUEST_URL was our firebase url of interest. Which is all fine and dandy, except that this only works when we start our application. We wanted live updating and the best way to do it is to place a listener right in a certain spot...&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderLoadingView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderTraits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;traits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;quot;var that = this&amp;quot; resets the context. The database ref listens and uses that.setState to change the view and update our information. It would have been nice to have a react native firebase library to be written out for us, but thankfully we were able to use vanilla firebase and react native to address our pretty simple needs. This is probably the best way, we&amp;#39;ve had no mistriggers using this approach.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Here&amp;#39;s a demo!&lt;/strong&gt; The top file shows the iOS simulator of the app on the left and the open firebase database on the right. I&amp;#39;m manually adding information in the database and the update of the information triggers and causes the bottom image. The same works when the application sends information to update the database from within the app. It&amp;#39;s pretty exciting to do all this without sending this information through a server, just listeners and firebase calls going back and forth. I&amp;#39;ll add a post discussing those triggers soon!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;beforeafter.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;In an other part of the application we access firebase using a function between the (this.state.loaded) and the (&amp;#39;return loadingView&amp;#39;) but that has lead to some funny errors when the database is changed (see some database misfires below). We have already fixed the error shown below and I&amp;#39;ll post about that in a part 2.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;Phones.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Send me an email or talk to &lt;strong&gt;&lt;a href=&quot;http://kent10ou.github.io&quot;&gt; Kent &lt;/a&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&quot;http://ceditoph.github.io/&quot;&gt; Casey &lt;/a&gt;&lt;/strong&gt; if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. &lt;/p&gt;
-
-&lt;!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook&#39;s new Graph API doesn&#39;t issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we&#39;ll have to start over.* --&gt;
-</description>
-        <pubDate>Sat, 05 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/RN-snapshots/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/RN-snapshots/</guid>
-      </item>
-    
-      <item>
-        <title>trees</title>
-        <description>&lt;p&gt;True to my nature, if you look closely I&amp;#39;m hugging that tree there.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s my little hug to you, console users: I&amp;#39;ve learned after doing data transforms in the console that you can save the data object or array as a global variable and then to copy the temporary variable.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*in console*/&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...};&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// right click on the edge of the Object&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// store as a temporary variable&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// creates &amp;#39;temp1&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// and then run this command&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// to make this is available for&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// pasting in text editor.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;But this post is mostly about solving trees. which seems to be a very big obsession with the computer science interviewers. I&amp;#39;ll try my best to talk myself into understanding trees, breath first search, depth first search, and binary trees.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Prototypal instantiation&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//made alternatively by using &amp;#39;new&amp;#39;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//made alternatively by using &amp;#39;new&amp;#39;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//made alternatively by using &amp;#39;new&amp;#39;&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//made alternatively by using &amp;#39;new&amp;#39;&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;I&amp;#39;m going to focus on psuedo-classical just because it&amp;#39;s a bit less text, but prototypal shows what&amp;#39;s going on under the hood. Also, it would allow us to not use the new keyword, which creates the two lines I&amp;#39;ve indicated in comments.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Psuedo-classical instantiation&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;One quick and dirty way to add a child was this I wrote immediately. Also does anyone else hate the mixed metaphor or tree, leaves, children, and parents?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Which works! For sure. The problem with this script is that it&amp;#39;s not very elegant in that you have to nest adding children outside the the bast root.&lt;/p&gt;
-
-&lt;p&gt;For example:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Which works but what if you wanted to into the next level of the tree?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Which we can all agree, isn&amp;#39;t great. There needs to be some way to add things to values at a certain spot. Additionally, their needs to be a way to separate adding things as a child, and adding as a sibling.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addSibling&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This is getting complicated as hell. Why does a tree have siblings or children?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;atValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BFDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;atValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BFDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!--
-
-// Tree.prototype.DFcontains = function (value) {
-//   if (this.value === value) {
-//     return true;
-//   } else if (this.children !== null) {
-//     var result = false, i;
-//     for (i = 0; result === false &amp;&amp; i &lt; this.children.length; i++) {
-//       result = this.children[i].contains(value);
-//     }
-//   }
-//   return result;
-// };
-
-
-Tree.prototype.DFtraverse = function(process) {
-   process.call(this, this.value);
-   var i;
-   for (i = 0; i &lt; this.children.length; i++) {
-     this.children[i].DFtraverse(process);
-   }
-}
-
-Tree.prototype.traverseDF = function(callback) {
-
-   // this is a recurse and immediately-invoking function
-   (function recurse(currentNode) {
-       // step 2
-       for (var i = 0, length = currentNode.children.length; i &lt; length; i++) {
-           // step 3
-           recurse(currentNode.children[i]);
-       }
-
-       // step 4
-       callback(currentNode);
-
-       // step 1
-   })(this._root);
-
-};
-
-Tree.prototype.BFtraverse = function(process) {
- var queue = [this],
- current = queue.shift();
-   while (current) {
-     for (var i = 0; i &lt; current.children.length; i++) {
-       queue.push(current.children[i]);
-     }
-     process.call(current, current.value);
-     current = queue.shift();
-   }
-}
-
-Tree.prototype.traverseBF = function(callback) {
-   var queue = [this._root];
-
-   currentTree = queue.shift();
-
-   while(currentTree){
-       for (var i = 0, length = currentTree.children.length; i &lt; length; i++) {
-           queue.push(currentTree.children[i]);
-       }
-
-       callback(currentTree);
-       currentTree = queue.shift();
-   }
-};
-
-Tree.prototype.contains = function(callback, traversal) {
-   traversal.call(this, callback);
-};
-
-Tree.prototype.size = function() {
- var size = 0;
- this.traverseDF(function(){
-   size++;
- })
- return size;
-}
-
-Tree.prototype.add = function(value, atValue, BFDF) {
- var child = new Tree(value),
-   parent = null,
-   callback = function(node) {
-     if (node.value === atValue) {
-       parent = node;
-     }
-   };
- this.contains(callback, BFDF);
- if (parent) {
-   parent.children.push(child);
-   child.parent = parent;
- }
-}
-
-Tree.prototype.add = function(data, toData, traversal) {
-   var child = new Node(data),
-       parent = null,
-       callback = function(node) {
-           if (node.data === toData) {
-               parent = node;
-           }
-       };
-
-   this.contains(callback, traversal);
-
-   if (parent) {
-       parent.children.push(child);
-       child.parent = parent;
-   } else {
-       throw new Error(&#39;Cannot add node to a non-existent parent.&#39;);
-   }
-};
-
-Tree.prototype.remove = function(data, fromData, traversal) {
-
-function findIndex(arr, data) {
-   var index;
-
-   for (var i = 0; i &lt; arr.length; i++) {
-       if (arr[i].data === data) {
-           index = i;
-       }
-   }
-
-   return index;
-}
-
-   var tree = this,
-       parent = null,
-       childToRemove = null,
-       index;
-
-   var callback = function(node) {
-       if (node.data === fromData) {
-           parent = node;
-       }
-   };
-
-   this.contains(callback, traversal);
-
-   if (parent) {
-       index = findIndex(parent.children, data);
-
-       if (index === undefined) {
-           throw new Error(&#39;Node to remove does not exist.&#39;);
-       } else {
-           childToRemove = parent.children.splice(index, 1);
-       }
-   } else {
-       throw new Error(&#39;Parent does not exist.&#39;);
-   }
-
-   return childToRemove;
-};
-
-var tree = new Tree(0);
-tree.add(1, 0, tree.traverseDF);
-tree.add(2, 0, tree.traverseDF);
-// tree.addChild(1);
-// tree.addChild(2);
-// tree.children[0].addChild(3);
-tree.add(3, 1, tree.traverseDF);
-// tree.add(3,1,tree.BFtraverse);
-// tree.children[0].children[0].addChild(4);
-tree.add(4, 3, tree.traverseDF);
-tree.add(5, 2, tree.traverseBF);
-tree.remove(5, 2, tree.traverseBF);
-console.log(tree);
-// tree.children[1].children[0].addChild(7);
-// console.log(tree.contains(console.log,tree.DFtraverse)); // yields &#39;true&#39;
-// console.log(tree.contains(0)); // yields &#39;true&#39;
-// console.log(tree.contains(1)); // yields &#39;true&#39;
-// console.log(tree.contains(4)); // yields &#39;false&#39;
-// console.log(&quot;Depth&quot;);
-// tree.DFtraverse(console.log);
-// console.log(&quot;Breadth&quot;);
-// tree.BFtraverse(console.log);
-console.log(tree.size());--&gt;
-
-&lt;!--
-Tonight, I watched Cassandra&#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!
-
-I would recommend going to Ramda.js&#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via
-
-```html
-&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&quot;&gt;&lt;/script&gt;
-```
- Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.
-
-```javascript
-function area(height, width) { return height * width; }
-var curryArea = R.curry(area);
-
-curryArea(2);    // [function]
-curryArea(2)(5); // 10
-
-```
-Why is this useful?
-
-```javascript
-function that invokes
-var lines = R.invoker(1, &#39;split&#39;)(&#39;/n&#39;);
-var split = R.split(&#39;/n&#39;);
-```
-var getItems = R.compose(
-  R.filter(R.propEq(&#39;eventType&#39;,&quot;ITEM_DESTROYED&quot;)),
-  R.flatten,
-  R.map(R.prop(&#39;events&#39;))
-)
-
-&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&quot;Pointfree Code is code that never refers to the code it handles:
-it focuses on the logic, easier to reason about, and never have to wonder about the state.&quot;&lt;/a&gt;
---&gt;
-
-&lt;!-- Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
-
-```javascript
-var newfunc =  R.pipe(func1, func2, func3)
-```
-
-where the newfunc(args_provided_to_function_one) =  --&gt;
-</description>
-        <pubDate>Mon, 31 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/trees/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/trees/</guid>
-      </item>
-    
-      <item>
-        <title>query neo4j</title>
-        <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes.You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;. If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In this post I will teach you how to pull some of those images from a neo4j browser, using our (hopefully already installed) dataset!&lt;/p&gt;
-
-&lt;p&gt;The 2 commands we ran in part 1 brought all the data in as nodes then mapped relationships between them. Now we will explore the shortest path query, the golden gem of any six degrees of separation project. Throughout the process of this project, I found myself typing in Kobe and Lebron on loop to test the query. The moment the database produced the intended result it was like fireworks.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;lbjkobe.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Right? Kinda DOPE! The next side goals for our website is to bring in the powerful images from neo4j&amp;#39;s console directly to our app so people can play with it live. We been busy lately, but here we&amp;#39;ll build some queries and move the dots around and build towards the shortest path query.&lt;/p&gt;
-
-&lt;p&gt;This is a pretty simple query for demo purposes. Give me the first 25 relationships that come up. It&amp;#39;s pretty random and I&amp;#39;m not that into the fact that the lakers are ordered first for some reason, being a BIG laker hater, but here&amp;#39;s some more for effect.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;This is the same query but for 50 relationships.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL2.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;This query is for 100 relationships.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;LAL3.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;So this is only so useful to us. We can find the individual we want with all their connections by using a match where the name is specific. To keep it trailblazer themed, here is every team rasheed wallace played on:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PLAYS_IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;quot;rasheed wallace&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;rash.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;We are building towards our Kobe to Lebron query (which was my default test suite command) but there&amp;#39;s just a little bit we more that we need, and that&amp;#39;s the shortestPath command. shortestPath ((p1)-[*]-(p2)).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;MATCH&lt;/strong&gt; Is the powerful cypher statement that lets us join our information together and get back relationships.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;(p1:Player {name:&amp;quot;lebron james&amp;quot; }),&lt;/strong&gt; is the way we give cypher our starting point,
-&lt;strong&gt;(p2:Player{name:&amp;quot;kobe bryant&amp;quot; }),&lt;/strong&gt; is the end point,
-&lt;strong&gt;p = shortestPath((p1)-[*]-(p2))&lt;/strong&gt; is the key part of the query
-&lt;strong&gt;RETURN EXTRACT(n in nodes(p) | n.name),&lt;/strong&gt; tells us what to return once the match is made.
-&lt;strong&gt;EXTRACT(n in nodes(p) | n.year),&lt;/strong&gt; We like to use the name in the first query,
-&lt;strong&gt;RELATIONSHIPS(p)&lt;/strong&gt; then years in the second, and relationships third.&lt;/p&gt;
-
-&lt;p&gt;The information comes back as three arrays with each bit of information in a particular spot, which we can render to the page.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;MATCH&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;lebron james&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;kobe bryant&amp;quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shortestPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RETURN&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;RELATIONSHIPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Yeah! Here&amp;#39;s the query in the browser&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;kobeshaqlebron.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Sometimes this query picks up someone else in the middle, i.e. trey instead of shaquille, which is one of the interesting questions with a graph database, i.e. when many different correct answers, how do we choose one relationship over the other?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;kobetreylebron.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;More to come!&lt;/p&gt;
-</description>
-        <pubDate>Wed, 26 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/query-neo4j/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/query-neo4j/</guid>
-      </item>
-    
-      <item>
-        <title>try RN</title>
-        <description>&lt;p&gt;Our group of three sat down to discuss what we wanted to pursue for our Telegraph Academy senior project. We created a venn diagram and put up our different goals, technology interests, and interests. We discussed our goals for after the program and a few different proposals before settling in on a social app that uses React Native, d3, Firebase, the Facebook API.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;venn.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Then we thought... can we pull this off in four weeks?&lt;/p&gt;
-
-&lt;p&gt;A few days later, the thought is certainly that we definitely can and that we will contribute to the work that will lead to making react native and firebase even more successful. Kent, one of my teammates, already has &lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;corrected a blog &lt;/a&gt; that we&amp;#39;ve used and we are going to keep adding to the blog posts and links that have helped us.&lt;/p&gt;
-
-&lt;p&gt;Some of the other links that we have used so far.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;On choosing between angular ionic and react native.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker&quot;&gt;Angular versus React&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/javascript/posts/switching-from-ios-to-ionic&quot;&gt;iOS to Ionic&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=9857580&quot;&gt;Why React&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about/&quot;&gt;React uses... React!&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://wix.github.io/react-templates/&quot;&gt;React Templates&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://scotch.io/tutorials/build-a-real-time-twitter-stream-with-node-and-react-js&quot;&gt;Build twitter stream with react&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/&quot;&gt;Sample app with Cordova&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;React Native&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://ryanclark.me/going-native-with-react/&quot;&gt;Going native with react&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/getting-started.html&quot;&gt;Getting started with React&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.jackcallister.com/2014/12/01/building-a-test-suite-in-react-js.html&quot;&gt;Testing&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Bulid primer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-for-beginners/&quot;&gt;... for Beginners&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-tab-bar/&quot;&gt;Tab Bar sample&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://devdactic.com/react-native-resources/&quot;&gt;Resources&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/docs/navigatorios.html&quot;&gt;Navigator iOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/leecade/react-native-swiper&quot;&gt;Swiper&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/johanneslumpe/react-native-gesture-recognizers&quot;&gt;Gesture Recognizers&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/enaqx/awesome-react#server-client-with-react&quot;&gt;Server-Client&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Xcode &amp;amp; Apple&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/programs/enroll/&quot;&gt;Enroll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/AddingLaunchImagestoanAssetCatalog.html&quot;&gt;XCode&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html&quot;&gt;Icon Matrix&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developers.facebook.com/docs/facebook-login/ios&quot;&gt;iOS&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556-CH66-SW1&quot;&gt;iOS documentation for User Experience/a&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/brentvatne/react-native-svg&quot;&gt;React Native &amp;amp; SVG&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Firebase, OAuth &amp;amp; D3&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/blog/2015-05-29-react-native.html&quot;&gt;React Native &amp;amp; FireBase&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/firebase/reactfire/tree/master/examples/todoApp&quot;&gt;Examples&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.firebase.com/docs/rest/guide/saving-data.html&quot;&gt;Saving Data in FireBase&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@jtremback/oauth-2-with-react-native-c3c7c64cbb6d&quot;&gt;OAuth 2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://ahmadchatha.com/writings/article1.html&quot;&gt;D3&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Here&amp;#39;s us&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://katfish.me&quot;&gt;Katfish us!&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Long story made short: We found all this in less than 2 days. We&amp;#39;ve been able to parse through it, learn quickly and help others. Even as a new technology, it&amp;#39;s clear that the framework achieves it&amp;#39;s goal: it makes it easier to make applications and early adopters are excited about it and helping each other. Don&amp;#39;t be discouraged to take on anything new!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 19 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/try-RN/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/try-RN/</guid>
-      </item>
-    
-      <item>
-        <title>packages</title>
-        <description>&lt;p&gt;Text Editors are a heated debate amongst programmers. It really comes down to choices of willingness to learn tools. I am intrigued to try all the different text editors out and develop a feel for what makes each special.&lt;/p&gt;
-
-&lt;p&gt;Some developer friends of mine use VI/VIM, or EMACS, but most tend to use &lt;strong&gt;&lt;a href=&quot;http://www.sublimetext.com/3&quot;&gt;Sublime Text&lt;/a&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&quot;https://Atom.io/&quot;&gt;Atom&lt;/a&gt;&lt;/strong&gt; text editor. I used Sublime (python, c and c++) but I am transitioning to &lt;strong&gt;&lt;a href=&quot;https://Atom.io/&quot;&gt;Atom&lt;/a&gt;&lt;/strong&gt; because I know it is built in javascript, and I can contribute more readily. I also am interested in using &lt;strong&gt;&lt;a href=&quot;http://electron.atom.io/&quot;&gt;Electron&lt;/a&gt;&lt;/strong&gt; to write programs for desktops.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s a typical sublime layout.&lt;/p&gt;
-
-&lt;p&gt;&lt;image src=&quot;sublime.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;And here&amp;#39;s a typical atom equivalent.&lt;/p&gt;
-
-&lt;p&gt;&lt;image src=&quot;atom.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;VIM and Emacs are two storied, old text editors that are powerful and purportedly more customizable, but my general experience with it involves cursing. One of my favorite ancedotes is my from my classmate &lt;strong&gt;&lt;a href=&quot;http://www.marcchristophe.com/&quot;&gt;Marc&lt;/a&gt;&lt;/strong&gt;, who uses &lt;strong&gt;&lt;a href=&quot;https://www.gnu.org/software/emacs/&quot;&gt;EMACS&lt;/a&gt;&lt;/strong&gt; religiously, and told me one day that he finally got a tree directory to work in EMACS (you can see both on the left above in Atom and Sublime, they come standard). &lt;strong&gt;YIKES!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Here I&amp;#39;m going to talk about &lt;strong&gt;&lt;a href=&quot;http://www.sublimetext.com/3&quot;&gt;Sublime&lt;/a&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;a href=&quot;https://Atom.io/&quot;&gt;Atom&lt;/a&gt;&lt;/strong&gt; packages. Here&amp;#39;s a conceptual overview of some powerful things to install if you are starting to code. Install right now! Even if you don&amp;#39;t learn all the possible ways to use the packages, they benefits they provide can be immediate. If you use Sublime and have not yet installed the package manager, please head to &lt;strong&gt;&lt;a href=&quot;https://packagecontrol.io/&quot;&gt;here and follow the instructions on install now&lt;/a&gt;&lt;/strong&gt;. Browsing the packages here is a great way to know what is trending and what people find helpful.&lt;/p&gt;
-
-&lt;p&gt;I use sublime linter with JSlint and JShint, which is pretty much several blog posts worth of difficulty, so I will pass on describing the process, but these are all helpful so consider installing them. Be patient, as each will take some time to install but is worth the struggle. After installing this, practice setting up different user accounts or save package json&amp;#39;s with an established style guide (I use the AirBNB javascript guideline).&lt;/p&gt;
-
-&lt;p&gt;I use &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6&quot;&gt;Emmet&lt;/a&gt;&lt;/strong&gt; for HTML quick editing. &lt;strong&gt;&lt;a href=&quot;https://github.com/emmetio/emmet-atom&quot;&gt;Emmet&lt;/a&gt;&lt;/strong&gt; is available in Atom as well.&lt;/p&gt;
-
-&lt;p&gt;With Emmet you can use control-e to convert abbreviations for HTML into the fully written html equivalent. The one I use most often is this one:&lt;/p&gt;
-
-&lt;p&gt;&lt;image src=&quot;emmet1.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Great right? Other uses that are pretty common is to name divs with a specific class or id. This happens pretty quickly as well.&lt;/p&gt;
-
-&lt;p&gt;&lt;image src=&quot;emmet2.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The uses can get very tricky. I don&amp;#39;t use this one but I wanted to show it to you. You get the idea...&lt;/p&gt;
-
-&lt;p&gt;&lt;image src=&quot;emmet3.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;I use &lt;strong&gt;&lt;a href=&quot;https://packagecontrol.io/packages/GitGutter&quot;&gt; Git Gutter &lt;/a&gt;&lt;/strong&gt; to help me keep track of my changes visually. In Atom you can use &lt;strong&gt;&lt;a href=&quot;https://github.com/atom/git-diff&quot;&gt;git-diff&lt;/a&gt;&lt;/strong&gt;  to achieve this, it seems less customizable.&lt;/p&gt;
-
-&lt;p&gt;I use a &lt;strong&gt;&lt;a href-&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;sublime build tool &lt;/a&gt;&lt;/strong&gt;, that my friend Jamil help me install to help me with my algorithmic problems. In Atom, this functionality comes from installing the &lt;strong&gt;&lt;a href=&quot;https://github.com/rgbkrk/atom-script&quot;&gt;Script&lt;/a&gt;&lt;/strong&gt; package, and using ⌘-i.&lt;/p&gt;
-
-&lt;p&gt;I use a &lt;strong&gt;&lt;a href=&quot;https://packagecontrol.io/packages/BracketHighlighter&quot;&gt;bracket matching &lt;/a&gt;&lt;/strong&gt; tool to help me keep track of the (), {}, and []. Something called Bracket Matcher comes standard with Atom.&lt;/p&gt;
-
-&lt;p&gt;I use &lt;strong&gt;&lt;a href=&quot;http://colorsublime.com/&quot;&gt;color sublime&lt;/a&gt;&lt;/strong&gt;, which keeps me from going crazy with the boring color pallette of text editing. In Atom and Sublime you can install themes from menus.&lt;/p&gt;
-
-&lt;p&gt;I use the a &lt;strong&gt;&lt;a href=&quot;http://logicmason.com/2013/strip-trailing-whitespace-every-time-you-save-a-file-in-sublime-text/&quot;&gt; white space removal &lt;/a&gt;&lt;/strong&gt; tool I found at logic mason&amp;#39;s website. Be sure to remove this setting from the markdown and other languages you use specific section of your sublime text, as white space is critically important in markdown and other languages. Atom comes standard with this package.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ve fully switched over to &lt;strong&gt;&lt;a href=&quot;https://Atom.io/&quot;&gt;Atom&lt;/a&gt;&lt;/strong&gt;, but I&amp;#39;ll leave this post up here for users of either text-editor. If you are interested in EMACS and Vim, I&amp;#39;m sure enthusiasts out there have all the various packages made ready to go, but I&amp;#39;m going to stick with modern editors. Hope this was helpful!&lt;/p&gt;
-</description>
-        <pubDate>Sat, 15 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/packages/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/packages/</guid>
-      </item>
-    
-      <item>
-        <title>try neo4j</title>
-        <description>&lt;p&gt;&lt;img src=&quot;portland.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Neo4J is a graph database and it specializes in showing relationships between each data nodes. It can be a bit intimidating to learn and make a project with a new database within a week, but that&amp;#39;s exactly what we did at Telegraph Academy this week. We discussed mapping the pathways between players and stumbled on The Bacon Oracle and other sites that set out to mapping relationships just had we had done. We also learned about Neo4j, and found that it&amp;#39;s built-in &amp;quot;shortest path&amp;quot; query would do exactly what we wanted, so we set out to learn the database.&lt;/p&gt;
-
-&lt;p&gt;You can checkout the final product of our one week of work here at &lt;a href=&quot;http://six-dribbles.herokuapp.com&quot;&gt;six-dribbles&lt;/a&gt;! If you click on the about page, you can see some beautiful neo4j-d3 generated moving graphs. In part 2 I will teach you how to pull some of those images from a neo4j browser, using our dataset, but first, let&amp;#39;s get you set up!&lt;/p&gt;
-
-&lt;p&gt;Go to neo4j.com&amp;#39;s built in browser, or you can install the program and use the console on your localhost. You will need to have java version 1.7 installed on your computer and this may be challenging.  &lt;a href=&quot;https://1000linesofcode.wordpress.com/2013/12/30/building-a-single-page-application-with-angularjs-and-neo4j-setup/&quot;&gt; This post went a long way for us. &lt;/a&gt; From there, send these statements into the query. The first will load up the entire dataset (FYI players names all in lowercase) from my website.&lt;/p&gt;
-
-&lt;p&gt;I have prepared a very simple dataset that contains just 3 points of information: The player&amp;#39;s name, the year they played for a certain team, and the team&amp;#39;s name. Each time a player was traded or played for two teams, both were mapped for that year.&lt;/p&gt;
-
-&lt;p&gt;This blog post will let you grab our initial dataset and try out some queries on the Neo4J brower. The neo4J browser has a fun GUI powered by D3 that really lets you see all the data. For example, to see each team Lebron has played on, you could ask the database and your return would be this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;lebron.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Hovering on the console would show you the yearly information and confirm to you that while the nodes for each year in Cleveland and Miami looked identical, they were separate for each year, as we wanted them to be in our dataset. It&amp;#39;s possible to create single team nodes and store more data inside the node as well.&lt;/p&gt;
-
-&lt;p&gt;Command 1 - this loads the file and declares the player node with a name, and the team node with a name and year.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
-LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39;&lt;/span&gt; as line
-MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p:Player &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;name:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;]})&lt;/span&gt;
-MERGE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;g:Team &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;name:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, year:line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]})&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; p,g&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT&lt;/strong&gt; lets the file come in chunks. &lt;strong&gt;LOAD CSV FROM &amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39; as line
-MERGE (p:Player {name:line[0]})&lt;/strong&gt; loads the file and lets players name be defined by the first column of data. &lt;strong&gt;MERGE (g:Team {name:line[2], year:line[1]})&lt;/strong&gt; defines teams nodes. and &lt;strong&gt;return p, g&lt;/strong&gt; returns the dataset to the users.&lt;/p&gt;
-
-&lt;p&gt;This command will take a while to process. There will be error messages and it might not parse initially but it will eventually make it over. I would run both commands with a distraction ready, it took more than 5 minutes to map the relationships on some machines, but the command runs without tying up the computer. Every person in the graph is a node. The player has it&amp;#39;s own node, and the team has multiple nodes for every year it&amp;#39;s been active. This database is nearly complete, we&amp;#39;ve not corrected for duplicate names so there is some short circuiting at the moment. &lt;strong&gt;MERGE&lt;/strong&gt; is used here instead of create to remove duplicates.&lt;/p&gt;
-
-&lt;p&gt;Command 2 - this uses the CSV to create relationships between the players and the team, creating a relationship data type for
-the overlap in data.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;USING PERIODIC COMMIT
-LOAD CSV FROM &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39;&lt;/span&gt; as line
-MATCH &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p:Player&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t:Team&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-WHERE p.name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; AND t.name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; AND t.year &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; line&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-CREATE &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;r:PLAYS_IN&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;-&amp;gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; p, t
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;USING PERIODIC COMMIT LOAD CSV FROM &amp;#39;http://chrissalam.com/Try-Neo4j/MasterDB.csv&amp;#39; as line
-MATCH (p:Player), (t:Team)&lt;/strong&gt; This will use the CSV to look at how the plays-in relationship should be defined.
-&lt;strong&gt;WHERE p.name = line[0] AND t.name = line[2] AND t.year = line[1] CREATE (p)-[r:PLAYS_IN]-&amp;gt;(t)&lt;/strong&gt; and these lines create the match, PLAYS_IN and this
-&lt;strong&gt;return p, t&lt;/strong&gt; returns it.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s an image from when we finally figured this out on a sample 2 season dataset. Joy!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;connection.jpg&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;This is all barely touching the tip of what Neo4J can do and that was by design of our group. From here, I hope to build on this database to make other relationships, such as father-son, coaching, front office staff, and add nodes for executives and coaches that have never played the game, and of course, Carrie Brownstein. Some of my group members love college basketball,some were also interested in baby mommas, and all these can be added as nodes and relationships and be called with query statements. I will break here, but I will follow up with query building in &lt;a href=&quot;http://chrissalam.com/query-neo4j/&quot;&gt;part 2&lt;/a&gt;, collision repair in &lt;a href=&quot;http://chrissalam.com/collision/&quot;&gt;part 3&lt;/a&gt;, and maybe eventually a bonus section on the CORS problems I worked on for this project using the Seraph library.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s a little preview...&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;preview.png&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 09 Aug 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/try-neo4j/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/try-neo4j/</guid>
       </item>
     
   </channel>

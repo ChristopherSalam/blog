@@ -1,10 +1,8 @@
 ---
 layout: post
-title: try neo4j
+title: agricultural
 tags:
-- setup
-- neo4j
-- database
+- engineering
 ---
 
 start this.

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>currying – Christopher Salam – thoughts on software and engineering</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Tonight, I watched Cassandra&#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!
+" />
+    <meta property="og:description" content="Tonight, I watched Cassandra&#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="currying" />
+    <meta property="twitter:title" content="currying" />
+    
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">currying</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#javascript">javascript</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on November  4, 2015
+  </div>
+
+  <div class="entry">
+    <p>Tonight, I watched Cassandra&#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!</p>
+
+<p>I would recommend going to Ramda.js&#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate <a href="http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html">Jamil</a>. You can also grab it from CDN via</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">area</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">height</span> <span class="o">*</span> <span class="nx">width</span><span class="p">;</span> <span class="p">}</span>
+<span class="kd">var</span> <span class="nx">curryArea</span> <span class="o">=</span> <span class="nx">R</span><span class="p">.</span><span class="nx">curry</span><span class="p">(</span><span class="nx">area</span><span class="p">);</span>
+
+<span class="nx">curryArea</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>    <span class="c1">// [function]</span>
+<span class="nx">curryArea</span><span class="p">(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 10</span>
+</code></pre></div>
+<p>Why is this useful?</p>
+
+<p>There&#39;s a few reasons I think of just off the top:</p>
+
+<ol>
+<li><p>Asynchronous functions fail because answers haven&#39;t returned yet. If we run a function and leave it ready to catch the next argument we can process more asynchronously.</p></li>
+<li><p>We can break our entire functions into discrete chunks, allowing preprocessing and storage of information in closures that will eventually process. Also, if they don&#39;t end up processing, rather than get functions run with undefined, we have functions we can assess and pull partial information from.</p></li>
+<li><p>It&#39;s a gateway to understanding partial function application, which is even more powerful.</p></li>
+</ol>
+
+<!--
+
+```javascript
+function that invokes
+var lines = R.invoker(1, 'split')('/n');
+var split = R.split('/n');
+```
+var getItems = R.compose(
+  R.filter(R.propEq('eventType',"ITEM_DESTROYED")),
+  R.flatten,
+  R.map(R.prop('events'))
+)
+
+
+-->
+
+<p><a href="http://alicekamada.github.io/" >&quot;Pointfree Code is code that never refers to the code it handles:
+it focuses on the logic, easier to reason about, and never have to wonder about the state.&quot;</a></p>
+
+<!--Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
+
+```javascript
+var newfunc =  R.pipe(func1, func2, func3)
+```
+
+where the newfunc(args_provided_to_function_one) -->
+
+<p><strong>This is a stub, there&#39;s more coming</strong></p>
+
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+
+  </body>
+</html>

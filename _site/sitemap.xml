@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>ChristopherSalam.github.io/agricultural/</loc>
+    <lastmod>2015-11-10T00:00:00-08:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/currying/</loc>
+    <lastmod>2015-11-04T00:00:00-08:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/software/</loc>
+    <lastmod>2015-10-26T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/console/</loc>
+    <lastmod>2015-10-22T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/chemical/</loc>
+    <lastmod>2015-10-18T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/environmental/</loc>
+    <lastmod>2015-10-12T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>ChristopherSalam.github.io/node-neo4j/</loc>
+    <lastmod>2015-10-08T00:00:00-07:00</lastmod>
+  </url>
+  <url>
     <loc>ChristopherSalam.github.io/regexp.js/</loc>
     <lastmod>2015-10-01T00:00:00-07:00</lastmod>
   </url>
