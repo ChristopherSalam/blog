@@ -31,27 +31,41 @@ This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> 
 <script>
 
   var treeData = [
-    {
-    "name": "#engineering",
-    "parent": "Chris Salam",
-    "children": [
-    {
-      "name": "agricultural",
-      "parent": "#reactnative"
-    },
-    {
-      "name": "chemical",
-      "parent": "#reactnative"
-    },
-    {
-      "name": "environmental",
-      "parent": "#reactnative"
-    },
-    {
-      "name": "software",
-      "parent": "#reactnative"
-    }
-      ]
+  {
+  "name": "Chris Salam",
+  "parent": null,
+  "children": [
+      {
+      "name": "tags", //"bicycling",
+      "parent": "Chris Salam"
+      },
+      {
+      "name": "#engineering",
+      "parent": "Chris Salam",
+        "children": [
+        {
+          "name": "agricultural",
+          "parent": "#reactnative"
+        },
+        {
+          "name": "chemical",
+          "parent": "#reactnative"
+        },
+        {
+          "name": "environmental",
+          "parent": "#reactnative"
+        },
+        {
+          "name": "software",
+          "parent": "#reactnative"
+        }
+                    ]
+      },
+      {
+      "name": "slideshow", //"musician",
+      "parent": "Chris Salam"
+      }
+              ]
   }
 ];
 
