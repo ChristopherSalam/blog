@@ -115,7 +115,29 @@ where the newfunc(args_provided_to_function_one) --&gt;
     
       <item>
         <title>chemical</title>
-        <description>&lt;p&gt;start this.&lt;/p&gt;
+        <description>&lt;p&gt;I&amp;#39;m a certified Professional Chemical Engineer in the state of California. I mainly did this because I was interested in becoming a P.E. in California, and there were salary benefits at a future government job I could obtain. As demonstrated, patience is not one of my best traits, and after applying about 15-20 jobs where I felt that someone was always in line to take the role, I decided against continuing this strategy and left for private employment. Also I was pretty happy to leave Bakersfield and get back to my partner, family, and friends in the Bay.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;closerig.jpg&quot; alt=&quot;close up rig&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I do still love Chemical Engineering. It&amp;#39;s a very interesting profession that deals with lots of the world&amp;#39;s manufacturing processes. Many chemical engineers often work as petroleum engineers, and there are very few schools that teach specifically petroleum engineering, but it is a niche profession that will always attract some of the hardiest incredible people. I was fascinated to learn about all the various different kinds of person I met in the oilfields.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;bigrig.jpg&quot; alt=&quot;bigrig&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Oilrigs are beautiful machines, the combine motility and function, they have subdivided tasks into different trucks. I don&amp;#39;t have many pictures of these, but many operations don&amp;#39;t even require these large rigs anymore and can be accomplished with &lt;a href=&quot;https://en.wikipedia.org/wiki/Coiled_tubing&quot;&gt; trucks with large coiled tubes &lt;/a&gt;, which can function to pump cement, oil, water, insert dynamite, and do various other oil-field functions very handily.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://www.stewartandstevenson.com/assets/galleries/237/tt-100-xc-coiled-tubing.png&quot; alt=&quot;coil rig&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;We have maybe very little context for oilfields, some have driven past large fields in Los Angeles or the Central Valley. In Bakersfield, the lines between oilfield land and public and private land blur. Everyone is touched by oil, many of the city&amp;#39;s population work in a oil based profession, and that leads many to seek deals or consider oil development on their property, whether that property is rural, farm, industrial, civil, or even suburban.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;subrig.jpg&quot; alt=&quot;suburban rig&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I was also kind of suprised to learn but it made sense that these rigs drill 24/7, every does 12 hours on and 12 hours off.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;nightrig.jpg&quot; alt=&quot;night rig&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;And these go super deep. This is a tag at 1000 ft down, but many are down at 3000 ft, and the deepwater horizon well was at 5000 ft.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;nightrigdash.jpg&quot; alt=&quot;dash&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
@@ -196,8 +218,6 @@ where the newfunc(args_provided_to_function_one) --&gt;
 &lt;span class=&quot;sr&quot;&gt;/[\w-]+(?=\.min)/g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;That&amp;#39;s all I got on $(this). Regular expressions are pretty powerful things! Hope this was helpful and has some application for you.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Oct 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/regexp.js/</link>
