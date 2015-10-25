@@ -47,24 +47,28 @@ layout: default
       "parent": "#javascript"
     },
     {
-      "name": "#regexp",
-      "parent": "javascript",
-      "children":[
-        {
-          "name": "try regexp",
-          "parent": "regexp",
-          "children": [
-            {
-              "name": "O(r)",
-              "parent": "regexp"
-            },
-            {
-              "name": "regexp.js",
-              "parent": "regexp"
-            }
-          ]
-        }
-      ]
+      "name": "console",
+      "parent": "#javascript",
+      "children": [
+          {
+        "name": "#regexp",
+        "parent": "console",
+        "children":[
+          {
+            "name": "try regexp",
+            "parent": "regexp",
+          },
+          {
+            "name": "O(r)",
+            "parent": "regexp"
+          },
+          {
+            "name": "regexp.js",
+            "parent": "regexp"
+          }
+        ]
+      }
+    ]
     },
     {
       "name": "trees",
@@ -106,18 +110,25 @@ layout: default
     "children": [
     {
       "name": "try neo4j",
-      "parent": "neo4j"
-    },
-    {
-      "name": "query neo4j",
       "parent": "neo4j",
-    },
-    {
-      "name": "collision",
-      "parent": "neo4j"
+      "children":[
+        {
+          "name": "query neo4j",
+          "parent": "try neo4j"
+        },
+        {
+          "name": "collision",
+          "parent": "try neo4j"
+        },
+        {
+          "name": "node-neo4j",
+          "parent": "try neo4j"
+        }
+      ]
     }
-    ]
-  }
+  ]
+}
+
 ];
 
 // ************** Generate the tree diagram  *****************
