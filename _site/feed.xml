@@ -167,7 +167,11 @@ where the newfunc(args_provided_to_function_one) --&gt;
     
       <item>
         <title>connecting node &amp; neo4j</title>
-        <description>&lt;p&gt;This post addresses a major struggle we had with this project. Within 4 days we were able to build a neo4j database accessing our local database to produce connections and render them to the screen... on localhost. We did not realize that the journey towards hosting the site would take another month (and have to be worked on in the midst of two other projects, i.e. on Sunday or 12pm-2am was the only time we had to work). The main challenge for me was a fundamental learning curve with Nodejs and noe4j and using two techologies to make this process work with heroku.&lt;/p&gt;
+        <description>&lt;p&gt;This post is part 4 in a 4 part series. Read the other posts:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/try-neo4j&quot; title=&quot;Getting Started&quot;&gt;Part 1 - Try Neo4j&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/query-neo4j&quot; title=&quot;Learning Database Language&quot;&gt;Part 2 - Query Neo4j&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/collision&quot; title=&quot;Resolving Duplicates&quot;&gt;Part 3 - Collisions&lt;/a&gt;&lt;/strong&gt; | Part 4 | &lt;strong&gt;&lt;a href=&quot;https://github.com/upstanding-biome/sixdegrees&quot;&gt;Repo&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;http://sixdribbles.com&quot;&gt;Site&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This post addresses a major struggle we had with this project. Within 4 days we were able to build a neo4j database accessing our local database to produce connections and render them to the screen... on localhost. We did not realize that the journey towards hosting the site would take another month (and have to be worked on in the midst of two other projects, i.e. on Sunday or 12pm-2am was the only time we had to work). The main challenge for me was a fundamental learning curve with Nodejs and noe4j and using two techologies to make this process work with heroku.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Graph Story, a company that provides instructions for a neo4j instance on heroku (and other hosting services, I&amp;#39;m sure)&lt;/p&gt;
 
