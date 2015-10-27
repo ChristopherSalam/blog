@@ -244,10 +244,18 @@ where the newfunc(args_provided_to_function_one) --&gt;
     
       <item>
         <title>tape tests</title>
-        <description>&lt;p&gt;Tape testing is hella boss! Tape testing in React Native works like a dream. Well...
+        <description>&lt;p&gt;This is part 4 of 4 of the React Native series.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/try-RN&quot; title=&quot;Getting Started&quot;&gt;Part 1 - Try RN&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/RN-snapshots&quot; title=&quot;React Native &amp;amp; Firebase Snapshots&quot;&gt;Part 2 - RN/Firebase snapshots&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/RN-updates&quot; title=&quot;React Native &amp;amp; Firebase Updates&quot;&gt;Part 3 - RN/Firebase updates&lt;/a&gt;&lt;/strong&gt; | Part 4&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/TheTinyBullets/Katfish_Xcode&quot;&gt;Repo&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;http://katfish.me&quot;&gt;Screenshots&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tape testing is hella boss! Tape testing in React Native works like a dream. Well...
 more like a dream in the way that Inception was a dream. There are some constant asychronous issues but it was for us one of the best ways to test our application. I recommend it as a way to get testing into your React Native pages.&lt;/p&gt;
 
-&lt;p&gt;Tape uses the TAP method of outputing testing information. This is a standard rubric sort of for what information should be in tests and should not be in tests. Tape can be included in your files with a require statement. &lt;/p&gt;
+&lt;p&gt;Tape uses the TAP method of outputing testing information. This is a standard rubric sort of for what information should be in tests and should not be in tests. Tape can be included in your files with a require statement.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
 </description>
@@ -258,7 +266,13 @@ more like a dream in the way that Inception was a dream. There are some constant
     
       <item>
         <title>RN updates</title>
-        <description>&lt;p&gt;In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&amp;#39;ll go through the entire setup and talk about each of the parts.&lt;/p&gt;
+        <description>&lt;p&gt;This is part 3 of 4 of the React Native series.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/try-RN&quot; title=&quot;Getting Started&quot;&gt;Part 1 - Try RN&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/RN-snapshots&quot; title=&quot;React Native &amp;amp; Firebase Snapshots&quot;&gt;Part 2 - RN/Firebase snapshots&lt;/a&gt;&lt;/strong&gt; | Part 3&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/tape-tests&quot; title=&quot;Testing in React Native using Tape&quot;&gt;Part 4 - RN &amp;amp; Tape Tests&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;https://github.com/TheTinyBullets/Katfish_Xcode&quot;&gt;Repo&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;http://katfish.me&quot;&gt;Screenshots&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We&amp;#39;ll go through the entire setup and talk about each of the parts.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;Friends.png&quot;/&gt;&lt;/p&gt;
 

@@ -8,6 +8,12 @@ tags:
 - javascript
 ---
 
+This is part 2 of 4 of the React Native series.
+
+**[Part 1 - Try RN](/try-RN "Getting Started")** | Part 2 | **[Part 3 - RN/Firebase updates](/RN-updates "React Native & Firebase Updates")**
+
+**[Part 4 - RN & Tape Tests](/tape-tests "Testing in React Native using Tape")** | **[Repo](https://github.com/TheTinyBullets/Katfish_Xcode)** | **[Screenshots](http://katfish.me)**
+
 We have been learning React Native and we wanted to use Firebase but hesitated initially because there was no prebuilt library for interfacing React Native with Firebase. We kept at it, and we were able to build listeners that take and triggers that send information to and from Firebase and I'm going to share them here.
 
 I've been using firebase for small projects and I was really interested in using firebase for our project because our datastructure is very small and easy to manage. The queries needed are very limited and the JSON tree format of firebase is perfect for what we want to do.
@@ -65,6 +71,6 @@ In an other part of the application we access firebase using a function between 
 
 <img src="Phones.jpg"/>
 
-Send me an email or talk to **<a href="http://kent10ou.github.io"> Kent </a>** or **<a href="http://ceditoph.github.io/"> Casey </a>** if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon. 
+Send me an email or talk to **<a href="http://kent10ou.github.io"> Kent </a>** or **<a href="http://ceditoph.github.io/"> Casey </a>** if you are considering doing something using both of these technologies and are having trouble! I have read that firebase is working on a library so this sort of technology interface might have an even simpler connection soon.
 
 <!--*We set out initially to use our unique facebook ID to vote on personality characteristics of friends we had, a way of making a more curated profile than we could make individually. Unfortunately, facebook's new Graph API doesn't issue out this individual ID via the graph database, but rather sends a new facebook ID tied to sessions, every 60 days or upon logout, we will lose the ability to use this ID and we'll have to start over.* -->

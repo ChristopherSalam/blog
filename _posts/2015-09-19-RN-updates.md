@@ -8,6 +8,12 @@ tags:
 - javascript
 ---
 
+This is part 3 of 4 of the React Native series.
+
+**[Part 1 - Try RN](/try-RN "Getting Started")** | **[Part 2 - RN/Firebase snapshots](/RN-snapshots "React Native & Firebase Snapshots")** | Part 3
+
+**[Part 4 - RN & Tape Tests](/tape-tests "Testing in React Native using Tape")** | **[Repo](https://github.com/TheTinyBullets/Katfish_Xcode)** | **[Screenshots](http://katfish.me)**
+
 In this update, I will discuss how we used scrollview and javascript to create a populating list that voted in a nested tree for our React Native and Firebase project. We probably could have used ListView, but were able to make this quickly work and decided to stick with it. We'll go through the entire setup and talk about each of the parts.
 
 <img src="Friends.png"/>
