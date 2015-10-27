@@ -7,6 +7,12 @@ tags:
 - js
 ---
 
+I love regular expressions!
+
+This post is part 1 in a 3 part series. Read the other posts:
+
+Part 1 | **[Part 2 - O(r)](/O(r) "O dot R notation")** | **[Part 3 - regexp.js](/regexp.js "Using lookaheads to remove filetypes")** 
+
 The meme itself is a regular expression in a way.
 
 <div  style="text-align: center;">
