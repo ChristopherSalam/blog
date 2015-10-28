@@ -116,6 +116,54 @@ where the newfunc(args_provided_to_function_one) --&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;None of this stuff is mine, but was revealed to me by Scott Moss, our AngularJS lecturer, who must be involved with web standards and gets this information in advance. If you go to the console in chrome, certain methods that aren&amp;#39;t common practice are made available.&lt;/p&gt;
 
+&lt;p&gt;Long story made short:&lt;/p&gt;
+
+&lt;p&gt;In the beginning the DOM was a bear to deal with.&lt;/p&gt;
+
+&lt;p&gt;They made jQuery, which fixed alot of DOM problems.&lt;/p&gt;
+
+&lt;p&gt;They later just fixed browser issues, and then built some more powerful features into Chrome.&lt;/p&gt;
+
+&lt;p&gt;Now I&amp;#39;m going to show you some next gen tricks that you don&amp;#39;t need jQuery for that are in Chrome.&lt;/p&gt;
+
+&lt;p&gt;If this is too much of a fast forward and you want to see some of what jQuery does to help, &lt;strong&gt;&lt;a href=&quot;http://callmenick.com/post/jquery-functions-javascript-equivalents&quot;&gt;go here&lt;/a&gt;&lt;/strong&gt;. Some favor writing out the full JS nowadays (as I do).&lt;/p&gt;
+
+&lt;p&gt;I opened a console (⌘+option+j) in my blog. To prove jQuery is absent:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;jQuery.png&quot; alt=&quot;jQuery is not here.&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;But... $ is here. Strange right?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;$.png&quot; alt=&quot;Dollar sign is here.&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;What does this do without jQuery present? This would default to theequivalent of querySelectorAll, howvever this is something different, this is querySelectTheFirst ThatComesUp.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;$div.png&quot; alt=&quot;$div in console&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;What imitates querySelectorAll? What about $$?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;$$.png&quot; alt=&quot;$$ is querySelectorAll&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The double $ command line API helps us get querySelectorAll functionality.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;$$div.png&quot; alt=&quot;$$div&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;What&amp;#39;s nice is that it also gives us access to things as a simple array of items, rather that the large confusing jQuery object.&lt;/p&gt;
+
+&lt;p&gt;In this same vein of new Chrome tools, you may have accessed the ID of an object typing this stuff out.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;$main.png&quot; alt=&quot;$main&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;An id has always been unique. This is the very definition of unique. This id has always been available on the window object.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;windowmain.png&quot; alt=&quot;$main&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;This accesses the same information as $(&amp;#39;#main&amp;#39;). However, you can take this trick even further. Even without the &amp;#39;window.&amp;#39; present, it can figure out what to do next.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;main.png&quot; alt=&quot;$main&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Pretty cool right?&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 22 Oct 2015 00:00:00 -0700</pubDate>

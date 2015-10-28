@@ -82,6 +82,54 @@
 </code></pre></div>
 <p>None of this stuff is mine, but was revealed to me by Scott Moss, our AngularJS lecturer, who must be involved with web standards and gets this information in advance. If you go to the console in chrome, certain methods that aren&#39;t common practice are made available.</p>
 
+<p>Long story made short:</p>
+
+<p>In the beginning the DOM was a bear to deal with.</p>
+
+<p>They made jQuery, which fixed alot of DOM problems.</p>
+
+<p>They later just fixed browser issues, and then built some more powerful features into Chrome.</p>
+
+<p>Now I&#39;m going to show you some next gen tricks that you don&#39;t need jQuery for that are in Chrome.</p>
+
+<p>If this is too much of a fast forward and you want to see some of what jQuery does to help, <strong><a href="http://callmenick.com/post/jquery-functions-javascript-equivalents">go here</a></strong>. Some favor writing out the full JS nowadays (as I do).</p>
+
+<p>I opened a console (⌘+option+j) in my blog. To prove jQuery is absent:</p>
+
+<p><img src="jQuery.png" alt="jQuery is not here."></p>
+
+<p>But... $ is here. Strange right?</p>
+
+<p><img src="$.png" alt="Dollar sign is here."></p>
+
+<p>What does this do without jQuery present? This would default to theequivalent of querySelectorAll, howvever this is something different, this is querySelectTheFirst ThatComesUp.</p>
+
+<p><img src="$div.png" alt="$div in console"></p>
+
+<p>What imitates querySelectorAll? What about $$?</p>
+
+<p><img src="$$.png" alt="$$ is querySelectorAll"></p>
+
+<p>The double $ command line API helps us get querySelectorAll functionality.</p>
+
+<p><img src="$$div.png" alt="$$div"></p>
+
+<p>What&#39;s nice is that it also gives us access to things as a simple array of items, rather that the large confusing jQuery object.</p>
+
+<p>In this same vein of new Chrome tools, you may have accessed the ID of an object typing this stuff out.</p>
+
+<p><img src="$main.png" alt="$main"></p>
+
+<p>An id has always been unique. This is the very definition of unique. This id has always been available on the window object.</p>
+
+<p><img src="windowmain.png" alt="$main"></p>
+
+<p>This accesses the same information as $(&#39;#main&#39;). However, you can take this trick even further. Even without the &#39;window.&#39; present, it can figure out what to do next.</p>
+
+<p><img src="main.png" alt="$main"></p>
+
+<p>Pretty cool right?</p>
+
 <p><strong>This is a stub, there&#39;s more coming</strong></p>
 
   </div>
