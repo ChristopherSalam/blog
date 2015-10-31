@@ -52,29 +52,33 @@
 <script>
 
 var treeData = [
-  { "name": "#reactnative", "parent": "Chris Salam", "children": [
-    { "name": "try RN", "parent": "#reactnative"},
-    { "name": "#firebase", "parent": "#reactnative", "children": [
-      { "name": "RN snapshots", "parent": "#firebase" },
-      { "name": "RN updates", "parent": "#firebase" }
-      ]
-    },
-    { "name": "tape tests", "parent": "#reactnative" }
-    ]
-  },
   { "name": "#javascript", "parent": "null", "children":[
     { "name": "binding", "parent": "#javascript" },
-    { "name": "console", "parent": "#javascript", "children": [
-      { "name": "#regexp", "parent": "console", "children":[
-        { "name": "try regexp", "parent": "regexp" },
+    { "name": "#reactnative", "parent": "#javascript", "children": [
+      { "name": "try RN", "parent": "#reactnative"},
+      { "name": "#firebase", "parent": "#reactnative", "children": [
+        { "name": "RN snapshots", "parent": "#firebase" },
+        { "name": "RN updates", "parent": "#firebase" }
+        ]
+      },
+      { "name": "tape tests", "parent": "#reactnative" }
+      ]
+      },
+      { "name": "console", "parent": "#javascript" }
+      ]
+  },
+  { "name": "#data structures", "parent": "#javascript", "children": [
+    { "name": "trees", "parent": "#data structures" },
+    { "name": "#regexp", "parent": "#data structures", "children":[
+      { "name": "try regexp", "parent": "regexp", "children": [
         { "name": "O(r)", "parent": "regexp" },
         { "name": "regexp.js", "parent": "regexp" }
         ]
-      }
+      },
     ]
     },
-    { "name": "trees", "parent": "#javascript" }
-    ]
+    { "name": "binary search", "parent": "#data structures" }
+  ]
   },
   { "name": "#setup", "parent": null, "children": [
     { "name": "for newbs", "parent": "#setup" },
@@ -219,6 +223,22 @@ for (var q = 0; q < treeData.length; q++) {
 				<span class="hexagon-in2">
 
 				  currying
+
+				</span>
+
+			</a>
+
+		</li>
+
+		
+
+		<li class="hexagon">
+
+			<a class="hexagon-in1" href="/binary-search/">
+
+				<span class="hexagon-in2">
+
+				  binary search
 
 				</span>
 

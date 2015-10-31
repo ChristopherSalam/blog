@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-My name is Christopher Salam and I am an **<a href="http://chrissalam/agricultural">agricultural</a>**, **<a href="http://chrissalam/chemical">chemical</a>**, **<a href="http://chrissalam/environmental">environmental</a>**, and **<a href="http://chrissalam/software">software</a>** engineer
+My name is Christopher Salam and I am an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, **<a href="http://chrissalam.com/environmental">environmental</a>**, and **<a href="http://chrissalam.com/software">software</a>** engineer
 
 I was in the first cohort of <strong><a href="http://www.telegraphacademy.com/" target="_blank">Telegraph Academy </a></strong>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA
 

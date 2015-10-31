@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>binary search – Christopher Salam – thoughts on software and engineering</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Trees and Binary Search Trees in particular are very important core topics in computer science, and in preparation for interviews, I&#39;ll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes. I&#39;m going to go through my tree analysis and convert it over to a binary search tree, as the best literature  out there can be convoluted..
+" />
+    <meta property="og:description" content="Trees and Binary Search Trees in particular are very important core topics in computer science, and in preparation for interviews, I&#39;ll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes. I&#39;m going to go through my tree analysis and convert it over to a binary search tree, as the best literature  out there can be convoluted..
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="binary search" />
+    <meta property="twitter:title" content="binary search" />
+    
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">binary search</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#javascript">javascript</a>,
+  
+  <a href="/tags/#data structures">data structures</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on October 31, 2015
+  </div>
+
+  <div class="entry">
+    <p>Trees and Binary Search Trees in particular are very important core topics in computer science, and in preparation for interviews, I&#39;ll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes. I&#39;m going to go through my tree analysis and convert it over to a binary search tree, as the best <strong><a href="https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf">literature </a></strong> out there can be convoluted..</p>
+
+<p>A <strong><a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a></strong> is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Prototypal instantiation</span>
+<span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//made alternatively by using &#39;new&#39;</span>
+  <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">leftChild</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">rightChild</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="c1">//made alternatively by using &#39;new&#39;</span>
+  <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">Tree</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//made alternatively by using &#39;new&#39;</span>
+   <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">_root</span> <span class="o">=</span>  <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="c1">//made alternatively by using &#39;new&#39;</span>
+   <span class="k">return</span> <span class="nx">obj</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>I&#39;m going to focus on psuedo-classical just because it&#39;s a bit less text, but prototypal shows what&#39;s going on under the hood. Also, it would allow us to not use the new keyword, which creates the two lines I&#39;ve indicated in comments.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Psuedo-classical instantiation</span>
+<span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">leftChild</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">rightChild</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">Tree</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>One quick and dirty way to add a child was this I wrote immediately. Also does anyone else hate the mixed metaphor or tree, leaves, children, and parents?</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">addChild</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Which we can all agree, isn&#39;t great. Why does a tree have siblings or children? There are a few things that need to happen next. One is the concept of checking to see if the tree we have contains the value we need it to contain. This involves traversing through the tree and looking for item at every spot. I immediately drew up this function when first given the task:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Depth First, Initial Attempt</span>
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contains</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">children</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">result</span> <span class="o">===</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">contains</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>This is a depth first contains check. A depth first search looks at each node and traverses until the most extreme point in each branch before continuing to search up the tree. A breadth first search would conversely look at each level whether or not it was an extreme end or not before continuing deeper in the tree. There is a way to write contains as a method that will either be depth first or breadth first. I first wrote this function when defining a depth first traverse:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Depth First, Initial Attempt</span>
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+   <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+   <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">traverse</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>While this is an effective and less expensive method of depth first traversing, the recursive method is often described instead, because it makes it more clear the step by step approach of traveling through to the extrema before moving back up the tree.</p>
+
+<p>We should be following four clear steps for a depth first traversal (<a href="http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393">taken from codetuts</a>):</p>
+
+<p>Step 1. Immediately invoke recurse with the root node of a tree as its argument. At this moment, currentNode points to the current node.
+Step 2. Enter a for loop and iterate once for each child of currentNode, beginning with the first child.
+Step 3. Inside the body of the for loop, invoke recurse with a child of currentNode. The exact child depends on the current iteration of the for loop.
+Step 4. When currentNode no longer has children, we exit the for loop and invoke the callback we passed during the invocation of traverseDF(callback).</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverseDF</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// this is a recurse and immediately-invoking function</span>
+   <span class="p">(</span><span class="kd">function</span> <span class="nx">recurse</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">)</span> <span class="p">{</span>
+       <span class="c1">// step 2</span>
+       <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+           <span class="c1">// step 3</span>
+           <span class="nx">recurse</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+       <span class="p">}</span>
+       <span class="c1">// step 4</span>
+       <span class="nx">callback</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">);</span>
+       <span class="c1">// step 1</span>
+   <span class="p">})(</span><span class="k">this</span><span class="p">.</span><span class="nx">_root</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Let this sink in forever. My version of figuring out breadth first traversal was pretty much the same as the one with a document root.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Breadth First, Initial Attempt</span>
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">],</span>
+ <span class="nx">current</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+   <span class="k">while</span> <span class="p">(</span><span class="nx">current</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">current</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+     <span class="p">}</span>
+     <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">current</span><span class="p">,</span> <span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+     <span class="nx">current</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverseBF</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">_root</span><span class="p">];</span>
+   <span class="nx">currentTree</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+   <span class="k">while</span><span class="p">(</span><span class="nx">currentTree</span><span class="p">){</span>
+       <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">currentTree</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">currentTree</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+       <span class="p">}</span>
+       <span class="nx">callback</span><span class="p">(</span><span class="nx">currentTree</span><span class="p">);</span>
+       <span class="nx">currentTree</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Writing out both these traversal techniques finally let us call contains with either kind of traversal. This is a pretty simple process.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//</span>
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contains</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">bfdf</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Now we can use either method of traversal to create a way to calculate the size of our tree. Super straightforward traversal with callback that counts.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">this</span><span class="p">.</span><span class="nx">traverseDF</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+   <span class="nx">size</span><span class="o">++</span><span class="p">;</span>
+ <span class="p">})</span>
+ <span class="k">return</span> <span class="nx">size</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Adding, and subsequently removing are the real pieces to a non-binary tree structure. Adding correctly to a certain value assumes that there are only one or two equal values within the tree and that using either breadth or depth first traversal will get to the desired node. Additionally both add and remove change the tree structure to accommodate the added or removed value value. At point where the data was added or removed, the child needs to be changed, when added, a new tree of data, complete with parent and children needed to be declared, and the parent of the children need to be changed. Lots of logic!</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">atValue</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
+   <span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+   <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">atValue</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">};</span>
+ <span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">);</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">parent</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
+   <span class="nx">child</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>First step is the create a new node, with the correct value, but missing a parent and children. The callback does the critical step of traversing through the tree&#39;s structure and finding the correct parent and setting it equal to a variable, determined by the &#39;atValue&#39; provided as input. When the parent is found and set, the last step of the function is to set the new node as a children of the parent, and when this step is taken, both sides of the relationship are set, with the second line at the bottom taking our variable and setting it as the child.parent. Again with comments in-line:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">atValue</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//create a new node</span>
+ <span class="kd">var</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
+<span class="c1">//create a variable to store</span>
+<span class="c1">//the parent when found</span>
+   <span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+<span class="c1">//create a callback to find your</span>
+<span class="c1">//parent, using input &#39;atValue&#39;</span>
+   <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">atValue</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">};</span>
+<span class="c1">//traverse, either Breadth or</span>
+<span class="c1">//Depth first to find parent</span>
+ <span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">);</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//when parent is found, set the</span>
+<span class="c1">//node as a child of the parent</span>
+<span class="c1">//variable (Part 1)</span>
+   <span class="nx">parent</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
+<span class="c1">//use the parent variable and set</span>
+<span class="c1">//it as the child&#39;s parent (Part 2)</span>
+   <span class="nx">child</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Pretty helpful to see it step by step, right? Let&#39;s try to do the same for remove! I&#39;m sure you don&#39;t need anymore enticement, but this is one of the holy grails of all interviews it seems.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">fromData</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">findIndex</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">index</span><span class="p">;</span>
+   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">index</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="nx">index</span><span class="p">;</span>
+<span class="p">}</span>
+   <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+       <span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+       <span class="nx">childToRemove</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+       <span class="nx">index</span><span class="p">;</span>
+   <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">fromData</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">};</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">);</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">index</span> <span class="o">=</span> <span class="nx">findIndex</span><span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">children</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Node to remove does not exist.&#39;</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+           <span class="nx">childToRemove</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Parent does not exist.&#39;</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="nx">childToRemove</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Very complicated, right? The fundamental difficulty with removing a node is how simple overwriting adding a node. The parent that&#39;s no longer the child gets overwritten when you do this at the bottom of Tree.prototype.add:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">   <span class="nx">child</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+</code></pre></div>
+<p>When you remove a node, you have two bridge two nodes that weren&#39;t connected directly before. And that&#39;s what the bulk of the code above is trying to do. Let&#39;s step through it.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">fromData</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//similar to indexOf except accessing element.data instead of element</span>
+<span class="kd">function</span> <span class="nx">findIndex</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">index</span><span class="p">;</span>
+   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">index</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="nx">index</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// create reference to tree before change.</span>
+   <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+<span class="c1">// similar to add, create parent and childToRemove variables</span>
+       <span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+       <span class="nx">childToRemove</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+       <span class="nx">index</span><span class="p">;</span>
+<span class="c1">// create callback to find the fromData datapoint using contains</span>
+   <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">fromData</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">};</span>
+<span class="c1">// traverse through the tree.</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">);</span>
+<span class="c1">// will find a parent</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">index</span> <span class="o">=</span> <span class="nx">findIndex</span><span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">children</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+<span class="c1">// edge case of undefined index</span>
+       <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Node to remove does not exist.&#39;</span><span class="p">);</span>
+<span class="c1">// work of splicing out the index that needs to be removed.</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+           <span class="nx">childToRemove</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Parent does not exist.&#39;</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="nx">childToRemove</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>I&#39;ve included the logged statements I had at the end of my file that I used to test my work. You can see the add and the addChild functions juxtaposed. What I achieved with simplicity with the addChild, later ended up costing me because it was tricky simply to add to my own tree.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">traverseDF</span><span class="p">);</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">traverseDF</span><span class="p">);</span>
+<span class="c1">// tree.addChild(1);</span>
+<span class="c1">// tree.addChild(2);</span>
+<span class="c1">// tree.children[0].addChild(3);</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">traverseDF</span><span class="p">);</span>
+<span class="c1">// tree.add(3,1,tree.BFtraverse);</span>
+<span class="c1">// tree.children[0].children[0].addChild(4);</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">traverseDF</span><span class="p">);</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">traverseBF</span><span class="p">);</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">traverseBF</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
+</code></pre></div>
+<p>I will add the testing suite from the add, remove, contains, breadth and depth first searches soon...</p>
+
+<!--
+```javascript
+// tree.children[1].children[0].addChild(7);
+// console.log(tree.contains(console.log,tree.DFtraverse)); // yields 'true'
+// console.log(tree.contains(0)); // yields 'true'
+// console.log(tree.contains(1)); // yields 'true'
+// console.log(tree.contains(4)); // yields 'false'
+// console.log("Depth");
+// tree.DFtraverse(console.log);
+// console.log("Breadth");
+// tree.BFtraverse(console.log);
+console.log(tree.size());
+```
+-->
+
+<p><strong>This is a stub, there&#39;s more coming</strong></p>
+
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+
+  </body>
+</html>
