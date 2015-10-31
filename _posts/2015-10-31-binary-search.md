@@ -20,29 +20,28 @@ function Node (value, parent, leftChild, rightChild) {
 };
 
 function BST (value, parent, leftChild, rightChild) {
-  this._root = new Node(value);
+  this._root = new Node(value, parent, leftChild, rightChild);
 };
 ```
-
+The contains function is similar to the traversal function in a tree problem, but with logical to look through the tree according to value.
 
 ```javascript
-BST.prototype.contains = function (value, node) {
-  var node = node || this._root;  
-    if (node.value === null) {
-      return false; //key not found
-    }
-    var nodeValue = parseInt(node.value, 10);
-
-    if (value < nodeValue) {
-      return this.contains(value, node.leftChild);
-    } else if (value > nodeValue) {
-      return this.contains(value, node.rightChild);
-    } else {
-      return true;
-    }
+function contains(node, value) {
+  if (node == null) {
+    return false; //key not found
+  }
+  var node = node._root || node;
+  var nodeValue = parseInt(node.value, 10);
+  if (value < nodeValue) {
+    return contains(node.leftChild, value);
+  } else if (value > nodeValue) {
+    return contains(node.rightChild, value);
+  } else {
+    return true;
+  }
 };
 ```
-
+<!--
 This is a depth first contains check. A depth first search looks at each node and traverses until the most extreme point in each branch before continuing to search up the tree. A breadth first search would conversely look at each level whether or not it was an extreme end or not before continuing deeper in the tree. There is a way to write contains as a method that will either be depth first or breadth first. I first wrote this function when defining a depth first traverse:
 
 ```javascript
@@ -286,7 +285,6 @@ console.log(tree);
 
 I will add the testing suite from the add, remove, contains, breadth and depth first searches soon...
 
-<!--
 ```javascript
 // tree.children[1].children[0].addChild(7);
 // console.log(tree.contains(console.log,tree.DFtraverse)); // yields 'true'
