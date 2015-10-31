@@ -11,65 +11,35 @@ Trees and Binary Search Trees in particular are very important core topics in co
 A **<a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a>** is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated.
 
 ```javascript
-//Prototypal instantiation
-function Node (value) {
-    //made alternatively by using 'new'
-  var obj = Object.create(Node.prototype);
-  obj.value = value || null;
-  obj.parent = null;
-  obj.leftChild = null;
-  obj.rightChild = null;
-    //made alternatively by using 'new'
-  return obj;
-};
-
-function Tree (value) {
-    //made alternatively by using 'new'
-   var obj = Object.create(Tree.prototype);
-   this._root =  new Node(value);
-    //made alternatively by using 'new'
-   return obj
-};
-```
-
-I'm going to focus on psuedo-classical just because it's a bit less text, but prototypal shows what's going on under the hood. Also, it would allow us to not use the new keyword, which creates the two lines I've indicated in comments.
-
-```javascript
 //Psuedo-classical instantiation
-function Node (value) {
+function Node (value, parent, leftChild, rightChild) {
   this.value = value || null;
-  this.parent = null;
-  this.leftChild = null;
-  this.rightChild = null;
+  this.parent = parent || null;
+  this.leftChild = leftChild || null;
+  this.rightChild = rightChild || null;
 };
 
-function Tree (value) {
+function BST (value, parent, leftChild, rightChild) {
   this._root = new Node(value);
 };
 ```
 
-One quick and dirty way to add a child was this I wrote immediately. Also does anyone else hate the mixed metaphor or tree, leaves, children, and parents?
 
 ```javascript
-Tree.prototype.addChild = function (value) {
-  this.children.push(new Tree(value));
-};
-```
-
-Which we can all agree, isn't great. Why does a tree have siblings or children? There are a few things that need to happen next. One is the concept of checking to see if the tree we have contains the value we need it to contain. This involves traversing through the tree and looking for item at every spot. I immediately drew up this function when first given the task:
-
-```javascript
-// Depth First, Initial Attempt
-Tree.prototype.contains = function (value) {
-  if (this.value === value) {
-    return true;
-  } else if (this.children !== null) {
-    var result = false, i;
-    for (i = 0; result === false && i < this.children.length; i++) {
-      result = this.children[i].contains(value);
+BST.prototype.contains = function (value, node) {
+  var node = node || this._root;  
+    if (node.value === null) {
+      return false; //key not found
     }
-  }
-  return result;
+    var nodeValue = parseInt(node.value, 10);
+
+    if (value < nodeValue) {
+      return this.contains(value, node.leftChild);
+    } else if (value > nodeValue) {
+      return this.contains(value, node.rightChild);
+    } else {
+      return true;
+    }
 };
 ```
 

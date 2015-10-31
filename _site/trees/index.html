@@ -71,26 +71,6 @@
     <p>True to my nature, if you look closely I&#39;m hugging that tree there.</p>
 
 <p>Trees and Binary Search Trees are very important core topics in computer science, and in preparation for interviews, I&#39;ll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Prototypal instantiation</span>
-<span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//made alternatively by using &#39;new&#39;</span>
-  <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
-  <span class="nx">obj</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-  <span class="nx">obj</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="nx">obj</span><span class="p">.</span><span class="nx">children</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="c1">//made alternatively by using &#39;new&#39;</span>
-  <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kd">function</span> <span class="nx">Tree</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//made alternatively by using &#39;new&#39;</span>
-   <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
-   <span class="k">this</span><span class="p">.</span><span class="nx">_root</span> <span class="o">=</span>  <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="c1">//made alternatively by using &#39;new&#39;</span>
-   <span class="k">return</span> <span class="nx">obj</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>I&#39;m going to focus on psuedo-classical just because it&#39;s a bit less text, but prototypal shows what&#39;s going on under the hood. Also, it would allow us to not use the new keyword, which creates the two lines I&#39;ve indicated in comments.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Psuedo-classical instantiation</span>
 <span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
@@ -123,17 +103,17 @@
 </code></pre></div>
 <p>Which we can all agree, isn&#39;t great. Why does a tree have siblings or children? There are a few things that need to happen next. One is the concept of checking to see if the tree we have contains the value we need it to contain. This involves traversing through the tree and looking for item at every spot. I immediately drew up this function when first given the task:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Depth First, Initial Attempt</span>
-<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contains</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">children</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">i</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">result</span> <span class="o">===</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">contains</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="c1">// Tree.prototype.contains = function (value) {</span>
+<span class="c1">//   if (this.value === value) {</span>
+<span class="c1">//     return true;</span>
+<span class="c1">//   } else if (this.children !== null) {</span>
+<span class="c1">//     var result = false, i;</span>
+<span class="c1">//     for (i = 0; result === false &amp;&amp; i &lt; this.children.length; i++) {</span>
+<span class="c1">//       result = this.children[i].contains(value);</span>
+<span class="c1">//     }</span>
+<span class="c1">//   }</span>
+<span class="c1">//   return result;</span>
+<span class="c1">// };</span>
 </code></pre></div>
 <p>This is a depth first contains check. A depth first search looks at each node and traverses until the most extreme point in each branch before continuing to search up the tree. A breadth first search would conversely look at each level whether or not it was an extreme end or not before continuing deeper in the tree. There is a way to write contains as a method that will either be depth first or breadth first. I first wrote this function when defining a depth first traverse:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Depth First, Initial Attempt</span>
@@ -168,20 +148,7 @@ Step 4. When currentNode no longer has children, we exit the for loop and invoke
 <span class="p">};</span>
 </code></pre></div>
 <p>Let this sink in forever. My version of figuring out breadth first traversal was pretty much the same as the one with a document root.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Breadth First, Initial Attempt</span>
-<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
- <span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">],</span>
- <span class="nx">current</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
-   <span class="k">while</span> <span class="p">(</span><span class="nx">current</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">current</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-       <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-     <span class="p">}</span>
-     <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">current</span><span class="p">,</span> <span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-     <span class="nx">current</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverseBF</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">traverseBF</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
    <span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">_root</span><span class="p">];</span>
    <span class="nx">currentTree</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
    <span class="k">while</span><span class="p">(</span><span class="nx">currentTree</span><span class="p">){</span>
@@ -194,8 +161,7 @@ Step 4. When currentNode no longer has children, we exit the for loop and invoke
 <span class="p">};</span>
 </code></pre></div>
 <p>Writing out both these traversal techniques finally let us call contains with either kind of traversal. This is a pretty simple process.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//</span>
-<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contains</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contains</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">bfdf</span><span class="p">)</span> <span class="p">{</span>
    <span class="nx">bfdf</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
