@@ -9,13 +9,13 @@ Where do I even begin with this?
 
 There are two classes of jobs in a way: One that requires repetition and one that requires constant troubleshooting.
 
+<img src="kord.jpg" alt="">
+
 The reason I couldn't see myself being a musician or an athelete was because of the repetition needed to be perfect. I never had those instincts. I want to learn a skill, use it, and move on.
 
+I never understood that by in large, majoring in a topic meant that for work you would end up largely working to fix or repair this day in day out. Lawyers, doctors, engineers, were by in large troubleshooting keeping the system afloat. In the end, I also started to factor my own personal safety highly into this equation of needs.
+
 <img src="lift.jpg" alt="">
-
-I never understood that by in large, majoring in a topic meant that for work you would end up largely working to fix or repair this day in day out. Lawyers, doctors, engineers, were by in large troubleshooting keeping the system afloat.
-
-<img src="kord.jpg" alt="">
 
 For the environmental aspects of industrial systems, this meant that by and large I was going to have to watch the systemic deconstruction of our natural world, while the industries, slowly dragged themselves to this reality where synthetic manufacturing would be minimized. Maybe had a stayed in the game, I would be contributing to projects with biocompostable plastics or some other technology that really changes the game with regards to waste, but I came around to the believe that through software and resource sharing, the opportunity would to reduce energy use and materials would be signficant and not require a shift in our manufacturing systems. So this began to be the kind of optimization I would pursue wholesale.
 
