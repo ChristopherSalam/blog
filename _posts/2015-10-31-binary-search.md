@@ -23,14 +23,14 @@ function BST (value, parent, leftChild, rightChild) {
   this._root = new Node(value, parent, leftChild, rightChild);
 };
 ```
-The contains function is similar to the traversal function in a tree problem, but with logical to look through the tree according to value.
+The contains function is similar to the traversal function in a tree problem, but with logic to look through the tree according to value.
 
 ```javascript
 function contains(node, value) {
   if (node == null) {
     return false; //key not found
   }
-  var node = node._root || node;
+  node = node._root || node;
   var nodeValue = parseInt(node.value, 10);
   if (value < nodeValue) {
     return contains(node.leftChild, value);
@@ -41,8 +41,34 @@ function contains(node, value) {
   }
 };
 ```
+
+Traversal in a binary search tree is not recursive, the tree itself allows for log n time processing. We can use this logic to insert nodes as well. This method of inserting does not balance the tree. Balancing the tree is a whole other can of worms, but balancing a tree helps optimize the traversal.
+
+```javascript
+function insert(node, value, parent) {
+  if (node == null) {
+    node.leftChild = null;
+    node.rightChild = null;
+    node.value = value;
+    node.parent = parent;
+    return true;
+  }
+  node = node._root || node;
+  var nodeValue = parseInt(node.value, 10);
+  if (value < nodeValue) {
+    insertNode(node.leftChild, value, node);
+  } else if (value > nodeValue) {
+    insertNode(node.rightChild, value, node);
+  } else {
+    node.value = value;
+    return true;
+  }
+};
+```
+Insertion in a binary search tree happens with much of the same logic as the contains, which leads us naturally to think there must be a way to take the function from one and place it into the other.
+
 <!--
-This is a depth first contains check. A depth first search looks at each node and traverses until the most extreme point in each branch before continuing to search up the tree. A breadth first search would conversely look at each level whether or not it was an extreme end or not before continuing deeper in the tree. There is a way to write contains as a method that will either be depth first or breadth first. I first wrote this function when defining a depth first traverse:
+
 
 ```javascript
 // Depth First, Initial Attempt

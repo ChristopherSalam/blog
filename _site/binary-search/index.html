@@ -83,12 +83,12 @@
   <span class="k">this</span><span class="p">.</span><span class="nx">_root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>The contains function is similar to the traversal function in a tree problem, but with logical to look through the tree according to value.</p>
+<p>The contains function is similar to the traversal function in a tree problem, but with logic to look through the tree according to value.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//key not found</span>
   <span class="p">}</span>
-  <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">_root</span> <span class="o">||</span> <span class="nx">node</span><span class="p">;</span>
+  <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">_root</span> <span class="o">||</span> <span class="nx">node</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">nodeValue</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">leftChild</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
@@ -99,8 +99,31 @@
   <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
+<p>Traversal in a binary search tree is not recursive, the tree itself allows for log n time processing. We can use this logic to insert nodes as well. This method of inserting does not balance the tree. Balancing the tree is a whole other can of worms, but balancing a tree helps optimize the traversal.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">leftChild</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">rightChild</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">_root</span> <span class="o">||</span> <span class="nx">node</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">nodeValue</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">insertNode</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">leftChild</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">insertNode</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">rightChild</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Insertion in a binary search tree happens with much of the same logic as the contains, which leads us naturally to think there must be a way to take the function from one and place it into the other.</p>
+
 <!--
-This is a depth first contains check. A depth first search looks at each node and traverses until the most extreme point in each branch before continuing to search up the tree. A breadth first search would conversely look at each level whether or not it was an extreme end or not before continuing deeper in the tree. There is a way to write contains as a method that will either be depth first or breadth first. I first wrote this function when defining a depth first traverse:
+
 
 ```javascript
 // Depth First, Initial Attempt
