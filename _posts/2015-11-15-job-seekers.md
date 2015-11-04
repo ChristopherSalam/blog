@@ -29,3 +29,19 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="https://medium.com/google-developers/why-do-we-pay-these-people-anyway-d7ed706d6d55" target="_blank">&nbsp;&nbsp; Developer Relations</a>**
 
 **<a href="https://medium.com/google-developers/the-core-competencies-of-developer-relations-f3e1c04c0f5b" target="blank">&nbsp;&nbsp; and their core competancies</a>**
+
+*Algorithms*
+
+**<a href="https://en.wikipedia.org/wiki/Cache_algorithms" target="blank">&nbsp;&nbsp; Cache Specific</a>**
+
+*Trees & Binary Search Trees*
+
+**<a href="http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393">Trees Tutorial</a>**
+
+**<a href="https://en.wikipedia.org/wiki/Binary_search_tree">Binary search tree (BST)</a>** 
+
+**<a href="https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf">BST in Literature </a>**
+
+**<a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">Red black BST</a>**
+
+**<a href="https://gist.github.com/trevmex/821973" target="_blank">A pure JS BST implementation</a>**
