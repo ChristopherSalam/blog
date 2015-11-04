@@ -8,7 +8,7 @@ tags:
 
 Trees and Binary Search Trees in particular are very important core topics in computer science, and in preparation for interviews, I'll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes. I'm going to go through my tree analysis and convert it over to a binary search tree, as the best **<a href="https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf">literature </a>** out there can be convoluted..
 
-A **<a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a>** is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated.
+A **<a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a>** is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated. **<a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">Red black trees</a>** is eventually where I am building to. I'm heavily inspiried by this **<a href="https://gist.github.com/trevmex/821973" target="_blank">implementation</a>** , but I'm going to try to write in the tree node root style so it matches the **<a href="/trees" target="_blank"> Tree post</a>** I made earlier.
 
 ```javascript
 //Psuedo-classical instantiation

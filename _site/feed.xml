@@ -7,6 +7,98 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>languages</title>
+        <description>&lt;p&gt;&lt;img src=&quot;notes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Preparing for software engineering interviews:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/job-seekers&quot; title=&quot;Qualatative Language Characteristics&quot;&gt;Links for job seekers&lt;/a&gt;&lt;/strong&gt; | Languages&lt;/p&gt;
+
+&lt;p&gt;While attending a JavaScript bootcamp you do run into a bit of the dogma surrounding JavaScript as the...&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;quote Language of the Future endquote&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;That&amp;#39;s all fine and dandy and perhaps true to some extent, but low and behold we live in the present. And in the present, I&amp;#39;ve got these annoying interviews asking me about the other languages.&lt;/p&gt;
+
+&lt;p&gt;So I&amp;#39;ve started work on them. Some questions deal with whether language is interpreted and compiled.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Compiled vs. Interpreted Languages.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a pretty common question so let&amp;#39;s be somewhat exhaustive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Compiled languages require a compiler (a translator) that convert source code into machine code pre-runtime.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;All C family languages, such as C,
+C#, which compiles to Intermediary Language (IL) then is just-in-time(JIT) compiled to Assembly language.,
+Objective-C, D.
+Erlang, Go, Haskell, Java, Lisp, Scala, Swift in addition to the ones on &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Compiled_language&quot;&gt;this list&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Advantages of Compiled Languages&lt;/p&gt;
+
+&lt;p&gt;They run very quickly, as opposed to translated/interpretation.
+Opportunity to apply powerful optimizations during the compile stage.&lt;/p&gt;
+
+&lt;p&gt;Disadvantages of Compiled Languages&lt;/p&gt;
+
+&lt;p&gt;Writing a compiler is difficult.
+Code can&amp;#39;t be run without compilation&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Interpreted languages have instead of a compiler the ability to process the language on the machine and the code is read step by step.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Advantages&lt;/p&gt;
+
+&lt;p&gt;Platform independent, i.e. being standalone.
+Reflection, which means you can use the language to inspect and fix itself.
+Dynamic typing which means that types can be set at runtime.
+&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Scope_(computer_science)#Dynamic_scoping&quot;&gt;Dynamic scoping which I&amp;#39;m going to leave to wikipedia&lt;/a&gt;&lt;/strong&gt;
+Generally a smaller executable program size.&lt;/p&gt;
+
+&lt;p&gt;Disadvantages&lt;/p&gt;
+
+&lt;p&gt;Bugs from a lack of static type-checking
+Susceptibility to code injection attacks
+Slower execution except where JIT takes place
+Can be read and copied in the case of commercial advantages (bleh)&lt;/p&gt;
+
+&lt;p&gt;JavaScript (and EMCAscript, ActionScript, JScript). This is understanding that JS doesn&amp;#39;t have to be intepreted. Chrome uses compiled just-in-time(JIT), Perl, PHP, Python, Lisp, Ruby, and R and the &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Interpreted_language&quot;&gt;other languages&lt;/a&gt;&lt;/strong&gt; here.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Nov 2015 00:00:00 -0800</pubDate>
+        <link>ChristopherSalam.github.io/languages/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/languages/</guid>
+      </item>
+    
+      <item>
+        <title>job seekers</title>
+        <description>&lt;p&gt;&lt;img src=&quot;imposter.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Preparing for software engineering interviews:&lt;/p&gt;
+
+&lt;p&gt;Links for job seekers | &lt;strong&gt;&lt;a href=&quot;/languages&quot; title=&quot;Qualatative Language Characteristics&quot;&gt;Language characteristics&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I wanted this space to be a location where I could post all the things that I&amp;#39;m reading as I prepare for my interviews... there has been a significant amount of preparation especially since many of the large companies I&amp;#39;m targeting really are steeped into deep computer science interview questions, so much so that even company representatives and my friends on the inside have been slipping me leads to get a chance. Here is a brief collection:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=10492086&quot; target=&quot;_blank&quot;&gt;Job links from Hacker News&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95#.sb8fvdn5t&quot; target=&quot;_blank&quot;&gt;10 things for JS Devs&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Google Developer Relations Specific&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html&quot; target=&quot;_blank&quot;&gt; &amp;nbsp;&amp;nbsp; Get that job at Google...&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://projecteuler.net/&quot; target=&quot;_blank&quot;&gt;&amp;nbsp;&amp;nbsp; Project Euler&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.careercup.com&quot; target=&quot;_blank&quot;&gt;&amp;nbsp;&amp;nbsp; Career Cup&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://medium.com/google-developers/why-do-we-pay-these-people-anyway-d7ed706d6d55&quot; target=&quot;_blank&quot;&gt;&amp;nbsp;&amp;nbsp; Developer Relations&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://medium.com/google-developers/the-core-competencies-of-developer-relations-f3e1c04c0f5b&quot; target=&quot;blank&quot;&gt;&amp;nbsp;&amp;nbsp; and their core competancies&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 15 Nov 2015 00:00:00 -0800</pubDate>
+        <link>ChristopherSalam.github.io/job-seekers/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/job-seekers/</guid>
+      </item>
+    
+      <item>
         <title>agricultural</title>
         <description>&lt;p&gt;&lt;img src=&quot;farm.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
@@ -93,7 +185,7 @@ where the newfunc(args_provided_to_function_one) --&gt;
         <title>binary search</title>
         <description>&lt;p&gt;Trees and Binary Search Trees in particular are very important core topics in computer science, and in preparation for interviews, I&amp;#39;ll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes. I&amp;#39;m going to go through my tree analysis and convert it over to a binary search tree, as the best &lt;strong&gt;&lt;a href=&quot;https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf&quot;&gt;literature &lt;/a&gt;&lt;/strong&gt; out there can be convoluted..&lt;/p&gt;
 
-&lt;p&gt;A &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;binary search tree&lt;/a&gt;&lt;/strong&gt; is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;binary search tree&lt;/a&gt;&lt;/strong&gt; is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated. &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Red%E2%80%93black_tree&quot;&gt;Red black trees&lt;/a&gt;&lt;/strong&gt; is eventually where I am building to. I&amp;#39;m heavily inspiried by this &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/trevmex/821973&quot; target=&quot;_blank&quot;&gt;implementation&lt;/a&gt;&lt;/strong&gt; , but I&amp;#39;m going to try to write in the tree node root style so it matches the &lt;strong&gt;&lt;a href=&quot;/trees&quot; target=&quot;_blank&quot;&gt; Tree post&lt;/a&gt;&lt;/strong&gt; I made earlier.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Psuedo-classical instantiation&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -589,90 +681,6 @@ console.log(tree.size());
         <pubDate>Thu, 08 Oct 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/node-neo4j/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/node-neo4j/</guid>
-      </item>
-    
-      <item>
-        <title>regexp(?:\.js)</title>
-        <description>&lt;p&gt;I love regular expressions!&lt;/p&gt;
-
-&lt;p&gt;This post is part 3 in a 3 part series. Read the other posts:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/try-regexp&quot; title=&quot;Getting Started&quot;&gt;Part 1 - Try regexp&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/O(r)&quot; title=&quot;O dot R notation&quot;&gt;Part 2 - O(r)&lt;/a&gt;&lt;/strong&gt; | Part 3&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://demesheo.github.io/&quot;&gt;Demesheo Wilson II&lt;/a&gt;&lt;/strong&gt; approached me with help on a regexp problem which was a very small part of the for the project his team was working on called &lt;strong&gt;&lt;a href=&quot;http://gogitit.co/&quot;&gt;Go Git it!&lt;/a&gt;&lt;/strong&gt;, which keeps track of the JavaScript frameworks people are using. Here&amp;#39;s the case he presented to me: how do I read a javascript framework such as react.js from a cdn call in index.html or a package.json?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;react.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;I immediately thought the solution was going to involve a regexp technique I was not that familiar with called lookaheads. Lookaheads are a rarely used feature of the regular expression syntax which match while looking ahead to allow you to remove part of the text from the match.&lt;/p&gt;
-
-&lt;p&gt;If you&amp;#39;ve never used &lt;strong&gt;&lt;a href=&quot;http://regexr.com/&quot;&gt;regexr&lt;/a&gt;&lt;/strong&gt;, now&amp;#39;s a good time. I&amp;#39;ll include some screenshots so we can follow along.&lt;/p&gt;
-
-&lt;p&gt;Ideally, we just want the word react from the above sentence. This is what ended up working perfectly:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//gets .js including .min.js&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;/[\w.-]+(?=\.js)/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;final.min.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Let&amp;#39;s through each part one by one.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/-----/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Regular Expressions are objects that use the bracket syntax. Anything between these letters is a pattern to match. The g global or g flag says give me all the instances of this match, otherwise we just get the first match.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;words.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;\w+ looks for all word like characters, and includes numbers for things like d3. This picks up way too much.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+\.js/g&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;same&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;/\w+(\.js)/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;noCapture.png&quot;/&gt;
--is the same as-
-&lt;img src=&quot;needDash.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Adding .js to the Regular Expression does a lot for us. So two big problems to address stick out here. Minified files really throw off this process. Also, dashes need to be addressed. We escape (use ) on the . because . means any character in Regular Expressions, and . means specifically the . character. Parentheses around the .js is needed for the lookahead that&amp;#39;s coming.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/\w+(?=\.js)/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;posLook.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;With this step, we&amp;#39;ve removed the .js from the back of the files. Now let&amp;#39;s address min and dash. We need to use brackets to give us options in addition to \w. Lets get \w, periods, and dashes, and use brackets to allow for all three options. We will place the + sign outside the brackets to allow for any combination of them to be matched.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/[\w.-]+(?=\.js)/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;dashesdots.png&quot;/&gt;&lt;/p&gt;
-
-&lt;p&gt;That&amp;#39;s nearly there! So the rest I&amp;#39;m not sure how Demesheo ended up processing these files, but one approach just grabs the d3 from d3.min.js but misses the js files.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/[\w-]+(?=\.min\.js)/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Another approach is something you can run on your already matched text to remove the &amp;quot;.min&amp;quot;. Don&amp;#39;t run this on the whole document because then you&amp;#39;ll run into the min.css.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//removes min&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;/[\w-]+(?=\.min)/g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;That&amp;#39;s all I got on $(this). Regular expressions are pretty powerful things! Hope this was helpful and has some application for you.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 01 Oct 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/regexp.js/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/regexp.js/</guid>
-      </item>
-    
-      <item>
-        <title>tape tests</title>
-        <description>&lt;p&gt;This is part 4 of 4 of the React Native series.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/try-RN&quot; title=&quot;Getting Started&quot;&gt;Part 1 - Try RN&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/RN-snapshots&quot; title=&quot;React Native &amp;amp; Firebase Snapshots&quot;&gt;Part 2 - RN/Firebase snapshots&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/RN-updates&quot; title=&quot;React Native &amp;amp; Firebase Updates&quot;&gt;Part 3 - RN/Firebase updates&lt;/a&gt;&lt;/strong&gt; | Part 4&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/TheTinyBullets/Katfish_Xcode&quot;&gt;Repo&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;http://katfish.me&quot;&gt;Screenshots&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Tape testing is hella boss! Tape testing in React Native works like a dream. Well...
-more like a dream in the way that Inception was a dream. There are some constant asychronous issues but it was for us one of the best ways to test our application. I recommend it as a way to get testing into your React Native pages.&lt;/p&gt;
-
-&lt;p&gt;Tape uses the TAP method of outputing testing information. This is a standard rubric sort of for what information should be in tests and should not be in tests. Tape can be included in your files with a require statement.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub... there&amp;#39;s more to come&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 23 Sep 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/tape-tests/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/tape-tests/</guid>
       </item>
     
   </channel>
