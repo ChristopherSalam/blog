@@ -6,6 +6,8 @@ tags:
 - javascript
 ---
 
+**Even if we all speak a different language we find a way to communicate**
+
 <img src="notes.jpg" alt="">
 
 Preparing for software engineering interviews:

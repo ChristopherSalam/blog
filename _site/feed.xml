@@ -8,7 +8,9 @@
     
       <item>
         <title>languages</title>
-        <description>&lt;p&gt;&lt;img src=&quot;notes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;Even if we all speak a different language we find a way to communicate&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;notes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Preparing for software engineering interviews:&lt;/p&gt;
 
@@ -81,6 +83,14 @@ Can be read and copied in the case of commercial advantages (bleh)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95#.sb8fvdn5t&quot; target=&quot;_blank&quot;&gt;10 things for JS Devs&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://bigocheatsheet.com/&quot; target=&quot;_blank&quot;&gt;Big O Cheat Sheet&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Sorting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.sorting-algorithms.com/&quot; target=&quot;_blank&quot;&gt;Sorting Algorithms&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice&quot; target=&quot;_blank&quot;&gt;SO on QuickSort!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;em&gt;Google Developer Relations Specific&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html&quot; target=&quot;_blank&quot;&gt; &amp;nbsp;&amp;nbsp; Get that job at Google...&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -101,13 +111,35 @@ Can be read and copied in the case of commercial advantages (bleh)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393&quot;&gt;Trees Tutorial&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;Binary search tree (BST)&lt;/a&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;Binary search tree (BST)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf&quot;&gt;BST in Literature &lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Red%E2%80%93black_tree&quot;&gt;Red black BST&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gist.github.com/trevmex/821973&quot; target=&quot;_blank&quot;&gt;A pure JS BST implementation&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://greendark-team.blogspot.com/2011/04/web-browser-security-models.html&quot; target=&quot;_blank&quot;&gt;Web Security Models&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/TCP&quot; target=&quot;_blank&quot;&gt;TCP&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/TCP-IP&quot;&gt;TCP/IP&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/mutex&quot; target=&quot;_blank&quot;&gt;Mutex&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/SCTP&quot; target=&quot;_blank&quot;&gt;SCTP&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/alex/what-happens-when&quot; target=&quot;_blank&quot;&gt;What happens when you type google into a browser...longform&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.glassdoor.com/Interview/What-happens-when-you-type-www-google-com-in-your-browser-QTN_56396.htm&quot; target=&quot;_blank&quot;&gt;What happens when you type google into a browser...shortform&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread&quot; target=&quot;_blank&quot;&gt;Threads versus Processes&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 15 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/job-seekers/</link>
