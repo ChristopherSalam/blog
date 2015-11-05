@@ -6,7 +6,7 @@ tags:
 - javascript
 ---
 
-<img src="lineof.jpg" alt="">
+<img src="imposter.jpg" alt="">
 
 Preparing for software engineering interviews:
 
@@ -17,16 +17,6 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="https://news.ycombinator.com/item?id=10492086" target="_blank">Job links from Hacker News</a>**
 
 **<a href="https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95#.sb8fvdn5t" target="_blank">10 things for JS Devs</a>**
-
-**<a href="http://bigocheatsheet.com/" target="_blank">Big O Cheat Sheet</a>**
-
-*Sorting*
-
-**<a href="http://www.sorting-algorithms.com/" target="_blank">Sorting Algorithms</a>**
-
-**<a href="http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice" target="_blank">SO on QuickSort!</a>**
-
-<img src="imposter.jpg" alt="">
 
 *Google Developer Relations Specific*
 
@@ -56,24 +46,48 @@ I wanted this space to be a location where I could post all the things that I'm 
 
 **<a href="https://gist.github.com/trevmex/821973" target="_blank">A pure JS BST implementation</a>**
 
-**<a href="http://greendark-team.blogspot.com/2011/04/web-browser-security-models.html" target="_blank">Web Security Models</a>**
+<!--
 
-**<a href="http://searchnetworking.techtarget.com/definition/TCP" target="_blank">TCP</a>**
+Why do you want to work at GitHub?  
 
-**<a href="http://searchnetworking.techtarget.com/definition/TCP-IP">TCP/IP</a>**
+I want to work at Github because I believe heavily in open source as a method for the best versions of software to come forward. I'm fascinated with open and closed version control for non-software associations.
 
-**<a href="http://searchnetworking.techtarget.com/definition/mutex" target="_blank">Mutex</a>**
+Why Client Applications?
 
-**<a href="http://searchnetworking.techtarget.com/definition/SCTP" target="_blank">SCTP</a>**
+I want to work specifically for Ecosystems because I believe that Atom and Electron will empower really new and interesting applications and companies and I want to help them achieve their goals. I have been interested in changing the tools we use while solving problems even before I was a software engineer, I've worked in novel renewable energy systems with no established inventories of parts -> we had to make our own solutions and each version of what we had was documented so we could continue to improve. Ben's description of what is needed for E.C.E. spoke to me directly, I would love to implement 1-2 week long projects to address bugs and needs in Atom, features that have been lost while staff works on deep seated issues, I think it's a perfect opportunity to learn the codebase and satisfy my own diverse interests and multi-threaded nature.
 
-**<a href="https://github.com/alex/what-happens-when" target="_blank">What happens when you type google into a browser...longform</a>**
+I really got into IDEs and framework design when working on a React Native project. The framework was so new we got an opportunity to give feedback to the architects, call for more documentation, and make our own, in the form of blogs, stack overflow, and github issues. I like documenting code and sharing examples as much as coding and figuring out issues themselves. I got a twitter account the day after Github Universe specifically to tweet at software companies and would enjoy crafting and sending out public communication. I would not use it as a personal platform.
 
-**<a href="http://www.glassdoor.com/Interview/What-happens-when-you-type-www-google-com-in-your-browser-QTN_56396.htm" target="_blank">What happens when you type google into a browser...shortform</a>**
+Languages?
 
-**<a href="http://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread" target="_blank">Threads versus Processes</a>**
+I am a JavaScript web engineer first and foremost. I love everything about it, it's quirks and asychronicity, and it's role as gatekeeper to the web. I also have experience (HTML, CSS), C++, Ruby, and statistics packages. I have dug out my college C++ book and have been reviewing it. I have read Objective-C as part of my work with React Native but not used it, Swift, C, or C# extensively.
 
-**<a href="https://en.wikipedia.org/wiki/Inter-process_communication" target="_blank">IPC</a>**
+Testing.
 
-**<a href="" target="_blank"></a>**
+I am aware of testing, profiling and debugging techniques but are admittedly my weakness and I am eager to address this. I have used JavaScript framework testing suites such as Mocha, Chai, Jasmine, and really like Tape. Not used CI or BugSnag. I use DevTools.
 
-**<a href="" target="_blank"></a>**
+Api design experience.
+
+I have worked with many different API based protocols and some of my favorites are Firebase, Youtube, and sources of information such as Wikipedia and Sports Statistics Reference sites. Other than this role, I'm mainly interested in roles working on large APIs and developer advocacy.
+
+Bonus:
+
+I have used Mac, Windows, and Linux extensively. I was an un-opinioned Windows user until college began, then switched over to Ubuntu Linux for college, graduate school, and the 4 years following (10 years). I recently started using Mac when I began to learn JavaScript. Electron really speaks to me because I would love to make desktop applications (and help make) across the three platforms.
+
+How do you work in teams?
+
+I am most comfortable with teamwork. I believe collaboration on programming and life is valuable and saves time. Within groups I believe it's important to work your strengths and address your weaknesses within reason. I typically take leadership roles when needed and high risk-reward endeavors when afforded.
+
+What size team do you normally work with?
+
+3-4 most commonly. I have worked in office, remote, and on-call for engineering projects. I believe that I would only ask people to do what I was willing and able to do myself. I believe in direct and open communication.
+
+Do you find it difficult to give/receive edits?
+
+Nope. As someone who has had to re-write his master's thesis over the course of a year to graduate, I deeply respect the style guide and the team process and will never allow my opinion or edits to undermine the greater good of working together.
+
+What is your position on Open Source.
+
+I want to work at Github because I believe heavily in open source as a method for the best versions of software to come forward. I believe it is a very difficult game to get into and the barriers that exist mirror that most of society has: wealth, privilege, & hierarchy but rather than society, the walls have the potential to come down much faster and I believe will.
+
+-->
