@@ -6,7 +6,7 @@ tags:
 - javascript
 ---
 
-<img src="imposter.jpg" alt="">
+<img src="lineof.jpg" alt="">
 
 Preparing for software engineering interviews:
 
@@ -25,6 +25,8 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="http://www.sorting-algorithms.com/" target="_blank">Sorting Algorithms</a>**
 
 **<a href="http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice" target="_blank">SO on QuickSort!</a>**
+
+<img src="imposter.jpg" alt="">
 
 *Google Developer Relations Specific*
 
@@ -70,7 +72,7 @@ I wanted this space to be a location where I could post all the things that I'm 
 
 **<a href="http://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread" target="_blank">Threads versus Processes</a>**
 
-**<a href="" target="_blank"></a>**
+**<a href="https://en.wikipedia.org/wiki/Inter-process_communication" target="_blank">IPC</a>**
 
 **<a href="" target="_blank"></a>**
 
