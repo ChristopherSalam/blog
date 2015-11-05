@@ -10,7 +10,7 @@ This post is part 3 in a 4 part series. Read the other posts:
 
 **[Part 1 - Try Neo4j](/try-neo4j "Getting Started")** | **[Part 2 - Query Neo4j](/query-neo4j "Learning Database Language")** | Part 3 | **[Part 4 - Node Neo4j](/node-neo4j "The Hard Part!")** | **[Repo](https://github.com/upstanding-biome/sixdegrees)** | **[Site](http://sixdribbles.com)**
 
-Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I'd call "name collision". Name collision in an SQL database is unlikely because of primary keys, however, in a graph database we don't have this luxury. In our database, we had a few culprits, one of the most notorious was Luke Jackson.
+Six Dribbles has been hosting and serving people with their six degrees of separation for some time, however, we have been noticing a collision problem. We have had numerous short circuits on our shortest path query and the source of this error is something I'd call "name collision". Name collision in an SQL database is unlikely because of primary keys, however, in this graph database where we merge the names to start our database we don't have this luxury. We had a few culprits, one of the most notorious was Luke Jackson.
 
 <img src="luke4.png"/>
 
