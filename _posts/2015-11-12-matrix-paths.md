@@ -65,7 +65,11 @@ Another way to look at this set of decisions is a tree. We don't need to use the
 
 <img src="treeChoice.png" alt="visual of decisions">
 
-You get the drift. This whole thing hinges on the understanding that you can setup a recursive algorithm that just fails when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:
+You get the drift.
+
+These diagrams **aren't** the most accurate way of thinking about this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands in two directions and fails once it finds that there is no matrix value.
+
+The algorithm needs to fail, or return an empty value, when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:
 
 ```javascript
 Boolean(zone[0][0]) --> true
@@ -304,7 +308,7 @@ function badPasswordList(string, set) {
 
 There are 864 results! Pretty nifty. Here's a partial screenshot.
 
-<img src="options.png" alt="">
+<img src="options.png" alt="passwords.....">
 
 These stumped me live, but after some time to think about it, I'll be ready for the next set of these, and I hope this helped you.
 

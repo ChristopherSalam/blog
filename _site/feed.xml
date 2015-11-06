@@ -8,15 +8,19 @@
     
       <item>
         <title>languages</title>
-        <description>&lt;p&gt;&lt;strong&gt;Even if we all speak a different language we find a way to communicate&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;font-mfizz.css&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Even if we all speak a different language we find a way to communicate&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;notes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Preparing for software engineering interviews:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://fizzed.com/oss/font-mfizz&quot;&gt;The cool icons you see on this page can be found here.&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/job-seekers&quot; title=&quot;Qualatative Language Characteristics&quot;&gt;Links for job seekers&lt;/a&gt;&lt;/strong&gt; | Languages&lt;/p&gt;
+&lt;p&gt;I am preparing for software engineering interviews outside of JavaScript ( &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt;).&lt;/p&gt;
 
-&lt;p&gt;While attending a JavaScript bootcamp you do run into a bit of the dogma surrounding JavaScript as the...&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/job-seekers&quot; title=&quot;Qualitative Language Characteristics&quot;&gt;Links for job seekers&lt;/a&gt;&lt;/strong&gt; | Languages&lt;/p&gt;
+
+&lt;p&gt;While attending a &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt; bootcamp you do run into a bit of the dogma surrounding &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt; as the...&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;quote Language of the Future endquote&lt;/em&gt;.&lt;/p&gt;
 
@@ -30,39 +34,50 @@
 
 &lt;p&gt;&lt;strong&gt;Compiled languages require a compiler (a translator) that convert source code into machine code pre-runtime.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;All C family languages, such as C,
-C#, which compiles to Intermediary Language (IL) then is just-in-time(JIT) compiled to Assembly language.,
-Objective-C, D.
-Erlang, Go, Haskell, Java, Lisp, Scala, Swift in addition to the ones on &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Compiled_language&quot;&gt;this list&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Examples of compiled languages include all &lt;i class=&quot;icon-c&quot;&gt;&lt;/i&gt; family languages, such as &lt;i class=&quot;icon-c&quot;&gt;&lt;/i&gt;,
+&lt;i class=&quot;icon-csharp&quot;&gt;&lt;/i&gt; (&lt;em&gt;which compiles to Intermediary Language (IL) then is just-in-time (JIT) compiled to Assembly language&lt;/em&gt;), Objective-C &lt;i class=&quot;icon-objc&quot;&gt;&lt;/i&gt;, D,
+Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i class=&quot;icon-haskell&quot;&gt;&lt;/i&gt;, Java &lt;i class=&quot;icon-java-bold&quot;&gt;&lt;/i&gt;, Lisp (can be both), Scala &lt;i class=&quot;icon-scala&quot;&gt;&lt;/i&gt;, and Swift in addition to the ones on &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Compiled_language&quot;&gt;this list&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Advantages of Compiled Languages&lt;/p&gt;
 
-&lt;p&gt;They run very quickly, as opposed to translated/interpretation.
-Opportunity to apply powerful optimizations during the compile stage.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1) They run very quickly, as opposed to translated/interpretation.&lt;/li&gt;
+&lt;li&gt;(2) Opportunity to apply powerful optimizations during the compile stage.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Disadvantages of Compiled Languages&lt;/p&gt;
 
-&lt;p&gt;Writing a compiler is difficult.
-Code can&amp;#39;t be run without compilation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1) Writing a compiler is difficult.&lt;/li&gt;
+&lt;li&gt;(2) Code can&amp;#39;t be run without compilation&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Interpreted languages have instead of a compiler the ability to process the language on the machine and the code is read step by step.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Advantages&lt;/p&gt;
 
-&lt;p&gt;Platform independent, i.e. being standalone.
-Reflection, which means you can use the language to inspect and fix itself.
-Dynamic typing which means that types can be set at runtime.
-&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Scope_(computer_science)#Dynamic_scoping&quot;&gt;Dynamic scoping which I&amp;#39;m going to leave to wikipedia&lt;/a&gt;&lt;/strong&gt;
-Generally a smaller executable program size.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1) Platform independent, i.e. being standalone.&lt;/li&gt;
+&lt;li&gt;(2) Reflection, which means you can use the language to inspect and fix itself.&lt;/li&gt;
+&lt;li&gt;(3) Dynamic typing which means that types can be set at runtime.&lt;/li&gt;
+&lt;li&gt;(4) &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Scope_(computer_science)#Dynamic_scoping&quot;&gt;Dynamic scoping which I&amp;#39;m going to leave to wikipedia&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;(5) Generally a smaller executable program size.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Disadvantages&lt;/p&gt;
 
-&lt;p&gt;Bugs from a lack of static type-checking
-Susceptibility to code injection attacks
-Slower execution except where JIT takes place
-Can be read and copied in the case of commercial advantages (bleh)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1) Bugs from a lack of static type-checking&lt;/li&gt;
+&lt;li&gt;(2) Susceptibility to code injection attacks&lt;/li&gt;
+&lt;li&gt;(3) Slower execution except where JIT takes place&lt;/li&gt;
+&lt;li&gt;(4) Can be read and copied in the case of commercial advantages (bleh)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;JavaScript (and EMCAscript, ActionScript, JScript). This is understanding that JS doesn&amp;#39;t have to be intepreted. Chrome uses compiled just-in-time(JIT), Perl, PHP, Python, Lisp, Ruby, and R and the &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Interpreted_language&quot;&gt;other languages&lt;/a&gt;&lt;/strong&gt; here.&lt;/p&gt;
+&lt;p&gt;Examples of Intrepreted Languages are &lt;i class=&quot;icon-javascript&quot;&gt;&lt;/i&gt; and other languages in the EMCAscript tree (like ActionScript, JScript). This is understanding that &lt;i class=&quot;icon-javascript&quot;&gt;&lt;/i&gt; doesn&amp;#39;t have to be interpreted. Chrome uses compiled just-in-time(JIT), Perl &lt;i class=&quot;icon-perl&quot;&gt;&lt;/i&gt;, PHP &lt;i class=&quot;icon-php&quot;&gt;&lt;/i&gt;, Python &lt;i class=&quot;icon-python&quot;&gt;&lt;/i&gt;, Lisp (can be both), Ruby &lt;i class=&quot;icon-ruby&quot;&gt;&lt;/i&gt;, and R and the &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Interpreted_language&quot;&gt;other languages&lt;/a&gt;&lt;/strong&gt; here.&lt;/p&gt;
+
+&lt;p&gt;HTML &lt;i class=&quot;icon-html&quot;&gt;&lt;/i&gt; is the markup language most web pages and applications have some small bit of. Angular began a process of creating special unique &lt;i class=&quot;icon-html&quot;&gt;&lt;/i&gt; elements, but d3 and other &lt;i class=&quot;icon-javascript&quot;&gt;&lt;/i&gt; frameworks were making &lt;i class=&quot;icon-svg&quot;&gt;&lt;/i&gt; and other elements on the page prior to that. New frameworks such as React don&amp;#39;t even use &lt;i class=&quot;icon-html&quot;&gt;&lt;/i&gt; or the DOM until reading a &lt;i class=&quot;icon-javascript&quot;&gt;&lt;/i&gt; object containing all information of what should be in the DOM (the Shadow DOM) and that allows diff evaluations to take place such that only the changes to the Shadow DOM will be rendered to the DOM.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 20 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/languages/</link>
@@ -206,6 +221,8 @@ What is your position on Open Source.
 I want to work at Github because I believe heavily in open source as a method for the best versions of software to come forward. I believe it is a very difficult game to get into and the barriers that exist mirror that most of society has: wealth, privilege, &amp; hierarchy but rather than society, the walls have the potential to come down much faster and I believe will.
 
 --&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 15 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/job-seekers/</link>
@@ -263,7 +280,11 @@ I want to work at Github because I believe heavily in open source as a method fo
 
 &lt;p&gt;&lt;img src=&quot;treeChoice.png&quot; alt=&quot;visual of decisions&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;You get the drift. This whole thing hinges on the understanding that you can setup a recursive algorithm that just fails when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:&lt;/p&gt;
+&lt;p&gt;You get the drift.&lt;/p&gt;
+
+&lt;p&gt;These diagrams &lt;strong&gt;aren&amp;#39;t&lt;/strong&gt; the most accurate way of thinking about this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands in two directions and fails once it finds that there is no matrix value.&lt;/p&gt;
+
+&lt;p&gt;The algorithm needs to fail, or return an empty value, when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -477,7 +498,7 @@ modifying the functions in place to preserve what we are interested in. For exam
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;There are 864 results! Pretty nifty. Here&amp;#39;s a partial screenshot.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;options.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;options.png&quot; alt=&quot;passwords.....&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;These stumped me live, but after some time to think about it, I&amp;#39;ll be ready for the next set of these, and I hope this helped you.&lt;/p&gt;
 

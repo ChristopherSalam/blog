@@ -95,8 +95,6 @@ I wanted this space to be a location where I could post all the things that I'm 
 
 **<a href="" target="_blank"></a>**
 
-
-
 <!--
 
 Why do you want to work at GitHub?  
@@ -142,3 +140,5 @@ What is your position on Open Source.
 I want to work at Github because I believe heavily in open source as a method for the best versions of software to come forward. I believe it is a very difficult game to get into and the barriers that exist mirror that most of society has: wealth, privilege, & hierarchy but rather than society, the walls have the potential to come down much faster and I believe will.
 
 -->
+
+**This is a stub, there's more coming**
