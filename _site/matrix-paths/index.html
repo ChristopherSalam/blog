@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>matrix paths – Christopher Salam – thoughts on software and engineering</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="We&#39;ve been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.
+" />
+    <meta property="og:description" content="We&#39;ve been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+
+    
+    <meta property="og:title" content="matrix paths" />
+    <meta property="twitter:title" content="matrix paths" />
+    
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">matrix paths</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#data structures">data structures</a>,
+  
+  <a href="/tags/#javascript">javascript</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on November 12, 2015
+  </div>
+
+  <div class="entry">
+    <p>We&#39;ve been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
+<span class="cm">|| Fishing Trip                       ||</span>
+<span class="cm">||                                    ||</span>
+<span class="cm">|| In this problem you will travel    ||</span>
+<span class="cm">|| through all possible paths through ||</span>
+<span class="cm">|| a lake collecting fish. You must   ||</span>
+<span class="cm">|| start at the top left corner and   ||</span>
+<span class="cm">|| go only one space at a time either ||</span>
+<span class="cm">|| right or down until you reach the  ||</span>
+<span class="cm">|| right bottom corner [2,2] for a    ||</span>
+<span class="cm">|| 3 x 3 matrix. Keep track of the    ||</span>
+<span class="cm">|| total amount of fish each path can ||</span>
+<span class="cm">|| provide for you and report the     ||</span>
+<span class="cm">|| maximum catch                      ||</span>
+<span class="cm">||====================================*/</span>
+
+<span class="kd">var</span> <span class="nx">pond</span> <span class="o">=</span>
+<span class="p">[</span>
+  <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">3</span> <span class="p">],</span>
+  <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span> <span class="p">],</span>
+  <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">2</span> <span class="p">]</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>Whoa... right? I was similarly stammering on what to do next when I first saw it. We&#39;ve discussed the pieces above. These fit a lot of patterns we see in games, or maybe this could serve as an example for path optimization for trip runners.</p>
+
+<p>We need a running total on each route, addition steps, options to travel in both directions, and routes that fail when we cross boundaries. Let&#39;s get to it! Here&#39;s a diagram.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">zone</span> <span class="o">=</span>
+  <span class="p">[</span>   <span class="p">[</span> <span class="nx">start</span><span class="p">,</span> <span class="err">#</span><span class="p">,</span>  <span class="err">#</span>   <span class="p">]</span>
+      <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span>  <span class="err">#</span>   <span class="p">]</span>
+      <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span>  <span class="nx">end</span> <span class="p">]</span>   <span class="p">]</span>
+</code></pre></div>
+<p>Following a diagram like this, work within all possible paths from start to end (there are six in this case)</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">[</span> <span class="p">[</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span>  <span class="nx">_</span>   <span class="p">]</span>    <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">[</span>  <span class="p">[</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="err">#</span>   <span class="p">]</span>
+      <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span>  <span class="nx">_</span>   <span class="p">]</span>           <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span>   <span class="p">]</span>
+      <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span>  <span class="nx">end</span> <span class="p">]</span> <span class="p">]</span>         <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span> <span class="nx">end</span> <span class="p">]</span> <span class="p">]</span>
+
+<span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">[</span> <span class="p">[</span> <span class="nx">start</span><span class="p">,</span> <span class="err">#</span><span class="p">,</span>  <span class="err">#</span>   <span class="p">]</span>    <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">[</span>  <span class="p">[</span> <span class="nx">start</span><span class="p">,</span><span class="nx">_</span><span class="p">,</span> <span class="err">#</span>    <span class="p">]</span>
+      <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>    <span class="nx">_</span><span class="p">,</span>   <span class="err">#</span>   <span class="p">]</span>           <span class="p">[</span> <span class="err">#</span><span class="p">,</span>    <span class="nx">_</span><span class="p">,</span> <span class="err">#</span>    <span class="p">]</span>
+      <span class="p">[</span> <span class="err">#</span><span class="p">,</span>    <span class="nx">_</span><span class="p">,</span> <span class="nx">end</span>   <span class="p">]</span> <span class="p">]</span>         <span class="p">[</span> <span class="err">#</span><span class="p">,</span>    <span class="nx">_</span><span class="p">,</span> <span class="nx">end</span>  <span class="p">]</span> <span class="p">]</span>
+
+<span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">[</span> <span class="p">[</span> <span class="nx">start</span><span class="p">,</span> <span class="err">#</span><span class="p">,</span> <span class="err">#</span>    <span class="p">]</span>    <span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="p">[</span>  <span class="p">[</span> <span class="nx">start</span><span class="p">,</span> <span class="err">#</span><span class="p">,</span> <span class="err">#</span>   <span class="p">]</span>
+      <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span> <span class="err">#</span>    <span class="p">]</span>           <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="err">#</span>   <span class="p">]</span>
+      <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="nx">end</span>  <span class="p">]</span> <span class="p">]</span>         <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="nx">end</span> <span class="p">]</span> <span class="p">]</span>
+</code></pre></div>
+<p>Another way to look at this set of decisions is a tree. We don&#39;t need to use the tree data structure, just absorb that this solution can be done recursively (or iteratively if you know the combinations ahead of time).</p>
+
+<p><img src="treeChoice.png" alt="visual of decisions"></p>
+
+<p>You get the drift. This whole thing hinges on the understanding that you can setup a recursive algorithm that just fails when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">Boolean</span><span class="p">(</span><span class="nx">zone</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">--&gt;</span> <span class="kc">true</span>
+<span class="nb">Boolean</span><span class="p">(</span><span class="nx">zone</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span> <span class="o">--&gt;</span> <span class="kc">false</span>
+</code></pre></div>
+<p>And where ever our boundary conditions fail we can just &#39;return 0;&#39; or &#39;return;&#39; depending on what we are trying to keep track of.
+The other important piece is that while we travel each path, we need to pass information on as arguments to the recursive function, often without
+modifying the functions in place to preserve what we are interested in. For example:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">moreStuff</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">stuff</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">moreStuff</span> <span class="o">=</span> <span class="nx">moreStruff</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">moreStuff</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>versus</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">moreStuff</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">do</span> <span class="nx">tasks</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">moreStuff</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And decisions at to keep data around in this way will either help you keeping running totals or deal with a specific value at each stop. Let&#39;s start our fishing problem.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">fishingTrip</span><span class="p">(</span><span class="nx">matrix</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">//boundary variables.</span>
+<span class="c1">//another approach is</span>
+<span class="c1">//to start from height and width</span>
+<span class="c1">//and subtract. I choose to add.</span>
+
+    <span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">fishCatch</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">height</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nx">width</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">//recursive function that carves a path</span>
+<span class="c1">//through the matrix</span>
+
+    <span class="kd">function</span> <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">//boundary conditions</span>
+<span class="c1">//if at a value the matrix doesn&#39;t see, return no fish.</span>
+<span class="c1">//if at [2,2], send the total to be stored.</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&gt;</span> <span class="nx">width</span> <span class="o">||</span> <span class="nx">y</span> <span class="o">&gt;</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="nx">width</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span> <span class="o">===</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">fishCatch</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">total</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="c1">//here&#39;s a very tricky part of it, you return moving in both directions.</span>
+<span class="c1">//recursion will purse each path until it&#39;s logical conclusion,</span>
+<span class="c1">//ASSUMING you set good boundaries.</span>
+
+        <span class="k">return</span> <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">])</span> <span class="o">+</span> <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+<span class="c1">//call the function. You can do this with an IFFY but those</span>
+<span class="c1">//seem less legible to me.</span>
+
+    <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>
+
+<span class="c1">//at this point, I have all the answers stored.</span>
+<span class="c1">//if the matrix was 1 million x 1 million, we would probably</span>
+<span class="c1">//overwrite with a max. I&#39;ll show you an example of this next.</span>
+<span class="c1">//here we will just Math.max.apply to get the best catch.</span>
+
+    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nx">fishCatch</span><span class="p">);</span>
+<span class="c1">// allTotals:[ 10, 19, 18, -&gt;( 21 )&lt;-, 20, 13 ]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If the tree is helpful, here&#39;s another look at what&#39;s happening.</p>
+
+<p><img src="pondChoice.png" alt="alt view of pond problem"></p>
+
+<p>And you&#39;ll see twists on this generic idea of a problem. This is something computers can do so quickly for us that was very hard to set out to solve before computers. Another popular version is LifeTotal</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
+<span class="cm">|| Life Total                         ||</span>
+<span class="cm">||                                    ||</span>
+<span class="cm">|| In this problem you will travel    ||</span>
+<span class="cm">|| through all possible paths through ||</span>
+<span class="cm">|| a field gaining and losing health  ||</span>
+<span class="cm">|| Start at the top left corner and   ||</span>
+<span class="cm">|| go only one space at a time either ||</span>
+<span class="cm">|| right or down until you reach the  ||</span>
+<span class="cm">|| right bottom corner [2,2] for a    ||</span>
+<span class="cm">|| 3 x 3 matrix. Find out what is the ||</span>
+<span class="cm">|| minimum starting health you need   ||</span>
+<span class="cm">|| get through the field alive!       ||</span>
+<span class="cm">||====================================*/</span>
+
+<span class="kd">var</span> <span class="nx">field</span> <span class="o">=</span>
+<span class="p">[</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="o">-</span><span class="mi">3</span> <span class="p">],</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span> <span class="p">],</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="o">-</span><span class="mi">5</span><span class="p">,</span>  <span class="mi">2</span> <span class="p">]</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>What&#39;s the major difference here? We have negative values, but fundamentally we need to keep track of only two numbers, the life total we have at each path, and an minimum extrema. The lowest point at which we have health will help us set our minimum health to stay alive.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">minLifeNeededToLive</span><span class="p">(</span><span class="nx">matrix</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">//boundary variables as before</span>
+<span class="c1">//major difference is there is no</span>
+<span class="c1">//array, and a single maxHurt variable</span>
+<span class="c1">//takes it&#39;s place. We could have done</span>
+<span class="c1">//the same above, but I wanted to demonstrate</span>
+<span class="c1">//the tree of decisions clearly.</span>
+
+    <span class="kd">var</span> <span class="nx">lifeTotal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">maxHurt</span> <span class="o">=</span> <span class="kc">Infinity</span><span class="p">,</span>
+      <span class="nx">height</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nx">width</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">//recursively travel as before. Modify your life total</span>
+<span class="c1">//then ask at each point if the</span>
+
+    <span class="kd">function</span> <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">lifeTotal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&gt;</span> <span class="nx">width</span> <span class="o">||</span> <span class="nx">y</span> <span class="o">&gt;</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c1">//remember to add the life at [2,2] to the maxHurt check</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">lifeTotal</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">maxHurt</span><span class="p">)</span> <span class="p">{</span> <span class="nx">maxHurt</span> <span class="o">=</span> <span class="nx">lifeTotal</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">];</span> <span class="p">}</span>
+
+<span class="c1">//stop the bloodshead!. a third boundary condition on [2,2]</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="nx">width</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span> <span class="o">===</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c1">//travelling, just as before.</span>
+<span class="c1">//passing this times life total to the next battle.</span>
+
+        <span class="k">return</span> <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">lifeTotal</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">])</span> <span class="o">+</span> <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">lifeTotal</span> <span class="o">+</span> <span class="nx">matrix</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+<span class="c1">//run the function itself.</span>
+
+    <span class="nx">travel</span><span class="p">(</span><span class="nx">matrix</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">lifeTotal</span><span class="p">);</span>
+
+<span class="c1">//the final calculations. To stay alive, I need to survive the lowest point in my health, i.e. 1 - maxHurt taken.</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="nx">maxHurt</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// minimal health</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Hopefully that is helpful! I&#39;m going to skip making the tree this time if that works with you.</p>
+
+<p>Oddly enough, this next problem may get moved to it&#39;s own page, but it&#39;s very similar. The notion is instead of a matrix, let&#39;s take a word and generate a tree of options. This is a very practical combinations exercise: what are the passwords people create when they are being lazy that are too similar to their previous password? Given a single string, give all the options of bad passwords that a user may try to generate.</p>
+
+<p>Why do we do this? This is pretty straight forward. If I can come up with an algorithm to get all the too simple password modifications, what makes you think hackers aren&#39;t running these evaluations all the time? They probably are. Makes me want to go through and change some of my passwords...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//input</span>
+<span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="s2">&quot;secretcode&quot;</span><span class="p">,</span>
+<span class="nx">badSubstitutions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">]}</span>
+<span class="c1">//output</span>
+<span class="p">[</span><span class="s2">&quot;$ecretcode&quot;</span><span class="p">,</span><span class="s2">&quot;Secretcode&quot;</span><span class="p">,</span><span class="s2">&quot;secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;$ecretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;Secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;secretcode&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>At some point you&#39;ll start to see that all these structures break down to these concepts of inputs and outputs and manipulations on each.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
+<span class="cm">|| Bad Passwords                      ||</span>
+<span class="cm">||====================================*/</span>
+
+<span class="c1">//sample inputs</span>
+<span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="nx">set</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;w&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">],</span><span class="s2">&quot;r&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">],</span><span class="s2">&quot;d&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span><span class="s2">&quot;6&quot;</span><span class="p">]}</span>
+
+<span class="kd">function</span> <span class="nx">badPasswordList</span><span class="p">(</span><span class="nx">string</span><span class="p">,</span> <span class="nx">set</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// start meaning the part of the string</span>
+<span class="c1">// that&#39;s been processed already.</span>
+<span class="c1">// end will refer to the rest of the string</span>
+<span class="c1">// usually captured with .substr(1)</span>
+    <span class="kd">var</span> <span class="nx">badPasswords</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="nx">start</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="c1">// a recursive function. noticing the pattern?</span>
+
+    <span class="kd">function</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// our boundary, when there is no more string</span>
+<span class="c1">// left. (one character).substr(1) === &quot;&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">end</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// at the boundary, we can collect our</span>
+<span class="c1">// finished bad password!</span>
+
+            <span class="nx">badPasswords</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="c1">// this is asking if we have a character</span>
+<span class="c1">// with lazy replacement options, i.e. s --&gt; $</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="p">{</span>
+
+<span class="c1">// and the trick here is to iterate</span>
+<span class="c1">// through the array of options</span>
+
+                <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// and recursively include stepping down the string.</span>
+
+                    <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="nx">i</span><span class="p">],</span> <span class="nx">end</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="p">}</span>
+
+<span class="c1">// otherwise process the letter as normal.</span>
+
+            <span class="p">}</span>   <span class="k">return</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">end</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="c1">// begun the loop</span>
+
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">string</span><span class="p">);</span>
+
+<span class="c1">// all the different possible passwords.    </span>
+
+    <span class="k">return</span> <span class="nx">badPasswords</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There are 864 results! Pretty nifty. Here&#39;s a partial screenshot.</p>
+
+<p><img src="options.png" alt=""></p>
+
+<p>These stumped me live, but after some time to think about it, I&#39;ll be ready for the next set of these, and I hope this helped you.</p>
+
+<p><img src="manyPaths.png" alt="joke at the end."></p>
+
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+
+  </body>
+</html>
