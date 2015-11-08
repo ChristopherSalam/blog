@@ -85,7 +85,27 @@ I wanted this space to be a location where I could post all the things that I'm 
 
 **<a href="http://c2.com/cgi/wiki?NpComplete" target="_blank">NP Complete & NP Hard</a>**
 
-**<a href="" target="_blank"></a>**
+**<a href="http://stackoverflow.com/questions/2308751/what-is-a-memory-heap" target="_blank">MALLOC - Heap and Stack</a>**
+
+**<a href="https://en.wikipedia.org/wiki/Memory_management#HEAP" target="_blank">Memory Management</a>**
+
+**<a href="https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&aqs=chrome..69i57j0l5.740j0j7&sourceid=chrome&es_sm=91&ie=UTF-8" target="_blank">What is the difference between global and local variables?</a>**
+
+**<a href="https://gist.github.com/chriseppstein/674726" target="_blank">SASS vs. LESS</a>**
+
+**<a href="http://stackoverflow.com/questions/7814688/in-java-what-purpose-do-the-keywords-final-finally-and-finalize-fulfil" target="_blank">Final, Finally, and Finalize in Java</a>**
+
+**<a href="https://www.google.com/search?q=Why+are+manhole+covers+round&oq=Why+are+manhole+covers+round&aqs=chrome..69i57j5.680j0j7&sourceid=chrome&es_sm=91&ie=UTF-8" target="_blank">Why are manhole covers round?</a>**
+
+**<a href="http://stackoverflow.com/questions/2907262/what-does-dead-beef-mean" target="_blank">Dead Beef</a>**
+
+**<a href="https://www.quora.com/A-man-pushed-his-car-to-a-hotel-and-lost-his-fortune-What-happened" target="_blank">A man pushed his car to a hotel...</a>**
+
+**<a href="http://jacopretorius.net/2010/12/google-interview-questions-and-answers.html" target="_blank">Mutex vs. Semaphore</a>**
+
+**<a href="http://www.mba-online-program.com/20-interview-questions-you%E2%80%99ll-be-asked-at-google" target="_blank">20 questions</a>**
+
+**<a href="http://www.mytechinterviews.com/8-identical-balls-problem" target="_blank">8 balls</a>**
 
 **<a href="" target="_blank"></a>**
 
@@ -94,6 +114,8 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="" target="_blank"></a>**
 
 **<a href="" target="_blank"></a>**
+
+
 
 <!--
 
