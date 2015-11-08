@@ -34,26 +34,27 @@ var treeData = [
         { "name": "collision", "parent": "try neo4j" },
         { "name": "node-neo4j", "parent": "try neo4j" }
         ]
-      }    
+      }
     ]
   },
     { "name": "binary search", "parent": "#data structures" }
   ]
   },
-  { "name": "#links", "parent": null, "children": [
-    { "name": "for newbs", "parent": "#setup" },
-    { "name": "#setup", "parent": "#setup", "children": [
-      { "name": "languages", "parent": "#setup" },
-      { "name": "#bash", "parent": "#setup", "children": [
-        { "name": "try bash", "parent": "#bash" },
-        { "name": "bash & blog", "parent": "#intro" }
+  { "name": "#setup", "parent": "#setup", "children": [
+    { "name": "languages", "parent": "#setup" },
+    { "name": "#bash", "parent": "#setup", "children": [
+      { "name": "try bash", "parent": "#bash" },
+      { "name": "#resources", "parent": "#bash", "children": [
+        { "name": "for newbs", "parent": "#resources" },
+        { "name": "projects", "parent": "#resources" },
+        { "name":"job seekers", "parent": "#resources" }
         ]
       },
-      { "name":"packages", "parent": "#setup" }
+      { "name": "bash & blog", "parent": "#intro" }
       ]
     },
-      { "name":"job seekers", "parent": "#links" }
-      ]
+    { "name":"packages", "parent": "#setup" }
+    ]
   },
   { "name": "#regexp", "parent": "#data structures", "children":[
       { "name": "try regexp", "parent": "regexp", "children": [
@@ -157,29 +158,16 @@ for (var q = 0; q < treeData.length; q++) {
 </script>
 
 <!-- <div class="posts">
-
 	<h1>{{site.title}}</h1>
-
 	<ul class="hex">
-
 		{% for post in site.posts %}
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="{{ post.url | prepend: site.baseurl }}">
-
 				<span class="hexagon-in2">
-
 				  {{ post.title }}
-
 				</span>
-
 			</a>
-
 		</li>
-
 		{% endfor %}
-
 	</ul>
-
 </div> -->

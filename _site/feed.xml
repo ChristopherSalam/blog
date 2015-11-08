@@ -164,6 +164,8 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.impactinterview.com/2009/10/140-google-interview-questions/&quot; target=&quot;_blank&quot;&gt;140 Google Questions&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;eightball.jpg&quot; alt=&quot;eightballs...&quot;&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://c2.com/cgi/wiki?NpComplete&quot; target=&quot;_blank&quot;&gt;NP Complete &amp;amp; NP Hard&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://stackoverflow.com/questions/2308751/what-is-a-memory-heap&quot; target=&quot;_blank&quot;&gt;MALLOC - Heap and Stack&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -613,66 +615,98 @@ where the newfunc(args_provided_to_function_one) --&gt;
       </item>
     
       <item>
-        <title>binary search</title>
-        <description>&lt;p&gt;Trees and Binary Search Trees in particular are very important core topics in computer science, and in preparation for interviews, I&amp;#39;ll try my best to talk myself into believing I understanding trees, breath first search, depth first search, adding and removing nodes. I&amp;#39;m going to go through my tree analysis and convert it over to a binary search tree, as the best &lt;strong&gt;&lt;a href=&quot;https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf&quot;&gt;literature &lt;/a&gt;&lt;/strong&gt; out there can be convoluted..&lt;/p&gt;
+        <title>projects</title>
+        <description>&lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;A &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;binary search tree&lt;/a&gt;&lt;/strong&gt; is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated. &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Red%E2%80%93black_tree&quot;&gt;Red black trees&lt;/a&gt;&lt;/strong&gt; is eventually where I am building to. I&amp;#39;m heavily inspiried by this &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/trevmex/821973&quot; target=&quot;_blank&quot;&gt;implementation&lt;/a&gt;&lt;/strong&gt; , but I&amp;#39;m going to try to write in the tree node root style so it matches the &lt;strong&gt;&lt;a href=&quot;/trees&quot; target=&quot;_blank&quot;&gt; Tree post&lt;/a&gt;&lt;/strong&gt; I made earlier.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Psuedo-classical instantiation&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;p&gt;Here I will mention my experiences at Telegraph Academy (TGA) and discuss how and why to choose good projects. I made an effort to really mix the technologies and frameworks used and make them interesting.&lt;/p&gt;
 
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The contains function is similar to the traversal function in a tree problem, but with logic to look through the tree according to value.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//key not found&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodeValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodeValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodeValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Traversal in a binary search tree is not recursive, the tree itself allows for log n time processing. We can use this logic to insert nodes as well. This method of inserting does not balance the tree. Balancing the tree is a whole other can of worms, but balancing a tree helps optimize the traversal.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodeValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodeValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;insertNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;leftChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodeValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;insertNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rightChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Insertion in a binary search tree happens with much of the same logic as the contains, which leads us naturally to think there must be a way to take the function from one and place it into the other.&lt;/p&gt;
+&lt;p&gt;Your blog and your projects will shape you (after resume on right):&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;resumes.png&quot; alt=&quot;resume&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;When choosing projects, make sure to have aspects you love about project while also allowing your teammates to have aspects they love. This will guarantee that everyone will work hard and be able to talk about them intelligently.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;receptacle.png&quot; alt=&quot;receptacle&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://receptacle-.herokuapp.com&quot; target=&quot;_blank&quot;&gt;Receptacle&lt;/a&gt;&lt;/strong&gt; was a project that focused on a simple question: what receptacle does this unwanted good go?&lt;/p&gt;
+
+&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Angular Application&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Visuals &amp;amp; UX/UI Emphasis&lt;/p&gt;
+
+&lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Redis&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;User Input Option&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;videoke.png&quot; alt=&quot;video-ke&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://video-ke.com&quot; target=&quot;_blank&quot;&gt;Video-ke&lt;/a&gt;&lt;/strong&gt; was an dual video player with crossfading that populated using the Youtube API.&lt;/p&gt;
+
+&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; jQuery UI &lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt; Bootstrap&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;i class=&quot;fa fa-youtube&quot;&gt;&lt;/i&gt; iFrame API&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Crossfader feature&lt;/p&gt;
+
+&lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Competetive Karoake&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Voting - Event Music feature&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;sixdribbles.png&quot; alt=&quot;sixdribbles&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://sixdribbles.com&quot; target=&quot;_blank&quot;&gt;SixDribbles&lt;/a&gt;&lt;/strong&gt; maps player relationships for the NBA.&lt;/p&gt;
+
+&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Angular Front-End&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Node/Express Server&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Neo4j Graph Database &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/jeremykendall/455ac49a71c3f26f1c49&quot;&gt;&lt;i class=&quot;fa fa-share-alt-square&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Add Coaching Relationships&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Mobile (ReactNative)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Desktop &lt;i class=&quot;fa fa-linux&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-windows&quot;&gt;&lt;/i&gt; (Electron)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;katfish.jpg&quot; alt=&quot;katfish&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;katfish.me&quot; target=&quot;_blank&quot;&gt;Katfish&lt;/a&gt;&lt;/strong&gt; lets users create attribute-based profiles for their friends!&lt;/p&gt;
+
+&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Mobile (ReactNative)&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;iOS &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt;, built with xCode IDE&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;  Firebase API &lt;strong&gt;&lt;a href=&quot;https://disqus.com/by/chrissalam/&quot;&gt;&lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;&lt;i class=&quot;fa fa-facebook-square&quot;&gt;&lt;/i&gt; SDK Authentication&lt;/p&gt;
+
+&lt;p&gt;Future Features &amp;amp; Stack&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Rebuild for hackathon use&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;ReactNative/Firebase &lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt; Library&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;quot;How long have you spent on this... 16 hours? That makes you an expert. When you figure it out, tell me and I&amp;#39;ll post your blog.&amp;quot;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You will become an preeminent expert on certain connections and technologies if you choose too. Developers are too busy with their job to learn new cutting edge technologies or try combinations that aren&amp;#39;t traditional. Doing either will make you esteemed within the community and will give you something interesting to talk about. Pay attention to what your classmates do as well, it could be just as important as your own projects.&lt;/p&gt;
 </description>
         <pubDate>Sat, 31 Oct 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/binary-search/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/binary-search/</guid>
+        <link>ChristopherSalam.github.io/projects/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/projects/</guid>
       </item>
     
       <item>

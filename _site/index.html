@@ -76,26 +76,27 @@ var treeData = [
         { "name": "collision", "parent": "try neo4j" },
         { "name": "node-neo4j", "parent": "try neo4j" }
         ]
-      }    
+      }
     ]
   },
     { "name": "binary search", "parent": "#data structures" }
   ]
   },
-  { "name": "#links", "parent": null, "children": [
-    { "name": "for newbs", "parent": "#setup" },
-    { "name": "#setup", "parent": "#setup", "children": [
-      { "name": "languages", "parent": "#setup" },
-      { "name": "#bash", "parent": "#setup", "children": [
-        { "name": "try bash", "parent": "#bash" },
-        { "name": "bash & blog", "parent": "#intro" }
+  { "name": "#setup", "parent": "#setup", "children": [
+    { "name": "languages", "parent": "#setup" },
+    { "name": "#bash", "parent": "#setup", "children": [
+      { "name": "try bash", "parent": "#bash" },
+      { "name": "#resources", "parent": "#bash", "children": [
+        { "name": "for newbs", "parent": "#resources" },
+        { "name": "projects", "parent": "#resources" },
+        { "name":"job seekers", "parent": "#resources" }
         ]
       },
-      { "name":"packages", "parent": "#setup" }
+      { "name": "bash & blog", "parent": "#intro" }
       ]
     },
-      { "name":"job seekers", "parent": "#links" }
-      ]
+    { "name":"packages", "parent": "#setup" }
+    ]
   },
   { "name": "#regexp", "parent": "#data structures", "children":[
       { "name": "try regexp", "parent": "regexp", "children": [
@@ -199,447 +200,226 @@ for (var q = 0; q < treeData.length; q++) {
 </script>
 
 <!-- <div class="posts">
-
 	<h1></h1>
-
 	<ul class="hex">
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/languages/">
-
 				<span class="hexagon-in2">
-
 				  languages
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/job-seekers/">
-
 				<span class="hexagon-in2">
-
 				  job seekers
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/matrix-paths/">
-
 				<span class="hexagon-in2">
-
 				  matrix paths
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/agricultural/">
-
 				<span class="hexagon-in2">
-
 				  agricultural
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/currying/">
-
 				<span class="hexagon-in2">
-
 				  currying
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
-			<a class="hexagon-in1" href="/binary-search/">
-
+			<a class="hexagon-in1" href="/projects/">
 				<span class="hexagon-in2">
-
-				  binary search
-
+				  projects
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/software/">
-
 				<span class="hexagon-in2">
-
 				  software
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/console/">
-
 				<span class="hexagon-in2">
-
 				  console
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/chemical/">
-
 				<span class="hexagon-in2">
-
 				  chemical
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/environmental/">
-
 				<span class="hexagon-in2">
-
 				  environmental
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/node-neo4j/">
-
 				<span class="hexagon-in2">
-
 				  connecting node & neo4j
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/regexp.js/">
-
 				<span class="hexagon-in2">
-
 				  regexp(?:\.js)
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/tape-tests/">
-
 				<span class="hexagon-in2">
-
 				  tape tests
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/RN-updates/">
-
 				<span class="hexagon-in2">
-
 				  RN updates
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/collision/">
-
 				<span class="hexagon-in2">
-
 				  (neo4j) collision
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/RN-snapshots/">
-
 				<span class="hexagon-in2">
-
 				  RN snapshots
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/trees/">
-
 				<span class="hexagon-in2">
-
 				  trees
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/query-neo4j/">
-
 				<span class="hexagon-in2">
-
 				  query neo4j
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/try-RN/">
-
 				<span class="hexagon-in2">
-
 				  try RN
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/packages/">
-
 				<span class="hexagon-in2">
-
 				  packages
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/try-neo4j/">
-
 				<span class="hexagon-in2">
-
 				  try neo4j
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/bash-&-blog/">
-
 				<span class="hexagon-in2">
-
 				  bash & blog
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/O(r)/">
-
 				<span class="hexagon-in2">
-
 				  O(r)
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/binding/">
-
 				<span class="hexagon-in2">
-
 				  binding
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/try-bash/">
-
 				<span class="hexagon-in2">
-
 				  try bash
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/try-regexp/">
-
 				<span class="hexagon-in2">
-
 				  try regexp
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 		<li class="hexagon">
-
 			<a class="hexagon-in1" href="/for-newbs/">
-
 				<span class="hexagon-in2">
-
 				  for newbs
-
 				</span>
-
 			</a>
-
 		</li>
-
 		
-
 	</ul>
-
 </div> -->
 
     </div>

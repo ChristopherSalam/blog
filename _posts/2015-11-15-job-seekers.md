@@ -2,7 +2,7 @@
 layout: post
 title: job seekers
 tags:
-- intro
+- resources
 - javascript
 ---
 <img src="lineof.jpg" alt="">
@@ -82,6 +82,8 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/" target="_blank">Min Cost Path</a>**
 
 **<a href="http://www.impactinterview.com/2009/10/140-google-interview-questions/" target="_blank">140 Google Questions</a>**
+
+<img src="eightball.jpg" alt="eightballs...">
 
 **<a href="http://c2.com/cgi/wiki?NpComplete" target="_blank">NP Complete & NP Hard</a>**
 
