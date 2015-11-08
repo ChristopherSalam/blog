@@ -8,9 +8,7 @@
     
       <item>
         <title>languages</title>
-        <description>&lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;font-mfizz.css&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Even if we all speak a different language we find a way to communicate&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;Even if we all speak a different language we find a way to communicate&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;notes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
@@ -197,52 +195,6 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;!--
-
-Why do you want to work at GitHub?  
-
-I want to work at Github because I believe heavily in open source as a method for the best versions of software to come forward. I&#39;m fascinated with open and closed version control for non-software associations.
-
-Why Client Applications?
-
-I want to work specifically for Ecosystems because I believe that Atom and Electron will empower really new and interesting applications and companies and I want to help them achieve their goals. I have been interested in changing the tools we use while solving problems even before I was a software engineer, I&#39;ve worked in novel renewable energy systems with no established inventories of parts -&gt; we had to make our own solutions and each version of what we had was documented so we could continue to improve. Ben&#39;s description of what is needed for E.C.E. spoke to me directly, I would love to implement 1-2 week long projects to address bugs and needs in Atom, features that have been lost while staff works on deep seated issues, I think it&#39;s a perfect opportunity to learn the codebase and satisfy my own diverse interests and multi-threaded nature.
-
-I really got into IDEs and framework design when working on a React Native project. The framework was so new we got an opportunity to give feedback to the architects, call for more documentation, and make our own, in the form of blogs, stack overflow, and github issues. I like documenting code and sharing examples as much as coding and figuring out issues themselves. I got a twitter account the day after Github Universe specifically to tweet at software companies and would enjoy crafting and sending out public communication. I would not use it as a personal platform.
-
-Languages?
-
-I am a JavaScript web engineer first and foremost. I love everything about it, it&#39;s quirks and asychronicity, and it&#39;s role as gatekeeper to the web. I also have experience (HTML, CSS), C++, Ruby, and statistics packages. I have dug out my college C++ book and have been reviewing it. I have read Objective-C as part of my work with React Native but not used it, Swift, C, or C# extensively.
-
-Testing.
-
-I am aware of testing, profiling and debugging techniques but are admittedly my weakness and I am eager to address this. I have used JavaScript framework testing suites such as Mocha, Chai, Jasmine, and really like Tape. Not used CI or BugSnag. I use DevTools.
-
-API design experience.
-
-I have worked with many different API based protocols and some of my favorites are Firebase, Youtube, and sources of information such as Wikipedia and Sports Statistics Reference sites. Other than this role, I&#39;m mainly interested in roles working on large APIs and developer advocacy.
-
-Bonus:
-
-I have used Mac, Windows, and Linux extensively. I was an un-opinioned Windows user until college began, then switched over to Ubuntu Linux for college, graduate school, and the 4 years following (10 years). I recently started using Mac when I began to learn JavaScript. Electron really speaks to me because I would love to make desktop applications (and help make) across the three platforms.
-
-How do you work in teams?
-
-I am most comfortable with teamwork. I believe collaboration on programming and life is valuable and saves time. Within groups I believe it&#39;s important to work your strengths and address your weaknesses within reason. I typically take leadership roles when needed and high risk-reward endeavors when afforded.
-
-What size team do you normally work with?
-
-3-4 most commonly. I have worked in office, remote, and on-call for engineering projects. I believe that I would only ask people to do what I was willing and able to do myself. I believe in direct and open communication.
-
-Do you find it difficult to give/receive edits?
-
-Nope. As someone who has had to re-write his master&#39;s thesis over the course of a year to graduate, I deeply respect the style guide and the team process and will never allow my opinion or edits to undermine the greater good of working together.
-
-What is your position on Open Source.
-
-I want to work at Github because I believe heavily in open source as a method for the best versions of software to come forward. I believe it is a very difficult game to get into and the barriers that exist mirror that most of society has: wealth, privilege, &amp; hierarchy but rather than society, the walls have the potential to come down much faster and I believe will.
-
---&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
@@ -616,19 +568,19 @@ where the newfunc(args_provided_to_function_one) --&gt;
     
       <item>
         <title>projects</title>
-        <description>&lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Here I will mention my experiences at Telegraph Academy (TGA) and discuss how and why to choose good projects. I made an effort to really mix the technologies and frameworks used and make them interesting.&lt;/p&gt;
+        <description>&lt;p&gt;Here I will mention my experiences at Telegraph Academy (TGA) and discuss how and why to choose good projects. I made an effort to really mix the technologies and frameworks used and make them interesting.&lt;/p&gt;
 
 &lt;p&gt;Your blog and your projects will shape you (after resume on right):&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;resumes.png&quot; alt=&quot;resume&quot;&gt;&lt;/p&gt;
 
+&lt;p&gt;Your projects will determine your skills and both will take up 50% of your resume.&lt;/p&gt;
+
 &lt;p&gt;When choosing projects, make sure to have aspects you love about project while also allowing your teammates to have aspects they love. This will guarantee that everyone will work hard and be able to talk about them intelligently.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;receptacle.png&quot; alt=&quot;receptacle&quot;&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://receptacle-.herokuapp.com&quot; target=&quot;_blank&quot;&gt;Receptacle&lt;/a&gt;&lt;/strong&gt; was a project that focused on a simple question: what receptacle does this unwanted good go?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;receptacle.png&quot; alt=&quot;receptacle&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
 
@@ -642,9 +594,9 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;User Input Option&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;videoke.png&quot; alt=&quot;video-ke&quot;&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://video-ke.com&quot; target=&quot;_blank&quot;&gt;Video-ke&lt;/a&gt;&lt;/strong&gt; was an dual video player with crossfading that populated using the Youtube API.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;videoke.png&quot; alt=&quot;video-ke&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
 
@@ -660,9 +612,9 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Voting - Event Music feature&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;sixdribbles.png&quot; alt=&quot;sixdribbles&quot;&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://sixdribbles.com&quot; target=&quot;_blank&quot;&gt;SixDribbles&lt;/a&gt;&lt;/strong&gt; maps player relationships for the NBA.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;sixdribbles.png&quot; alt=&quot;sixdribbles&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
 
@@ -680,9 +632,9 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Desktop &lt;i class=&quot;fa fa-linux&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-windows&quot;&gt;&lt;/i&gt; (Electron)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;katfish.jpg&quot; alt=&quot;katfish&quot;&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;katfish.me&quot; target=&quot;_blank&quot;&gt;Katfish&lt;/a&gt;&lt;/strong&gt; lets users create attribute-based profiles for their friends!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;katfish.jpg&quot; alt=&quot;katfish&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
 
@@ -702,7 +654,11 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&lt;strong&gt;&amp;quot;How long have you spent on this... 16 hours? That makes you an expert. When you figure it out, tell me and I&amp;#39;ll post your blog.&amp;quot;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;You will become an preeminent expert on certain connections and technologies if you choose too. Developers are too busy with their job to learn new cutting edge technologies or try combinations that aren&amp;#39;t traditional. Doing either will make you esteemed within the community and will give you something interesting to talk about. Pay attention to what your classmates do as well, it could be just as important as your own projects.&lt;/p&gt;
+&lt;p&gt;Your projects are extremely important and what makes you stand out. Other coding bootcamp students and self-taught programmers often don&amp;#39;t have 3-4 projects to show. In addition, some of their best work may be under a Non-disclosure Agreement, your projects will not.&lt;/p&gt;
+
+&lt;p&gt;You will become an preeminent expert on certain connections and technologies if you choose to. Developers are too busy with their job to learn new cutting edge technologies or try combinations that aren&amp;#39;t traditional. Doing either will make you esteemed within the community and will give you something interesting to talk about. Pay attention to what your classmates do as well, it could be just as important as your own projects.&lt;/p&gt;
+
+&lt;p&gt;Most importantly, make sure you love some part of the topic. You will have to talk about these projects over and over and over, so make sure they are about something you care about.&lt;/p&gt;
 </description>
         <pubDate>Sat, 31 Oct 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/projects/</link>

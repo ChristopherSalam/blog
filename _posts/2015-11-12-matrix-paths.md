@@ -2,7 +2,7 @@
 layout: post
 title: matrix paths
 tags:
-- data structures
+- structures
 - javascript
 ---
 

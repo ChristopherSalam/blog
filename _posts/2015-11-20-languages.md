@@ -6,8 +6,6 @@ tags:
 - javascript
 ---
 
-<link rel="stylesheet" href="font-mfizz.css">
-
 **Even if we all speak a different language we find a way to communicate**
 
 <img src="notes.jpg" alt="">

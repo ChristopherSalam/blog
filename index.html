@@ -3,6 +3,7 @@ layout: default
 ---
 
 <!-- load the d3.js library -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 <div id="diagram"></div>
@@ -25,21 +26,6 @@ var treeData = [
       { "name": "console", "parent": "#javascript" }
       ]
   },
-  { "name": "#data structures", "parent": "#javascript", "children": [
-    { "name": "matrix paths", "parent": "#data structures" },
-    { "name": "trees", "parent": "#data structures", "children": [
-      { "name": "#neo4j", "parent": "packages", "children": [
-        { "name": "try neo4j", "parent": "neo4j"},
-        { "name": "query neo4j", "parent": "try neo4j" },
-        { "name": "collision", "parent": "try neo4j" },
-        { "name": "node-neo4j", "parent": "try neo4j" }
-        ]
-      }
-    ]
-  },
-    { "name": "binary search", "parent": "#data structures" }
-  ]
-  },
   { "name": "#setup", "parent": "#setup", "children": [
     { "name": "languages", "parent": "#setup" },
     { "name": "#bash", "parent": "#setup", "children": [
@@ -55,6 +41,20 @@ var treeData = [
     },
     { "name":"packages", "parent": "#setup" }
     ]
+  },
+  { "name": "#structures", "parent": "#javascript", "children": [
+    { "name": "matrix paths", "parent": "#data structures" },
+    { "name": "#neo4j", "parent": "#data structures", "children": [
+      { "name": "try neo4j", "parent": "try neo4j" },
+      { "name": "collision", "parent": "packages", "children": [
+        { "name": "node-neo4j", "parent": "try neo4j" }
+        ]
+      },
+      { "name": "query neo4j", "parent": "try neo4j" },
+    ]
+  },
+    { "name": "trees", "parent": "#data structures" }
+  ]
   },
   { "name": "#regexp", "parent": "#data structures", "children":[
       { "name": "try regexp", "parent": "regexp", "children": [

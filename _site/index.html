@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="font-mfizz.css">
 <link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
   <head>
@@ -9,14 +11,14 @@
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
-
+    <link rel="icon" type="image/ico" href="http://chrissalam.com/chrissalam3.png">
     
     <meta name="description" content="thoughts on software and engineering">
     <meta property="og:description" content="thoughts on software and engineering" />
     
     <meta name="author" content="Christopher Salam" />
-
     
+
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
   </head>
@@ -37,7 +39,8 @@
             <a href="/tags">:Topic</a>
 <!--             <a href="http://christophersalam.github.io">About</a> -->
             <a href="/about">About</a>
-            <a href="http://chrissalam.com/slideshow" target="_blank">Slideshow</a>
+            <a href="http://christophersalam.github.io" target="_blank">Work</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank"><i class="fa fa-photo"></i></a>
           </nav>
         </header>
       </div>
@@ -45,6 +48,7 @@
 
     <div id="main" role="main" class="container">
       <!-- load the d3.js library -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 <div id="diagram"></div>
@@ -67,21 +71,6 @@ var treeData = [
       { "name": "console", "parent": "#javascript" }
       ]
   },
-  { "name": "#data structures", "parent": "#javascript", "children": [
-    { "name": "matrix paths", "parent": "#data structures" },
-    { "name": "trees", "parent": "#data structures", "children": [
-      { "name": "#neo4j", "parent": "packages", "children": [
-        { "name": "try neo4j", "parent": "neo4j"},
-        { "name": "query neo4j", "parent": "try neo4j" },
-        { "name": "collision", "parent": "try neo4j" },
-        { "name": "node-neo4j", "parent": "try neo4j" }
-        ]
-      }
-    ]
-  },
-    { "name": "binary search", "parent": "#data structures" }
-  ]
-  },
   { "name": "#setup", "parent": "#setup", "children": [
     { "name": "languages", "parent": "#setup" },
     { "name": "#bash", "parent": "#setup", "children": [
@@ -97,6 +86,20 @@ var treeData = [
     },
     { "name":"packages", "parent": "#setup" }
     ]
+  },
+  { "name": "#structures", "parent": "#javascript", "children": [
+    { "name": "matrix paths", "parent": "#data structures" },
+    { "name": "#neo4j", "parent": "#data structures", "children": [
+      { "name": "try neo4j", "parent": "try neo4j" },
+      { "name": "collision", "parent": "packages", "children": [
+        { "name": "node-neo4j", "parent": "try neo4j" }
+        ]
+      },
+      { "name": "query neo4j", "parent": "try neo4j" },
+    ]
+  },
+    { "name": "trees", "parent": "#data structures" }
+  ]
   },
   { "name": "#regexp", "parent": "#data structures", "children":[
       { "name": "try regexp", "parent": "regexp", "children": [
