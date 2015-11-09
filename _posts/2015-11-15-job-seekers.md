@@ -3,7 +3,6 @@ layout: post
 title: job seekers
 tags:
 - resources
-- javascript
 ---
 <img src="lineof.jpg" alt="">
 
@@ -108,6 +107,26 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="http://www.mba-online-program.com/20-interview-questions-you%E2%80%99ll-be-asked-at-google" target="_blank">20 questions</a>**
 
 **<a href="http://www.mytechinterviews.com/8-identical-balls-problem" target="_blank">8 balls</a>**
+
+**<a href="https://gist.github.com/TSiege/cbb0507082bb18ff7e4b" target="_blank">Tech Interview Cheat Sheet</a>**
+
+**<a href="http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html" target="_blank">Stack vs. Heap</a>**
+
+**<a href="https://en.wikipedia.org/wiki/Shortest_path_problem" target="_blank">Shortest Path Problem</a>**
+
+**<a href="http://ruckt.info/how-to-implement-a-recursive-algorithm/" target="_blank">Recursion</a>**
+
+**<a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank">Dynamic Programming</a>**
+
+**<a href="" target="_blank"></a>**
+
+**<a href="" target="_blank"></a>**
+
+**<a href="" target="_blank"></a>**
+
+**<a href="" target="_blank"></a>**
+
+**<a href="" target="_blank"></a>**
 
 **<a href="" target="_blank"></a>**
 

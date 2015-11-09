@@ -3,7 +3,6 @@ layout: post
 title: languages
 tags:
 - intro
-- javascript
 ---
 
 **Even if we all speak a different language we find a way to communicate**
