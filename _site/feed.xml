@@ -18,9 +18,7 @@
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/job-seekers&quot; title=&quot;Qualitative Language Characteristics&quot;&gt;Links for job seekers&lt;/a&gt;&lt;/strong&gt; | Languages&lt;/p&gt;
 
-&lt;p&gt;While attending a &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt; bootcamp you do run into a bit of the dogma surrounding &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt; as the...&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;quote Language of the Future endquote&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;While attending a &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt; bootcamp you do run into a bit of the dogma surrounding &lt;i class=&quot;icon-javascript-alt&quot;&gt;&lt;/i&gt; as the &lt;em&gt;&lt;i class=&quot;fa fa-quote-left&quot;&gt;&lt;/i&gt; Language of the Future &lt;i class=&quot;fa fa-quote-right&quot;&gt;&lt;/i&gt;&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;That&amp;#39;s all fine and dandy and perhaps true to some extent, but low and behold we live in the present. And in the present, I&amp;#39;ve got these annoying interviews asking me about the other languages.&lt;/p&gt;
 
@@ -568,17 +566,37 @@ where the newfunc(args_provided_to_function_one) --&gt;
     
       <item>
         <title>projects</title>
-        <description>&lt;p&gt;Here I will mention my experiences at Telegraph Academy (TGA) and discuss how and why to choose good projects. I made an effort to really mix the technologies and frameworks used and make them interesting.&lt;/p&gt;
+        <description>&lt;p&gt;My beliefs on choosing good projects:&lt;/p&gt;
 
-&lt;p&gt;Your blog and your projects will shape you (after resume on right):&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-balance-scale&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Balance the technologies/frameworks used.&lt;/p&gt;
+
+&lt;p&gt;Your blog and projects will shape you&lt;/p&gt;
+
+&lt;h5&gt;&amp;nbsp; &lt;i class=&quot;fa fa-refresh&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Resume: before and after&lt;/h5&gt;
 
 &lt;p&gt;&lt;img src=&quot;resumes.png&quot; alt=&quot;resume&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Your projects will determine your skills and both will take up 50% of your resume.&lt;/p&gt;
+&lt;p&gt;Projects and Skills will take up 50% of your resume&lt;/p&gt;
 
-&lt;p&gt;When choosing projects, make sure to have aspects you love about project while also allowing your teammates to have aspects they love. This will guarantee that everyone will work hard and be able to talk about them intelligently.&lt;/p&gt;
+&lt;p&gt;Projects will be your starting point at interviews&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://receptacle-.herokuapp.com&quot; target=&quot;_blank&quot;&gt;Receptacle&lt;/a&gt;&lt;/strong&gt; was a project that focused on a simple question: what receptacle does this unwanted good go?&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-heart-o&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Love aspects about project&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-heartbeat&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Allow your teammates to have aspects they love.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-gears&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Spend time to come to consensus&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;venn.jpg&quot; alt=&quot;venn diagram&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-exchange&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Teach the project internally&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-users&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Share the project publicly&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-filter&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Hosting is a big bottleneck&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-line-chart&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Plan or talk about ways to grow&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://receptacle-.herokuapp.com&quot; target=&quot;_blank&quot;&gt;Receptacle&lt;/a&gt;&lt;/strong&gt; answers where does this unwanted item go?&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;receptacle.png&quot; alt=&quot;receptacle&quot;&gt;&lt;/p&gt;
 
@@ -590,11 +608,11 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Redis&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Redis - Key Value Pair Database&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;User Input Option&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://video-ke.com&quot; target=&quot;_blank&quot;&gt;Video-ke&lt;/a&gt;&lt;/strong&gt; was an dual video player with crossfading that populated using the Youtube API.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://video-ke.com&quot; target=&quot;_blank&quot;&gt;Video-ke&lt;/a&gt;&lt;/strong&gt; is a dual video player with crossfader powered by &lt;i class=&quot;fa fa-youtube&quot;&gt;&lt;/i&gt;.&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;videoke.png&quot; alt=&quot;video-ke&quot;&gt;&lt;/p&gt;
 
@@ -612,19 +630,19 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Voting - Event Music feature&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://sixdribbles.com&quot; target=&quot;_blank&quot;&gt;SixDribbles&lt;/a&gt;&lt;/strong&gt; maps player relationships for the NBA.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://sixdribbles.com&quot; target=&quot;_blank&quot;&gt;SixDribbles&lt;/a&gt;&lt;/strong&gt; maps player relationships for the NBA.&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;sixdribbles.png&quot; alt=&quot;sixdribbles&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
+&lt;h5&gt;Current Features &amp;amp; Stack&lt;/h5&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Angular Front-End&lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Node/Express Server&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Neo4j Graph Database &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/jeremykendall/455ac49a71c3f26f1c49&quot;&gt;&lt;i class=&quot;fa fa-share-alt-square&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;http://localhost:7474&quot; target=&quot;_blank&quot;&gt;Neo4j Graph Database &lt;i class=&quot;fa fa-share-alt-square&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
+&lt;h5&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/h5&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Add Coaching Relationships&lt;/em&gt;&lt;/p&gt;
 
@@ -632,33 +650,63 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Desktop &lt;i class=&quot;fa fa-linux&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-windows&quot;&gt;&lt;/i&gt; (Electron)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;katfish.me&quot; target=&quot;_blank&quot;&gt;Katfish&lt;/a&gt;&lt;/strong&gt; lets users create attribute-based profiles for their friends!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/jeremykendall/455ac49a71c3f26f1c49&quot;&gt;Node-Neo4j-GraphStory&lt;/a&gt;-&lt;a href=&quot;http://www.graphstory.com/features.php&quot;&gt;Heroku&lt;/a&gt;&lt;/strong&gt; Documentation is needed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;noheroku.png&quot; alt=&quot;noheroku&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;katfish.me&quot; target=&quot;_blank&quot;&gt;Katfish&lt;/a&gt;&lt;/strong&gt; lets users create attribute-based profiles for their friends!&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;katfish.jpg&quot; alt=&quot;katfish&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
+&lt;h5&gt;Current Features &amp;amp; Stack&lt;/h5&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Mobile (ReactNative)&lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;iOS &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt;, built with xCode IDE&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;  Firebase API &lt;strong&gt;&lt;a href=&quot;https://disqus.com/by/chrissalam/&quot;&gt;&lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;  &lt;strong&gt;&lt;a href=&quot; https://katfish.firebaseio.com/&quot;&gt;Firebase API &lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;&lt;i class=&quot;fa fa-facebook-square&quot;&gt;&lt;/i&gt; SDK Authentication&lt;/p&gt;
 
-&lt;p&gt;Future Features &amp;amp; Stack&lt;/p&gt;
+&lt;h5&gt;Future Features &amp;amp; Stack&lt;/h5&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Rebuild for hackathon use&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;ReactNative/Firebase &lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt; Library&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;https://disqus.com/by/chrissalam/&quot;&gt;&lt;em&gt;ReactNative/Firebase &lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt; Library&lt;/em&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&amp;quot;How long have you spent on this... 16 hours? That makes you an expert. When you figure it out, tell me and I&amp;#39;ll post your blog.&amp;quot;&lt;/strong&gt;&lt;/p&gt;
+&lt;h5&gt;Your projects are extremely important&lt;/h5&gt;
 
-&lt;p&gt;Your projects are extremely important and what makes you stand out. Other coding bootcamp students and self-taught programmers often don&amp;#39;t have 3-4 projects to show. In addition, some of their best work may be under a Non-disclosure Agreement, your projects will not.&lt;/p&gt;
+&lt;h5&gt;Your projects are what makes you stand out&lt;/h5&gt;
 
-&lt;p&gt;You will become an preeminent expert on certain connections and technologies if you choose to. Developers are too busy with their job to learn new cutting edge technologies or try combinations that aren&amp;#39;t traditional. Doing either will make you esteemed within the community and will give you something interesting to talk about. Pay attention to what your classmates do as well, it could be just as important as your own projects.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-slack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Quantity and quality of work at TGA&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Most importantly, make sure you love some part of the topic. You will have to talk about these projects over and over and over, so make sure they are about something you care about.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-registered&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Others are under nondisclosure agreements&lt;/em&gt;&lt;/p&gt;
+
+&lt;h5&gt;You will become an preeminent expert&lt;/h5&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Other devs are too busy to learn&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-flag-checkered&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; You may be building the first of it&amp;#39;s kind&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;How long have you spent on this... 16 hours?&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;That makes you an expert.&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;When you figure it out, tell me&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;and I&amp;#39;ll post your blog.&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Be available to help&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-gift&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Share what you know&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-user-plus&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Your peers projects &amp;lt;&amp;gt; your own&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-coffee&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Chance to join community&lt;/p&gt;
+
+&lt;p&gt;...&lt;/p&gt;
+
+&lt;p&gt;...&lt;/p&gt;
+
+&lt;p&gt;...&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-question-circle&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Questions?&lt;/p&gt;
 </description>
         <pubDate>Sat, 31 Oct 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/projects/</link>

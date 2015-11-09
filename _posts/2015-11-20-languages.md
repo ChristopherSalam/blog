@@ -16,9 +16,7 @@ I am preparing for software engineering interviews outside of JavaScript ( <i cl
 
 **[Links for job seekers](/job-seekers "Qualitative Language Characteristics")** | Languages
 
-While attending a <i class="icon-javascript-alt"></i> bootcamp you do run into a bit of the dogma surrounding <i class="icon-javascript-alt"></i> as the...
-
-*quote Language of the Future endquote*.
+While attending a <i class="icon-javascript-alt"></i> bootcamp you do run into a bit of the dogma surrounding <i class="icon-javascript-alt"></i> as the *<i class="fa fa-quote-left"></i> Language of the Future <i class="fa fa-quote-right"></i>*.
 
 That's all fine and dandy and perhaps true to some extent, but low and behold we live in the present. And in the present, I've got these annoying interviews asking me about the other languages.
 
