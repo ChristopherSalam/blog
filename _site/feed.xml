@@ -7,6 +7,25 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>try redis</title>
+        <description>&lt;p&gt;Redis, or Remote Dictionary Server, is something that has intrigued me since my first small project in TGA. I built a simple website called Receptacle that used data stored nested at only one level, i.e. key value pairs for keeping track of what kind of bins different kinds of recyclables and wastes get placed into.&lt;/p&gt;
+
+&lt;p&gt;http://redis.io/commands&lt;/p&gt;
+
+&lt;p&gt;http://www.sitepoint.com/using-redis-node-js/&lt;/p&gt;
+
+&lt;p&gt;https://devcenter.heroku.com/articles/heroku-redis#connecting-in-node-js&lt;/p&gt;
+
+&lt;p&gt;https://www.airpair.com/express/posts/earn-stack&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Nov 2015 00:00:00 -0800</pubDate>
+        <link>ChristopherSalam.github.io/try-redis/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/try-redis/</guid>
+      </item>
+    
+      <item>
         <title>languages</title>
         <description>&lt;p&gt;&lt;strong&gt;Even if we all speak a different language we find a way to communicate&lt;/strong&gt;&lt;/p&gt;
 
@@ -858,41 +877,6 @@ where the newfunc(args_provided_to_function_one) --&gt;
         <pubDate>Sun, 18 Oct 2015 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/chemical/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/chemical/</guid>
-      </item>
-    
-      <item>
-        <title>environmental</title>
-        <description>&lt;p&gt;Where do I even begin with this?&lt;/p&gt;
-
-&lt;p&gt;There are two classes of jobs in a way: One that requires repetition and one that requires constant troubleshooting.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;kord.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;The reason I couldn&amp;#39;t see myself being a musician or an athelete was because of the repetition needed to be perfect. I never had those instincts. I want to learn a skill, use it, and move on.&lt;/p&gt;
-
-&lt;p&gt;I never understood that by in large, majoring in a topic meant that for work you would end up largely working to fix or repair this day in day out. Lawyers, doctors, engineers, were by in large troubleshooting keeping the system afloat. In the end, I also started to factor my own personal safety highly into this equation of needs.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;lift.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;For the environmental aspects of industrial systems, this meant that by and large I was going to have to watch the systemic deconstruction of our natural world, while the industries, slowly dragged themselves to this reality where synthetic manufacturing would be minimized. Maybe had a stayed in the game, I would be contributing to projects with biocompostable plastics or some other technology that really changes the game with regards to waste, but I came around to the believe that through software and resource sharing, the opportunity would to reduce energy use and materials would be signficant and not require a shift in our manufacturing systems. So this began to be the kind of optimization I would pursue wholesale.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;plub.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Or maybe that&amp;#39;s the rationalizing what happened, which is that it was nearly impossible to find a job in my chosen field, and rather than dwell on it, I decided to transition to a robust job market.&lt;/p&gt;
-
-&lt;p&gt;Either way, I&amp;#39;ve had the opportunity to dump tons of gallons of waste inadvertently into rivers. I&amp;#39;ve sent giant containers of sulfurous material to landfills, and I&amp;#39;ve watched petroleum drain into rivers, suburban areas, and witnessed fracking subsidence. Why? Because in a way there&amp;#39;s often no budget that would lead to actual solutions, or the solution we came up with is the best thing for the environment given that we have industrial targets for production elsewhere in the project. It was a tightrope walk to be sure.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;drake.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;I am very hopeful that I will be able to return to the environmental world with a startup someday but for now, I&amp;#39;m happy to pursue a job where I&amp;#39;m not quite as responsible for physical degradation.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;gasket.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 12 Oct 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/environmental/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/environmental/</guid>
       </item>
     
   </channel>
