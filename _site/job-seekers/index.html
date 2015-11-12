@@ -234,114 +234,7 @@
 
 <!--
 
-function Node(val){
-  this.value = val;
-  this.left = null;
-  this.right = null;
-}
 
-function BinarySearchTree(){
-    this.root = null;
-}
-
-BinarySearchTree.prototype.push = function(val){
-  var root = this.root;
-
-  if(!root){
-   this.root = new Node(val);
-    return;
-  }
-
-  var currentNode = root;
-  var newNode = new Node(val);
-
-  while(currentNode){
-    if(val < currentNode.value){
-        if(!currentNode.left){
-          currentNode.left = newNode;
-            break;
-        } else {
-          currentNode = currentNode.left;
-        }
-    } else {
-      if(!currentNode.right){
-        currentNode.right = newNode;
-        break;
-      } else {
-        currentNode = currentNode.right;
-      }
-    }
-  }
-}
-
-var bst = new BinarySearchTree();
-bst.push(7);
-bst.push(8);
-bst.push(3);
-bst.push(5);
-bst.push(6);
-bst.push(2);
-bst.push(4);
-bst.push(1);
-bst.push(9);
-bst.push(10);
-
-//console.log(bst);
-
-BinarySearchTree.prototype.getLCA = function(node, a, b){
-    if (node === null) { return null; }
-    if (node === a || node === b) { return node; }
-    left = BinarySearchTree.prototype.getLCA(node.left, a, b);
-    right = BinarySearchTree.prototype.getLCA(node.right, a, b);
-    if (left !== null && right !== null) { return node; }
-    if (left === null) { return right; }
-    else { return left; }
-}
-
-//console.log(bst.getLCA(2,4));
-
-BinarySearchTree.prototype.depthFirst = function(node){
-      node = node || this.root,
-      stack = [];
-    var traverse = function(node){
-        if (node) {
-          stack.push(node.value);
-            traverse(node.left);
-            traverse(node.right);
-        }
-    }
-    traverse(node)
-    return stack;
-}
-
-BinarySearchTree.prototype.breadthFirstRec = function() {
-  var levels = {},
-    traverse = function(node, depth) {
-        if (!node) { return null; }
-        if (!levels[depth]) { levels[depth] = [node.value]; }
-        else { levels[depth].push(node.value); }
-        traverse(node.left, depth + 1);
-        traverse(node.right, depth + 1);
-        }
-    traverse(this.root, 0);
-  return levels;
-};
-
-BinarySearchTree.prototype.breadthFirst = function() {
-    var result = [],
-      queue = [],
-      current = this.root;
-    if (!current) return null;
-    queue.push(current);
-    while (current = queue.shift()) {
-        result.push(current.value);
-        current.left && queue.push(current.left);
-        current.right && queue.push(current.right);
-    } return result;
-};
-
-console.log(bst.depthFirst());
-console.log(bst.breadthFirst());
 
 -->
 
@@ -373,21 +266,6 @@ console.log(bst.breadthFirst());
       </div>
     </div>
     
-	<!-- Google Analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-65733928-2', 'auto');
-		ga('send', 'pageview', {
-		  'page': '/job-seekers/',
-		  'title': 'job seekers'
-		});
-	</script>
-	<!-- End Google Analytics -->
-
 
   </body>
 </html>

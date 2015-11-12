@@ -333,20 +333,50 @@ console.log(tree.size());
 
 <p>I&#39;m going to go through my tree analysis and convert it over to a binary search tree, as the best <strong><a href="https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf">literature </a></strong> out there can be convoluted..</p>
 
-<p>A <strong><a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a></strong> is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated. <strong><a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">Red black trees</a></strong> is eventually where I am building to. I&#39;m heavily inspiried by this <strong><a href="https://gist.github.com/trevmex/821973" target="_blank">implementation</a></strong> , but I&#39;m going to try to write in the tree node root style so it matches the <strong><a href="/trees" target="_blank"> Tree post</a></strong> I made earlier.</p>
+<p>A <strong><a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a></strong> is simpler in a tree in a way in that there are always only two children rather than an array to travel through, and rather than use traversal to set a point to add data, the data places itself within the structure by value sorting within the insertion. Conversely, remove a node is highly complicated. <strong><a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">Red black trees</a></strong> is eventually where I am building to. I&#39;m heavily inspired by this <strong><a href="https://gist.github.com/trevmex/821973" target="_blank">implementation</a></strong>.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Psuedo-classical instantiation</span>
-<span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">leftChild</span> <span class="o">=</span> <span class="nx">leftChild</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">rightChild</span> <span class="o">=</span> <span class="nx">rightChild</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="kd">function</span> <span class="nx">BST</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">BinarySearchTree</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>The contains function is similar to the traversal function in a tree problem, but with logic to look through the tree according to value.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">push</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">root</span><span class="p">){</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">root</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">val</span> <span class="o">&lt;</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">value</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span><span class="p">){</span>
+          <span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">newNode</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span><span class="p">){</span>
+        <span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">newNode</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Contains</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//key not found</span>
@@ -385,6 +415,168 @@ console.log(tree.size());
 </code></pre></div>
 <p>Insertion in a binary search tree happens with much of the same logic as the contains, which leads us naturally to think there must be a way to take the function from one and place it into the other.</p>
 
+<p>Least Common Ancestor</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getLCA</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">===</span> <span class="nx">a</span> <span class="o">||</span> <span class="nx">node</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">node</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nx">left</span> <span class="o">=</span> <span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getLCA</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="nx">right</span> <span class="o">=</span> <span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getLCA</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">left</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">right</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">node</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">left</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">right</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">left</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Breadth First Recursion and Queue</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirstRec</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">depth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">])</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">];</span> <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">levels</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">queue</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">current</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">current</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="nx">current</span><span class="p">.</span><span class="nx">left</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+        <span class="nx">current</span><span class="p">.</span><span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>DepthFirst</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">depthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span>
+      <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">stack</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<!-- function Node (value) {
+  this.value = value || null;
+  this.left = null;
+  this.right = null;
+};
+
+function BinarySearchTree (value) {
+  this.-root = new Node(value);
+}; -->
+
+<!-- BinarySearchTree.prototype.push = function(val){
+  var root = this.root;
+
+  if(!root){
+   this.root = new Node(val);
+    return;
+  }
+
+  var currentNode = root;
+  var newNode = new Node(val);
+
+  while(currentNode){
+    if(val < currentNode.value){
+        if(!currentNode.left){
+          currentNode.left = newNode;
+            break;
+        } else {
+          currentNode = currentNode.left;
+        }
+    } else {
+      if(!currentNode.right){
+        currentNode.right = newNode;
+        break;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
+  }
+} -->
+
+<!-- var bst = new BinarySearchTree();
+bst.push(7);
+bst.push(8);
+bst.push(3);
+bst.push(5);
+bst.push(6);
+bst.push(2);
+bst.push(4);
+bst.push(1);
+bst.push(9);
+bst.push(10); -->
+
+<!-- //console.log(bst); -->
+
+<!-- BinarySearchTree.prototype.getLCA = function(node, a, b){
+    if (node === null) { return null; }
+    if (node === a || node === b) { return node; }
+    left = BinarySearchTree.prototype.getLCA(node.left, a, b);
+    right = BinarySearchTree.prototype.getLCA(node.right, a, b);
+    if (left !== null && right !== null) { return node; }
+    if (left === null) { return right; }
+    else { return left; }
+} -->
+
+<!-- //console.log(bst.getLCA(2,4));
+
+BinarySearchTree.prototype.depthFirst = function(node){
+      node = node || this.root,
+      stack = [];
+    var traverse = function(node){
+        if (node) {
+          stack.push(node.value);
+            traverse(node.left);
+            traverse(node.right);
+        }
+    }
+    traverse(node)
+    return stack;
+} -->
+
+<!-- BinarySearchTree.prototype.breadthFirstRec = function() {
+  var levels = {},
+    traverse = function(node, depth) {
+        if (!node) { return null; }
+        if (!levels[depth]) { levels[depth] = [node.value]; }
+        else { levels[depth].push(node.value); }
+        traverse(node.left, depth + 1);
+        traverse(node.right, depth + 1);
+        }
+    traverse(this.root, 0);
+  return levels;
+};
+
+BinarySearchTree.prototype.breadthFirst = function() {
+    var result = [],
+      queue = [],
+      current = this.root;
+    if (!current) return null;
+    queue.push(current);
+    while (current = queue.shift()) {
+        result.push(current.value);
+        current.left && queue.push(current.left);
+        current.right && queue.push(current.right);
+    } return result;
+}; -->
+
+<!-- console.log(bst.depthFirst());
+console.log(bst.breadthFirst()); -->
+
 <p><strong>This is a stub, there&#39;s more coming</strong></p>
 
   </div>
@@ -415,21 +607,6 @@ console.log(tree.size());
       </div>
     </div>
     
-	<!-- Google Analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-65733928-2', 'auto');
-		ga('send', 'pageview', {
-		  'page': '/trees/',
-		  'title': 'trees'
-		});
-	</script>
-	<!-- End Google Analytics -->
-
 
   </body>
 </html>
