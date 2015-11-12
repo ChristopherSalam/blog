@@ -42,27 +42,27 @@ var treeData = [
     { "name":"packages", "parent": "#setup" }
     ]
   },
-  { "name": "#structures", "parent": "#javascript", "children": [
-    { "name": "matrix paths", "parent": "#data structures" },
-    { "name": "#neo4j", "parent": "#data structures", "children": [
-      { "name": "try neo4j", "parent": "try neo4j" },
-      { "name": "collision", "parent": "packages", "children": [
-        { "name": "node-neo4j", "parent": "try neo4j" }
-        ]
-      },
-      { "name": "query neo4j", "parent": "try neo4j" },
-    ]
-  },
-    { "name": "trees", "parent": "#data structures" }
+  { "name": "#neo4j", "parent": "#data structures", "children": [
+    { "name": "try neo4j", "parent": "try neo4j" },
+    { "name": "collision", "parent": "packages", "children": [
+      { "name": "node-neo4j", "parent": "try neo4j" }
+      ]
+    },
+    { "name": "query neo4j", "parent": "try neo4j" },
   ]
   },
-  { "name": "#regexp", "parent": "#data structures", "children":[
-      { "name": "try regexp", "parent": "regexp", "children": [
-        { "name": "O(r)", "parent": "regexp" },
-        { "name": "regexp.js", "parent": "regexp" }
-        ]
-      },
-    ]
+  { "name": "#structures", "parent": "#javascript", "children": [
+    { "name": "matrix paths", "parent": "#structures" },
+    { "name": "#regexp", "parent": "#structures", "children":[
+        { "name": "try regexp", "parent": "regexp", "children": [
+          { "name": "O(r)", "parent": "regexp" },
+          { "name": "regexp.js", "parent": "regexp" }
+          ]
+        },
+      ]
+    },
+    { "name": "trees", "parent": "#data structures" }
+  ]
   }
 ];
 
