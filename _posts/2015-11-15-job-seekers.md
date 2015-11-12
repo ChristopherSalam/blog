@@ -118,6 +118,36 @@ I wanted this space to be a location where I could post all the things that I'm 
 
 **<a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank">Dynamic Programming</a>**
 
+**<a href="http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html" target="_blank">Java Memory Collection & Garbage Collector</a>**
+
+**<a href="http://stackoverflow.com/questions/4128546/advantages-of-binary-search-trees-over-hash-tables" target="_blank">Adv. of BST over Hash Tables</a>**
+
+**<a href="http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html" target="_blank">Strstr in C++</a>**
+
+**<a href="http://phpjs.org/functions/strstr/" target="_blank">Strstr in JS</a>**
+
+**<a href="http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays" target="_blank">Split array in n arrays</a>**
+
+**<a href="http://stackoverflow.com/questions/6380231/difference-between-binary-tree-and-binary-search-tree" target="_blank">BT vs BST</a>**
+
+**<a href="http://www.eternallyconfuzzled.com/tuts/datastructures/jsw_tut_bst1.aspx" target="_blank">Binary Search Trees (a comprehensive)</a>**
+
+**<a href="https://www.google.com/search?q=Implement+a+malloc-like+function+such+that+it+only+returns+pointers+evenly+divisible+by+N+(presumably+some+power+of+2).+Use+as+little+overhead+as+possible.+Implement+the+corresponding+free()+function.&oq=Implement+a+malloc-like+function+such+that+it+only+returns+pointers+evenly+divisible+by+N+(presumably+some+power+of+2).+Use+as+little+overhead+as+possible.+Implement+the+corresponding+free()+function.&aqs=chrome..69i57.671j0j7&sourceid=chrome&es_sm=91&ie=UTF-8#q=what+is+malloc" target="_blank">What is Malloc?</a>**
+
+**<a href="http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/" target="_blank">Embarrassment as a theme with these things</a>**
+
+**<a href="https://www.youtube.com/watch?v=LFjCr2yDJdc" target="_blank">Lowest common ancestor in Binary Tree (Video)</a>**
+
+**<a href="https://www.youtube.com/watch?v=bl-gwEwm8CM" target="_blank">Lowest common ancestor in Binary Tree in Python (Video)</a>**
+
+**<a href="https://www.youtube.com/watch?v=NBcqBddFbZw" target="_blank">Lowest Common Ancestor (Video)</a>**
+
+**<a href="http://khan4019.github.io/front-end-Interview-Questions/bst.html" target="_blank">Unfinished but helpful JS Binary Search Tree</a>**
+
+**<a href="http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree" target="_blank">Breadth First Search JS Binary Search Trees</a>**
+
+**<a href="" target="_blank"></a>**
+
 **<a href="" target="_blank"></a>**
 
 **<a href="" target="_blank"></a>**
@@ -137,3 +167,116 @@ I wanted this space to be a location where I could post all the things that I'm 
 **<a href="" target="_blank"></a>**
 
 **This is a stub, there's more coming**
+
+<!--
+
+function Node(val){
+  this.value = val;
+  this.left = null;
+  this.right = null;
+}
+
+function BinarySearchTree(){
+	this.root = null;
+}
+
+BinarySearchTree.prototype.push = function(val){
+  var root = this.root;
+
+  if(!root){
+   this.root = new Node(val);
+    return;
+  }
+
+  var currentNode = root;
+  var newNode = new Node(val);
+
+  while(currentNode){
+    if(val < currentNode.value){
+        if(!currentNode.left){
+          currentNode.left = newNode;
+            break;
+        } else {
+          currentNode = currentNode.left;
+        }
+    } else {
+      if(!currentNode.right){
+        currentNode.right = newNode;
+        break;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
+  }
+}
+
+var bst = new BinarySearchTree();
+bst.push(7);
+bst.push(8);
+bst.push(3);
+bst.push(5);
+bst.push(6);
+bst.push(2);
+bst.push(4);
+bst.push(1);
+bst.push(9);
+bst.push(10);
+
+//console.log(bst);
+
+BinarySearchTree.prototype.getLCA = function(node, a, b){
+	if (node === null) { return null; }
+	if (node === a || node === b) { return node; }
+	left = BinarySearchTree.prototype.getLCA(node.left, a, b);
+	right = BinarySearchTree.prototype.getLCA(node.right, a, b);
+	if (left !== null && right !== null) { return node; }
+	if (left === null) { return right; }
+	else { return left; }
+}
+
+//console.log(bst.getLCA(2,4));
+
+BinarySearchTree.prototype.depthFirst = function(node){
+	  node = node || this.root,
+	  stack = [];
+	var traverse = function(node){
+		if (node) {
+		  stack.push(node.value);
+			traverse(node.left);
+			traverse(node.right);
+		}
+	}
+	traverse(node)
+	return stack;
+}
+
+BinarySearchTree.prototype.breadthFirstRec = function() {
+  var levels = {},
+    traverse = function(node, depth) {
+	    if (!node) { return null; }
+	    if (!levels[depth]) { levels[depth] = [node.value]; }
+	    else { levels[depth].push(node.value); }
+	    traverse(node.left, depth + 1);
+	    traverse(node.right, depth + 1);
+		}
+	traverse(this.root, 0);
+  return levels;
+};
+
+BinarySearchTree.prototype.breadthFirst = function() {
+    var result = [],
+      queue = [],
+      current = this.root;
+    if (!current) return null;
+    queue.push(current);
+    while (current = queue.shift()) {
+	    result.push(current.value);
+	    current.left && queue.push(current.left);
+	    current.right && queue.push(current.right);
+    } return result;
+};
+
+console.log(bst.depthFirst());
+console.log(bst.breadthFirst());
+
+-->

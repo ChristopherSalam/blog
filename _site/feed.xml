@@ -10,6 +10,8 @@
         <title>try redis</title>
         <description>&lt;p&gt;Redis, or Remote Dictionary Server, is something that has intrigued me since my first small project in TGA. I built a simple website called Receptacle that used data stored nested at only one level, i.e. key value pairs for keeping track of what kind of bins different kinds of recyclables and wastes get placed into.&lt;/p&gt;
 
+&lt;p&gt;As the site is currently constructed, it preloads the entire data set into an angular controller, and lets the information pulled from your waste input (key) turn out a bin location (and soon, addresses or places to take complex wastes such as hard drives, batteries, and lightbulbs) (value)&lt;/p&gt;
+
 &lt;p&gt;http://redis.io/commands&lt;/p&gt;
 
 &lt;p&gt;http://www.sitepoint.com/using-redis-node-js/&lt;/p&gt;
@@ -20,7 +22,7 @@
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 20 Nov 2015 00:00:00 -0800</pubDate>
+        <pubDate>Mon, 23 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/try-redis/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/try-redis/</guid>
       </item>
@@ -215,6 +217,36 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_programming&quot; target=&quot;_blank&quot;&gt;Dynamic Programming&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html&quot; target=&quot;_blank&quot;&gt;Java Memory Collection &amp;amp; Garbage Collector&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://stackoverflow.com/questions/4128546/advantages-of-binary-search-trees-over-hash-tables&quot; target=&quot;_blank&quot;&gt;Adv. of BST over Hash Tables&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html&quot; target=&quot;_blank&quot;&gt;Strstr in C++&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://phpjs.org/functions/strstr/&quot; target=&quot;_blank&quot;&gt;Strstr in JS&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays&quot; target=&quot;_blank&quot;&gt;Split array in n arrays&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://stackoverflow.com/questions/6380231/difference-between-binary-tree-and-binary-search-tree&quot; target=&quot;_blank&quot;&gt;BT vs BST&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.eternallyconfuzzled.com/tuts/datastructures/jsw_tut_bst1.aspx&quot; target=&quot;_blank&quot;&gt;Binary Search Trees (a comprehensive)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.google.com/search?q=Implement+a+malloc-like+function+such+that+it+only+returns+pointers+evenly+divisible+by+N+(presumably+some+power+of+2).+Use+as+little+overhead+as+possible.+Implement+the+corresponding+free()+function.&amp;oq=Implement+a+malloc-like+function+such+that+it+only+returns+pointers+evenly+divisible+by+N+(presumably+some+power+of+2).+Use+as+little+overhead+as+possible.+Implement+the+corresponding+free()+function.&amp;aqs=chrome..69i57.671j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8#q=what+is+malloc&quot; target=&quot;_blank&quot;&gt;What is Malloc?&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/&quot; target=&quot;_blank&quot;&gt;Embarrassment as a theme with these things&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LFjCr2yDJdc&quot; target=&quot;_blank&quot;&gt;Lowest common ancestor in Binary Tree (Video)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bl-gwEwm8CM&quot; target=&quot;_blank&quot;&gt;Lowest common ancestor in Binary Tree in Python (Video)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NBcqBddFbZw&quot; target=&quot;_blank&quot;&gt;Lowest Common Ancestor (Video)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://khan4019.github.io/front-end-Interview-Questions/bst.html&quot; target=&quot;_blank&quot;&gt;Unfinished but helpful JS Binary Search Tree&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree&quot; target=&quot;_blank&quot;&gt;Breadth First Search JS Binary Search Trees&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -234,6 +266,119 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!--
+
+function Node(val){
+  this.value = val;
+  this.left = null;
+  this.right = null;
+}
+
+function BinarySearchTree(){
+    this.root = null;
+}
+
+BinarySearchTree.prototype.push = function(val){
+  var root = this.root;
+
+  if(!root){
+   this.root = new Node(val);
+    return;
+  }
+
+  var currentNode = root;
+  var newNode = new Node(val);
+
+  while(currentNode){
+    if(val &lt; currentNode.value){
+        if(!currentNode.left){
+          currentNode.left = newNode;
+            break;
+        } else {
+          currentNode = currentNode.left;
+        }
+    } else {
+      if(!currentNode.right){
+        currentNode.right = newNode;
+        break;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
+  }
+}
+
+var bst = new BinarySearchTree();
+bst.push(7);
+bst.push(8);
+bst.push(3);
+bst.push(5);
+bst.push(6);
+bst.push(2);
+bst.push(4);
+bst.push(1);
+bst.push(9);
+bst.push(10);
+
+//console.log(bst);
+
+BinarySearchTree.prototype.getLCA = function(node, a, b){
+    if (node === null) { return null; }
+    if (node === a || node === b) { return node; }
+    left = BinarySearchTree.prototype.getLCA(node.left, a, b);
+    right = BinarySearchTree.prototype.getLCA(node.right, a, b);
+    if (left !== null &amp;&amp; right !== null) { return node; }
+    if (left === null) { return right; }
+    else { return left; }
+}
+
+//console.log(bst.getLCA(2,4));
+
+BinarySearchTree.prototype.depthFirst = function(node){
+      node = node || this.root,
+      stack = [];
+    var traverse = function(node){
+        if (node) {
+          stack.push(node.value);
+            traverse(node.left);
+            traverse(node.right);
+        }
+    }
+    traverse(node)
+    return stack;
+}
+
+BinarySearchTree.prototype.breadthFirstRec = function() {
+  var levels = {},
+    traverse = function(node, depth) {
+        if (!node) { return null; }
+        if (!levels[depth]) { levels[depth] = [node.value]; }
+        else { levels[depth].push(node.value); }
+        traverse(node.left, depth + 1);
+        traverse(node.right, depth + 1);
+        }
+    traverse(this.root, 0);
+  return levels;
+};
+
+BinarySearchTree.prototype.breadthFirst = function() {
+    var result = [],
+      queue = [],
+      current = this.root;
+    if (!current) return null;
+    queue.push(current);
+    while (current = queue.shift()) {
+        result.push(current.value);
+        current.left &amp;&amp; queue.push(current.left);
+        current.right &amp;&amp; queue.push(current.right);
+    } return result;
+};
+
+console.log(bst.depthFirst());
+console.log(bst.breadthFirst());
+
+--&gt;
 </description>
         <pubDate>Sun, 15 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/job-seekers/</link>
