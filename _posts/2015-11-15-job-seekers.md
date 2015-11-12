@@ -146,7 +146,7 @@ I wanted this space to be a location where I could post all the things that I'm 
 
 **<a href="http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree" target="_blank">Breadth First Search JS Binary Search Trees</a>**
 
-**<a href="" target="_blank"></a>**
+**<a href="http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript" target="_blank">Reverse a linkedlist</a>**
 
 **<a href="" target="_blank"></a>**
 

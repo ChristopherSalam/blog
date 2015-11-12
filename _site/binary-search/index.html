@@ -11,9 +11,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
     
-    <meta name="description" content="Christopher Salam As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give it! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!
+    <meta name="description" content="Christopher Salam As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give in! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this set of problems by its occasionally equally spaced branches!
 " />
-    <meta property="og:description" content="As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give it! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!
+    <meta property="og:description" content="As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give in! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this set of problems by its occasionally equally spaced branches!
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -70,7 +70,7 @@
   </div>
 
   <div class="entry">
-    <p>As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give it! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!</p>
+    <p>As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give in! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this set of problems by its occasionally equally spaced branches!</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Psuedo-classical instantiation</span>
 <span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
@@ -109,16 +109,22 @@
   <span class="k">while</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">){</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">val</span> <span class="o">&lt;</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">value</span><span class="p">){</span>
         <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span><span class="p">){</span>
+          <span class="c1">//(exit step) then</span>
+          <span class="c1">//changes the null at location</span>
+          <span class="c1">//we need to the value.</span>
           <span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">newNode</span><span class="p">;</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="c1">//Find the node we need</span>
           <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span><span class="p">){</span>
+        <span class="c1">//(other exit step)</span>
         <span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">newNode</span><span class="p">;</span>
         <span class="k">break</span><span class="p">;</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//Find the node we need</span>
         <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
@@ -152,6 +158,79 @@
 </code></pre></div>
 <p>Traversal in a binary search tree is not recursive, the tree itself allows for log n time processing. We can use this logic to insert nodes as well. This method of inserting does not balance the tree. Balancing the tree is a whole other can of worms, but balancing a tree helps optimize the traversal.</p>
 
+<p>DepthFirst</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">depthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">node</span><span class="p">){</span>
+  <span class="c1">//default, in case no node is given</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span>
+  <span class="c1">//named stack just for flavor</span>
+      <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
+  <span class="c1">//named to allow for recursion</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//each time there&#39;s a node,</span>
+  <span class="c1">//go digging in either direction.</span>
+  <span class="c1">//you can reverse the order by</span>
+  <span class="c1">//changing the order here.</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+  <span class="c1">//if you want a callback</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">}</span>
+  <span class="c1">//nested traversal happens here.      </span>
+            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">stack</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+<p>Breadth First Queue-Style- <a target="blank"
+    href="http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree">shoutout HR</a></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="nx">queue</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+    <span class="c1">//exit condition</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="c1">//sends the root to the que</span>
+    <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+    <span class="c1">//the queue.shift() sends the next level</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">node</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">//store the node here</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="c1">//put a callback here</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><span class="nx">callback</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">}</span>
+    <span class="c1">//if the node exists, then queue it</span>
+    <span class="c1">//and the while loop persists.</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Psuedo-Breadth First Recursion style. This example is truly done depth first, but lets you visualize the levels using objects.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirstRec</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//This is simulating breadth first</span>
+  <span class="c1">//This method gives you access to</span>
+  <span class="c1">//depth so you can use that to</span>
+  <span class="c1">//make path queries.</span>
+  <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span>
+  <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">depth</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//exit</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
+      <span class="c1">//create data at that level</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">])</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">];</span> <span class="p">}</span>
+      <span class="c1">//or add to it</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">}</span>
+      <span class="c1">// *if callback was nested here</span>
+      <span class="c1">// it would be depth first*</span>
+      <span class="c1">//traverse as before, with depth accounted for.</span>
+        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">levels</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 <!-- Least Common Ancestor
 
 ```javascript
@@ -168,49 +247,6 @@ BinarySearchTree.prototype.getLCA = function(node, a, b){
 
 ``` -->
 
-<p>Breadth First Recursion and Queue</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirstRec</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="p">{},</span>
-    <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">depth</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">])</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">];</span> <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">}</span>
-        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="nx">traverse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="k">return</span> <span class="nx">levels</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>This is  </p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[],</span>
-      <span class="nx">queue</span> <span class="o">=</span> <span class="p">[],</span>
-      <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">node</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="p">{</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-        <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
-        <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>DepthFirst</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">depthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
-      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span>
-      <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="kd">var</span> <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
-            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">stack</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
 <p><strong>This is a stub, there&#39;s more coming</strong></p>
 
   </div>

@@ -6,7 +6,7 @@ tags:
 - structures
 ---
 
-As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don't give it! It's a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!
+As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don't give in! It's a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this set of problems by its occasionally equally spaced branches!
 
 ```javascript
 //Psuedo-classical instantiation
@@ -50,16 +50,22 @@ BinarySearchTree.prototype.push = function(val){
   while(currentNode){
     if(val < currentNode.value){
         if(!currentNode.left){
+          //(exit step) then
+          //changes the null at location
+          //we need to the value.
           currentNode.left = newNode;
             break;
         } else {
+          //Find the node we need
           currentNode = currentNode.left;
         }
     } else {
       if(!currentNode.right){
+        //(other exit step)
         currentNode.right = newNode;
         break;
       } else {
+        //Find the node we need
         currentNode = currentNode.right;
       }
     }
@@ -97,6 +103,88 @@ BinarySearchTree.prototype.contains = function(value, node) {
 
 Traversal in a binary search tree is not recursive, the tree itself allows for log n time processing. We can use this logic to insert nodes as well. This method of inserting does not balance the tree. Balancing the tree is a whole other can of worms, but balancing a tree helps optimize the traversal.
 
+  DepthFirst
+
+  ```javascript
+  BinarySearchTree.prototype.depthFirst = function(callback, node){
+  //default, in case no node is given
+  	  node = node || this.root,
+  //named stack just for flavor
+  	  stack = [];
+  	var traverse = function(node){
+  //named to allow for recursion
+  		if (node) {
+  //each time there's a node,
+  //go digging in either direction.
+  //you can reverse the order by
+  //changing the order here.
+  		  stack.push(node.value);
+  //if you want a callback
+        if (callback) { callback(node.value); }
+  //nested traversal happens here.      
+  			traverse(node.left);
+  			traverse(node.right);
+  		}
+  	}
+  	traverse(node)
+  	return stack;
+  }
+  ```
+
+Breadth First Queue-Style- <a target="blank"
+    href="http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree">shoutout HR</a>
+
+```javascript
+BinarySearchTree.prototype.breadthFirst = function(callback, node) {
+      var result = [];
+      queue = [],
+      node = node || this.root;
+    //exit condition
+    if (!node) return null;
+    //sends the root to the que
+    queue.push(node);
+    //the queue.shift() sends the next level
+    while (node = queue.shift()) {
+	//store the node here
+	    result.push(node.value);
+	//put a callback here
+	    if (callback) {callback(node.value); }
+	//if the node exists, then queue it
+	//and the while loop persists.
+	    node.left && queue.push(node.left);
+	    node.right && queue.push(node.right);
+    } return result;
+};
+```
+
+Psuedo-Breadth First Recursion style. This example is truly done depth first, but lets you visualize the levels using objects.
+
+```javascript
+BinarySearchTree.prototype.breadthFirstRec = function(node) {
+  //This is simulating breadth first
+  //This method gives you access to
+  //depth so you can use that to
+  //make path queries.
+  node = node || this.root
+  var levels = {},
+    traverse = function(node, depth) {
+      //exit
+	    if (!node) { return null; }
+      //create data at that level
+	    if (!levels[depth]) { levels[depth] = [node.value]; }
+      //or add to it
+	    else { levels[depth].push(node.value); }
+      // *if callback was nested here
+      // it would be depth first*
+      //traverse as before, with depth accounted for.
+	    traverse(node.left, depth + 1);
+	    traverse(node.right, depth + 1);
+		}
+	traverse(node, 0);
+  return levels;
+};
+```
+
 <!-- Least Common Ancestor
 
 ```javascript
@@ -112,59 +200,5 @@ BinarySearchTree.prototype.getLCA = function(node, a, b){
 }
 
 ``` -->
-
-Breadth First Recursion and Queue
-
-```javascript
-BinarySearchTree.prototype.breadthFirstRec = function() {
-  var levels = {},
-    traverse = function(node, depth) {
-	    if (!node) { return null; }
-	    if (!levels[depth]) { levels[depth] = [node.value]; }
-	    else { levels[depth].push(node.value); }
-	    traverse(node.left, depth + 1);
-	    traverse(node.right, depth + 1);
-		}
-	traverse(this.root, 0);
-  return levels;
-};
-```
-
-This is  
-
-```javascript
-BinarySearchTree.prototype.breadthFirst = function() {
-    var result = [],
-      queue = [],
-      node = this.root;
-    if (!node) return null;
-    queue.push(node);
-    while (node = queue.shift()) {
-	    result.push(node.value);
-	    node.left && queue.push(node.left);
-	    node.right && queue.push(node.right);
-    } return result;
-};
-```
-
-DepthFirst
-
-```javascript
-
-BinarySearchTree.prototype.depthFirst = function(node){
-	  node = node || this.root,
-	  stack = [];
-	var traverse = function(node){
-		if (node) {
-		  stack.push(node.value);
-			traverse(node.left);
-			traverse(node.right);
-		}
-	}
-	traverse(node)
-	return stack;
-}
-
-```
 
 **This is a stub, there's more coming**
