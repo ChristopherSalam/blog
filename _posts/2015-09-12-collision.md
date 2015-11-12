@@ -2,6 +2,7 @@
 layout: post
 title: (neo4j) collision
 tags:
+- nosql
 - neo4j
 - database
 ---

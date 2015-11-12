@@ -42,14 +42,16 @@ var treeData = [
     { "name":"packages", "parent": "#setup" }
     ]
   },
-  { "name": "#neo4j", "parent": "#data structures", "children": [
-    { "name": "try neo4j", "parent": "try neo4j" },
-    { "name": "collision", "parent": "packages", "children": [
-      { "name": "node-neo4j", "parent": "try neo4j" }
+  { "name": "#nosql", "parent": "#data structures", "children": [
+    { "name": "try redis", "parent": "#nosql" },
+    { "name": "#neo4j", "parent": "#data structures", "children": [
+      { "name": "collision", "parent": "packages"},
+      { "name": "node-neo4j", "parent": "try neo4j" },
+      { "name": "query neo4j", "parent": "try neo4j" }
       ]
     },
-    { "name": "query neo4j", "parent": "try neo4j" },
-  ]
+    { "name": "try neo4j", "parent": "try neo4j" }
+    ]
   },
   { "name": "#structures", "parent": "#javascript", "children": [
     { "name": "matrix paths", "parent": "#structures" },
@@ -116,6 +118,7 @@ function makeMeSomeTrees(eachRoot){
   .attr("class", "node")
   .attr("transform", function(d) {
     return "translate(" + d.x + "," + d.y + ")"; });
+    // return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeEnter.append("circle")
   .attr("r", vwidth/8.5)
@@ -133,12 +136,11 @@ function makeMeSomeTrees(eachRoot){
   .attr("class", "hyper").on("click", function (d) {
     var url;
     if (d.name.match(/#/)) { url = 'http://chrissalam.com/tags/' + d.name; }
-        // var url = 'http://chrissalam.com/#'+d.name
         else { url = 'http://chrissalam.com/' + d.name.split(" ").join("-"); }
         window.location = url;
       });
 
-  // Declare the linksâ€¦
+  // Declare the links.
   var link = svg.selectAll("path.link")
   .data(links, function(d) { return d.target.id; });
 

@@ -86,27 +86,29 @@ var treeData = [
     { "name":"packages", "parent": "#setup" }
     ]
   },
-  { "name": "#structures", "parent": "#javascript", "children": [
-    { "name": "matrix paths", "parent": "#data structures" },
+  { "name": "#nosql", "parent": "#data structures", "children": [
+    { "name": "try redis", "parent": "#nosql" },
     { "name": "#neo4j", "parent": "#data structures", "children": [
-      { "name": "try neo4j", "parent": "try neo4j" },
-      { "name": "collision", "parent": "packages", "children": [
-        { "name": "node-neo4j", "parent": "try neo4j" }
-        ]
-      },
-      { "name": "query neo4j", "parent": "try neo4j" },
+      { "name": "collision", "parent": "packages"},
+      { "name": "node-neo4j", "parent": "try neo4j" },
+      { "name": "query neo4j", "parent": "try neo4j" }
+      ]
+    },
+    { "name": "try neo4j", "parent": "try neo4j" }
     ]
   },
+  { "name": "#structures", "parent": "#javascript", "children": [
+    { "name": "matrix paths", "parent": "#structures" },
+    { "name": "#regexp", "parent": "#structures", "children":[
+        { "name": "try regexp", "parent": "regexp", "children": [
+          { "name": "O(r)", "parent": "regexp" },
+          { "name": "regexp.js", "parent": "regexp" }
+          ]
+        },
+      ]
+    },
     { "name": "trees", "parent": "#data structures" }
   ]
-  },
-  { "name": "#regexp", "parent": "#data structures", "children":[
-      { "name": "try regexp", "parent": "regexp", "children": [
-        { "name": "O(r)", "parent": "regexp" },
-        { "name": "regexp.js", "parent": "regexp" }
-        ]
-      },
-    ]
   }
 ];
 
@@ -160,6 +162,7 @@ function makeMeSomeTrees(eachRoot){
   .attr("class", "node")
   .attr("transform", function(d) {
     return "translate(" + d.x + "," + d.y + ")"; });
+    // return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeEnter.append("circle")
   .attr("r", vwidth/8.5)
@@ -177,12 +180,11 @@ function makeMeSomeTrees(eachRoot){
   .attr("class", "hyper").on("click", function (d) {
     var url;
     if (d.name.match(/#/)) { url = 'http://chrissalam.com/tags/' + d.name; }
-        // var url = 'http://chrissalam.com/#'+d.name
         else { url = 'http://chrissalam.com/' + d.name.split(" ").join("-"); }
         window.location = url;
       });
 
-  // Declare the linksâ€¦
+  // Declare the links.
   var link = svg.selectAll("path.link")
   .data(links, function(d) { return d.target.id; });
 
@@ -241,6 +243,14 @@ for (var q = 0; q < treeData.length; q++) {
 			<a class="hexagon-in1" href="/agricultural/">
 				<span class="hexagon-in2">
 				  agricultural
+				</span>
+			</a>
+		</li>
+		
+		<li class="hexagon">
+			<a class="hexagon-in1" href="/binary-search/">
+				<span class="hexagon-in2">
+				  binary search
 				</span>
 			</a>
 		</li>
@@ -454,6 +464,21 @@ for (var q = 0; q < treeData.length; q++) {
       </div>
     </div>
     
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65733928-2', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/index.html',
+		  'title': ''
+		});
+	</script>
+	<!-- End Google Analytics -->
+
 
   </body>
 </html>

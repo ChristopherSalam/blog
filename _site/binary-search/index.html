@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://chrissalam.com/languages/font-mfizz.css">
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>binary search – Christopher Salam – thoughts on software and engineering</title>
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    
+    <meta name="description" content="Christopher Salam As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give it! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!
+" />
+    <meta property="og:description" content="As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give it! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+    
+    <meta property="og:title" content="binary search" />
+    <meta property="twitter:title" content="binary search" />
+    
+
+    <link rel="icon" type="image/ico" href="chrissalam.jpg">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://christophersalam.github.io" target="_blank">Work</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank"><i class="fa fa-photo"></i></a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">binary search</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#javascript">javascript</a>,
+  
+  <a href="/tags/#structures">structures</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on November  7, 2015
+  </div>
+
+  <div class="entry">
+    <p>As is customary for those seeking jobs, intimidation involving the binary search tree is a given. Don&#39;t give it! It&#39;s a really fun structure and the same recursive reasoning driving linked lists lives here. Grab this problem by its occasionally equally spaced branches!</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Psuedo-classical instantiation</span>
+<span class="kd">function</span> <span class="nx">Node</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">BinarySearchTree</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>The main difference here is rather than splitting the children into a left and a right (sometimes this is leftChild or rightChild) instead of an array with all the children. You can include a parent here, but I elected not to.</p>
+
+<p>Due to a child limit and the additionally criteria of the value indicating where things go on tree (not true for binary trees). There&#39;s not the same level of fuss you had to deal with the tree when it comes to insertion. The value (and the order of insertion) determine it&#39;s place on the tree.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">push</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">){</span>
+
+  <span class="c1">//this is optional but here</span>
+  <span class="c1">//we gave the tree the logic</span>
+  <span class="c1">//to start with null</span>
+
+  <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">root</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">//if the root already exists</span>
+  <span class="c1">//lets make the new node.</span>
+
+  <span class="kd">var</span> <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">root</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+
+  <span class="c1">//here is the logic to place</span>
+  <span class="c1">//the node in the right spot</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">val</span> <span class="o">&lt;</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">value</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span><span class="p">){</span>
+          <span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">newNode</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span><span class="p">){</span>
+        <span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">newNode</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">currentNode</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The Binary-Search-Tree Contains method let&#39;s use the structure of the data model to locate the exact node by value. This could be refactored, as it is here, it has some repetition of the logic as above.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contains</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// a recursive function that looks at each node</span>
+  <span class="kd">function</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//here&#39;s the exit</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//this is just in case the</span>
+    <span class="c1">//value is in place as a string</span>
+    <span class="c1">//ooooo non-typesafe languages</span>
+    <span class="kd">var</span> <span class="nx">nodeValue</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="c1">//check here</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+    <span class="c1">//check here</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+    <span class="c1">//this is the other exit condition,</span>
+    <span class="c1">//a found value</span>
+      <span class="p">}</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">//I wrote this out and it didn&#39;t work</span>
+  <span class="c1">//until I added the return here... doof!</span>
+  <span class="k">return</span> <span class="nx">contains</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Traversal in a binary search tree is not recursive, the tree itself allows for log n time processing. We can use this logic to insert nodes as well. This method of inserting does not balance the tree. Balancing the tree is a whole other can of worms, but balancing a tree helps optimize the traversal.</p>
+
+<!-- Least Common Ancestor
+
+```javascript
+
+BinarySearchTree.prototype.getLCA = function(node, a, b){
+    if (node === null) { return null; }
+    if (node === a || node === b) { return node; }
+    left = BinarySearchTree.prototype.getLCA(node.left, a, b);
+    right = BinarySearchTree.prototype.getLCA(node.right, a, b);
+    if (left !== null && right !== null) { return node; }
+    if (left === null) { return right; }
+    else { return left; }
+}
+
+``` -->
+
+<p>Breadth First Recursion and Queue</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirstRec</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">depth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">])</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">];</span> <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="nx">levels</span><span class="p">[</span><span class="nx">depth</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">levels</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>This is  </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breadthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">queue</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">node</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>DepthFirst</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">BinarySearchTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">depthFirst</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span>
+      <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">traverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+            <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">stack</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>This is a stub, there&#39;s more coming</strong></p>
+
+  </div>
+
+  
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65733928-2', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/binary-search/',
+		  'title': 'binary search'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>
