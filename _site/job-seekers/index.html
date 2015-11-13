@@ -212,13 +212,13 @@
 
 <p><strong><a href="http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript" target="_blank">Reverse a linkedlist</a></strong></p>
 
-<p><strong><a href="" target="_blank"></a></strong></p>
+<p><strong><a href="http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html" target="_blank">LinkedList</a></strong></p>
 
-<p><strong><a href="" target="_blank"></a></strong></p>
+<p><strong><a href="http://www.fusu.us/2013/06/p2-lowest-common-ancestor-in-binary-tree.html" target="_blank">Lowest Common Ancestor in Java BST</a></strong></p>
 
-<p><strong><a href="" target="_blank"></a></strong></p>
+<p><strong><a href="http://www.thatjsdude.com/interview/linkedList.html" target="_blank">Stack, Queue, LinkedList</a></strong></p>
 
-<p><strong><a href="" target="_blank"></a></strong></p>
+<p><strong><a href="http://joaoff.com/2008/01/20/a-square-grid-path-problem/" target="_blank">Matrix Paths</a></strong></p>
 
 <p><strong><a href="" target="_blank"></a></strong></p>
 
@@ -234,6 +234,118 @@
 
 <!--
 
+LinkedList Tutorial
+
+function LinkedList(){  
+  this.head = null;
+}
+
+LinkedList.prototype.push = function(val){
+    var node = {
+       value: val,
+       next: null
+    }
+    if(!this.head){
+      this.head = node;      
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
+
+Make a LinkedList
+add a node
+remove a node
+
+
+
+LinkedList.prototype.remove = function(val){
+    var current = this.head;
+    //case-1
+    if(current.value == val){
+       this.head = current.next;     
+    }
+    else{
+      var previous = current;
+
+      while(current.next){
+        //case-3
+        if(current.value == val){
+          previous.next = current.next;          
+          break;
+        }
+        previous = current;
+        current = current.next;
+      }
+      //case -2
+      if(current.value == val){
+        previous.next == null;
+      }
+    }
+  }  
+
+  case -1: your targeted node is in the head. you have to replace the head with the next node
+  case -2: your targeted node is in the tail. you just have to remove it from the tail. Hence next of the node before the tail will be null.
+  case-3: your targeted node is in the middle of the LinkedList, you have to make the node after your targeted node to be the next node of the node before your targeted node.
+
+reverse a LinkedList conventional, using fast slow
+
+// reverse a linked list  
+var reverseLinkedList = function(linkedlist) {
+  var node = linkedlist;
+  var previous = null;
+
+  while(node) {
+    // save next or you lose it!!!
+    var save = node.next;
+    // reverse pointer
+    node.next = previous;
+    // increment previous to current node
+    previous = node;
+    // increment node to next node or null at end of list
+    node = save;
+  }
+  return previous;   // Change the list head !!!
+}
+linkedlist = reverseLinkedList(linkedlist);
+
+palindrome check, in linear time (with a halfway)
+
+var palindromeChecker = function(linkedlist) {
+  var fast = node,
+    stack = [];
+while (node)
+    stack.push(node);
+    node = node.next;
+    fast = node.next.next;
+  if (!fast) {
+    if (node !== stack.pop()) { return false; }
+  }
+  return true;
+}
+
+complexity
+
+check for circular linked list using fast/slow
+
+function detectLoop(sll){
+   var slowPointer = sll.head,
+       fastPointer = sll.head;
+
+   while(slowPointer && fastPointer && fastPointer.next){
+     slowPointer = slowPointer.next;
+     fastPointer = fastPointer.next.next;
+
+     if(slowPointer == fastPointer){
+        return true;
+     }
+   }
+   return false;
+}
 
 
 -->
@@ -241,6 +353,22 @@
   </div>
 
   
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'Chris Salam';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
 
 </article>
 
