@@ -197,8 +197,6 @@ Make a LinkedList
 add a node
 remove a node
 
-
-
 LinkedList.prototype.remove = function(val){
     var current = this.head;
     //case-1

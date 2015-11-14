@@ -84,32 +84,49 @@
 
 <p><strong><a href="https://github.com/TheTinyBullets/Katfish_Xcode">Repo</a></strong> | <strong><a href="http://katfish.me">Screenshots</a></strong></p>
 
-<p>Tape testing is hella boss! Tape testing in React Native works like a dream. Well...
-more like a dream in the way that Inception was a dream. There are some constant asychronous issues but it was for us one of the best ways to test our application. I recommend it as a way to get testing into your React Native pages.</p>
+<p>Tape testing is a powerful and minimalistic framework that is helpful for testing within asychronous environments! Tape testing in React Native works like a dream. Well...more like a dream in the way that Inception was a dream. The real problem with writing asynchronous tests is often you are exploring what exactly the test needs to be, and using Nodemon with Node helps you see the tests coming into place.</p>
 
-<p>Tape uses the TAP method of outputing testing information. This is a standard rubric sort of for what information should be in tests and should not be in tests. Tape can be included in your files with a require statement.</p>
+<p><img src="Test.png" alt="test"></p>
+
+<p>Tape uses the TAP method of outputting testing information. This is a standard rubric sort of for what information should be in tests and should not be in tests. Tape can be included in your files with a require statement. You can pipe test results through other tools to create a more visual output, but it&#39;s pretty readable as is. Here&#39;s the suite output (which outputs to terminal via Node and Nodemon) from my newUser tests in ReactNative/Firebase project.</p>
+
+<p>As I began writing this article out, I realized this was much more about the complicated nature of testing firebase results due to the snapshot nature of the listener. Rather than rely on automated testing, I found myself sending console logs out in each snapshot rather than rely on testing, because each update will create new information, it&#39;s inherently better than a test, which only provides a one time insight.</p>
+
+<p><img src="newUserRef.png" alt="newUser"></p>
+
+<p>Or view the console as a callback...</p>
+
+<p><img src="console.png" alt="console"></p>
+
+<p>Another reason why using node and nodemon is helpful, we have something continuously watching, after a test suite would normally finish. The square below indicates that terminal is still engaged with the file and the moment another change takes place I will see it.</p>
+
+<p><img src="Test-Nodemon.png" alt="test-nodemon"></p>
+
+<p>As I develop the test, I get to adjust the location of my firebase references and I can see the test suite and it&#39;s asychronous wrinkles with really impressive detail. You can see an immediate change the output simply by reversing the order of the listeners.</p>
+
+<p><img src="reversedTest.png" alt="reversedTest"></p>
+
+<p>For some reason, the output here includes an additional dockRef snapshot. Strange right?</p>
+
+<p><img src="reversed.png" alt="reversed"></p>
+
+<p>The real cool power of using Nodemon and Tape together is the advanced output that comes with both. A syntax error can be differentiated quite readily from a failed test, which sometimes can allude you when simply logging out information.</p>
+
+<p><img src="syntax.png" alt="syntax"></p>
+
+<p>And here&#39;s the difference with a failed test! It would show up with nice red and green output if we tapped it one of the frameworks for TAP output.</p>
+
+<p><img src="failedTest.png" alt="failedTest"></p>
+
+<p>I hope this was helpful! There&#39;s lots of other helpful aspects of tape, but the real value is that you can write files, run them on Node, see the output, then go back to writing. You can also placed tests into your live files, and comment them out if needed. Very helpful.</p>
+
+<p><img src="commented.png" alt="commented"></p>
 
 <p><strong>This is a stub... there&#39;s more to come</strong></p>
 
   </div>
 
   
-<div class="comments">
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-
-	    var disqus_shortname = "chrissalam";//'Chris Salam';
-
-	    (function() {
-	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	    })();
-
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-
 
 </article>
 
