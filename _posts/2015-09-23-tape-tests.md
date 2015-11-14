@@ -55,4 +55,14 @@ I hope this was helpful! There's lots of other helpful aspects of tape, but the 
 
 <img src="commented.png" alt="commented">
 
+This is mostly unrelated, but the firebase UX is truly special. This a set of pings with milliseconds in between, but firebase is kind enough to show all the changes, green for addition and red for removal. Very cool! It was harder to capture these screenshots than it was to set up this testing suite! Yay for tape!
+
+<img src="nofive.png" alt="no five">
+
+<img src="greenfive.png" alt="green five, getting added">
+
+<img src="redfive.png" alt="red five, getting deleted">
+
+<img src="nofive.png" alt="no five">
+
 **This is a stub... there's more to come**
