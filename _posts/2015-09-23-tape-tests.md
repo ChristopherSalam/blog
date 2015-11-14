@@ -39,7 +39,7 @@ As I develop the test, I get to adjust the location of my firebase references an
 
 <img src="reversedTest.png" alt="reversedTest">
 
-For some reason, the output here includes an additional dockRef snapshot. Strange right?
+For some reason, the output here includes an additional dockRef snapshot. Strange right? This is because Firebase sends a once initial snapshot and a update snapshot, which can be difficult to test around. With two listeners in place, and one update will lead to four separate updates, as we see in the above file. Below, we will see five updates, the dockRef's once, followed by the pondRef's 1st, which updates the 1st dockRef update (2nd overall), leading to a 2nd dock ref update (3rd overall), then the newUser which leads to the pond updating the dock one last time. (4th and 5th overall) update. I attempted to attach the test to the snapshot listener but haven't found a way yet! Ideas?
 
 <img src="reversed.png" alt="reversed">
 
@@ -55,7 +55,7 @@ I hope this was helpful! There's lots of other helpful aspects of tape, but the 
 
 <img src="commented.png" alt="commented">
 
-This is mostly unrelated, but the firebase UX is truly special. This a set of pings with milliseconds in between, but firebase is kind enough to show all the changes, green for addition and red for removal. Very cool! It was harder to capture these screenshots than it was to set up this testing suite! Yay for tape!
+This is mostly unrelated, but the Firebase UX is truly special. This a set of pings with milliseconds in between, but Firebase is kind enough to show all the changes, green for addition and red for removal. Very cool! It was harder to capture these screenshots than it was to set up this testing suite! Yay for tape!
 
 <img src="nofive.png" alt="no five">
 

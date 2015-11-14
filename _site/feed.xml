@@ -12,13 +12,13 @@
 
 &lt;p&gt;As the site is currently constructed, it preloads the entire data set into an angular controller, and lets the information pulled from your waste input (key) turn out a bin location (and soon, addresses or places to take complex wastes such as hard drives, batteries, and lightbulbs) (value)&lt;/p&gt;
 
-&lt;p&gt;http://redis.io/commands&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://redis.io/commands&quot; target=&quot;_blank&quot;&gt;A list of Redis Commands can be found here.&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://www.sitepoint.com/using-redis-node-js/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.sitepoint.com/using-redis-node-js/&quot; target=&quot;_blank&quot;&gt;A tutorial for Node &amp;amp; Redis is here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://devcenter.heroku.com/articles/heroku-redis#connecting-in-node-js&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-redis#connecting-in-node-js&quot;&gt;Documentation for Heroku and Redis is here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;https://www.airpair.com/express/posts/earn-stack&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.airpair.com/express/posts/earn-stack&quot;&gt;An EARN (Express, Angular, Redis, Node) stack tutorial is here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
