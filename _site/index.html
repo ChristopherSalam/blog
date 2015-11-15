@@ -47,11 +47,8 @@
 
     <div id="main" role="main" class="container">
       <!-- load the d3.js library -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-
 <div id="diagram"></div>
-
 <script>
 
 var treeData = [
@@ -80,7 +77,7 @@ var treeData = [
         { "name":"job seekers", "parent": "#resources" }
         ]
       },
-      { "name": "bash & blog", "parent": "#intro" }
+      { "name": "bash & blog", "parent": "#bash" }
       ]
     },
     { "name":"packages", "parent": "#setup" }
@@ -89,32 +86,33 @@ var treeData = [
   { "name": "#nosql", "parent": "#data structures", "children": [
     { "name": "try redis", "parent": "#nosql" },
     { "name": "#neo4j", "parent": "#data structures", "children": [
-      { "name": "collision", "parent": "packages"},
-      { "name": "node-neo4j", "parent": "try neo4j" },
-      { "name": "query neo4j", "parent": "try neo4j" }
+      { "name": "query neo4j", "parent": "#neo4j"},
+      { "name": "collision", "parent": "#neo4j" },
+      { "name": "node-neo4j", "parent": "#neo4j" }
       ]
     },
-    { "name": "try neo4j", "parent": "try neo4j" }
+    { "name": "try neo4j", "parent": "#nosql" }
     ]
   },
   { "name": "#structures", "parent": "#javascript", "children": [
-    { "name": "matrix paths", "parent": "#structures" },
-    { "name": "#regexp", "parent": "#structures", "children":[
-        { "name": "try regexp", "parent": "regexp", "children": [
-          { "name": "O(r)", "parent": "regexp" },
-          { "name": "regexp.js", "parent": "regexp" }
-          ]
-        },
-      ]
+    { "name": "trees", "parent": "#structures" },
+    { "name": "binary-search", "parent": "#structures", "children": [
+      { "name": "#regexp", "parent": "#structures", "children":[
+          { "name": "try regexp", "parent": "#regexp" },
+          { "name": "O(r)", "parent": "#regexp" },
+          { "name": "regexp.js", "parent": "#regexp" }
+            ]
+      }
+    ]
     },
-    { "name": "trees", "parent": "#data structures" }
+    { "name": "matrix paths", "parent": "#structures" }
   ]
   }
 ];
 
 // ************** Generate the tree diagram  *****************
-
 // var width = document.getElementById('main').offsetWidth;
+
 var vwidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var vtop = (vwidth > 410) ? 80 : 50;
 vwidth = (vwidth > 410) ? 410 : vwidth;
@@ -162,7 +160,6 @@ function makeMeSomeTrees(eachRoot){
   .attr("class", "node")
   .attr("transform", function(d) {
     return "translate(" + d.x + "," + d.y + ")"; });
-    // return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeEnter.append("circle")
   .attr("r", vwidth/8.5)
@@ -179,14 +176,31 @@ function makeMeSomeTrees(eachRoot){
   .style("fill-opacity", 1)
   .attr("class", "hyper").on("click", function (d) {
     var url;
-    if (d.name.match(/#/)) { url = 'http://www.chrissalam.com/tags/' + d.name; }
-        else { url = 'http://www.chrissalam.com/' + d.name.split(" ").join("-"); }
-        window.location = url;
-      });
+    if (d.name.match(/#/)) {
+      url = 'http://www.chrissalam.com/tags/' + d.name;
+    } else {
+      url = 'http://www.chrissalam.com/' + d.name.split(" ").join("-");
+    } window.location = url;
+  });
 
   // Declare the links.
   var link = svg.selectAll("path.link")
   .data(links, function(d) { return d.target.id; });
+
+  //Highlight
+  nodeEnter.select("circle")
+  .style("stroke", function(d){
+    if (d.name.match(/(tape|node|projects|binary)/)) {
+      return "rgba(51,15,83, .5)"; } /*purple*/
+    else { return "rgba(31,110,106, .5)"; } /*green*/
+  }).style("stroke-width", function(d){
+    if (d.name.match(/(tape|node|projects|binary|#)/)) {
+      return 8;
+    }
+    else {
+      return 0;
+   }
+  })
 
   // Enter the links.
   link.enter().insert("path", "g")
@@ -203,7 +217,8 @@ for (var q = 0; q < treeData.length; q++) {
 
 </script>
 
-<!-- <div class="posts">
+<!--
+<div class="posts">
 	<h1></h1>
 	<ul class="hex">
 		
@@ -440,7 +455,8 @@ for (var q = 0; q < treeData.length; q++) {
 		</li>
 		
 	</ul>
-</div> -->
+</div>
+-->
 
     </div>
 
