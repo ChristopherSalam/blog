@@ -1025,7 +1025,7 @@ where the newfunc(args_provided_to_function_one) --&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Desktop &lt;i class=&quot;fa fa-linux&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-windows&quot;&gt;&lt;/i&gt; (Electron)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;https://gist.github.com/jeremykendall/455ac49a71c3f26f1c49&quot; target=&quot;_blank&quot;&gt;Node-Neo4j-GraphStory-Heroku&lt;/a&gt;&lt;/strong&gt; blog series coming!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;/node-neo4j&quot; &gt;Node-Neo4j-GraphStory-Heroku&lt;/a&gt;&lt;/strong&gt; blog series coming!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;noheroku.png&quot; alt=&quot;noheroku&quot;&gt;&lt;/p&gt;
 
@@ -1062,10 +1062,12 @@ where the newfunc(args_provided_to_function_one) --&gt;
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Other devs are too busy to learn&lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-flag-checkered&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; You may be building the first of it&amp;#39;s kind&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;How long have you spent on this... 16 hours?&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;That makes you an expert.&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;When you figure it out, tell me&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;and I&amp;#39;ll post your blog.&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;How long have you spent on this... &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt; hours?
+That makes you an expert.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;When you figure it out, tell me
+and I&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;ll post your blog.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Be available to help&lt;/p&gt;
 

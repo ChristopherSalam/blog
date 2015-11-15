@@ -78,13 +78,165 @@
 
 <p><strong><a href="/try-neo4j" title="Getting Started">Part 1 - Try Neo4j</a></strong> | <strong><a href="/query-neo4j" title="Learning Database Language">Part 2 - Query Neo4j</a></strong> | <strong><a href="/collision" title="Resolving Duplicates">Part 3 - Collisions</a></strong> | Part 4 | <strong><a href="https://github.com/upstanding-biome/sixdegrees">Repo</a></strong> | <strong><a href="http://sixdribbles.com">Site</a></strong></p>
 
-<p>This post addresses a major struggle we had with this project. Within 4 days we were able to build a neo4j database accessing our local database to produce connections and render them to the screen... on localhost. We did not realize that the journey towards hosting the site would take another month (and have to be worked on in the midst of two other projects, i.e. on Sunday or 12pm-2am was the only time we had to work). The main challenge for me was a fundamental learning curve with Nodejs and noe4j and using two techologies to make this process work with heroku.</p>
+<p>This post addresses a major struggle we had with this project. Within 4 days we were able to build a neo4j database accessing our local database to produce connections and render them to the screen... on localhost. We did not realize that the journey towards hosting the site would take another month (and have to be worked on in the midst of two other projects, i.e. on Sunday or 12pm-2am was the only time we had to work). The main challenge for me was a fundamental learning curve with Nodejs and Neo4j and using two techologies to make this process work with Heroku.</p>
 
 <p><strong>1.</strong> Graph Story, a company that provides instructions for a neo4j instance on heroku (and other hosting services, I&#39;m sure)</p>
 
 <p><strong>2.</strong> Seraph, a tiny library written to allow neo4j to render to the client and dodge CORS (cross origin resource sharing) conflicts.</p>
 
-<p>I&#39;ll begin to share snippets from the code here and hopefully prevent slowdown for future neo4j experimenters.</p>
+<p>I wanted to snippets from the code here and hopefully prevent slowdown for future neo4j experimenters.</p>
+
+<p>When I got started I scoured the internets for information on how to get going on Graph Story. Literally the only example of Graph Story key access for NodeJS was provided in a <strong><a href="https://gist.github.com/jeremykendall/455ac49a71c3f26f1c49" target="_blank">gist</a></strong> written by Graph Story&#39;s CEO, Jeremy Kendall. I later spoke with him on the phone after I was at a high point of frustration, and he said to me words I&#39;ll always remember,</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">How long have you spent on this... <span class="m">16</span> hours?
+That makes you the expert.
+</code></pre></div>
+<p>At that moment I realized that this would be the first of many moments I would have to figure out my own solution. Here&#39;s what was cobbled together.</p>
+
+<p>Graph Story&#39;s Database key looks alot like Jeremy&#39;s Gist. Here&#39;s what mine database key using seraph looked like (a db.js file in a db folder) looked like:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">db_url</span> <span class="o">=</span> <span class="s2">&quot;https://neo-xxxxxxxxxxxxx-xxxxxxxx.do-stories.graphstory.com:7473&quot;</span><span class="p">,</span>
+<span class="c1">//var db_url = localhost:7473</span>
+
+<span class="nx">dbRemote</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;seraph&quot;</span><span class="p">)({</span>
+  <span class="nx">server</span><span class="o">:</span> <span class="nx">db_url</span><span class="p">,</span>
+  <span class="nx">endpoint</span><span class="o">:</span> <span class="s2">&quot;/db/data&quot;</span><span class="p">,</span>
+  <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;xxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+  <span class="nx">pass</span><span class="o">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
+<span class="p">});</span>
+
+<span class="nx">exports</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">dbRemote</span><span class="p">;</span>
+</code></pre></div>
+<p>The commented line you may need as you set up the application. I set up a local database on my computer on 7473 before setting up a working database on the graph story. The process for either are identical.</p>
+
+<p>The server itself accessed this key.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//server.js</span>
+
+<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+<span class="cm">/*=======================================|</span>
+<span class="cm">| Call in express and other node_modules |        </span>
+<span class="cm">|=======================================*/</span>
+
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">),</span>
+  <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;body-parser&#39;</span><span class="p">),</span>
+  <span class="nx">dbRemote</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./db/db.js&#39;</span><span class="p">),</span>
+  <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">(),</span>
+</code></pre></div>
+<p>There&#39;s lots of different things we need to do to make our files work and be hidden on source control (such as our actual DB key above), which I may do a separate post on. Here&#39;s the code behind setting up a port for the site.</p>
+
+<p><img src="node-neo4j.png" alt="heroku logs"></p>
+
+<p>The trickiest thing is accessing this db file and sending it up on heroku but gitignoring it and not sending it to Github. It sounds so elementary, but you&#39;d be surprised how often you&#39;ll mess this up at first. When having problems with this task, be sure to use Heroku Logs, it&#39;s a very helpful command.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*=======================================|</span>
+<span class="cm">|   Sets port to environment port        |</span>
+<span class="cm">|   or local port                        |</span>
+<span class="cm">|=======================================*/</span>
+
+<span class="kd">var</span> <span class="nx">port</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">7473</span><span class="p">;</span>
+</code></pre></div>
+<p>process.env.PORT is the name of the host IP on Heroku,
+and on Microsoft Azure as well. For Neo4j the default host is
+7473, and the || structure let&#39;s us host the site on our
+computer or on Heroku without having to modify our files.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*=======================================|</span>
+<span class="cm">|   connecting the client and server     |</span>
+<span class="cm">|   allows for CORS (cross               |</span>
+<span class="cm">|   origin resource sharing)             |</span>
+<span class="cm">|=======================================*/</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s2">&quot;access-control-allow-origin&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s2">&quot;access-control-allow-headers&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin, X-Requested-With, Content-Type, Accept&quot;</span><span class="p">);</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// support json encoded bodies</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="c1">// support encoded bodies</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span>
+  <span class="nx">extended</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}));</span>
+</code></pre></div>
+<p>This is super crucial. Without this line, you&#39;ll end with
+500 errors.</p>
+
+<p><img src="500.png" alt="Here's a 500 error"></p>
+
+<p>We need to send out the static files</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================|</span>
+<span class="cm">|   statically serves files from          |</span>
+<span class="cm">|   the client directory                  |</span>
+<span class="cm">|========================================*/</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/node_modules&#39;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/node_modules&#39;</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/public&#39;</span><span class="p">));</span>
+</code></pre></div>
+<p>Node gives us dirname, which is helpful for serving out the correct url, similar to the process behind process.env.PORT.</p>
+
+<p>At this point, we have enough code in this server to run seraph layered node code to pull down information from our database. This log will show up in your node log. This test is commented but it was the first clue I was on the right track.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================|</span>
+<span class="cm">|    Test                                 |</span>
+<span class="cm">|========================================*/</span>
+
+<span class="nx">dbRemote</span><span class="p">.</span><span class="nx">queryRaw</span><span class="p">(</span><span class="s2">&quot;MATCH (n:Player) RETURN n LIMIT 1&quot;</span><span class="p">,</span> <span class="p">{},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Query is working&quot;</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>We are finally getting to Routes, which is the most important part of the node file. within the app.post that corresponds to your controller which sends the same url, you can place any database query. For using queryRaw, which lets you process raw Cypher queries, we just need to catch the request and send the result returned by Seraph/Node/GraphStory and your Database. Pretty cool!</p>
+
+<p>The commented code below is some of the work I&#39;m doing for a wikipedia call that will show images of the NBA player or coach called up. I&#39;ll add it when it&#39;s ready.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================|</span>
+<span class="cm">|  ROUTES                                 |</span>
+<span class="cm">|========================================*/</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">location</span><span class="p">(</span><span class="s1">&#39;/public/index.html&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/player&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="nx">dbRemote</span><span class="p">.</span><span class="nx">queryRaw</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">query</span><span class="p">,{},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// app.post(&#39;/picture&#39;, function(req, res){</span>
+<span class="c1">//   // console.log(req.body);</span>
+<span class="c1">//   var str = req.body[&quot;data&quot;];</span>
+<span class="c1">//   res.send(str);</span>
+<span class="c1">// });</span>
+</code></pre></div>
+<p>And to finish up the server file, let&#39;s call up the listener.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*=======================================|</span>
+<span class="cm">|   Calling the server                   |</span>
+<span class="cm">|=======================================*/</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Tip off on port&#39;</span><span class="p">,</span> <span class="nx">port</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">exports</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+</code></pre></div>
+<p>Pretty cool! I&#39;m excited to expand this site, and add other queries. This same structure will guide the rest of the site. Another really exciting thing is extending these structures in React Native or future frameworks built on top of Mac iOS XMLHTTPrequest that don&#39;t have CORS issues means that the code above minus the listener and the  &quot;access-control-allow-origin&quot; section will be sufficient. For traditional web applications as of HTML5, we will need to write our client to receive the call. Here&#39;s how I processed it.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//within the public/client files</span>
+<span class="c1">//within the Angular controller</span>
+
+<span class="cm">/*==================================|</span>
+<span class="cm">| This calls the server which goes  |</span>
+<span class="cm">| to the DB and returns our query   |</span>
+<span class="cm">|==================================*/</span>
+
+   <span class="nx">$http</span><span class="p">({</span>
+     <span class="nx">method</span><span class="o">:</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+     <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/player&#39;</span><span class="p">,</span>
+     <span class="nx">accepts</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+     <span class="nx">datatype</span><span class="o">:</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+     <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;query&quot;</span> <span class="o">:</span> <span class="nx">query</span> <span class="p">},</span>
+     <span class="nx">error</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">textstatus</span><span class="p">,</span> <span class="nx">errorthrown</span><span class="p">){</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="nx">query</span><span class="p">,</span><span class="nx">errorthrown</span><span class="p">)}</span>
+   <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p>The key points here is the url should match. I will eventually process multiple queries here. Additionally, the response.data.data was a really tricky strange quirk. Hope this was helpful!</p>
 
 <p><strong>This is a stub, there&#39;s more coming</strong></p>
 
