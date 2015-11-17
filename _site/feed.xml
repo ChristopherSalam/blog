@@ -69,9 +69,9 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 &lt;li&gt;(2) Code can&amp;#39;t be run without compilation&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Interpreted languages have instead of a compiler the ability to process the language on the machine and the code is read step by step.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Interpreted or scripted languages have instead of a compiler the ability to process the language on the machine and the code is read step by step.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Advantages&lt;/p&gt;
+&lt;p&gt;Advantages of  Interpreted/Scripted Languages&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;(1) Platform independent, i.e. being standalone.&lt;/li&gt;
@@ -81,7 +81,7 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 &lt;li&gt;(5) Generally a smaller executable program size.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Disadvantages&lt;/p&gt;
+&lt;p&gt;Disadvantages of Interpreted/Scripted Languages&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;(1) Bugs from a lack of static type-checking&lt;/li&gt;

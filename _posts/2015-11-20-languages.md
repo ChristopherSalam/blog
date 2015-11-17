@@ -41,9 +41,9 @@ Disadvantages of Compiled Languages
 * (1) Writing a compiler is difficult.
 * (2) Code can't be run without compilation
 
-**Interpreted languages have instead of a compiler the ability to process the language on the machine and the code is read step by step.**
+**Interpreted or scripted languages have instead of a compiler the ability to process the language on the machine and the code is read step by step.**
 
-Advantages
+Advantages of  Interpreted/Scripted Languages
 
 * (1) Platform independent, i.e. being standalone.
 * (2) Reflection, which means you can use the language to inspect and fix itself.
@@ -51,7 +51,7 @@ Advantages
 * (4) **<a href="https://en.wikipedia.org/wiki/Scope_(computer_science)#Dynamic_scoping">Dynamic scoping which I'm going to leave to wikipedia</a>**
 * (5) Generally a smaller executable program size.
 
-Disadvantages
+Disadvantages of Interpreted/Scripted Languages
 
 * (1) Bugs from a lack of static type-checking
 * (2) Susceptibility to code injection attacks
