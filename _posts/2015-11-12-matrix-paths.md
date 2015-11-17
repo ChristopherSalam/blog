@@ -313,3 +313,152 @@ There are 864 results! Pretty nifty. Here's a partial screenshot.
 These stumped me live, but after some time to think about it, I'll be ready for the next set of these, and I hope this helped you.
 
 <img src="manyPaths.png" alt="joke at the end.">
+
+<!--
+
+Islands and Ponds Problem
+
+```javascript
+var maps = [
+[0,1,0,0,0],
+[0,1,0,1,0],
+[0,1,0,1,0],
+[0,1,0,1,0],
+[0,1,0,0,0] ];
+
+var numIslands = function (grid) {
+
+  var top, split, i, j;
+
+  function expanse(queue) {
+      top = queue.pop();
+      i = top.row;
+      j = top.col;
+        if (grid[i] && grid[i][j] && grid[i][j] === 1) {
+          grid[i][j] = 0;
+            console.log(grid);
+          queue.push({row: i + 1 , col: j});
+          queue.push({row: i - 1 , col: j});
+          queue.push({row: i, col: j + 1 });
+          queue.push({row: i, col: j - 1 });
+        }
+        if (queue.length > 0) { expanse(queue); }
+      }
+
+  var x, y, count = 0, m = grid.length, N;
+    for (x = 0; x < m; x ++ ) {
+      N = grid[0].length;
+        for (y = 0; y < N; y++ ) {
+          if (grid[x][y] === 1 ) {
+            expanse([{"row": x, "col": y}]);
+              count++;
+            }
+          }
+      }
+      return count;
+ }
+
+console.log(numIslands(maps));
+
+console.log(maps);
+```
+
+robot paths
+```javascript
+/**
+ *
+ *  A robot located at the top left corner of a 5x5 grid is trying to reach the
+ *  bottom right corner. The robot can move either up, down, left, or right,
+ *  but cannot visit the same spot twice. How many possible unique paths are
+ *  there to the bottom right corner?
+ *
+ *  make your solution work for a grid of any size.
+ *
+ */
+
+// A Board class will be useful
+
+var Board = function (n) {
+
+  var board = [],
+    i,
+    j;
+
+  for (i = 0; i < n; i++) {
+      board.push([]);
+    for (j = 0; j < n; j++) {
+      board[i].push(false);
+    }
+  }
+  board.togglePiece = function (i, j) {
+    this[i][j] = !this[i][j];
+  }
+  board.hasBeenVisited = function (i, j) {
+    return !!this[i][j];
+  }
+  return board;
+};
+
+var robotPaths = function(n, board, i, j) {
+
+  if (!board) {
+    board = new Board(n);
+    i = 0;
+    j = 0;
+  }
+
+  if (!(i >=0 && i < n && j >=0 && j < n) || board.hasBeenVisited(i, j)) {
+    return 0;
+  }
+
+  if (i === n - 1 && j === n - 1) { return 1; }
+
+  board.togglePiece(i, j);
+
+  var result = robotPaths(n, board, i, j + 1) +
+    robotPaths(n, board, i, j - 1) +
+    robotPaths(n, board, i + 1, j) +
+    robotPaths(n, board, i - 1, j);
+
+  board.togglePiece(i, j);
+  return result;
+
+}
+
+console.log(robotPaths(5, undefined));
+```
+
+trapped water problem
+```javascript
+var pit = [1,2,0,2,1,2];
+
+
+function trappedWater(pit){
+
+  var left = [pit[0]],
+    right = [],
+    water = 0;
+
+
+  for (var i = 1; i < pit.length-1; i++) {
+    left[i] = Math.max(left[i-1],pit[i]);
+  }
+
+  right[pit.length-1] = pit[pit.length-1];
+
+  for (var i = pit.length-2; i >= 0; i--) {
+    right[i] = Math.max(pit[i],right[i+1]);
+  }
+
+  for (var i = 0; i < pit.length-1; i++) {
+      water += Math.min(left[i], right[i]) - pit[i];
+  }
+
+  return water;
+
+}
+
+console.log(trappedWater(pit));
+```
+
+-->
