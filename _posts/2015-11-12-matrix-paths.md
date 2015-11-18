@@ -235,92 +235,76 @@ function minLifeNeededToLive(matrix) {
 
 Hopefully that is helpful! I'm going to skip making the tree this time if that works with you.
 
-Oddly enough, this next problem may get moved to it's own page, but it's very similar. The notion is instead of a matrix, let's take a word and generate a tree of options. This is a very practical combinations exercise: what are the passwords people create when they are being lazy that are too similar to their previous password? Given a single string, give all the options of bad passwords that a user may try to generate.
-
-Why do we do this? This is pretty straight forward. If I can come up with an algorithm to get all the too simple password modifications, what makes you think hackers aren't running these evaluations all the time? They probably are. Makes me want to go through and change some of my passwords...
+Another similar and slightly more complicated problem is islands and ponds. This matrix requires you to either keep track on information upon examination and traverse within your traversal. To be clear, the example below shows two ponds (ones), within a set of land (zeros).
 
 ```javascript
-//input
-var password = "secretcode",
-badSubstitutions = {"s":["S","$"],"o":["0"]}
-//output
-["$ecretcode","Secretcode","secretc0de","$ecretc0de","Secretc0de","secretcode"]
+var maps = [
+[0,0,0,0,0],
+[0,0,0,1,0],
+[0,0,0,1,1],
+[0,1,0,1,0],
+[0,0,0,0,0] ];
 ```
 
-At some point you'll start to see that all these structures break down to these concepts of inputs and outputs and manipulations on each.
+When each pond is discovered, we need to travel horizontally and vertically to verify that this is not a new pond. One method might be to change the pond found in an iterative loop, so that when the first pond checker lands on the spot again, they find that a change has been made (logically, to zero). -->
 
 ```javascript
-/*====================================||
-|| Bad Passwords                      ||
-||====================================*/
+//process:[x][y], subprocess:0
+var maps = [
+[0,0,0,0,0],
+[0,0,0,((1)),0],  // on this spot
+[0,0,0,1,1],
+[0,1,0,1,0],
+[0,0,0,0,0] ];
 
-//sample inputs
-var string = "password",
-  set = {"a":["A"],"s":["S","$"],"w":["W"],"o":["0","O"],"r":["R"],"d":["D","&","6"]}
+//subprocess:1
+var maps = [
+[0,0,0,0,0],
+[0,0,0,0,0],  // on this spot
+[0,0,0,((1)),1],
+[0,1,0,1,0],
+[0,0,0,0,0] ];
 
-function badPasswordList(string, set) {
+//subprocess:2
+var maps = [
+[0,0,0,0,0],
+[0,0,0,0,0],  //  move down
+[0,0,0,((0)),1],
+[0,1,0,1,0],
+[0,0,0,0,0] ];
 
-// start meaning the part of the string
-// that's been processed already.
-// end will refer to the rest of the string
-// usually captured with .substr(1)
-	var badPasswords = [],
-    start = "";
+//subprocess:3
+var maps = [
+[0,0,0,0,0],
+[0,0,0,0,0],  // change one to
+[0,0,0,((0)),1], //zero
+[0,1,0,1,0],
+[0,0,0,0,0] ];
 
-// a recursive function. noticing the pattern?
+//subprocess:4
+var maps = [
+[0,0,0,0,0],
+[0,0,0,0,0],  // finish
+[0,0,0,0,((1))],
+[0,1,0,((1)),0],
+[0,0,0,0,0] ];
 
-    function traverse(start, end) {
+//subprocess:5
+var maps = [
+[0,0,0,0,0],
+[0,0,0,0,0],  // no where else
+[0,0,0,0,((0))], // to go
+[0,1,0,((0)),0],
+[0,0,0,0,0] ];
 
-// our boundary, when there is no more string
-// left. (one character).substr(1) === ""
-
-    	if (end === "") {
-
-// at the boundary, we can collect our
-// finished bad password!
-
-            badPasswords.push(start);
-            return;
-        } else {
-// this is asking if we have a character
-// with lazy replacement options, i.e. s --> $
-            if (set[end[0]]) {
-
-// and the trick here is to iterate
-// through the array of options
-
-                for (var i = 0; i < set[end[0]].length; i++) {
-
-// and recursively include stepping down the string.
-
-                    traverse(start + set[end[0]][i], end.substr(1))
-                }
-
-// otherwise process the letter as normal.
-
-            }   return traverse(start + end[0], end.substr(1));
-        }
-    }
-
-// begun the loop
-
-    traverse(start, string);
-
-// all the different possible passwords.    
-
-    return badPasswords;
-}
+//resume process [x][y+1]
+var maps = [
+[0,0,0,0,0],
+[0,0,0,0,0], // and avoid
+[0,0,0,0,0], // double counting
+[0,1,0,0,0],
+[0,0,0,0,0] ];
 ```
-
-There are 864 results! Pretty nifty. Here's a partial screenshot.
-
-<img src="options.png" alt="passwords.....">
-
-These stumped me live, but after some time to think about it, I'll be ready for the next set of these, and I hope this helped you.
-
-<img src="manyPaths.png" alt="joke at the end.">
-
-<!--
 
 Islands and Ponds Problem
 
@@ -368,7 +352,7 @@ console.log(numIslands(maps));
 
 console.log(maps);
 ```
-
+<!--
 robot paths
 ```javascript
 /**
@@ -432,80 +416,8 @@ var robotPaths = function(n, board, i, j) {
 }
 
 console.log(robotPaths(5, undefined));
-```
+``` -->
 
-trapped water problem
-```javascript
-var pit = [1,2,0,2,1,2];
+These stumped me live, but after some time to think about it, I'll be ready for the next set of these, and I hope this helped you.
 
-
-function trappedWater(pit){
-
-  var left = [pit[0]],
-    right = [],
-    water = 0;
-
-
-  for (var i = 1; i < pit.length-1; i++) {
-    left[i] = Math.max(left[i-1],pit[i]);
-  }
-
-  right[pit.length-1] = pit[pit.length-1];
-
-  for (var i = pit.length-2; i >= 0; i--) {
-    right[i] = Math.max(pit[i],right[i+1]);
-  }
-
-  for (var i = 0; i < pit.length-1; i++) {
-      water += Math.min(left[i], right[i]) - pit[i];
-  }
-
-  return water;
-
-}
-
-console.log(trappedWater(pit));
-```
-
-```javascript
-var schedule = {
-	"MV":[1,2,3,4,5,6,7,8,9,10,11,12],
-	"SB":[1,2,3,4,5,6,7,8,9,10,11,12],
-	"NY":[1,2,3,4,5,6,7,8,9,10,11,12],
-	"GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
-
-/*====================================||
-|| World Offices                      ||
-||====================================*/
-
-var flights = {
-  	"MV":["MV","SB","NY"],
-  	"SB":["MV","SB","NY"],
-  	"NY":["NY","GB","SB","MV"],
-  	"GB":["GB","NY"]
-  }
-
-function minimumWork(set) {
-    var options = {};
-    function traverse(hours, month, location) {
-        if (month === 11) {
-            options[hours] = options[hours] || 0;
-            options[hours]++;
-            return;
-        } else {
-            for (var i = 0; i < flights[location].length; i++) {
-                traverse(hours + schedule[location][month + 1], month + 1, flights[location][i]);
-            }
-        }
-    }
-
-	for (var startLoc in flights) {
-    	traverse(schedule[startLoc][0], 0, startLoc);
-	}
-    return Math.min.apply(null,Object.keys(options));
-}
-
-console.log(minimumWork(flights));
-```
-
--->
+<img src="manyPaths.png" alt="joke at the end.">

@@ -270,134 +270,116 @@
 </code></pre></div>
 <p>Hopefully that is helpful! I&#39;m going to skip making the tree this time if that works with you.</p>
 
-<p>Oddly enough, this next problem may get moved to it&#39;s own page, but it&#39;s very similar. The notion is instead of a matrix, let&#39;s take a word and generate a tree of options. This is a very practical combinations exercise: what are the passwords people create when they are being lazy that are too similar to their previous password? Given a single string, give all the options of bad passwords that a user may try to generate.</p>
-
-<p>Why do we do this? This is pretty straight forward. If I can come up with an algorithm to get all the too simple password modifications, what makes you think hackers aren&#39;t running these evaluations all the time? They probably are. Makes me want to go through and change some of my passwords...</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//input</span>
-<span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="s2">&quot;secretcode&quot;</span><span class="p">,</span>
-<span class="nx">badSubstitutions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">]}</span>
-<span class="c1">//output</span>
-<span class="p">[</span><span class="s2">&quot;$ecretcode&quot;</span><span class="p">,</span><span class="s2">&quot;Secretcode&quot;</span><span class="p">,</span><span class="s2">&quot;secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;$ecretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;Secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;secretcode&quot;</span><span class="p">]</span>
+<p>Another similar and slightly more complicated problem is islands and ponds. This matrix requires you to either keep track on information upon examination and traverse within your traversal. To be clear, the example below shows two ponds (ones), within a set of land (zeros).</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 </code></pre></div>
-<p>At some point you&#39;ll start to see that all these structures break down to these concepts of inputs and outputs and manipulations on each.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
-<span class="cm">|| Bad Passwords                      ||</span>
-<span class="cm">||====================================*/</span>
+<p>When each pond is discovered, we need to travel horizontally and vertically to verify that this is not a new pond. One method might be to change the pond found in an iterative loop, so that when the first pond checker lands on the spot again, they find that a change has been made (logically, to zero). --&gt;</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//process:[x][y], subprocess:0</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">1</span><span class="p">)),</span><span class="mi">0</span><span class="p">],</span>  <span class="c1">// on this spot</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-<span class="c1">//sample inputs</span>
-<span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
-  <span class="nx">set</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;w&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">],</span><span class="s2">&quot;r&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">],</span><span class="s2">&quot;d&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span><span class="s2">&quot;6&quot;</span><span class="p">]}</span>
+<span class="c1">//subprocess:1</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>  <span class="c1">// on this spot</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">1</span><span class="p">)),</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-<span class="kd">function</span> <span class="nx">badPasswordList</span><span class="p">(</span><span class="nx">string</span><span class="p">,</span> <span class="nx">set</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//subprocess:2</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>  <span class="c1">//  move down</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">0</span><span class="p">)),</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-<span class="c1">// start meaning the part of the string</span>
-<span class="c1">// that&#39;s been processed already.</span>
-<span class="c1">// end will refer to the rest of the string</span>
-<span class="c1">// usually captured with .substr(1)</span>
-    <span class="kd">var</span> <span class="nx">badPasswords</span> <span class="o">=</span> <span class="p">[],</span>
-    <span class="nx">start</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="c1">//subprocess:3</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>  <span class="c1">// change one to</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">0</span><span class="p">)),</span><span class="mi">1</span><span class="p">],</span> <span class="c1">//zero</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-<span class="c1">// a recursive function. noticing the pattern?</span>
+<span class="c1">//subprocess:4</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>  <span class="c1">// finish</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">1</span><span class="p">))],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">1</span><span class="p">)),</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-    <span class="kd">function</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//subprocess:5</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>  <span class="c1">// no where else</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">0</span><span class="p">))],</span> <span class="c1">// to go</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,((</span><span class="mi">0</span><span class="p">)),</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-<span class="c1">// our boundary, when there is no more string</span>
-<span class="c1">// left. (one character).substr(1) === &quot;&quot;</span>
+<span class="c1">//resume process [x][y+1]</span>
+<span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="c1">// and avoid</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="c1">// double counting</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
+</code></pre></div>
+<p>Islands and Ponds Problem</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nx">end</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">numIslands</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grid</span><span class="p">)</span> <span class="p">{</span>
 
-<span class="c1">// at the boundary, we can collect our</span>
-<span class="c1">// finished bad password!</span>
+  <span class="kd">var</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">split</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">;</span>
 
-            <span class="nx">badPasswords</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="c1">// this is asking if we have a character</span>
-<span class="c1">// with lazy replacement options, i.e. s --&gt; $</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="p">{</span>
-
-<span class="c1">// and the trick here is to iterate</span>
-<span class="c1">// through the array of options</span>
-
-                <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-
-<span class="c1">// and recursively include stepping down the string.</span>
-
-                    <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="nx">i</span><span class="p">],</span> <span class="nx">end</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-                <span class="p">}</span>
-
-<span class="c1">// otherwise process the letter as normal.</span>
-
-            <span class="p">}</span>   <span class="k">return</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">end</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+  <span class="kd">function</span> <span class="nx">expanse</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">top</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+      <span class="nx">i</span> <span class="o">=</span> <span class="nx">top</span><span class="p">.</span><span class="nx">row</span><span class="p">;</span>
+      <span class="nx">j</span> <span class="o">=</span> <span class="nx">top</span><span class="p">.</span><span class="nx">col</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grid</span><span class="p">);</span>
+          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span><span class="p">});</span>
+          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span><span class="p">});</span>
+          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">});</span>
+          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">});</span>
         <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nx">expanse</span><span class="p">(</span><span class="nx">queue</span><span class="p">);</span> <span class="p">}</span>
+      <span class="p">}</span>
 
-<span class="c1">// begun the loop</span>
+  <span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">N</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="nx">m</span><span class="p">;</span> <span class="nx">x</span> <span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="nx">N</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">y</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">;</span> <span class="nx">y</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">grid</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]</span> <span class="o">===</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nx">expanse</span><span class="p">([{</span><span class="s2">&quot;row&quot;</span><span class="o">:</span> <span class="nx">x</span><span class="p">,</span> <span class="s2">&quot;col&quot;</span><span class="o">:</span> <span class="nx">y</span><span class="p">}]);</span>
+              <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+ <span class="p">}</span>
 
-    <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">string</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numIslands</span><span class="p">(</span><span class="nx">maps</span><span class="p">));</span>
 
-<span class="c1">// all the different possible passwords.    </span>
-
-    <span class="k">return</span> <span class="nx">badPasswords</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">maps</span><span class="p">);</span>
 </code></pre></div>
-<p>There are 864 results! Pretty nifty. Here&#39;s a partial screenshot.</p>
-
-<p><img src="options.png" alt="passwords....."></p>
-
-<p>These stumped me live, but after some time to think about it, I&#39;ll be ready for the next set of these, and I hope this helped you.</p>
-
-<p><img src="manyPaths.png" alt="joke at the end."></p>
-
 <!--
-
-Islands and Ponds Problem
-
-```javascript
-var maps = [
-[0,1,0,0,0],
-[0,1,0,1,0],
-[0,1,0,1,0],
-[0,1,0,1,0],
-[0,1,0,0,0] ];
-
-var numIslands = function (grid) {
-
-  var top, split, i, j;
-
-  function expanse(queue) {
-      top = queue.pop();
-      i = top.row;
-      j = top.col;
-        if (grid[i] && grid[i][j] && grid[i][j] === 1) {
-          grid[i][j] = 0;
-            console.log(grid);
-          queue.push({row: i + 1 , col: j});
-          queue.push({row: i - 1 , col: j});
-          queue.push({row: i, col: j + 1 });
-          queue.push({row: i, col: j - 1 });
-        }
-        if (queue.length > 0) { expanse(queue); }
-      }
-
-  var x, y, count = 0, m = grid.length, N;
-    for (x = 0; x < m; x ++ ) {
-      N = grid[0].length;
-        for (y = 0; y < N; y++ ) {
-          if (grid[x][y] === 1 ) {
-            expanse([{"row": x, "col": y}]);
-              count++;
-            }
-          }
-      }
-      return count;
- }
-
-console.log(numIslands(maps));
-
-console.log(maps);
-```
-
 robot paths
 ```javascript
 /**
@@ -461,83 +443,11 @@ var robotPaths = function(n, board, i, j) {
 }
 
 console.log(robotPaths(5, undefined));
-```
+``` -->
 
-trapped water problem
-```javascript
-var pit = [1,2,0,2,1,2];
+<p>These stumped me live, but after some time to think about it, I&#39;ll be ready for the next set of these, and I hope this helped you.</p>
 
-
-function trappedWater(pit){
-
-  var left = [pit[0]],
-    right = [],
-    water = 0;
-
-
-  for (var i = 1; i < pit.length-1; i++) {
-    left[i] = Math.max(left[i-1],pit[i]);
-  }
-
-  right[pit.length-1] = pit[pit.length-1];
-
-  for (var i = pit.length-2; i >= 0; i--) {
-    right[i] = Math.max(pit[i],right[i+1]);
-  }
-
-  for (var i = 0; i < pit.length-1; i++) {
-      water += Math.min(left[i], right[i]) - pit[i];
-  }
-
-  return water;
-
-}
-
-console.log(trappedWater(pit));
-```
-
-```javascript
-var schedule = {
-    "MV":[1,2,3,4,5,6,7,8,9,10,11,12],
-    "SB":[1,2,3,4,5,6,7,8,9,10,11,12],
-    "NY":[1,2,3,4,5,6,7,8,9,10,11,12],
-    "GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
-
-/*====================================||
-|| World Offices                      ||
-||====================================*/
-
-var flights = {
-    "MV":["MV","SB","NY"],
-    "SB":["MV","SB","NY"],
-    "NY":["NY","GB","SB","MV"],
-    "GB":["GB","NY"]
-  }
-
-function minimumWork(set) {
-    var options = {};
-    function traverse(hours, month, location) {
-        if (month === 11) {
-            options[hours] = options[hours] || 0;
-            options[hours]++;
-            return;
-        } else {
-            for (var i = 0; i < flights[location].length; i++) {
-                traverse(hours + schedule[location][month + 1], month + 1, flights[location][i]);
-            }
-        }
-    }
-
-    for (var startLoc in flights) {
-        traverse(schedule[startLoc][0], 0, startLoc);
-    }
-    return Math.min.apply(null,Object.keys(options));
-}
-
-console.log(minimumWork(flights));
-```
-
--->
+<p><img src="manyPaths.png" alt="joke at the end."></p>
 
   </div>
 
