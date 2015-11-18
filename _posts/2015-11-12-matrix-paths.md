@@ -12,7 +12,7 @@ This is part 2 of 2 of the Path Problem series.
 
 I've been beginning to see a pattern to many problems, which I'm going to term path problems. One major type of problems involves the traversal across a matrix.  The goals here are here to determine how to store information and use arguments recursively (or iteratively) to carry information you need to the next step.
 
-Here's a common example, the fishing trip:
+###The Fishing Trip Problem
 
 ```javascript
 /*====================================||
@@ -159,7 +159,9 @@ If the tree is helpful, here's another look at what's happening.
 
 <img src="pondChoice.png" alt="alt view of pond problem">
 
-And you'll see twists on this generic idea of a problem. This is something computers can do so quickly for us that was very hard to set out to solve before computers. Another popular version is LifeTotal
+And you'll see twists on this generic idea of a problem. This is something computers can do so quickly for us that was very hard to set out to solve before computers.
+
+###The Life Total Problem
 
 ```javascript
 /*====================================||
@@ -235,6 +237,8 @@ function minLifeNeededToLive(matrix) {
 
 Hopefully that is helpful! I'm going to skip making the tree this time if that works with you.
 
+###The Islands and Ponds Problem
+
 Another similar and slightly more complicated problem is islands and ponds. This matrix requires you to either keep track on information upon examination and traverse within your traversal. To be clear, the example below shows two ponds (ones), within a set of land (zeros).
 
 ```javascript
@@ -306,41 +310,72 @@ var maps = [
 [0,0,0,0,0] ];
 ```
 
+So, to solve this problem, I decided to use a stack, and inside the stack there was an object indicating exactly what part of the matrix I was on at any given time, and then each "1" found in this sub process was converted to a "0" to avoid in being counting again. When this process completed, and only then, did the actual pond counter increment. So after all the processes above, we return to the problem and then resume looking around.
+
 Islands and Ponds Problem
 
 ```javascript
-var maps = [
+
+/*====================================||
+|| Islands and Ponds                  ||
+||                                    ||
+|| Count the number of ponds in a     ||
+|| matrix.                            ||
+||====================================*/
+// map needs to be a matrix format
+var map = [
 [0,1,0,0,0],
 [0,1,0,1,0],
 [0,1,0,1,0],
 [0,1,0,1,0],
 [0,1,0,0,0] ];
 
-var numIslands = function (grid) {
-
+var numPonds = function (grid) {
+// provided a grid, we create this
+// iterative varibles here
   var top, split, i, j;
 
-  function expanse(queue) {
-      top = queue.pop();
+// We need a recursive loop
+// as always. This is the subprocess
+// from above.
+  function expanse(stack) {
+// we take our input and look at the values there.
+      top = stack.pop();
       i = top.row;
       j = top.col;
+// If at that value, I have a "1", change it to "0"
         if (grid[i] && grid[i][j] && grid[i][j] === 1) {
           grid[i][j] = 0;
-            console.log(grid);
-          queue.push({row: i + 1 , col: j});
-          queue.push({row: i - 1 , col: j});
-          queue.push({row: i, col: j + 1 });
-          queue.push({row: i, col: j - 1 });
-        }
-        if (queue.length > 0) { expanse(queue); }
-      }
+// console.log(grid) if you want to see changes.
+// you can also copy the grid if you don't want
+// to modify the original object.
 
+// Here we are travelling to the other areas and
+// documenting them as a stack
+// you can also use a while loop but this is
+// a better way to keeping track of your info.
+          stack.push({row: i + 1 , col: j});
+          stack.push({row: i - 1 , col: j});
+          stack.push({row: i, col: j + 1 });
+          stack.push({row: i, col: j - 1 });
+        }
+// This keeps us processing everything.        
+        if (stack.length > 0) { expanse(stack); }
+      }
+// This is the process from above.
+// We travel to each square and make ad decision.
+// There are optimizations for double counting
+// that I'm not going to talk about here.
   var x, y, count = 0, m = grid.length, N;
     for (x = 0; x < m; x ++ ) {
       N = grid[0].length;
         for (y = 0; y < N; y++ ) {
           if (grid[x][y] === 1 ) {
+// If I have a pond, trigger subprocess
             expanse([{"row": x, "col": y}]);
+// And when the process is truly done
+// and I'm not at risk of double counting
+// any ponds, increment the pond counter
               count++;
             }
           }
@@ -348,26 +383,35 @@ var numIslands = function (grid) {
       return count;
  }
 
-console.log(numIslands(maps));
+console.log(numPonds(map));
 
-console.log(maps);
+//See the changed map, always completely zeroes.
+console.log(map);
 ```
-<!--
-robot paths
+
+###Robot Paths
+
+To follow this same set of logic, a duplicate board or a board that simply has true or false at each position can help us keep track of what has been seen or what has not been seen. This solver is an essential part of most of our games and their automatic moves and solvers. The last thing I'm going to blog about here is an approach where you move in all directions at all times, and the duplicate true false board will play a big role in deciding what can happen next.
+
 ```javascript
-/**
- *
- *  A robot located at the top left corner of a 5x5 grid is trying to reach the
- *  bottom right corner. The robot can move either up, down, left, or right,
- *  but cannot visit the same spot twice. How many possible unique paths are
- *  there to the bottom right corner?
- *
- *  make your solution work for a grid of any size.
- *
- */
 
-// A Board class will be useful
+/*====================================||
+|| Fishing Trip                       ||
+||                                    ||
+|| You are located at the top left    ||
+|| corner of a 5x5 grid is trying to  ||
+|| reach the bottom right       .     ||
+|| You can move either up, down,      ||
+|| left, or right, but cannot visit   ||
+|| the same spot twice. How many      ||
+|| possible unique paths are there    ||
+|| to the bottom right?               ||
+||====================================*/
+```
 
+Our first step is to make that "already visited" board.
+
+```javascript
 var Board = function (n) {
 
   var board = [],
@@ -388,35 +432,54 @@ var Board = function (n) {
   }
   return board;
 };
+```
 
-var robotPaths = function(n, board, i, j) {
+As before, we will make a recursive function that will move everywhere.
+It's pretty much indentical to our previous approaches except to prevent
+you from going where you've been before you need to see the board.
 
+```javascript
+
+var countAllPaths = function(n, board, i, j) {
+
+//Create the board if none exists.
   if (!board) {
     board = new Board(n);
     i = 0;
     j = 0;
   }
 
+// If you go off the board or
+// somewhere you've been, exit.
   if (!(i >=0 && i < n && j >=0 && j < n) || board.hasBeenVisited(i, j)) {
     return 0;
   }
 
+// If you reach the end, return 1
+// so that it can be added up for
+// the final answer
   if (i === n - 1 && j === n - 1) { return 1; }
 
+// toggling is a hard concept
+// but it is the process of undoing the
+// most recent move
   board.togglePiece(i, j);
 
-  var result = robotPaths(n, board, i, j + 1) +
-    robotPaths(n, board, i, j - 1) +
-    robotPaths(n, board, i + 1, j) +
-    robotPaths(n, board, i - 1, j);
-
+// Start calculating the number of paths
+  var result = countAllPaths(n, board, i, j + 1) +
+    countAllPaths(n, board, i, j - 1) +
+    countAllPaths(n, board, i + 1, j) +
+    countAllPaths(n, board, i - 1, j);
+// This is a way to preventing
+// Infinite loops for empty calculations
   board.togglePiece(i, j);
+// This gives us our final big number.
   return result;
 
 }
 
-console.log(robotPaths(5, undefined));
-``` -->
+console.log(countAllPaths(5));
+```
 
 These stumped me live, but after some time to think about it, I'll be ready for the next set of these, and I hope this helped you.
 

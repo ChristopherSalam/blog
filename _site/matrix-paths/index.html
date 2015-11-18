@@ -76,7 +76,7 @@
 
 <p>I&#39;ve been beginning to see a pattern to many problems, which I&#39;m going to term path problems. One major type of problems involves the traversal across a matrix.  The goals here are here to determine how to store information and use arguments recursively (or iteratively) to carry information you need to the next step.</p>
 
-<p>Here&#39;s a common example, the fishing trip:</p>
+<h3>The Fishing Trip Problem</h3>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
 <span class="cm">|| Fishing Trip                       ||</span>
 <span class="cm">||                                    ||</span>
@@ -201,7 +201,9 @@
 
 <p><img src="pondChoice.png" alt="alt view of pond problem"></p>
 
-<p>And you&#39;ll see twists on this generic idea of a problem. This is something computers can do so quickly for us that was very hard to set out to solve before computers. Another popular version is LifeTotal</p>
+<p>And you&#39;ll see twists on this generic idea of a problem. This is something computers can do so quickly for us that was very hard to set out to solve before computers.</p>
+
+<h3>The Life Total Problem</h3>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
 <span class="cm">|| Life Total                         ||</span>
 <span class="cm">||                                    ||</span>
@@ -270,6 +272,8 @@
 </code></pre></div>
 <p>Hopefully that is helpful! I&#39;m going to skip making the tree this time if that works with you.</p>
 
+<h3>The Islands and Ponds Problem</h3>
+
 <p>Another similar and slightly more complicated problem is islands and ponds. This matrix requires you to either keep track on information upon examination and traverse within your traversal. To be clear, the example below shows two ponds (ones), within a set of land (zeros).</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
@@ -335,39 +339,69 @@
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 </code></pre></div>
+<p>So, to solve this problem, I decided to use a stack, and inside the stack there was an object indicating exactly what part of the matrix I was on at any given time, and then each &quot;1&quot; found in this sub process was converted to a &quot;0&quot; to avoid in being counting again. When this process completed, and only then, did the actual pond counter increment. So after all the processes above, we return to the problem and then resume looking around.</p>
+
 <p>Islands and Ponds Problem</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
+<span class="cm">|| Islands and Ponds                  ||</span>
+<span class="cm">||                                    ||</span>
+<span class="cm">|| Count the number of ponds in a     ||</span>
+<span class="cm">|| matrix.                            ||</span>
+<span class="cm">||====================================*/</span>
+<span class="c1">// map needs to be a matrix format</span>
+<span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="p">[</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">];</span>
 
-<span class="kd">var</span> <span class="nx">numIslands</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grid</span><span class="p">)</span> <span class="p">{</span>
-
+<span class="kd">var</span> <span class="nx">numPonds</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grid</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// provided a grid, we create this</span>
+<span class="c1">// iterative varibles here</span>
   <span class="kd">var</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">split</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">;</span>
 
-  <span class="kd">function</span> <span class="nx">expanse</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">top</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="c1">// We need a recursive loop</span>
+<span class="c1">// as always. This is the subprocess</span>
+<span class="c1">// from above.</span>
+  <span class="kd">function</span> <span class="nx">expanse</span><span class="p">(</span><span class="nx">stack</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// we take our input and look at the values there.</span>
+      <span class="nx">top</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
       <span class="nx">i</span> <span class="o">=</span> <span class="nx">top</span><span class="p">.</span><span class="nx">row</span><span class="p">;</span>
       <span class="nx">j</span> <span class="o">=</span> <span class="nx">top</span><span class="p">.</span><span class="nx">col</span><span class="p">;</span>
+<span class="c1">// If at that value, I have a &quot;1&quot;, change it to &quot;0&quot;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">grid</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grid</span><span class="p">);</span>
-          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span><span class="p">});</span>
-          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span><span class="p">});</span>
-          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">});</span>
-          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">});</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nx">expanse</span><span class="p">(</span><span class="nx">queue</span><span class="p">);</span> <span class="p">}</span>
-      <span class="p">}</span>
+<span class="c1">// console.log(grid) if you want to see changes.</span>
+<span class="c1">// you can also copy the grid if you don&#39;t want</span>
+<span class="c1">// to modify the original object.</span>
 
+<span class="c1">// Here we are travelling to the other areas and</span>
+<span class="c1">// documenting them as a stack</span>
+<span class="c1">// you can also use a while loop but this is</span>
+<span class="c1">// a better way to keeping track of your info.</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span><span class="p">});</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span><span class="p">});</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">});</span>
+          <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">row</span><span class="o">:</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">});</span>
+        <span class="p">}</span>
+<span class="c1">// This keeps us processing everything.        </span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nx">expanse</span><span class="p">(</span><span class="nx">stack</span><span class="p">);</span> <span class="p">}</span>
+      <span class="p">}</span>
+<span class="c1">// This is the process from above.</span>
+<span class="c1">// We travel to each square and make ad decision.</span>
+<span class="c1">// There are optimizations for double counting</span>
+<span class="c1">// that I&#39;m not going to talk about here.</span>
   <span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">N</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="nx">m</span><span class="p">;</span> <span class="nx">x</span> <span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
       <span class="nx">N</span> <span class="o">=</span> <span class="nx">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span>
         <span class="k">for</span> <span class="p">(</span><span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">y</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">;</span> <span class="nx">y</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
           <span class="k">if</span> <span class="p">(</span><span class="nx">grid</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]</span> <span class="o">===</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+<span class="c1">// If I have a pond, trigger subprocess</span>
             <span class="nx">expanse</span><span class="p">([{</span><span class="s2">&quot;row&quot;</span><span class="o">:</span> <span class="nx">x</span><span class="p">,</span> <span class="s2">&quot;col&quot;</span><span class="o">:</span> <span class="nx">y</span><span class="p">}]);</span>
+<span class="c1">// And when the process is truly done</span>
+<span class="c1">// and I&#39;m not at risk of double counting</span>
+<span class="c1">// any ponds, increment the pond counter</span>
               <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
             <span class="p">}</span>
           <span class="p">}</span>
@@ -375,76 +409,92 @@
       <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
  <span class="p">}</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numIslands</span><span class="p">(</span><span class="nx">maps</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numPonds</span><span class="p">(</span><span class="nx">map</span><span class="p">));</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">maps</span><span class="p">);</span>
+<span class="c1">//See the changed map, always completely zeroes.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
 </code></pre></div>
-<!--
-robot paths
-```javascript
-/**
- *
- *  A robot located at the top left corner of a 5x5 grid is trying to reach the
- *  bottom right corner. The robot can move either up, down, left, or right,
- *  but cannot visit the same spot twice. How many possible unique paths are
- *  there to the bottom right corner?
- *
- *  make your solution work for a grid of any size.
- *
- */
+<h3>Robot Paths</h3>
 
-// A Board class will be useful
+<p>To follow this same set of logic, a duplicate board or a board that simply has true or false at each position can help us keep track of what has been seen or what has not been seen. This solver is an essential part of most of our games and their automatic moves and solvers. The last thing I&#39;m going to blog about here is an approach where you move in all directions at all times, and the duplicate true false board will play a big role in deciding what can happen next.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
+<span class="cm">|| Fishing Trip                       ||</span>
+<span class="cm">||                                    ||</span>
+<span class="cm">|| You are located at the top left    ||</span>
+<span class="cm">|| corner of a 5x5 grid is trying to  ||</span>
+<span class="cm">|| reach the bottom right       .     ||</span>
+<span class="cm">|| You can move either up, down,      ||</span>
+<span class="cm">|| left, or right, but cannot visit   ||</span>
+<span class="cm">|| the same spot twice. How many      ||</span>
+<span class="cm">|| possible unique paths are there    ||</span>
+<span class="cm">|| to the bottom right?               ||</span>
+<span class="cm">||====================================*/</span>
+</code></pre></div>
+<p>Our first step is to make that &quot;already visited&quot; board.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Board</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
 
-var Board = function (n) {
+  <span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="nx">i</span><span class="p">,</span>
+    <span class="nx">j</span><span class="p">;</span>
 
-  var board = [],
-    i,
-    j;
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">board</span><span class="p">.</span><span class="nx">push</span><span class="p">([]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">board</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">board</span><span class="p">.</span><span class="nx">togglePiece</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">!</span><span class="k">this</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="nx">board</span><span class="p">.</span><span class="nx">hasBeenVisited</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!!</span><span class="k">this</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">board</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>As before, we will make a recursive function that will move everywhere.
+It&#39;s pretty much indentical to our previous approaches except to prevent
+you from going where you&#39;ve been before you need to see the board.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">countAllPaths</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">board</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
 
-  for (i = 0; i < n; i++) {
-      board.push([]);
-    for (j = 0; j < n; j++) {
-      board[i].push(false);
-    }
-  }
-  board.togglePiece = function (i, j) {
-    this[i][j] = !this[i][j];
-  }
-  board.hasBeenVisited = function (i, j) {
-    return !!this[i][j];
-  }
-  return board;
-};
+<span class="c1">//Create the board if none exists.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">board</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+    <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
 
-var robotPaths = function(n, board, i, j) {
+<span class="c1">// If you go off the board or</span>
+<span class="c1">// somewhere you&#39;ve been, exit.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">i</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span> <span class="o">&amp;&amp;</span> <span class="nx">j</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">)</span> <span class="o">||</span> <span class="nx">board</span><span class="p">.</span><span class="nx">hasBeenVisited</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  if (!board) {
-    board = new Board(n);
-    i = 0;
-    j = 0;
-  }
+<span class="c1">// If you reach the end, return 1</span>
+<span class="c1">// so that it can be added up for</span>
+<span class="c1">// the final answer</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">j</span> <span class="o">===</span> <span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
 
-  if (!(i >=0 && i < n && j >=0 && j < n) || board.hasBeenVisited(i, j)) {
-    return 0;
-  }
+<span class="c1">// toggling is a hard concept</span>
+<span class="c1">// but it is the process of undoing the</span>
+<span class="c1">// most recent move</span>
+  <span class="nx">board</span><span class="p">.</span><span class="nx">togglePiece</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
 
-  if (i === n - 1 && j === n - 1) { return 1; }
+<span class="c1">// Start calculating the number of paths</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">countAllPaths</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">board</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nx">countAllPaths</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">board</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nx">countAllPaths</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">board</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nx">countAllPaths</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">board</span><span class="p">,</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
+<span class="c1">// This is a way to preventing</span>
+<span class="c1">// Infinite loops for empty calculations</span>
+  <span class="nx">board</span><span class="p">.</span><span class="nx">togglePiece</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
+<span class="c1">// This gives us our final big number.</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 
-  board.togglePiece(i, j);
+<span class="p">}</span>
 
-  var result = robotPaths(n, board, i, j + 1) +
-    robotPaths(n, board, i, j - 1) +
-    robotPaths(n, board, i + 1, j) +
-    robotPaths(n, board, i - 1, j);
-
-  board.togglePiece(i, j);
-  return result;
-
-}
-
-console.log(robotPaths(5, undefined));
-``` -->
-
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">countAllPaths</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+</code></pre></div>
 <p>These stumped me live, but after some time to think about it, I&#39;ll be ready for the next set of these, and I hope this helped you.</p>
 
 <p><img src="manyPaths.png" alt="joke at the end."></p>
