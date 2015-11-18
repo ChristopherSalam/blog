@@ -6,7 +6,13 @@ tags:
 - javascript
 ---
 
-We've been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.
+This is part 2 of 2 of the Path Problem series.
+
+**[Part 1 - Array Paths](/array-paths "Array Paths")** | Part 2
+
+I've been beginning to see a pattern to many problems, which I'm going to term path problems. One major type of problems involves the traversal across a matrix.  The goals here are here to determine how to store information and use arguments recursively (or iteratively) to carry information you need to the next step.
+
+Here's a common example, the fishing trip:
 
 ```javascript
 /*====================================||
@@ -61,24 +67,24 @@ Following a diagram like this, work within all possible paths from start to end 
       [ _,     _, end  ] ]         [ #,     _, end ] ]
 ```
 
+Another way to think about this is in terms of combinatorics, which I would not even consider, had I not played many years of board games versus <a href="http://inventingsituations.net/">Tom</a> and <a href="https://dailycampusarchive.wordpress.com/2015/02/20/last-lecture-beloved-math-professor-patrick-dragon/">Patrick</a>, both PhDs in this tricky math form. This path problem reduces to a (2(n-1)!)/(n-1)!(n-1)! problem for an n x n, and a problem with movement in all compass directions (NWSE) is simply double that. <a href="http://joaoff.com/2008/01/20/a-square-grid-path-problem/"> Here's a post on that kind of solution.</a> You can use combinatorics to set a for loop for an iterative solution but it's often easier and more to to build a recursive solution and have it determine the number of combinations needed.
+
 Another way to look at this set of decisions is a tree. We don't need to use the tree data structure, just absorb that this solution can be done recursively (or iteratively if you know the combinations ahead of time).
 
 <img src="treeChoice.png" alt="visual of decisions">
 
 You get the drift.
 
-These diagrams **aren't** the most accurate way of thinking about this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands in two directions and fails once it finds that there is no matrix value.
+In my mind these diagrams **aren't** the most accurate way of thinking about **how computers solve** this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands in two directions and fails once it finds that there is no matrix value.
 
 The algorithm needs to fail, or return an empty value, when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:
 
 ```javascript
 Boolean(zone[0][0]) --> true
-Boolean(zone[0][4]) --> false
+Boolean(zone[0][4]) --> undefined
 ```
 
-And where ever our boundary conditions fail we can just 'return 0;' or 'return;' depending on what we are trying to keep track of.
-The other important piece is that while we travel each path, we need to pass information on as arguments to the recursive function, often without
-modifying the functions in place to preserve what we are interested in. For example:
+And where ever our boundary conditions fail we can just 'return 0;' or 'return;' depending on what we are trying to keep track of. The other important piece is that while we travel each path, we need to pass information on as arguments to the recursive function, often without modifying the functions in place to preserve what we are interested in. For example:
 
 ```javascript
 function recursive(stuff, moreStuff) {
@@ -462,14 +468,11 @@ console.log(trappedWater(pit));
 ```
 
 ```javascript
-var schedule = {"MV":[1,2,3,4,5,6,7,8,9,10,11,12],"SB":[1,2,3,4,5,6,7,8,9,10,11,12],"NY":[1,2,3,4,5,6,7,8,9,10,11,12],"GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
-
-// var schedule = {
-  	// "MV":[0,1],
-  	// "SB":[0,2],
-  	// "NY":[0,3],
-  	// "GB":[0,4]
-  // }
+var schedule = {
+	"MV":[1,2,3,4,5,6,7,8,9,10,11,12],
+	"SB":[1,2,3,4,5,6,7,8,9,10,11,12],
+	"NY":[1,2,3,4,5,6,7,8,9,10,11,12],
+	"GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
 
 /*====================================||
 || World Offices                      ||
@@ -483,37 +486,23 @@ var flights = {
   }
 
 function minimumWork(set) {
-
-    var options = [];
-
+    var options = {};
     function traverse(hours, month, location) {
-
         if (month === 11) {
-
-            options.push(hours);
+            options[hours] = options[hours] || 0;
+            options[hours]++;
             return;
-
         } else {
-
             for (var i = 0; i < flights[location].length; i++) {
-
                 traverse(hours + schedule[location][month + 1], month + 1, flights[location][i]);
             }
-
         }
     }
 
 	for (var startLoc in flights) {
-
-		// console.log(startLoc);
-
-    traverse(schedule[startLoc][0], 0, startLoc);
-
+    	traverse(schedule[startLoc][0], 0, startLoc);
 	}
-
-	// console.log(options);
-
-    return options.length;
+    return Math.min.apply(null,Object.keys(options));
 }
 
 console.log(minimumWork(flights));
