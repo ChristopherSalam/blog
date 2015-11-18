@@ -39,11 +39,13 @@ These kinds of problems are extremely practical. The question I received at an i
 
 Why do we do this? This is pretty straight forward. If I can come up with an algorithm to get all the too simple password modifications, what makes you think hackers aren't running these evaluations all the time? They probably are. Makes me want to go through and change some of my passwords...
 
+###Bad Passwords
+
 ```javascript
-//input
+//example input
 var password = "secretcode",
 badSubstitutions = {"s":["S","$"],"o":["0"]}
-//output
+//example output
 ["$ecretcode","Secretcode","secretc0de","$ecretc0de","Secretc0de","secretcode"]
 ```
 
@@ -123,13 +125,16 @@ There are 864 results! Pretty nifty. Here's a partial screenshot.
 You can imagine other versions of this problem immediately. The algorithm for determining a cute phone code for your business is similar. It's going to move and create all the options, perhaps a library and remove the words that aren't intelligible.
 
 ```bash
-1(800) 432 9023 ->
-
-1(800) SAD MOOD
+//input
+1-800-432-9023 ->
+//output
+[1-800-SAD-MOOD, otheroptions...,*,*,*,*]
 
 ```
 
-A big reason for doing theses series is that I've really found this kind of problem hard or unnatural at first. This next problem was another real problem. I was able to solve it later, but the fact of the matter is that you should be able to solve these within the allotted time, simply recognizing the patterns is enough for some interviews and for some, the real answer in code has to show up.
+A big reason for doing theses series is that I've really found this kind of problem hard or unnatural at first. This next problem was another real problem I received during an interview. I was able to solve it later, but the fact of the matter is that you should be able to solve these within the allotted time, simply recognizing the patterns is enough for some interviews and for some, the real answer in code has to show up.
+
+###Minimum Work Globally Problem
 
 ```javascript
 
@@ -142,9 +147,8 @@ A big reason for doing theses series is that I've really found this kind of prob
 || work over the course of a year         ||
 ||========================================*/
 
-// This is sample data, correct output will
+// This is testing data, correct output will
 // thousands of results, all equaling 78.
-
 var schedule = {
   "MV":[1,2,3,4,5,6,7,8,9,10,11,12],
   "SF":[1,2,3,4,5,6,7,8,9,10,11,12],
@@ -153,6 +157,7 @@ var schedule = {
 };
 
 //Real data would look like this
+//Hours per month excluding holidays and such
 // var schedule = {
 //   "MV":[160,170,160,160,160,100,170,160,160,150,160,100],
 //   "SF":[160,120,170,160,160,170,160,160,160,170,160,160],
@@ -227,41 +232,45 @@ function minimumWork(set) {
 console.log(minimumWork(flights));
 ```
 
-<!--
-trapped water problem
-```javascript
-var pit = [1,2,0,2,1,2];
+###Trapped Water Problem
 
+<img src="geeksforgeeks.png" alt="trapped water image">
+
+While not exactly a path problem, here's another problem I'm going to leave here until I find a more fitting place for it, but it's a problem of examining trapped water. I've seen many blog posts about the topic but often in **<a href="http://www.programcreek.com/2014/06/leetcode-trapping-rain-water-java/">Java</a>** or **<a href="http://www.geeksforgeeks.org/trapping-rain-water/">C++</a>**, but also often missing a really detailed explanation for what's happening, so I'll try to include that here.
+
+```javascript
+var pit = [3,0,0,2,0,4];
 
 function trappedWater(pit){
 
-  var left = [pit[0]],
+// Starting points for analysis
+  var water = 0,
+    left = [pit[0]],
     right = [],
-    water = 0;
+    right[pit.length-1] = pit[pit.length-1];
 
-
+// Use this loop to find the top most
+// left wall over the area.
   for (var i = 1; i < pit.length-1; i++) {
     left[i] = Math.max(left[i-1],pit[i]);
   }
 
-  right[pit.length-1] = pit[pit.length-1];
-
+// Use this loop to find the top most
+// right wall over the area.
   for (var i = pit.length-2; i >= 0; i--) {
     right[i] = Math.max(pit[i],right[i+1]);
   }
 
+// This loop will calculate out the
+// water 0 + 3 + 3 + 1 + 3 + 0 needed for output
   for (var i = 0; i < pit.length-1; i++) {
       water += Math.min(left[i], right[i]) - pit[i];
   }
-
   return water;
-
 }
 
 console.log(trappedWater(pit));
 ```
-
--->
 
 These stumped me live, but after some time to think about it, I'll be ready for the next set of these, and I hope this helped you.
 

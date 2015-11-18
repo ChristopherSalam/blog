@@ -97,10 +97,12 @@
 <p>These kinds of problems are extremely practical. The question I received at an interview was to create a list of all the bad passwords that a user could create from their old password, to have the ability to reject it. Given a single string, given all the options of bad passwords that a user may try to generate.</p>
 
 <p>Why do we do this? This is pretty straight forward. If I can come up with an algorithm to get all the too simple password modifications, what makes you think hackers aren&#39;t running these evaluations all the time? They probably are. Makes me want to go through and change some of my passwords...</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//input</span>
+
+<h3>Bad Passwords</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//example input</span>
 <span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="s2">&quot;secretcode&quot;</span><span class="p">,</span>
 <span class="nx">badSubstitutions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">]}</span>
-<span class="c1">//output</span>
+<span class="c1">//example output</span>
 <span class="p">[</span><span class="s2">&quot;$ecretcode&quot;</span><span class="p">,</span><span class="s2">&quot;Secretcode&quot;</span><span class="p">,</span><span class="s2">&quot;secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;$ecretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;Secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;secretcode&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>At some point you&#39;ll start to see that all these structures break down to these concepts of inputs and outputs and manipulations on each.</p>
@@ -174,11 +176,14 @@
 <p><img src="options.png" alt="passwords....."></p>
 
 <p>You can imagine other versions of this problem immediately. The algorithm for determining a cute phone code for your business is similar. It&#39;s going to move and create all the options, perhaps a library and remove the words that aren&#39;t intelligible.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">1<span class="o">(</span>800<span class="o">)</span> <span class="m">432</span> <span class="m">9023</span> -&gt;
-
-1<span class="o">(</span>800<span class="o">)</span> SAD MOOD
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">//input
+1-800-432-9023 -&gt;
+//output
+<span class="o">[</span>1-800-SAD-MOOD, otheroptions...,*,*,*,*<span class="o">]</span>
 </code></pre></div>
-<p>A big reason for doing theses series is that I&#39;ve really found this kind of problem hard or unnatural at first. This next problem was another real problem. I was able to solve it later, but the fact of the matter is that you should be able to solve these within the allotted time, simply recognizing the patterns is enough for some interviews and for some, the real answer in code has to show up.</p>
+<p>A big reason for doing theses series is that I&#39;ve really found this kind of problem hard or unnatural at first. This next problem was another real problem I received during an interview. I was able to solve it later, but the fact of the matter is that you should be able to solve these within the allotted time, simply recognizing the patterns is enough for some interviews and for some, the real answer in code has to show up.</p>
+
+<h3>Minimum Work Globally Problem</h3>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================||</span>
 <span class="cm">|| Minimum work globally                  ||</span>
 <span class="cm">||                                        ||</span>
@@ -188,9 +193,8 @@
 <span class="cm">|| work over the course of a year         ||</span>
 <span class="cm">||========================================*/</span>
 
-<span class="c1">// This is sample data, correct output will</span>
+<span class="c1">// This is testing data, correct output will</span>
 <span class="c1">// thousands of results, all equaling 78.</span>
-
 <span class="kd">var</span> <span class="nx">schedule</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">&quot;MV&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
   <span class="s2">&quot;SF&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
@@ -199,6 +203,7 @@
 <span class="p">};</span>
 
 <span class="c1">//Real data would look like this</span>
+<span class="c1">//Hours per month excluding holidays and such</span>
 <span class="c1">// var schedule = {</span>
 <span class="c1">//   &quot;MV&quot;:[160,170,160,160,160,100,170,160,160,150,160,100],</span>
 <span class="c1">//   &quot;SF&quot;:[160,120,170,160,160,170,160,160,160,170,160,160],</span>
@@ -272,42 +277,43 @@
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">minimumWork</span><span class="p">(</span><span class="nx">flights</span><span class="p">));</span>
 </code></pre></div>
-<!--
-trapped water problem
-```javascript
-var pit = [1,2,0,2,1,2];
+<h3>Trapped Water Problem</h3>
 
+<p><img src="geeksforgeeks.png" alt="trapped water image"></p>
 
-function trappedWater(pit){
+<p>While not exactly a path problem, here&#39;s another problem I&#39;m going to leave here until I find a more fitting place for it, but it&#39;s a problem of examining trapped water. I&#39;ve seen many blog posts about the topic but often in <strong><a href="http://www.programcreek.com/2014/06/leetcode-trapping-rain-water-java/">Java</a></strong> or <strong><a href="http://www.geeksforgeeks.org/trapping-rain-water/">C++</a></strong>, but also often missing a really detailed explanation for what&#39;s happening, so I&#39;ll try to include that here.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">pit</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
 
-  var left = [pit[0]],
-    right = [],
-    water = 0;
+<span class="kd">function</span> <span class="nx">trappedWater</span><span class="p">(</span><span class="nx">pit</span><span class="p">){</span>
 
+<span class="c1">// Starting points for analysis</span>
+  <span class="kd">var</span> <span class="nx">water</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">left</span> <span class="o">=</span> <span class="p">[</span><span class="nx">pit</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="nx">right</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="nx">right</span><span class="p">[</span><span class="nx">pit</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">pit</span><span class="p">[</span><span class="nx">pit</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
 
-  for (var i = 1; i < pit.length-1; i++) {
-    left[i] = Math.max(left[i-1],pit[i]);
-  }
+<span class="c1">// Use this loop to find the top most</span>
+<span class="c1">// left wall over the area.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">pit</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">left</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">left</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="nx">pit</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+  <span class="p">}</span>
 
-  right[pit.length-1] = pit[pit.length-1];
+<span class="c1">// Use this loop to find the top most</span>
+<span class="c1">// right wall over the area.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">pit</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">right</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">pit</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="nx">right</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span>
+  <span class="p">}</span>
 
-  for (var i = pit.length-2; i >= 0; i--) {
-    right[i] = Math.max(pit[i],right[i+1]);
-  }
+<span class="c1">// This loop will calculate out the</span>
+<span class="c1">// water 0 + 3 + 3 + 1 + 3 + 0 needed for output</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">pit</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">water</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">left</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">right</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="o">-</span> <span class="nx">pit</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">water</span><span class="p">;</span>
+<span class="p">}</span>
 
-  for (var i = 0; i < pit.length-1; i++) {
-      water += Math.min(left[i], right[i]) - pit[i];
-  }
-
-  return water;
-
-}
-
-console.log(trappedWater(pit));
-```
-
--->
-
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">trappedWater</span><span class="p">(</span><span class="nx">pit</span><span class="p">));</span>
+</code></pre></div>
 <p>These stumped me live, but after some time to think about it, I&#39;ll be ready for the next set of these, and I hope this helped you.</p>
 
 <p><img src="manyPaths.png" alt="joke at the end."></p>
