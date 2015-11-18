@@ -51,20 +51,20 @@ var treeData = [
     ]
   },
   { "name": "#structures", "parent": "#javascript", "children": [
-    { "name": "trees", "parent": "#structures", "children": [
+    { "name": "trees", "parent": "#structures"},
+    { "name": "#paths", "parent": "#structures", "children": [
       { "name": "matrix paths", "parent": "#structures"},
-      { "name": "BST", "parent": "#structures" }
+      { "name": "#regexp", "parent": "#structures", "children":[
+        { "name": "try regexp", "parent": "#regexp"},
+        { "name": "regexp.js", "parent": "#regexp"},
+        { "name": "O(r)", "parent": "#regexp" }
+          ]
+      },
+      { "name": "array paths", "parent": "#structures" }
       ]
     },
-      { "name": "#regexp", "parent": "#structures", "children":[
-          { "name": "try regexp", "parent": "#regexp", children:[
-            { "name": "regexp.js", "parent": "#regexp" },
-            { "name": "O(r)", "parent": "#regexp" }
-            ]
-          }
+    { "name": "BST", "parent": "#structures" }
     ]
-    }
-  ]
   }
 ];
 
@@ -150,9 +150,11 @@ function makeMeSomeTrees(eachRoot){
   .style("stroke", function(d){
     if (d.name.match(/(tape|node|projects|BST)/)) {
       return "rgba(51,15,83, .5)"; } /*purple*/
+    else if (d.name.match(/paths/)) {
+        return "rgba(51,15,83, .25)"; } /*purple*/
     else { return "rgba(31,110,106, .5)"; } /*green*/
   }).style("stroke-width", function(d){
-    if (d.name.match(/(tape|node|projects|BST|#)/)) {
+    if (d.name.match(/(tape|node|projects|BST|#|paths)/)) {
       return 8;
     } else { return 0; }
   })
