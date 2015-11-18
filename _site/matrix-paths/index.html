@@ -11,9 +11,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
     
-    <meta name="description" content="Christopher Salam We&#39;ve been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.
+    <meta name="description" content="Christopher Salam This is part 2 of 2 of the Path Problem series.
 " />
-    <meta property="og:description" content="We&#39;ve been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.
+    <meta property="og:description" content="This is part 2 of 2 of the Path Problem series.
 " />
     
     <meta name="author" content="Christopher Salam" />
@@ -70,7 +70,13 @@
   </div>
 
   <div class="entry">
-    <p>We&#39;ve been getting toy problems that follow a path of traversing across a matrix.  The principal is given some sort of obstacle course of numbers or information, determine how to store information and use arguments recursively to carry information you need to the next step.</p>
+    <p>This is part 2 of 2 of the Path Problem series.</p>
+
+<p><strong><a href="/array-paths" title="Array Paths">Part 1 - Array Paths</a></strong> | Part 2</p>
+
+<p>I&#39;ve been beginning to see a pattern to many problems, which I&#39;m going to term path problems. One major type of problems involves the traversal across a matrix.  The goals here are here to determine how to store information and use arguments recursively (or iteratively) to carry information you need to the next step.</p>
+
+<p>Here&#39;s a common example, the fishing trip:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*====================================||</span>
 <span class="cm">|| Fishing Trip                       ||</span>
 <span class="cm">||                                    ||</span>
@@ -115,21 +121,21 @@
       <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>     <span class="err">#</span><span class="p">,</span> <span class="err">#</span>    <span class="p">]</span>           <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="err">#</span>   <span class="p">]</span>
       <span class="p">[</span> <span class="nx">_</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="nx">end</span>  <span class="p">]</span> <span class="p">]</span>         <span class="p">[</span> <span class="err">#</span><span class="p">,</span>     <span class="nx">_</span><span class="p">,</span> <span class="nx">end</span> <span class="p">]</span> <span class="p">]</span>
 </code></pre></div>
+<p>Another way to think about this is in terms of combinatorics, which I would not even consider, had I not played many years of board games versus <a href="http://inventingsituations.net/">Tom</a> and <a href="https://dailycampusarchive.wordpress.com/2015/02/20/last-lecture-beloved-math-professor-patrick-dragon/">Patrick</a>, both PhDs in this tricky math form. This path problem reduces to a (2(n-1)!)/(n-1)!(n-1)! problem for an n x n, and a problem with movement in all compass directions (NWSE) is simply double that. <a href="http://joaoff.com/2008/01/20/a-square-grid-path-problem/"> Here&#39;s a post on that kind of solution.</a> You can use combinatorics to set a for loop for an iterative solution but it&#39;s often easier and more to to build a recursive solution and have it determine the number of combinations needed.</p>
+
 <p>Another way to look at this set of decisions is a tree. We don&#39;t need to use the tree data structure, just absorb that this solution can be done recursively (or iteratively if you know the combinations ahead of time).</p>
 
 <p><img src="treeChoice.png" alt="visual of decisions"></p>
 
 <p>You get the drift.</p>
 
-<p>These diagrams <strong>aren&#39;t</strong> the most accurate way of thinking about this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands in two directions and fails once it finds that there is no matrix value.</p>
+<p>In my mind these diagrams <strong>aren&#39;t</strong> the most accurate way of thinking about <strong>how computers solve</strong> this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands in two directions and fails once it finds that there is no matrix value.</p>
 
 <p>The algorithm needs to fail, or return an empty value, when it goes out of bounds. The boundary conditions we can use are natural for the matrix, we can ask it if values exist there, such as:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">Boolean</span><span class="p">(</span><span class="nx">zone</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">--&gt;</span> <span class="kc">true</span>
-<span class="nb">Boolean</span><span class="p">(</span><span class="nx">zone</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span> <span class="o">--&gt;</span> <span class="kc">false</span>
+<span class="nb">Boolean</span><span class="p">(</span><span class="nx">zone</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span> <span class="o">--&gt;</span> <span class="kc">undefined</span>
 </code></pre></div>
-<p>And where ever our boundary conditions fail we can just &#39;return 0;&#39; or &#39;return;&#39; depending on what we are trying to keep track of.
-The other important piece is that while we travel each path, we need to pass information on as arguments to the recursive function, often without
-modifying the functions in place to preserve what we are interested in. For example:</p>
+<p>And where ever our boundary conditions fail we can just &#39;return 0;&#39; or &#39;return;&#39; depending on what we are trying to keep track of. The other important piece is that while we travel each path, we need to pass information on as arguments to the recursive function, often without modifying the functions in place to preserve what we are interested in. For example:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">moreStuff</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">stuff</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="nx">moreStuff</span> <span class="o">=</span> <span class="nx">moreStruff</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -491,14 +497,11 @@ console.log(trappedWater(pit));
 ```
 
 ```javascript
-var schedule = {"MV":[1,2,3,4,5,6,7,8,9,10,11,12],"SB":[1,2,3,4,5,6,7,8,9,10,11,12],"NY":[1,2,3,4,5,6,7,8,9,10,11,12],"GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
-
-// var schedule = {
-    // "MV":[0,1],
-    // "SB":[0,2],
-    // "NY":[0,3],
-    // "GB":[0,4]
-  // }
+var schedule = {
+    "MV":[1,2,3,4,5,6,7,8,9,10,11,12],
+    "SB":[1,2,3,4,5,6,7,8,9,10,11,12],
+    "NY":[1,2,3,4,5,6,7,8,9,10,11,12],
+    "GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
 
 /*====================================||
 || World Offices                      ||
@@ -512,37 +515,23 @@ var flights = {
   }
 
 function minimumWork(set) {
-
-    var options = [];
-
+    var options = {};
     function traverse(hours, month, location) {
-
         if (month === 11) {
-
-            options.push(hours);
+            options[hours] = options[hours] || 0;
+            options[hours]++;
             return;
-
         } else {
-
             for (var i = 0; i < flights[location].length; i++) {
-
                 traverse(hours + schedule[location][month + 1], month + 1, flights[location][i]);
             }
-
         }
     }
 
     for (var startLoc in flights) {
-
-        // console.log(startLoc);
-
-    traverse(schedule[startLoc][0], 0, startLoc);
-
+        traverse(schedule[startLoc][0], 0, startLoc);
     }
-
-    // console.log(options);
-
-    return options.length;
+    return Math.min.apply(null,Object.keys(options));
 }
 
 console.log(minimumWork(flights));

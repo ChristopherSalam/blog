@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://chrissalam.com/languages/font-mfizz.css">
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>array paths – Christopher Salam – thoughts on software and engineering</title>
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    
+    <meta name="description" content="Christopher Salam This is part 1 of 2 of the Path Problem series.
+" />
+    <meta property="og:description" content="This is part 1 of 2 of the Path Problem series.
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+    
+    <meta property="og:title" content="array paths" />
+    <meta property="twitter:title" content="array paths" />
+    
+
+    <link rel="icon" type="image/ico" href="chrissalam.jpg">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://christophersalam.github.io" target="_blank">Work</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank"><i class="fa fa-photo"></i></a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">array paths</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#structures">structures</a>,
+  
+  <a href="/tags/#javascript">javascript</a>,
+  
+  <a href="/tags/#paths">paths</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on November 26, 2015
+  </div>
+
+  <div class="entry">
+    <p>This is part 1 of 2 of the Path Problem series.</p>
+
+<p>Part 1 | <strong><a href="/matrix-paths" title="Matrix Paths">Part 2 - Matrix Paths</a></strong></p>
+
+<p>We&#39;ve been getting toy problems that follow a path of traversing data in a specific way and making decisions either at junctions or at the end of the path. The goals here are here to determine how to store information and use arguments recursively (or iteratively) to carry information you need to the next step. I will keep string and array path problems combined here until I have more and can split them out.</p>
+
+<p>In my mind these diagrams <strong>aren&#39;t</strong> the most accurate way of thinking about <strong>how computers solve</strong> this problem. These show the valid results, and if you want to create an algorithm to this this will be a little more overhead. Instead, we are going to write one that expands across the data you provide and fails when the data is undefined.</p>
+
+<p>And where ever our boundary conditions fail we can just &#39;return 0;&#39; or &#39;return;&#39; depending on what we are trying to keep track of. The other important piece is that while we travel each path, we need to pass information on as arguments to the recursive function, often without modifying the functions in place to preserve what we are interested in. For example:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">moreStuff</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">function</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">startValue</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">stuff</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">moreStruff</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>versus</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">moreStuff</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">function</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span><span class="p">,</span> <span class="nx">startValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">recursive</span><span class="p">(</span><span class="nx">stuff</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">moreStuff</span><span class="p">.</span><span class="nx">shift</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>These kinds of problems are extremely practical. The question I received at an interview was to create a list of all the bad passwords that a user could create from their old password, to have the ability to reject it. Given a single string, given all the options of bad passwords that a user may try to generate.</p>
+
+<p>Why do we do this? This is pretty straight forward. If I can come up with an algorithm to get all the too simple password modifications, what makes you think hackers aren&#39;t running these evaluations all the time? They probably are. Makes me want to go through and change some of my passwords...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//input</span>
+<span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="s2">&quot;secretcode&quot;</span><span class="p">,</span>
+<span class="nx">badSubstitutions</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">]}</span>
+<span class="c1">//output</span>
+<span class="p">[</span><span class="s2">&quot;$ecretcode&quot;</span><span class="p">,</span><span class="s2">&quot;Secretcode&quot;</span><span class="p">,</span><span class="s2">&quot;secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;$ecretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;Secretc0de&quot;</span><span class="p">,</span><span class="s2">&quot;secretcode&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>At some point you&#39;ll start to see that all these structures break down to these concepts of inputs and outputs and manipulations on each.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================||</span>
+<span class="cm">|| Bad Passwords                          ||</span>
+<span class="cm">||                                        ||</span>
+<span class="cm">|| Given a single string,                 ||</span>
+<span class="cm">|| given all the options of bad passwords ||</span>
+<span class="cm">|| that a user may try to generate.       ||</span>
+<span class="cm">||========================================*/</span>
+
+<span class="c1">//sample inputs</span>
+<span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="nx">set</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span><span class="s2">&quot;s&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;$&quot;</span><span class="p">],</span><span class="s2">&quot;w&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">],</span><span class="s2">&quot;o&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">],</span><span class="s2">&quot;r&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">],</span><span class="s2">&quot;d&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span><span class="s2">&quot;6&quot;</span><span class="p">]}</span>
+
+<span class="kd">function</span> <span class="nx">badPasswordList</span><span class="p">(</span><span class="nx">string</span><span class="p">,</span> <span class="nx">set</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// start meaning the part of the string</span>
+<span class="c1">// that&#39;s been processed already.</span>
+<span class="c1">// end will refer to the rest of the string</span>
+<span class="c1">// usually captured with .substr(1)</span>
+    <span class="kd">var</span> <span class="nx">badPasswords</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="nx">start</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="c1">// a recursive function. noticing the pattern?</span>
+
+    <span class="kd">function</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// our boundary, when there is no more string</span>
+<span class="c1">// left. (one character).substr(1) === &quot;&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">end</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// at the boundary, we can collect our</span>
+<span class="c1">// finished bad password!</span>
+
+            <span class="nx">badPasswords</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="c1">// this is asking if we have a character</span>
+<span class="c1">// with lazy replacement options, i.e. s --&gt; $</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="p">{</span>
+
+<span class="c1">// and the trick here is to iterate</span>
+<span class="c1">// through the array of options</span>
+
+                <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// and recursively include stepping down the string.</span>
+
+                    <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">set</span><span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="nx">i</span><span class="p">],</span> <span class="nx">end</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="p">}</span>
+
+<span class="c1">// otherwise process the letter as normal.</span>
+
+            <span class="p">}</span>   <span class="k">return</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">end</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="c1">// begun the loop</span>
+
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">string</span><span class="p">);</span>
+
+<span class="c1">// all the different possible passwords.    </span>
+
+    <span class="k">return</span> <span class="nx">badPasswords</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There are 864 results! Pretty nifty. Here&#39;s a partial screenshot.</p>
+
+<p><img src="options.png" alt="passwords....."></p>
+
+<p>You can imagine other versions of this problem immediately. The algorithm for determining a cute phone code for your business is similar. It&#39;s going to move and create all the options, perhaps a library and remove the words that aren&#39;t intelligible.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">1<span class="o">(</span>800<span class="o">)</span> <span class="m">432</span> <span class="m">9023</span> -&gt;
+
+1<span class="o">(</span>800<span class="o">)</span> SAD MOOD
+</code></pre></div>
+<p>A big reason for doing theses series is that I&#39;ve really found this kind of problem hard or unnatural at first. This next problem was another real problem. I was able to solve it later, but the fact of the matter is that you should be able to solve these within the allotted time, simply recognizing the patterns is enough for some interviews and for some, the real answer in code has to show up.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*========================================||</span>
+<span class="cm">|| Minimum work globally                  ||</span>
+<span class="cm">||                                        ||</span>
+<span class="cm">|| Given monthly schedules of all offices,||</span>
+<span class="cm">|| and an 8 hour flight limit between     ||</span>
+<span class="cm">|| some of the offices, solve for minimum ||</span>
+<span class="cm">|| work over the course of a year         ||</span>
+<span class="cm">||========================================*/</span>
+
+<span class="c1">// This is sample data, correct output will</span>
+<span class="c1">// thousands of results, all equaling 78.</span>
+
+<span class="kd">var</span> <span class="nx">schedule</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;MV&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
+  <span class="s2">&quot;SF&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
+  <span class="s2">&quot;NY&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
+  <span class="s2">&quot;GB&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="p">};</span>
+
+<span class="c1">//Real data would look like this</span>
+<span class="c1">// var schedule = {</span>
+<span class="c1">//   &quot;MV&quot;:[160,170,160,160,160,100,170,160,160,150,160,100],</span>
+<span class="c1">//   &quot;SF&quot;:[160,120,170,160,160,170,160,160,160,170,160,160],</span>
+<span class="c1">//   &quot;NY&quot;:[160,120,160,160,170,160,160,160,100,170,160,160],</span>
+<span class="c1">//   &quot;GB&quot;:[160,170,160,160,160,100,170,160,160,160,160,100]</span>
+<span class="c1">// };</span>
+
+<span class="c1">// This is the table of the limits</span>
+<span class="c1">// i.e. Great Britain is only an 8 hour limit</span>
+<span class="c1">// from New York, but can&#39;t get to the</span>
+<span class="c1">// the SF or MV offices.</span>
+<span class="kd">var</span> <span class="nx">flights</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;MV&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;MV&quot;</span><span class="p">,</span><span class="s2">&quot;SF&quot;</span><span class="p">,</span><span class="s2">&quot;NY&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;SF&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;MV&quot;</span><span class="p">,</span><span class="s2">&quot;SF&quot;</span><span class="p">,</span><span class="s2">&quot;NY&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;NY&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="s2">&quot;GB&quot;</span><span class="p">,</span><span class="s2">&quot;SF&quot;</span><span class="p">,</span><span class="s2">&quot;MV&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;GB&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;GB&quot;</span><span class="p">,</span><span class="s2">&quot;NY&quot;</span><span class="p">]</span>
+<span class="p">};</span>
+<span class="c1">// It could be limits in array form</span>
+<span class="c1">// There could be other ways to</span>
+<span class="c1">// Apply limits the problem</span>
+
+
+<span class="kd">function</span> <span class="nx">minimumWork</span><span class="p">(</span><span class="nx">set</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// Determine how you want the data to be collected.</span>
+    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="kd">function</span> <span class="nx">traverse</span><span class="p">(</span><span class="nx">hours</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">location</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// Find a way to stop the problem.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">month</span> <span class="o">===</span> <span class="mi">11</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Final answer stored in options</span>
+            <span class="nx">options</span><span class="p">[</span><span class="nx">hours</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">hours</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+<span class="c1">// This method is way to keeping track of each time an option came up.</span>
+<span class="c1">// You can also keep track of the maximum, etc.</span>
+            <span class="nx">options</span><span class="p">[</span><span class="nx">hours</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">// This is an exit for the recursive function</span>
+            <span class="k">return</span><span class="p">;</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="c1">// This is way of navigating the flight options.</span>
+<span class="c1">// You can either stay at your location, or</span>
+<span class="c1">// move to one of the other options in the matrix.</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">flights</span><span class="p">[</span><span class="nx">location</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// For each location, iterate to each, as long as</span>
+<span class="c1">// you remember to go one month forward in time!</span>
+<span class="c1">// And provide the new location to set the recursive</span>
+<span class="c1">//  function right!</span>
+                <span class="nx">traverse</span><span class="p">(</span><span class="nx">hours</span> <span class="o">+</span> <span class="nx">schedule</span><span class="p">[</span><span class="nx">location</span><span class="p">][</span><span class="nx">month</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="nx">month</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">flights</span><span class="p">[</span><span class="nx">location</span><span class="p">][</span><span class="nx">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="c1">// This is because you can start in 4 different locations.</span>
+<span class="c1">// Failing this line, you&#39;ll have a biased tree.</span>
+<span class="c1">// These is likely a more elegant way to start the function</span>
+<span class="c1">// But this is here for now.</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">startLoc</span> <span class="k">in</span> <span class="nx">flights</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// The way this is written above, I didn&#39;t provide the first month.</span>
+<span class="c1">// Here&#39;s the start -&gt; schedule[startLoc][0]</span>
+    <span class="nx">traverse</span><span class="p">(</span><span class="nx">schedule</span><span class="p">[</span><span class="nx">startLoc</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">startLoc</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="c1">// The question asked for the minimum work!</span>
+<span class="c1">// Always be sure to answer the question,</span>
+<span class="c1">// but remember, you can access all the information</span>
+<span class="c1">// you learned along the way, it&#39;s just how you</span>
+<span class="c1">// structure things and if it&#39;s required.</span>
+    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">options</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">minimumWork</span><span class="p">(</span><span class="nx">flights</span><span class="p">));</span>
+</code></pre></div>
+<!--
+trapped water problem
+```javascript
+var pit = [1,2,0,2,1,2];
+
+
+function trappedWater(pit){
+
+  var left = [pit[0]],
+    right = [],
+    water = 0;
+
+
+  for (var i = 1; i < pit.length-1; i++) {
+    left[i] = Math.max(left[i-1],pit[i]);
+  }
+
+  right[pit.length-1] = pit[pit.length-1];
+
+  for (var i = pit.length-2; i >= 0; i--) {
+    right[i] = Math.max(pit[i],right[i+1]);
+  }
+
+  for (var i = 0; i < pit.length-1; i++) {
+      water += Math.min(left[i], right[i]) - pit[i];
+  }
+
+  return water;
+
+}
+
+console.log(trappedWater(pit));
+```
+
+-->
+
+<p>These stumped me live, but after some time to think about it, I&#39;ll be ready for the next set of these, and I hope this helped you.</p>
+
+<p><img src="manyPaths.png" alt="joke at the end."></p>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = "chrissalam";//'chrissalam';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65733928-2', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/array-paths/',
+		  'title': 'array paths'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>
