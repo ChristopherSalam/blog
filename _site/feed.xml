@@ -810,6 +810,64 @@ function trappedWater(pit){
 console.log(trappedWater(pit));
 ```
 
+```javascript
+var schedule = {&quot;MV&quot;:[1,2,3,4,5,6,7,8,9,10,11,12],&quot;SB&quot;:[1,2,3,4,5,6,7,8,9,10,11,12],&quot;NY&quot;:[1,2,3,4,5,6,7,8,9,10,11,12],&quot;GB&quot;:[1,2,3,4,5,6,7,8,9,10,11,12]};
+
+// var schedule = {
+    // &quot;MV&quot;:[0,1],
+    // &quot;SB&quot;:[0,2],
+    // &quot;NY&quot;:[0,3],
+    // &quot;GB&quot;:[0,4]
+  // }
+
+/*====================================||
+|| World Offices                      ||
+||====================================*/
+
+var flights = {
+    &quot;MV&quot;:[&quot;MV&quot;,&quot;SB&quot;,&quot;NY&quot;],
+    &quot;SB&quot;:[&quot;MV&quot;,&quot;SB&quot;,&quot;NY&quot;],
+    &quot;NY&quot;:[&quot;NY&quot;,&quot;GB&quot;,&quot;SB&quot;,&quot;MV&quot;],
+    &quot;GB&quot;:[&quot;GB&quot;,&quot;NY&quot;]
+  }
+
+function minimumWork(set) {
+
+    var options = [];
+
+    function traverse(hours, month, location) {
+
+        if (month === 11) {
+
+            options.push(hours);
+            return;
+
+        } else {
+
+            for (var i = 0; i &lt; flights[location].length; i++) {
+
+                traverse(hours + schedule[location][month + 1], month + 1, flights[location][i]);
+            }
+
+        }
+    }
+
+    for (var startLoc in flights) {
+
+        // console.log(startLoc);
+
+    traverse(schedule[startLoc][0], 0, startLoc);
+
+    }
+
+    // console.log(options);
+
+    return options.length;
+}
+
+console.log(minimumWork(flights));
+```
+
 --&gt;
 </description>
         <pubDate>Thu, 12 Nov 2015 00:00:00 -0800</pubDate>

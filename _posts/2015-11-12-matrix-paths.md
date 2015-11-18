@@ -461,4 +461,62 @@ function trappedWater(pit){
 console.log(trappedWater(pit));
 ```
 
+```javascript
+var schedule = {"MV":[1,2,3,4,5,6,7,8,9,10,11,12],"SB":[1,2,3,4,5,6,7,8,9,10,11,12],"NY":[1,2,3,4,5,6,7,8,9,10,11,12],"GB":[1,2,3,4,5,6,7,8,9,10,11,12]};
+
+// var schedule = {
+  	// "MV":[0,1],
+  	// "SB":[0,2],
+  	// "NY":[0,3],
+  	// "GB":[0,4]
+  // }
+
+/*====================================||
+|| World Offices                      ||
+||====================================*/
+
+var flights = {
+  	"MV":["MV","SB","NY"],
+  	"SB":["MV","SB","NY"],
+  	"NY":["NY","GB","SB","MV"],
+  	"GB":["GB","NY"]
+  }
+
+function minimumWork(set) {
+
+    var options = [];
+
+    function traverse(hours, month, location) {
+
+        if (month === 11) {
+
+            options.push(hours);
+            return;
+
+        } else {
+
+            for (var i = 0; i < flights[location].length; i++) {
+
+                traverse(hours + schedule[location][month + 1], month + 1, flights[location][i]);
+            }
+
+        }
+    }
+
+	for (var startLoc in flights) {
+
+		// console.log(startLoc);
+
+    traverse(schedule[startLoc][0], 0, startLoc);
+
+	}
+
+	// console.log(options);
+
+    return options.length;
+}
+
+console.log(minimumWork(flights));
+```
+
 -->
