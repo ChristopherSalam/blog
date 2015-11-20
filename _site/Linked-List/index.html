@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://chrissalam.com/languages/font-mfizz.css">
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>BST – Christopher Salam – thoughts on software and engineering</title>
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    
+    <meta name="description" content="Christopher Salam &lt;!--
+" />
+    <meta property="og:description" content="&lt;!--
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+    
+    <meta property="og:title" content="BST" />
+    <meta property="twitter:title" content="BST" />
+    
+
+    <link rel="icon" type="image/ico" href="chrissalam.jpg">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <!--<a href="/">Posts</a>-->
+            <a href="/tags">:Topic</a>
+<!--             <a href="http://christophersalam.github.io">About</a> -->
+            <a href="/about">About</a>
+            <a href="http://christophersalam.github.io" target="_blank">Work</a>
+            <a href="http://chrissalam.com/slideshow" target="_blank"><i class="fa fa-photo"></i></a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">BST</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#javascript">javascript</a>,
+  
+  <a href="/tags/#structures">structures</a>,
+  
+  <a href="/tags/#linked list">linked list</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on November 30, 2015
+  </div>
+
+  <div class="entry">
+    <!--
+
+LinkedList Tutorial
+
+function LinkedList(){  
+  this.head = null;
+}
+
+LinkedList.prototype.push = function(val){
+    var node = {
+       value: val,
+       next: null
+    }
+    if(!this.head){
+      this.head = node;      
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
+
+Make a LinkedList
+add a node
+remove a node
+
+LinkedList.prototype.remove = function(val){
+    var current = this.head;
+    //case-1
+    if(current.value == val){
+       this.head = current.next;     
+    }
+    else{
+      var previous = current;
+
+      while(current.next){
+        //case-3
+        if(current.value == val){
+          previous.next = current.next;          
+          break;
+        }
+        previous = current;
+        current = current.next;
+      }
+      //case -2
+      if(current.value == val){
+        previous.next == null;
+      }
+    }
+  }  
+
+  case -1: your targeted node is in the head. you have to replace the head with the next node
+  case -2: your targeted node is in the tail. you just have to remove it from the tail. Hence next of the node before the tail will be null.
+  case-3: your targeted node is in the middle of the LinkedList, you have to make the node after your targeted node to be the next node of the node before your targeted node.
+
+reverse a LinkedList conventional, using fast slow
+
+// reverse a linked list  
+var reverseLinkedList = function(linkedlist) {
+  var node = linkedlist;
+  var previous = null;
+
+  while(node) {
+    // save next or you lose it!!!
+    var save = node.next;
+    // reverse pointer
+    node.next = previous;
+    // increment previous to current node
+    previous = node;
+    // increment node to next node or null at end of list
+    node = save;
+  }
+  return previous;   // Change the list head !!!
+}
+linkedlist = reverseLinkedList(linkedlist);
+
+palindrome check, in linear time (with a halfway)
+
+var palindromeChecker = function(linkedlist) {
+  var fast = node,
+    stack = [];
+while (node)
+    stack.push(node);
+    node = node.next;
+    fast = node.next.next;
+  if (!fast) {
+    if (node !== stack.pop()) { return false; }
+  }
+  return true;
+}
+
+complexity
+
+check for circular linked list using fast/slow
+
+function detectLoop(sll){
+   var slowPointer = sll.head,
+       fastPointer = sll.head;
+
+   while(slowPointer && fastPointer && fastPointer.next){
+     slowPointer = slowPointer.next;
+     fastPointer = fastPointer.next.next;
+
+     if(slowPointer == fastPointer){
+        return true;
+     }
+   }
+   return false;
+}
+
+
+-->
+
+<p><strong>This is a stub, there&#39;s more coming</strong></p>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = "chrissalam";//'chrissalam';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65733928-2', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/Linked-List/',
+		  'title': 'BST'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>
