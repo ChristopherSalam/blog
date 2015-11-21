@@ -497,12 +497,12 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 
 var treeData = [
   { &quot;name&quot;: &quot;Job Links&quot;, &quot;site&quot;: &quot;https://news.ycombinator.com/item?id=10492086&quot;, &quot;children&quot;:[
-    { &quot;name&quot;: &quot;binding&quot;, &quot;parent&quot;: &quot;#javascript&quot; },
-    { &quot;name&quot;: &quot;#reactnative&quot;, &quot;parent&quot;: &quot;#javascript&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;try RN&quot;, &quot;parent&quot;: &quot;#reactnative&quot;},
-      { &quot;name&quot;: &quot;#firebase&quot;, &quot;parent&quot;: &quot;#reactnative&quot;, &quot;children&quot;: [
-        { &quot;name&quot;: &quot;RN snapshots&quot;, &quot;parent&quot;: &quot;#firebase&quot; },
-        { &quot;name&quot;: &quot;RN updates&quot;, &quot;parent&quot;: &quot;#firebase&quot; }
+    { &quot;name&quot;: &quot;meltdown&quot;, &quot;site&quot;: &quot;http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/&quot; },
+    { &quot;name&quot;: &quot;recursion&quot;, &quot;site&quot;: &quot;http://ruckt.info/how-to-implement-a-recursive-algorithm/&quot;, &quot;children&quot;: [
+      { &quot;name&quot;: &quot;SASS vs LESS&quot;, &quot;parent&quot;: &quot;https://gist.github.com/chriseppstein/674726&quot;},
+      { &quot;name&quot;: &quot;Globals?&quot;, &quot;site&quot;: &quot;https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;aqs=chrome..69i57j0l5.740j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8&quot;, &quot;children&quot;: [
+        { &quot;name&quot;: &quot;140 ?&quot;, &quot;site&quot;: &quot;http://www.impactinterview.com/2009/10/140-google-interview-questions/&quot; },
+        { &quot;name&quot;: &quot;Java MC&quot;, &quot;site&quot;: &quot;http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html&quot; }
         ]
       },
       { &quot;name&quot;: &quot;Memory&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Memory_management#HEAP&quot; }
@@ -586,7 +586,24 @@ var treeData = [
           },
         {&quot;name&quot;: &quot;BST vs Hash&quot;, &quot;site&quot;:&quot;http://stackoverflow.com/questions/4128546/advantages-of-binary-search-trees-over-hash-tables&quot;}
         ]
-  }
+  },  
+  { &quot;name&quot;: &quot;n-arrays&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays&quot;, &quot;children&quot;: [
+      { &quot;name&quot;: &quot;StrStr&quot;, &quot;site&quot;: &quot;http://phpjs.org/functions/strstr/&quot; },
+      { &quot;name&quot;: &quot;Cheat Sheet&quot;, &quot;site&quot;: &quot;https://gist.github.com/TSiege/cbb0507082bb18ff7e4b&quot;, &quot;children&quot;: [
+        { &quot;name&quot;: &quot;TCP&quot;, &quot;site&quot;: &quot;&quot;http://searchnetworking.techtarget.com/definition/TCP&quot; },
+        { &quot;name&quot;: &quot;TCP-IP&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/TCP-IP&quot;, &quot;children&quot;: [
+          { &quot;name&quot;: &quot;Mutex&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/mutex&quot; },
+          { &quot;name&quot;: &quot;SCTP&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/SCTP&quot; },
+          { &quot;name&quot;: &quot;LinkedList&quot;, &quot;site&quot;: &quot;http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html&quot; },
+          { &quot;name&quot;:&quot;Reverse LL&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript&quot; }
+          ]
+        },
+        { &quot;name&quot;: &quot;Breadth&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree&quot; }
+        ]
+      },
+      { &quot;name&quot;:StrStr in C++&quot;, &quot;site&quot;: &quot;http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html&quot; }
+      ]
+    }
 ];
 
 // ************** Generate the tree diagram  *****************
@@ -692,51 +709,13 @@ for (var q = 0; q &lt; treeData.length; q++) {
 
 &lt;p&gt;&lt;img src=&quot;lineof.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
+&lt;p&gt;Here&amp;#39;s something I keep in mind all the time.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;imposter.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
+&lt;p&gt;How do you determine one outlying heavy ball using a scale only three times?&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;eightball.jpg&quot; alt=&quot;eightballs...&quot;&gt;&lt;/p&gt;
-
-&lt;!--
-
-**&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/TCP&quot; target=&quot;_blank&quot;&gt;TCP&lt;/a&gt;**
-
-**&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/TCP-IP&quot;&gt;TCP/IP&lt;/a&gt;**
-
-**&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/mutex&quot; target=&quot;_blank&quot;&gt;Mutex&lt;/a&gt;**
-
-**&lt;a href=&quot;http://searchnetworking.techtarget.com/definition/SCTP&quot; target=&quot;_blank&quot;&gt;SCTP&lt;/a&gt;**
-
-**&lt;a href=&quot; target=&quot;_blank&quot;&gt;What happens when you type google into a browser...shortform&lt;/a&gt;**
-
-**&lt;a href=&quot;http://www.impactinterview.com/2009/10/140-google-interview-questions/&quot; target=&quot;_blank&quot;&gt;140 Google Questions&lt;/a&gt;**
-
-**&lt;a href=&quot;https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;aqs=chrome..69i57j0l5.740j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8&quot; target=&quot;_blank&quot;&gt;What is the difference between global and local variables?&lt;/a&gt;**
-
-**&lt;a href=&quot;https://gist.github.com/chriseppstein/674726&quot; target=&quot;_blank&quot;&gt;SASS vs. LESS&lt;/a&gt;**
-
-**&lt;a href=&quot;https://www.google.com/search?q=Why+are+manhole+covers+round&amp;oq=Why+are+manhole+covers+round&amp;aqs=chrome..69i57j5.680j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8&quot; target=&quot;_blank&quot;&gt;Why are manhole covers round?&lt;/a&gt;**
-
-**&lt;a href=&quot;http://www.mba-online-program.com/20-interview-questions-you%E2%80%99ll-be-asked-at-google&quot; target=&quot;_blank&quot;&gt;20 questions&lt;/a&gt;**
-
-**&lt;a href=&quot;http://ruckt.info/how-to-implement-a-recursive-algorithm/&quot; target=&quot;_blank&quot;&gt;Recursion&lt;/a&gt;**
-
-**&lt;a href=&quot;http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html&quot; target=&quot;_blank&quot;&gt;Java Memory Collection &amp; Garbage Collector&lt;/a&gt;**
-
-**&lt;a href=&quot;http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html&quot; target=&quot;_blank&quot;&gt;Strstr in C++&lt;/a&gt;**
-
-**&lt;a href=&quot;http://phpjs.org/functions/strstr/&quot; target=&quot;_blank&quot;&gt;Strstr in JS&lt;/a&gt;**
-
-**&lt;a href=&quot;http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays&quot; target=&quot;_blank&quot;&gt;Split array in n arrays&lt;/a&gt;**
-
-**&lt;a href=&quot;http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/&quot; target=&quot;_blank&quot;&gt;Embarrassment as a theme with these things&lt;/a&gt;**
-
-**&lt;a href=&quot;http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree&quot; target=&quot;_blank&quot;&gt;Breadth First Search JS Binary Search Trees&lt;/a&gt;**
-
-**&lt;a href=&quot;http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript&quot; target=&quot;_blank&quot;&gt;Reverse a linkedlist&lt;/a&gt;**
-
-**&lt;a href=&quot;http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html&quot; target=&quot;_blank&quot;&gt;LinkedList&lt;/a&gt;**
-
- --&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>

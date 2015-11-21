@@ -84,12 +84,12 @@
 
 var treeData = [
   { "name": "Job Links", "site": "https://news.ycombinator.com/item?id=10492086", "children":[
-    { "name": "binding", "parent": "#javascript" },
-    { "name": "#reactnative", "parent": "#javascript", "children": [
-      { "name": "try RN", "parent": "#reactnative"},
-      { "name": "#firebase", "parent": "#reactnative", "children": [
-        { "name": "RN snapshots", "parent": "#firebase" },
-        { "name": "RN updates", "parent": "#firebase" }
+    { "name": "meltdown", "site": "http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/" },
+    { "name": "recursion", "site": "http://ruckt.info/how-to-implement-a-recursive-algorithm/", "children": [
+      { "name": "SASS vs LESS", "parent": "https://gist.github.com/chriseppstein/674726"},
+      { "name": "Globals?", "site": "https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&aqs=chrome..69i57j0l5.740j0j7&sourceid=chrome&es_sm=91&ie=UTF-8", "children": [
+        { "name": "140 ?", "site": "http://www.impactinterview.com/2009/10/140-google-interview-questions/" },
+        { "name": "Java MC", "site": "http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html" }
         ]
       },
       { "name": "Memory", "site": "https://en.wikipedia.org/wiki/Memory_management#HEAP" }
@@ -173,7 +173,24 @@ var treeData = [
           },
         {"name": "BST vs Hash", "site":"http://stackoverflow.com/questions/4128546/advantages-of-binary-search-trees-over-hash-tables"}
         ]
-  }
+  },  
+  { "name": "n-arrays", "site": "http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays", "children": [
+      { "name": "StrStr", "site": "http://phpjs.org/functions/strstr/" },
+      { "name": "Cheat Sheet", "site": "https://gist.github.com/TSiege/cbb0507082bb18ff7e4b", "children": [
+        { "name": "TCP", "site": ""http://searchnetworking.techtarget.com/definition/TCP" },
+        { "name": "TCP-IP", "site": "http://searchnetworking.techtarget.com/definition/TCP-IP", "children": [
+          { "name": "Mutex", "site": "http://searchnetworking.techtarget.com/definition/mutex" },
+          { "name": "SCTP", "site": "http://searchnetworking.techtarget.com/definition/SCTP" },
+          { "name": "LinkedList", "site": "http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html" },
+          { "name":"Reverse LL", "site": "http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript" }
+          ]
+        },
+        { "name": "Breadth", "site": "http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree" }
+        ]
+      },
+      { "name":StrStr in C++", "site": "http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html" }
+      ]
+    }
 ];
 
 // ************** Generate the tree diagram  *****************
@@ -279,51 +296,13 @@ for (var q = 0; q < treeData.length; q++) {
 
 <p><img src="lineof.jpg" alt=""></p>
 
+<p>Here&#39;s something I keep in mind all the time.</p>
+
 <p><img src="imposter.jpg" alt=""></p>
 
+<p>How do you determine one outlying heavy ball using a scale only three times?</p>
+
 <p><img src="eightball.jpg" alt="eightballs..."></p>
-
-<!--
-
-**<a href="http://searchnetworking.techtarget.com/definition/TCP" target="_blank">TCP</a>**
-
-**<a href="http://searchnetworking.techtarget.com/definition/TCP-IP">TCP/IP</a>**
-
-**<a href="http://searchnetworking.techtarget.com/definition/mutex" target="_blank">Mutex</a>**
-
-**<a href="http://searchnetworking.techtarget.com/definition/SCTP" target="_blank">SCTP</a>**
-
-**<a href=" target="_blank">What happens when you type google into a browser...shortform</a>**
-
-**<a href="http://www.impactinterview.com/2009/10/140-google-interview-questions/" target="_blank">140 Google Questions</a>**
-
-**<a href="https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&aqs=chrome..69i57j0l5.740j0j7&sourceid=chrome&es_sm=91&ie=UTF-8" target="_blank">What is the difference between global and local variables?</a>**
-
-**<a href="https://gist.github.com/chriseppstein/674726" target="_blank">SASS vs. LESS</a>**
-
-**<a href="https://www.google.com/search?q=Why+are+manhole+covers+round&oq=Why+are+manhole+covers+round&aqs=chrome..69i57j5.680j0j7&sourceid=chrome&es_sm=91&ie=UTF-8" target="_blank">Why are manhole covers round?</a>**
-
-**<a href="http://www.mba-online-program.com/20-interview-questions-you%E2%80%99ll-be-asked-at-google" target="_blank">20 questions</a>**
-
-**<a href="http://ruckt.info/how-to-implement-a-recursive-algorithm/" target="_blank">Recursion</a>**
-
-**<a href="http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html" target="_blank">Java Memory Collection & Garbage Collector</a>**
-
-**<a href="http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html" target="_blank">Strstr in C++</a>**
-
-**<a href="http://phpjs.org/functions/strstr/" target="_blank">Strstr in JS</a>**
-
-**<a href="http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays" target="_blank">Split array in n arrays</a>**
-
-**<a href="http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/" target="_blank">Embarrassment as a theme with these things</a>**
-
-**<a href="http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree" target="_blank">Breadth First Search JS Binary Search Trees</a>**
-
-**<a href="http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript" target="_blank">Reverse a linkedlist</a>**
-
-**<a href="http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html" target="_blank">LinkedList</a>**
-
- -->
 
 <p><strong>This is a stub, there&#39;s more coming</strong></p>
 
