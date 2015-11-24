@@ -496,114 +496,98 @@ Erlang &lt;i class=&quot;icon-erlang&quot;&gt;&lt;/i&gt;, Go, Haskell &lt;i clas
 &lt;script&gt;
 
 var treeData = [
-  { &quot;name&quot;: &quot;Job Links&quot;, &quot;site&quot;: &quot;https://news.ycombinator.com/item?id=10492086&quot;, &quot;children&quot;:[
-    { &quot;name&quot;: &quot;meltdown&quot;, &quot;site&quot;: &quot;http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/&quot; },
-    { &quot;name&quot;: &quot;recursion&quot;, &quot;site&quot;: &quot;http://ruckt.info/how-to-implement-a-recursive-algorithm/&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;SASS vs LESS&quot;, &quot;parent&quot;: &quot;https://gist.github.com/chriseppstein/674726&quot;},
-      { &quot;name&quot;: &quot;Globals?&quot;, &quot;site&quot;: &quot;https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;aqs=chrome..69i57j0l5.740j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8&quot;, &quot;children&quot;: [
-        { &quot;name&quot;: &quot;140 ?&quot;, &quot;site&quot;: &quot;http://www.impactinterview.com/2009/10/140-google-interview-questions/&quot; },
-        { &quot;name&quot;: &quot;Java MC&quot;, &quot;site&quot;: &quot;http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html&quot; }
-        ]
-      },
-      { &quot;name&quot;: &quot;Memory&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Memory_management#HEAP&quot; }
-      ]
-      },
-      { &quot;name&quot;: &quot;Dead Beef&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/2907262/what-does-dead-beef-mean&quot; }
-      ]
-  },
-  { &quot;name&quot;: &quot;Sundries&quot;, &quot;site&quot;: &quot;https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95#.sb8fvdn5t&quot;, &quot;children&quot;: [
-    { &quot;name&quot;: &quot;Big O&quot;, &quot;site&quot;: &quot;http://bigocheatsheet.com/&quot; },
-    { &quot;name&quot;: &quot;Cheat Sheet&quot;, &quot;site&quot;: &quot;https://gist.github.com/TSiege/cbb0507082bb18ff7e4b&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;QuickSort &gt;&quot;, &quot;site&quot;: &quot;http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice&quot; },
-      { &quot;name&quot;: &quot;Web Security&quot;, &quot;site&quot;: &quot;http://greendark-team.blogspot.com/2011/04/web-browser-security-models.html&quot;, &quot;children&quot;: [
-        { &quot;name&quot;: &quot;When you...&quot;, &quot;site&quot;: &quot;https://github.com/alex/what-happens-when&quot; },
-        { &quot;name&quot;: &quot;When you...2&quot;, &quot;site&quot;: &quot;http://www.glassdoor.com/Interview/What-happens-when-you-type-www-google-com-in-your-browser-QTN_56396.htm&quot; },
-        { &quot;name&quot;: &quot;Thrds vs Prcs&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread&quot; },
-        { &quot;name&quot;:&quot;Clients&quot;, &quot;site&quot;: &quot;http://www.geekinterview.com/Interview-Questions/Networking/Client-Server-Computing&quot; }
-        ]
-      },
-      { &quot;name&quot;: &quot;Min Cost Path&quot;, &quot;site&quot;: &quot;http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/&quot; }
+{ &quot;name&quot;: &quot;Job Links&quot;, &quot;site&quot;: &quot;https://news.ycombinator.com/item?id=10492086&quot;, &quot;children&quot;:[
+  { &quot;name&quot;: &quot;meltdown&quot;, &quot;site&quot;: &quot;http://www.globalnerdy.com/2013/10/19/i-has-the-dumb-or-how-i-embarrassed-myself-in-my-interview-with-google/&quot; },
+  { &quot;name&quot;: &quot;recursion&quot;, &quot;site&quot;: &quot;http://ruckt.info/how-to-implement-a-recursive-algorithm/&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;SASS vs LESS&quot;, &quot;parent&quot;: &quot;https://gist.github.com/chriseppstein/674726&quot;},
+    { &quot;name&quot;: &quot;Globals?&quot;, &quot;site&quot;: &quot;https://www.google.com/search?q=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;oq=What%E2%80%99s+the+difference+between+local+and+global+variables%3F&amp;aqs=chrome..69i57j0l5.740j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8&quot;, &quot;children&quot;: [
+      { &quot;name&quot;: &quot;140 ?&quot;, &quot;site&quot;: &quot;http://www.impactinterview.com/2009/10/140-google-interview-questions/&quot; },
+      { &quot;name&quot;: &quot;Java MC&quot;, &quot;site&quot;: &quot;http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html&quot; }
       ]
     },
-    { &quot;name&quot;:&quot;MALLOC&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/2308751/what-is-a-memory-heap&quot; }
+    { &quot;name&quot;: &quot;Memory&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Memory_management#HEAP&quot; }
     ]
   },
-  { &quot;name&quot;: &quot;CS Prep&quot;, &quot;site&quot;: &quot;http://www.google.com/about/careers/lifeatgoogle/hangout-on-air-tech-interviewing.html&quot;, &quot;children&quot;: [
-    { &quot;name&quot;: &quot;Get that job&quot;, &quot;site&quot;: &quot;http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html&quot; },
-    { &quot;name&quot;: &quot;Dev Rel&quot;, &quot;parent&quot;: &quot;https://medium.com/google-developers/why-do-we-pay-these-people-anyway-d7ed706d6d55&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;Competency&quot;, &quot;site&quot;: &quot;https://medium.com/google-developers/the-core-competencies-of-developer-relations-f3e1c04c0f5b&quot;},
-      { &quot;name&quot;: &quot;node-neo4j&quot;, &quot;parent&quot;: &quot;#neo4j&quot; }
+  { &quot;name&quot;: &quot;Dead Beef&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/2907262/what-does-dead-beef-mean&quot; }
+  ]
+},
+{ &quot;name&quot;: &quot;Sundries&quot;, &quot;site&quot;: &quot;https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95#.sb8fvdn5t&quot;, &quot;children&quot;: [
+  { &quot;name&quot;: &quot;Big O&quot;, &quot;site&quot;: &quot;http://bigocheatsheet.com/&quot; },
+  { &quot;name&quot;: &quot;Cheat Sheet&quot;, &quot;site&quot;: &quot;https://gist.github.com/TSiege/cbb0507082bb18ff7e4b&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;QuickSort &gt;&quot;, &quot;site&quot;: &quot;http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice&quot; },
+    { &quot;name&quot;: &quot;Web Security&quot;, &quot;site&quot;: &quot;http://greendark-team.blogspot.com/2011/04/web-browser-security-models.html&quot;, &quot;children&quot;: [
+      { &quot;name&quot;: &quot;When you...&quot;, &quot;site&quot;: &quot;https://github.com/alex/what-happens-when&quot; },
+      { &quot;name&quot;: &quot;When you...2&quot;, &quot;site&quot;: &quot;http://www.glassdoor.com/Interview/What-happens-when-you-type-www-google-com-in-your-browser-QTN_56396.htm&quot; },
+      { &quot;name&quot;: &quot;Thrds vs Prcs&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread&quot; },
+      { &quot;name&quot;:&quot;Clients&quot;, &quot;site&quot;: &quot;http://www.geekinterview.com/Interview-Questions/Networking/Client-Server-Computing&quot; }
       ]
     },
-    { &quot;name&quot;: &quot;Dev Rel&quot;, &quot;parent&quot;: &quot;https://medium.com/google-developers/why-do-we-pay-these-people-anyway-d7ed706d6d55&quot; }
+    { &quot;name&quot;: &quot;Min Cost Path&quot;, &quot;site&quot;: &quot;http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/&quot; }
     ]
   },
-  { &quot;name&quot;: &quot;Practice&quot;, &quot;parent&quot;: &quot;#javascript&quot;, &quot;children&quot;: [
-    { &quot;name&quot;: &quot;Euler&#39;s&quot;, &quot;site&quot;: &quot;https://projecteuler.net/&quot;},
-    { &quot;name&quot;: &quot;#paths&quot;, &quot;parent&quot;: &quot;#structures&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;matrix paths&quot;, &quot;parent&quot;: &quot;#structures&quot;},
-      { &quot;name&quot;: &quot;Caches&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Cache_algorithms&quot;, &quot;children&quot;:[
-        { &quot;name&quot;: &quot;Structures&quot;, &quot;site&quot;: &quot;http://www.thatjsdude.com/interview/linkedList.html&quot;},
-        { &quot;name&quot;: &quot;NP Complete&quot;, &quot;parent&quot;: &quot;http://c2.com/cgi/wiki?NpComplete&quot;},
-        { &quot;name&quot;: &quot;Final,ly,ize&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/7814688/in-java-what-purpose-do-the-keywords-final-finally-and-finalize-fulfil&quot; }
-          ]
-      },
-      { &quot;name&quot;: &quot;array paths&quot;, &quot;parent&quot;: &quot;#structures&quot; }
+  { &quot;name&quot;:&quot;MALLOC&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/2308751/what-is-a-memory-heap&quot; }
+  ]
+},
+{ &quot;name&quot;: &quot;CS Prep&quot;, &quot;site&quot;: &quot;http://www.google.com/about/careers/lifeatgoogle/hangout-on-air-tech-interviewing.html&quot;, &quot;children&quot;: [
+  { &quot;name&quot;: &quot;Get that job&quot;, &quot;site&quot;: &quot;http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html&quot; },
+  { &quot;name&quot;: &quot;Dev Rel&quot;, &quot;parent&quot;: &quot;https://medium.com/google-developers/why-do-we-pay-these-people-anyway-d7ed706d6d55&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;Competency&quot;, &quot;site&quot;: &quot;https://medium.com/google-developers/the-core-competencies-of-developer-relations-f3e1c04c0f5b&quot;},
+    { &quot;name&quot;: &quot;node-neo4j&quot;, &quot;parent&quot;: &quot;#neo4j&quot; }
+    ]
+  },
+  { &quot;name&quot;: &quot;Dev Rel&quot;, &quot;parent&quot;: &quot;https://medium.com/google-developers/why-do-we-pay-these-people-anyway-d7ed706d6d55&quot; }
+  ]
+},
+{ &quot;name&quot;: &quot;Practice&quot;, &quot;site&quot;: &quot;#javascript&quot;, &quot;children&quot;: [
+  { &quot;name&quot;: &quot;Euler&#39;s&quot;, &quot;site&quot;: &quot;https://projecteuler.net/&quot;},
+  { &quot;name&quot;: &quot;#paths&quot;, &quot;site&quot;: &quot;#structures&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;matrix paths&quot;, &quot;site&quot;: &quot;&quot;},
+    { &quot;name&quot;: &quot;Caches&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Cache_algorithms&quot;, &quot;children&quot;:[
+      { &quot;name&quot;: &quot;Structures&quot;, &quot;site&quot;: &quot;http://www.thatjsdude.com/interview/linkedList.html&quot;},
+      { &quot;name&quot;: &quot;NP Complete&quot;, &quot;site&quot;: &quot;http://c2.com/cgi/wiki?NpComplete&quot;},
+      { &quot;name&quot;: &quot;Final,ly,ize&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/7814688/in-java-what-purpose-do-the-keywords-final-finally-and-finalize-fulfil&quot; }
       ]
     },
-    { &quot;name&quot;: &quot;Career Cup&quot;, &quot;site&quot;: &quot;http://www.careercup.com&quot; }
+    { &quot;name&quot;: &quot;array paths&quot;, &quot;site&quot;: &quot;#structures&quot; }
     ]
   },
-  { &quot;name&quot;: &quot;Stack v Heap&quot;, &quot;site&quot;: &quot;http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html&quot;, &quot;children&quot;: [
-    { &quot;name&quot;: &quot;Semaphore&quot;, &quot;site&quot;: &quot;http://jacopretorius.net/2010/12/google-interview-questions-and-answers.html&quot; },
-    { &quot;name&quot;: &quot;Sorting&quot;, &quot;site&quot;: &quot;http://www.sorting-algorithms.com/&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;QuickSort &gt;&quot;, &quot;site&quot;: &quot;http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice&quot; },
-      { &quot;name&quot;: &quot;Shortest Path&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Shortest_path_problem&quot;, &quot;children&quot;:[
-        {&quot;name&quot;: &quot;More BST&quot;, &quot;site&quot;: &quot;http://khan4019.github.io/front-end-Interview-Questions/bst.html&quot;},
-        {&quot;name&quot;: &quot;Malloc?&quot;, &quot;site&quot;: &quot;https://www.google.com/search?q=Implement+a+malloc-like+function+such+that+it+only+returns+pointers+evenly+divisible+by+N+(presumably+some+power+of+2).+Use+as+little+overhead+as+possible.+Implement+the+corresponding+free()+function.&amp;oq=Implement+a+malloc-like+function+such+that+it+only+returns+pointers+evenly+divisible+by+N+(presumably+some+power+of+2).+Use+as+little+overhead+as+possible.+Implement+the+corresponding+free()+function.&amp;aqs=chrome..69i57.671j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8#q=what+is+malloc&quot;},
-        {&quot;name&quot;: &quot;More BST&quot;, &quot;site&quot;: &quot;http://khan4019.github.io/front-end-Interview-Questions/bst.html&quot;}
-        ]
-      },
-      { &quot;name&quot;: &quot;MALLOC&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/2308751/what-is-a-memory-heap&quot; }
+  { &quot;name&quot;: &quot;Career Cup&quot;, &quot;site&quot;: &quot;http://www.careercup.com&quot; }
+  ]
+},
+{ &quot;name&quot;: &quot;Stack v Heap&quot;, &quot;site&quot;: &quot;http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html&quot;, &quot;children&quot;: [
+  { &quot;name&quot;: &quot;Semaphore&quot;, &quot;site&quot;: &quot;http://jacopretorius.net/2010/12/google-interview-questions-and-answers.html&quot; },
+  { &quot;name&quot;: &quot;Sorting&quot;, &quot;site&quot;: &quot;http://www.sorting-algorithms.com/&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;QuickSort &gt;&quot;, &quot;site&quot;: &quot;http://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice&quot; },
+    { &quot;name&quot;: &quot;Shortest Path&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Shortest_path_problem&quot;, &quot;children&quot;:[
+      {&quot;name&quot;: &quot;More BST&quot;, &quot;site&quot;: &quot;http://khan4019.github.io/front-end-Interview-Questions/bst.html&quot;},
+      {&quot;name&quot;: &quot;BST&quot;, &quot;site&quot;: &quot;http://khan4019.github.io/front-end-Interview-Questions/bst.html&quot;}
       ]
     },
-    { &quot;name&quot;:&quot;Mutex&quot;, &quot;site&quot;: &quot;http://jacopretorius.net/2010/12/google-interview-questions-and-answers.html&quot; }
+    { &quot;name&quot;: &quot;MALLOC&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/2308751/what-is-a-memory-heap&quot; }
     ]
   },
-  { &quot;name&quot;: &quot;Trees&quot;, &quot;site&quot;: &quot;http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393&quot;, children: [
-        { &quot;name&quot;: &quot;BST&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;},
-        { &quot;name&quot;: &quot;JS BST&quot;, &quot;site&quot;: &quot;https://gist.github.com/trevmex/821973&quot;, children: [
-          { &quot;name&quot;: &quot;LCA C++&quot;, &quot;site&quot;: &quot;https://www.youtube.com/watch?v=LFjCr2yDJdc&quot; },
-          { &quot;name&quot;: &quot;BT vs BST&quot;, &quot;site&quot;:&quot;http://stackoverflow.com/questions/6380231/difference-between-binary-tree-and-binary-search-tree&quot;, children: [
-            { &quot;name&quot;:&quot;Red Black&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Red%E2%80%93black_tree&quot;},
-            { &quot;name&quot;: &quot;LCA Python&quot;, &quot;site&quot;: &quot;https://www.youtube.com/watch?v=bl-gwEwm8CM&quot; },
-            { &quot;name&quot;:&quot;LCA&quot;, &quot;site&quot;: &quot;https://www.youtube.com/watch?v=NBcqBddFbZw&quot; },
-            { &quot;name&quot;: &quot;BST II&quot;, &quot;site&quot;: &quot;https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf&quot;}         
-              ]
-              },
-            { &quot;name&quot;:&quot;LCA in Java&quot;, &quot;site&quot;: &quot;http://www.fusu.us/2013/06/p2-lowest-common-ancestor-in-binary-tree.html&quot;}
-            ]
-          },
-        {&quot;name&quot;: &quot;BST vs Hash&quot;, &quot;site&quot;:&quot;http://stackoverflow.com/questions/4128546/advantages-of-binary-search-trees-over-hash-tables&quot;}
-        ]
-  },  
-  { &quot;name&quot;: &quot;n-arrays&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays&quot;, &quot;children&quot;: [
-      { &quot;name&quot;: &quot;StrStr&quot;, &quot;site&quot;: &quot;http://phpjs.org/functions/strstr/&quot; },
-      { &quot;name&quot;: &quot;Cheat Sheet&quot;, &quot;site&quot;: &quot;https://gist.github.com/TSiege/cbb0507082bb18ff7e4b&quot;, &quot;children&quot;: [
-        { &quot;name&quot;: &quot;TCP&quot;, &quot;site&quot;: &quot;&quot;http://searchnetworking.techtarget.com/definition/TCP&quot; },
-        { &quot;name&quot;: &quot;TCP-IP&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/TCP-IP&quot;, &quot;children&quot;: [
-          { &quot;name&quot;: &quot;Mutex&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/mutex&quot; },
-          { &quot;name&quot;: &quot;SCTP&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/SCTP&quot; },
-          { &quot;name&quot;: &quot;LinkedList&quot;, &quot;site&quot;: &quot;http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html&quot; },
-          { &quot;name&quot;:&quot;Reverse LL&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript&quot; }
-          ]
-        },
-        { &quot;name&quot;: &quot;Breadth&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree&quot; }
-        ]
-      },
-      { &quot;name&quot;:StrStr in C++&quot;, &quot;site&quot;: &quot;http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html&quot; }
+  { &quot;name&quot;:&quot;Mutex&quot;, &quot;site&quot;: &quot;http://jacopretorius.net/2010/12/google-interview-questions-and-answers.html&quot; }
+  ]
+},
+{ &quot;name&quot;: &quot;Trees&quot;, &quot;site&quot;: &quot;http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393&quot;, &quot;children&quot;: [
+  { &quot;name&quot;: &quot;BST&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Binary_search_tree&quot;},
+  { &quot;name&quot;: &quot;JS BST&quot;, &quot;site&quot;: &quot;https://gist.github.com/trevmex/821973&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;LCA C++&quot;, &quot;site&quot;: &quot;https://www.youtube.com/watch?v=LFjCr2yDJdc&quot; },
+    { &quot;name&quot;: &quot;BT vs BST&quot;, &quot;site&quot;:&quot;http://stackoverflow.com/questions/6380231/difference-between-binary-tree-and-binary-search-tree&quot;, &quot;children&quot;: [
+      { &quot;name&quot;:&quot;Red Black&quot;, &quot;site&quot;: &quot;https://en.wikipedia.org/wiki/Red%E2%80%93black_tree&quot;},
+      { &quot;name&quot;: &quot;LCA Python&quot;, &quot;site&quot;: &quot;https://www.youtube.com/watch?v=bl-gwEwm8CM&quot; },
+      { &quot;name&quot;:&quot;LCA&quot;, &quot;site&quot;: &quot;https://www.youtube.com/watch?v=NBcqBddFbZw&quot; },
+      { &quot;name&quot;: &quot;BST II&quot;, &quot;site&quot;: &quot;https://www.cs.princeton.edu/~rs/AlgsDS07/08BinarySearchTrees.pdf&quot;}         
       ]
-    }
+    },
+    { &quot;name&quot;:&quot;LCA in Java&quot;, &quot;site&quot;: &quot;http://www.fusu.us/2013/06/p2-lowest-common-ancestor-in-binary-tree.html&quot;}
+    ]
+  },
+  {&quot;name&quot;: &quot;BST vs Hash&quot;, &quot;site&quot;:&quot;http://stackoverflow.com/questions/4128546/advantages-of-binary-search-trees-over-hash-tables&quot;}
+  ]
+}
+
+
 ];
 
 // ************** Generate the tree diagram  *****************
@@ -611,7 +595,7 @@ var treeData = [
 
 var vwidth = (window.innerWidth &gt; 0) ? window.innerWidth : screen.width;
 var vtop = (vwidth &gt; 410) ? 80 : 50;
-vwidth = (vwidth &gt; 410) ? 410 : vwidth;
+var vwidth = (vwidth &gt; 410) ? 410 : vwidth;
 var vheight = vwidth + 180;
 
 function makeMeSomeTrees(eachRoot){
@@ -636,8 +620,6 @@ function makeMeSomeTrees(eachRoot){
 
   root = treeData[eachRoot];
 
-  update(root);
-
   function update(source) {
 
   // Compute the new tree layout.
@@ -655,7 +637,8 @@ function makeMeSomeTrees(eachRoot){
   var nodeEnter = node.enter().append(&quot;g&quot;)
   .attr(&quot;class&quot;, &quot;node&quot;)
   .attr(&quot;transform&quot;, function(d) {
-    return &quot;translate(&quot; + d.x + &quot;,&quot; + d.y + &quot;)&quot;; });
+    return &quot;translate(&quot; + d.x + &quot;,&quot; + d.y + &quot;)&quot;;
+    });
 
   nodeEnter.append(&quot;circle&quot;)
   .attr(&quot;r&quot;, vwidth/8.5)
@@ -691,7 +674,7 @@ function makeMeSomeTrees(eachRoot){
     if (d.name.match(/(tape|node|projects|BST|#|paths)/)) {
       return 8;
     } else { return 0; }
-  })
+  });
 
   // Enter the links.
   link.enter().insert(&quot;path&quot;, &quot;g&quot;)
@@ -699,6 +682,9 @@ function makeMeSomeTrees(eachRoot){
   .attr(&quot;d&quot;, diagonal);
 
   }
+
+update(root);
+
 }
 
 for (var q = 0; q &lt; treeData.length; q++) {
@@ -718,6 +704,33 @@ for (var q = 0; q &lt; treeData.length; q++) {
 &lt;p&gt;&lt;img src=&quot;eightball.jpg&quot; alt=&quot;eightballs...&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!-- ,  
+
+,
+,
+{ &quot;name&quot;: &quot;n-arrays&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays&quot;, &quot;children&quot;: [
+  { &quot;name&quot;: &quot;StrStr&quot;, &quot;site&quot;: &quot;http://phpjs.org/functions/strstr/&quot; },
+  { &quot;name&quot;: &quot;Cheat Sheet&quot;, &quot;site&quot;: &quot;https://gist.github.com/TSiege/cbb0507082bb18ff7e4b&quot;, &quot;children&quot;: [
+    { &quot;name&quot;: &quot;TCP&quot;, &quot;site&quot;: &quot;&quot;http://searchnetworking.techtarget.com/definition/TCP&quot; },
+    { &quot;name&quot;: &quot;TCP-IP&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/TCP-IP&quot;, &quot;children&quot;: [
+      { &quot;name&quot;: &quot;Mutex&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/mutex&quot; },
+      { &quot;name&quot;: &quot;SCTP&quot;, &quot;site&quot;: &quot;http://searchnetworking.techtarget.com/definition/SCTP&quot; },
+      { &quot;name&quot;: &quot;LinkedList&quot;, &quot;site&quot;: &quot;http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html&quot; },
+      { &quot;name&quot;:&quot;Reverse LL&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript&quot; }
+      ]
+    },
+    { &quot;name&quot;: &quot;Breadth&quot;, &quot;site&quot;: &quot;http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree&quot; }
+    ]
+  },
+  { &quot;name&quot;:StrStr in C++&quot;, &quot;site&quot;: &quot;http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html&quot; }
+  ]
+}
+
+
+
+
+ --&gt;
 </description>
         <pubDate>Sun, 15 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/job-seekers/</link>
