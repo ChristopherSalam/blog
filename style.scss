@@ -466,8 +466,8 @@ footer {
   z-index: 99;
   fill: #1f6e6a; /*green*/
   background-color: #E6EFF5; /*
-  -ms-transform: rotate(-45deg); 
-  -webkit-transform: rotate(-45deg); 
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);  */
 
     @include mobile {
@@ -489,4 +489,36 @@ div#diagram {
   display: table;
   padding: 0px;
   margin: 0px auto;
+}
+
+petri-dish {
+  .node {
+    cursor: pointer;
+  }
+
+  .node:hover {
+    stroke: #000;
+    stroke-width: 1.5px;
+  }
+
+  .node--leaf {
+    fill: #CAA8F0; /*purple #F4A3B1 #1f6e6a   #4A59A0 */
+  }
+
+  .label {
+    font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-anchor: middle;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+  }
+
+  .label,
+  .node--root,
+  .node--leaf {
+    pointer-events: none;
+  }
+
+  .square {
+    height:auto;
+    width:100%;
+  }
 }

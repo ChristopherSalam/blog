@@ -918,8 +918,8 @@ stroke-width: 4px;*/
   /*green*/
   background-color: #E6EFF5;
                            /*
--ms-transform: rotate(-45deg); 
--webkit-transform: rotate(-45deg); 
+-ms-transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
 transform: rotate(-45deg);  */
 }
 @media screen and (max-width: 640px) {
@@ -938,4 +938,30 @@ div#diagram {
   display: table;
   padding: 0px;
   margin: 0px auto;
+}
+
+petri-dish .node {
+  cursor: pointer;
+}
+petri-dish .node:hover {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+petri-dish .node--leaf {
+  fill: #CAA8F0;
+  /*purple #F4A3B1 #1f6e6a   #4A59A0 */
+}
+petri-dish .label {
+  font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+petri-dish .label,
+petri-dish .node--root,
+petri-dish .node--leaf {
+  pointer-events: none;
+}
+petri-dish .square {
+  height: auto;
+  width: 100%;
 }
