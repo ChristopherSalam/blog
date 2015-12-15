@@ -13,7 +13,7 @@
 }
 
 .node--leaf {
-  fill: #CAA8F0; /*purple #F4A3B1 #1f6e6a   #4A59A0 */
+  fill: #CAA8F0; 
 }
 
 .label {
@@ -80,7 +80,7 @@ var svg = d3.select("body div").append("svg")
        ]
       },
       {"name": "for newbs", "size": 3176},
-      {"name": "projects", "size": 449},
+      {"name": "projects", "size": 1449},
       {"name": "job seekers", "size": 1576},
       {"name": "packages", "size": 976}
      ]
@@ -129,9 +129,9 @@ var svg = d3.select("body div").append("svg")
       {
        "name": "#reactnative",
        "children": [
-        {"name": "try RN", "size": 5354},
-        {"name": "RN snapshots", "size": 1233},
-        {"name": "RN updates", "size": 1233},
+        {"name": "try RN", "size": 1354},
+        {"name": "RN snapshots", "size": 2433},
+        {"name": "RN updates", "size": 2233},
         {"name": "tape tests", "size": 1233}
        ]
       },
@@ -171,7 +171,7 @@ var svg = d3.select("body div").append("svg")
         } else {
           url = 'http://www.christophersalam.com/' + d.name.split(" ").join("-");
         } window.location = url;
-      }).style({fill: "white","font-family": "Megrim", "font-weight":"bold","font-size":"1.5em", transform:"rotate(180 200,100)"});
+      }).style({fill: "white","font-family": "Megrim", "font-weight":"bold","font-size":"1.0em", transform:"rotate(180 200,100)"});
 
   var node = svg.selectAll("circle,text");
 

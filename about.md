@@ -6,23 +6,25 @@ permalink: /about/
 
 My name is Christopher Salam and I am an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, **<a href="http://chrissalam.com/environmental">environmental</a>**, and **<a href="http://chrissalam.com/software">software</a>** engineer
 
-I was in the first cohort of <strong><a href="http://www.telegraphacademy.com/" target="_blank">Telegraph Academy </a></strong>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA
+I was in the first cohort of <a href="http://www.telegraphacademy.com/" target="_blank"><img height="30px" style="display:inline-block" src="tga2.png" /></a>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA
 
-Open source projects I've worked on lately are:
+I currently work at <a href=""> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>, please let me know if you are interested in the company and what we are working on
 
-<strong><a href="http://katfish.me" target="_blank">Katfish</a></strong>: An honest profile program built in React Native and Firebase
+Open source projects I've worked on:
 
-<strong><a href="http://sixdribbles.com" target="_blank">Six Dribbles</a></strong>: A Bacon Oracle for NBA players built with a ANNE stack (Angular, Neo4j, Node, and Express)
+&nbsp; &nbsp; &nbsp; <strong><a href="http://katfish.me" target="_blank">Katfish</a></strong>: An honest profile program built in React Native and Firebase
 
-<strong><a href="http://video-ke.com" target="_blank">Video-ke</a></strong>: A dual video player with crossfader powered by Youtube
+&nbsp; &nbsp; &nbsp; <strong><a href="http://sixdribbles.com" target="_blank">Six Dribbles</a></strong>: A Bacon Oracle for NBA players built with Angular, Neo4j, Node, and Express.
+
+&nbsp; &nbsp; &nbsp; <strong><a href="http://video-ke.com" target="_blank">Video-ke</a></strong>: A dual video player with crossfader powered by Youtube
 
 I work as a freelance developer with <strong><a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a></strong>
 
-My resume can be found at my <strong><a href="http://ChristopherSalam.github.io" target="_blank">github.io </a></strong>
+My resume can be found at my <strong><a href="http://chrissalam.github.io" target="_blank">github.io </a></strong> or by clicking on "Work" above
 
-When growing up, I was really captivated by a television show called the **<a href="http://pretender.wikia.com/wiki/Jarod">Pretender</a>**, in which the protagonist was princpally good natured and had the cognitive ability to change professions in each episode. To some extent, getting into software has been a way to pursue all my varied and ever-changing interests.
+When growing up, I was really captivated by a television show called the **<a href="http://pretender.wikia.com/wiki/Jarod">Pretender</a>**, in which the protagonist was principally good natured and had the cognitive ability to change professions in each episode. To some extent, getting into software has been a way to pursue all my varied and ever-changing interests.
 
-This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> and <strong><a href="https://github.com/barryclark/jekyll-now">jekyllNow</a></strong> as a static content generator, used <strong><a href="https://pages.github.com/"> github pages </a></strong> before I elected to transition to a full static HTML site, and uses <strong><a href="http://d3js.org/"> d3 </a></strong> to make the posts list in a <strong><a href="https://github.com/mbostock/d3/wiki/Tree-Layout"> tree structure. </a></strong>
+This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> and <strong><a href="https://github.com/barryclark/jekyll-now">jekyllNow</a></strong> as a static content generator, used <strong><a href="https://pages.github.com/"> github pages </a></strong> before I elected to transition to a full static HTML site, and uses <strong><a href="http://d3js.org/"> d3 </a></strong> to make the posts list in a <strong><a href="https://github.com/mbostock/d3/wiki/Tree-Layout"> tree structure</strong></a> or <strong><a href="http://bl.ocks.org/mbostock/4063530" >petri-dish structure </a></strong>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
