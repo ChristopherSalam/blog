@@ -4,11 +4,9 @@ title: About
 permalink: /about/
 ---
 
-My name is Christopher Salam and I am an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, **<a href="http://chrissalam.com/environmental">environmental</a>**, and **<a href="http://chrissalam.com/software">software</a>** engineer
+My name is Christopher Salam and I am an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, **<a href="http://chrissalam.com/environmental">environmental</a>**, and **<a href="http://chrissalam.com/software">software</a>** engineer, currently working at <a target="_blank" href="https://angel.co/ziploop"> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>
 
-I was in the first cohort of <a href="http://www.telegraphacademy.com/" target="_blank"><img height="30px" style="display:inline-block" src="tga2.png" /></a>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA
-
-I currently work at <a href=""> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>, please let me know if you are interested in the company and what we are working on
+I was in the first cohort of <a href="http://www.telegraphacademy.com/" <a target="_blank"> <strong>Telegraph Academy</strong> <img height="30px" style="display:inline-block" src="tga.png" /> </a>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA
 
 Open source projects I've worked on:
 

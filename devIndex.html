@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
+<base target="_parent" />
 <link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+</head>
 <style>
 
 .node {
@@ -13,7 +16,7 @@
 }
 
 .node--leaf {
-  fill: #CAA8F0; 
+  fill: #CAA8F0;
 }
 
 .label {
@@ -170,7 +173,7 @@ var svg = d3.select("body div").append("svg")
           url = 'http://www.christophersalam.com/tags/' + d.name;
         } else {
           url = 'http://www.christophersalam.com/' + d.name.split(" ").join("-");
-        } window.location = url;
+        } top.window.location = url;
       }).style({fill: "white","font-family": "Megrim", "font-weight":"bold","font-size":"1.0em", transform:"rotate(180 200,100)"});
 
   var node = svg.selectAll("circle,text");
