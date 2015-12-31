@@ -5,7 +5,43 @@ tags:
 - resources
 ---
 
-Preparing for software engineering interviews:
+new Software Engineering Job Seekers: So you've finally started to look for a job or have a job already. Great! This is only the beginning of the journey...
+
+#Advice I've received from seasoned engineers:
+
+## &nbsp; &nbsp; 1. Dive into your next role. 
+
+## &nbsp; &nbsp; 2. Continue to learn
+
+### &nbsp; &nbsp; &nbsp; &nbsp; a. Cracking the Coding Interview
+
+### &nbsp; &nbsp; &nbsp; &nbsp; b. Programming Pearls
+
+### &nbsp; &nbsp; &nbsp; &nbsp; c. Data Structures and Algorithms
+
+## &nbsp; &nbsp;  3. Contribute to open source
+
+### &nbsp; &nbsp; &nbsp; &nbsp;  a. Better than a resume
+
+## &nbsp; &nbsp;  4. Attend groups and meetups (good for expanding network as well)
+
+#Finding jobs
+
+## &nbsp; &nbsp;  1. Really dig deep into your own network. 
+
+### &nbsp; &nbsp; &nbsp; &nbsp;  a. Run each company through Linkedin and see who you know there, and directly ask for help. 
+
+## &nbsp; &nbsp;  2. Expand your own network. 
+
+### &nbsp; &nbsp; &nbsp; &nbsp;  a. Arrange for coffee
+
+### &nbsp; &nbsp; &nbsp; &nbsp;  c. This may be for the next job...
+
+## &nbsp; &nbsp;  3. Pay it forward.
+
+## &nbsp; &nbsp;  4. Take a good offer. There may not be a great offer coming.
+
+#Preparing for software engineering interviews:
 
 Links for job seekers | **[Language characteristics](/languages "Qualitative Language Characteristics")**
 
