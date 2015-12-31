@@ -35,11 +35,15 @@ new Software Engineering Job Seekers: So you've finally started to look for a jo
 
 ### &nbsp; &nbsp; &nbsp; &nbsp;  a. Arrange for coffee
 
-### &nbsp; &nbsp; &nbsp; &nbsp;  c. This may be for the next job...
+### &nbsp; &nbsp; &nbsp; &nbsp;  b. This may be for the next job...
 
 ## &nbsp; &nbsp;  3. Pay it forward.
 
 ## &nbsp; &nbsp;  4. Take a good offer. There may not be a great offer coming.
+
+### &nbsp; &nbsp; &nbsp; &nbsp;  a. Breakthrough/Bias
+
+### &nbsp; &nbsp; &nbsp; &nbsp;  b. 1st job, not last
 
 #Preparing for software engineering interviews:
 
