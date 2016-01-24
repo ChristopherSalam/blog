@@ -7,43 +7,47 @@ tags:
 
 new Software Engineering Job Seekers: So you've finally started to look for a job or have a job already. Great! This is only the beginning of the journey...
 
-#Advice I've received from seasoned engineers:
+#Continuing Eduction
 
-## &nbsp; &nbsp; 1. Dive into your next role. 
+## &nbsp; &nbsp; 1. Dive into your next role.
+
+The worst thing you can do is be worried about your next step before doing a great job where you are. Dive into it and be excited about coming to work everyday. If you can't find some aspect about your current place that you love and get excited about, it won't change at a different job.
 
 ## &nbsp; &nbsp; 2. Continue to learn
 
-### &nbsp; &nbsp; &nbsp; &nbsp; a. Cracking the Coding Interview
-
-### &nbsp; &nbsp; &nbsp; &nbsp; b. Programming Pearls
-
-### &nbsp; &nbsp; &nbsp; &nbsp; c. Data Structures and Algorithms
+Another trap is to be complacent. This is a tough job but there barriers to entry are really low. Don't think that you can stop learning. I've experienced this firsthand. Since getting hired it can be tough to bring yourself to have the energy afterwork to read, learn, and blog more, but please push yourself. I've been reading books, such as 'Cracking the Coding Interview', 'Programming Pearls', and Data Structures and Algoriths in Python, to prepare for my future and to keep learning.
 
 ## &nbsp; &nbsp;  3. Contribute to open source
 
-### &nbsp; &nbsp; &nbsp; &nbsp;  a. Better than a resume
+Contributing to open source is even better than resume, it shows that you love what you work on enough to work on it after work. I've been excited about maintaining my open source repos and adding features and helping document tools I've started to use already.
 
-## &nbsp; &nbsp;  4. Attend groups and meetups (good for expanding network as well)
+## &nbsp; &nbsp;  4. Attend groups and meetups
+
+Since beginning to work, another trap is to go home and not take advantage of the great meetups and cultures available locally. You can meet great connections for future jobs as well as interesting people at meetups. I've gotten interviews, ones I certainly wasn't qualified for, simply by walking up to people at groups, inviting yourself to dinner, and making myself a part of the network.
 
 #Finding jobs
 
-## &nbsp; &nbsp;  1. Really dig deep into your own network. 
+One of the most interesting and helpful aspects of the coding bootcamp process is that there are plenty of job resources and people that you can connect to instantly. I was hired where I work now primarily from within this network (from one of my cohort friends in fact) so it always pays to be kind and on good terms with all your connections.
 
-### &nbsp; &nbsp; &nbsp; &nbsp;  a. Run each company through Linkedin and see who you know there, and directly ask for help. 
+## &nbsp; &nbsp;  1. Really dig deep into your own network.
 
-## &nbsp; &nbsp;  2. Expand your own network. 
+Did deep. Every person you've ever met will need to be called upon throughout the process. I've been talking to many of the friends I had in college and graduate school, and many have been crucial to getting me interviews and helping me pursue opportunities. Be open with your needs and remember to thank them and let them know when you find something and return the favor.
 
-### &nbsp; &nbsp; &nbsp; &nbsp;  a. Arrange for coffee
+### &nbsp; &nbsp; &nbsp; &nbsp;  a. Run each company through Linkedin and see who you know there, and directly ask for help.
 
-### &nbsp; &nbsp; &nbsp; &nbsp;  b. This may be for the next job...
+I've often had the experience where I've never heard of a company, then ran the company through linkedin, and found that someone I know works there. The moment I've contacted my friend there, they were happy to help, even though we had not talked for years. Ultimately, I think people are happy to spread real opportunity and get people they are comfortable with rather than hit the open market. One ancedote I think of immediately is I had a friend mention shortly after they post a job nearly 150 resumes come within a day, but only 3 were through referral, and all three were indeed better suited, got interviews, and one was chosen. Be one of the three recommended. I can tell you that of my interviews and offers, a super majority of them came when I asked someone on the inside.
+
+## &nbsp; &nbsp;  2. Expand your own network.
+
+Recently after accepting a job offer, I proceeded to go into San Francisco, and meet with three people working at three different companies simply to discuss what they were doing and learn more about them. I told them I had a gig, and learned a bunch of the stuff I'm writing here. Addtionally, I had the chance to turn the tables and interview them. This may be optimistic, but in all honesty I don't think the companies like interviewing the way they do anyways. Some of the people I talked to mentioned that their subsequent jobs were offered through more informal interview means, and I think it makes a lot of sense.
 
 ## &nbsp; &nbsp;  3. Pay it forward.
 
+Remember how hard your job search was when people come down the pipeline. I've met quite a few former bootcamp students as well as classically trained engineers and it's remarkable how quickly people can forget when they needed help and how they got to where they got. I will not and I intend to help as many people learn this industry. Ultimately, social networks are a tyranny ruled by it's weakest member (<a href="http://izquotes.com/quote/385182">appropriated from Shaw</a>).
+
 ## &nbsp; &nbsp;  4. Take a good offer. There may not be a great offer coming.
 
-### &nbsp; &nbsp; &nbsp; &nbsp;  a. Breakthrough/Bias
-
-### &nbsp; &nbsp; &nbsp; &nbsp;  b. 1st job, not last
+I have interviewed at big companies, at Github, at Uber, and Youtube, as well as numerous smaller companies. I utlimately chose Ziploop, the company I work for now, primarily because of the optimization of opportunity (Ziploop, where I'm the 4th engineer, gave me the opportunity to work fullstack from day one, and learn an entire codebase), as well as it was the only offer I had. I would recommend to anyone looking to take the offer they have, it's better to be working than looking, and I think you'll find great things about each opportunity. Breaking through to the first job is the hardest leap and it will be very tough for most.
 
 #Preparing for software engineering interviews:
 
@@ -264,32 +268,3 @@ Here's something I keep in mind all the time.
 How do you determine one outlying heavy ball using a scale only three times?
 
 <img src="eightball.jpg" alt="eightballs...">
-
-**This is a stub, there's more coming**
-
-<!-- ,  
-
-,
-,
-{ "name": "n-arrays", "site": "http://stackoverflow.com/questions/8188548/splitting-a-js-array-into-n-arrays", "children": [
-  { "name": "StrStr", "site": "http://phpjs.org/functions/strstr/" },
-  { "name": "Cheat Sheet", "site": "https://gist.github.com/TSiege/cbb0507082bb18ff7e4b", "children": [
-    { "name": "TCP", "site": ""http://searchnetworking.techtarget.com/definition/TCP" },
-    { "name": "TCP-IP", "site": "http://searchnetworking.techtarget.com/definition/TCP-IP", "children": [
-      { "name": "Mutex", "site": "http://searchnetworking.techtarget.com/definition/mutex" },
-      { "name": "SCTP", "site": "http://searchnetworking.techtarget.com/definition/SCTP" },
-      { "name": "LinkedList", "site": "http://www.i-programmer.info/programming/javascript/5328-javascript-data-structures-the-linked-list.html" },
-      { "name":"Reverse LL", "site": "http://stackoverflow.com/questions/23278017/strategies-to-reverse-a-linked-list-in-javascript" }
-      ]
-    },
-    { "name": "Breadth", "site": "http://stackoverflow.com/questions/21194678/recursive-breadth-first-traversal-of-binary-tree" }
-    ]
-  },
-  { "name":StrStr in C++", "site": "http://articles.leetcode.com/2010/10/implement-strstr-to-find-substring-in.html" }
-  ]
-}
-
-
-
-
- -->
