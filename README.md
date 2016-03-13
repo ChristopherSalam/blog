@@ -4,8 +4,12 @@ This is a blog site I'm constructing as I embark into work as a software enginee
 
 Things to get to next:
 
-Blogging about ice and rocks, the ultimate we-hate-interviewing-new-engineers question.
+Blogging about ice and rocks: the ultimate we-hate-interviewing-new-engineers question
 
-Email parseing and window.atob()
+Email parsing, attachment parsing
+
+window.atob()
+
+Alumni coordinating
 
 Starting a new job
