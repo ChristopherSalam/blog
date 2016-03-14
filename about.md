@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: About Me
 permalink: /about/
 ---
 
@@ -36,16 +36,16 @@ This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> 
   "parent": null,
   "children": [
       {
-      "name": "tags", //"bicycling",
+      "name": "bicycles",
       "parent": "Chris Salam"
       },
       {
-      "name": "#engineering",
+      "name": "software",
       "parent": "Chris Salam",
         "children": [
         {
           "name": "agricultural",
-          "parent": "#reactnative"
+          "parent": "#reactnative",
         },
         {
           "name": "chemical",
@@ -54,15 +54,11 @@ This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> 
         {
           "name": "environmental",
           "parent": "#reactnative"
-        },
-        {
-          "name": "software",
-          "parent": "#reactnative"
         }
                     ]
       },
       {
-      "name": "slideshow", //"musician",
+      "name": "music",
       "parent": "Chris Salam"
       }
               ]
@@ -75,7 +71,7 @@ This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> 
 var vwidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var vtop = (vwidth > 410) ? 80 : 50;
 vwidth = (vwidth > 410) ? 410 : vwidth;
-var vheight = vwidth + 180;
+var vheight = vwidth + 360;
 
 function makeMeSomeTrees(eachRoot){
   var margin = {top: vtop, right: 5, bottom: 5, left: 5},
@@ -134,8 +130,8 @@ function makeMeSomeTrees(eachRoot){
   .style("fill-opacity", 1)
   .attr("class", "hyper").on("click", function (d) {
     var url;
-    if (d.name.match(/#/)) { url = 'http://chrissalam.com/tags/' + d.name; }
-        // var url = 'http://chrissalam.com/#'+d.name
+    if (d.name.match(/bicycles/)) { url = 'http://vintagebicycles.info'; }
+    else if (d.name.match(/music/)) { url = 'http://christophersalam.github.io'; }
         else { url = 'http://chrissalam.com/' + d.name.split(" ").join("-"); }
         window.location = url;
       });

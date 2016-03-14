@@ -5,7 +5,7 @@ layout: default
 <!-- load the d3.js library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
-<iframe src="devIndex.html" height="311px" width="400px" scrolling="no" style="margin: 0 auto; display: block; overflow:hidden;"></iframe>
+<iframe src="devIndex.html" height="253px" width="325px" scrolling="no" style="margin: 0 auto; display: block; overflow:hidden;"></iframe>
 
 <h3 class="diagram">Petri Dish View (above)</h3>
 
@@ -31,9 +31,9 @@ var treeData = [
       { "name": "console", "parent": "#javascript" }
       ]
   },
-  { "name": "#setup", "parent": "#setup", "children": [
-    { "name": "languages", "parent": "#setup" },
-    { "name": "#bash", "parent": "#setup", "children": [
+  { "name": "#neophyte", "parent": "#neophyte", "children": [
+    { "name": "languages", "parent": "#neophyte" },
+    { "name": "#bash", "parent": "#neophyte", "children": [
       { "name": "try bash", "parent": "#bash" },
       { "name": "#resources", "parent": "#bash", "children": [
         { "name": "for newbs", "parent": "#resources" },
@@ -44,7 +44,7 @@ var treeData = [
       { "name": "bash & blog", "parent": "#bash" }
       ]
     },
-    { "name":"packages", "parent": "#setup" }
+    { "name":"packages", "parent": "#neophyte" }
     ]
   },
   { "name": "#nosql", "parent": "#data structures", "children": [
@@ -58,30 +58,30 @@ var treeData = [
     { "name": "try neo4j", "parent": "#nosql" }
     ]
   },
-  { "name": "#structures", "parent": "#javascript", "children": [
-    { "name": "trees", "parent": "#structures"},
-    { "name": "#paths", "parent": "#structures", "children": [
-      { "name": "matrix paths", "parent": "#structures"},
-      { "name": "#regexp", "parent": "#structures", "children":[
+  { "name": "#ds", "parent": "#javascript", "children": [
+    { "name": "trees", "parent": "#ds"},
+    { "name": "#paths", "parent": "#ds", "children": [
+      { "name": "matrix paths", "parent": "#ds"},
+      { "name": "#regexp", "parent": "#ds", "children":[
         { "name": "try regexp", "parent": "#regexp"},
         { "name": "regexp.js", "parent": "#regexp"},
         { "name": "O(r)", "parent": "#regexp" }
           ]
       },
-      { "name": "array paths", "parent": "#structures" }
+      { "name": "array paths", "parent": "#ds" }
       ]
     },
-    { "name": "BST", "parent": "#structures" }
+    { "name": "BST", "parent": "#ds" }
     ]
   }
 ];
 
 // ************** Generate the tree diagram  *****************
-// var width = document.getElementById('main').offsetWidth;
+var width = document.getElementById('main').offsetWidth;
 
 var vwidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var vtop = (vwidth > 410) ? 80 : 50;
-// vwidth = (vwidth > 410) ? 410 : vwidth;
+vwidth = (vwidth > 410) ? 410 : vwidth;
 var vheight = vwidth + 180;
 
 function makeMeSomeTrees(eachRoot){

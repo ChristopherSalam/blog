@@ -2,7 +2,7 @@
 layout: post
 title: array paths
 tags:
-- structures
+- ds
 - javascript
 - paths
 ---

@@ -33,7 +33,7 @@
 
 .square {
   height:auto;
-  width:100%;
+  width:80%;
 }
 
 </style>
@@ -72,7 +72,7 @@ var svg = d3.select("body div").append("svg")
    "name": "blog",
    "children": [
     {
-     "name": "#setup",
+     "name": "#neophyte",
      "children": [
       {"name": "languages", "size": 1983},
       {
@@ -83,9 +83,9 @@ var svg = d3.select("body div").append("svg")
        ]
       },
       {"name": "for newbs", "size": 3176},
-      {"name": "projects", "size": 1449},
-      {"name": "job seekers", "size": 1576},
-      {"name": "packages", "size": 976}
+      {"name": "projects", "size": 2449},
+      {"name": "job seekers", "size": 2576},
+      {"name": "packages", "size": 1976}
      ]
     },
     {
@@ -108,7 +108,7 @@ var svg = d3.select("body div").append("svg")
      ]
     },
     {
-     "name": "#structures",
+     "name": "#ds",
      "children": [
         {"name": "matrix paths", "size": 1383},
         {"name": "array paths", "size": 1383},
@@ -174,7 +174,8 @@ var svg = d3.select("body div").append("svg")
         } else {
           url = 'http://www.christophersalam.com/' + d.name.split(" ").join("-");
         } top.window.location = url;
-      }).style({fill: "white","font-family": "Megrim", "font-weight":"bold","font-size":"1.0em", transform:"rotate(180 200,100)"});
+      })
+      .style({fill: "white","font-family": "Megrim", "font-weight":"900","font-size":"1.15em"});
 
   var node = svg.selectAll("circle,text");
 
@@ -203,7 +204,7 @@ var svg = d3.select("body div").append("svg")
 
   function zoomTo(v) {
     var k = diameter / v[2]; view = v;
-    node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
+    node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")rotate(-30)"; });
     circle.attr("r", function(d) { return d.r * k; });
   }
 

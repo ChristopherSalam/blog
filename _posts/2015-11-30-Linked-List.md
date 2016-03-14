@@ -3,7 +3,7 @@ layout: post
 title: BST
 tags:
 - javascript
-- structures
+- ds
 - linked list
 ---
 
