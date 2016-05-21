@@ -7,7 +7,7 @@ tags:
 
 new Software Engineering Job Seekers: So you've finally started to look for a job or have a job already. Great! This is only the beginning of the journey...
 
-#Continuing Eduction
+#Continuing Education
 
 ## &nbsp; &nbsp; 1. Dive into your next role.
 

@@ -10,9 +10,9 @@ tags:
 
 I love regular expressions!
 
-This post is part 1 in a 3 part series. Read the other posts:
+This post is part 1 in a 4 part series. Read the other posts:
 
-Part 1 | **[Part 2 - O(r)](/O(r) "O dot R notation")** | **[Part 3 - regexp.js](/regexp.js "Using lookaheads to remove filetypes")**
+Part 1 | **[Part 2 - O(r)](/O(r) "O dot R notation")** | **[Part 3 - regexp.js](/regexp.js "Using lookaheads to remove filetypes")** | **[Part 4 - Regexp at work](/regexp@work "RegExp at work")**
 
 The meme itself is a regular expression in a way.
 

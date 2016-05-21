@@ -7,10 +7,111 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>regexp@work</title>
+        <description>&lt;p&gt;I love regular expressions!&lt;/p&gt;
+
+&lt;p&gt;This post is part 4 in a 4 part series. Read the other posts:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;/try-regexp&quot; title=&quot;Getting Started&quot;&gt;Part 1 - Try regexp&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/O(r)&quot; title=&quot;O dot R notation&quot;&gt;Part 2 - O(r)&lt;/a&gt;&lt;/strong&gt; | &lt;strong&gt;&lt;a href=&quot;/regexp.js&quot; title=&quot;Using lookaheads to remove filetypes&quot;&gt;Part 3 - regexp.js&lt;/a&gt;&lt;/strong&gt; | Part 4&lt;/p&gt;
+
+&lt;p&gt;So I&amp;#39;ve started my first job at Ziploop, I&amp;#39;m doing full-stack JavaScript, primarily on the backend and much to my delight, I will be and have been working on topics that are heavily involved with Regular Expressions, so this series will continue.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ve written a bunch of RegExp gems I wanted to share here, at this point somewhat uncategorized, simply that they&amp;#39;ve come about because of this new job. Enjoy!&lt;/p&gt;
+
+&lt;h2&gt;Parse Email&lt;/h2&gt;
+
+&lt;p&gt;This first function looks through a full email address, i.e.&lt;/p&gt;
+
+&lt;p&gt;&amp;#39;&amp;quot;Christopher Salam&amp;quot; &lt;a href=&quot;mailto:chris@chrissalam.com&quot;&gt;chris@chrissalam.com&lt;/a&gt;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; to -&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#39;chris@chrissalam.com&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;Here it is in it&amp;#39;s full glory:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot; data-lang=&quot;JavaScript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parseEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;emailFull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;lt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;emailFull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;emailFull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;emailFull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;lt;(\w+(?=\+|@))/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;domainName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;emailFull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/@(\w+)./&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tld&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;emailFull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/\.(\w+)&amp;gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;@&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;domainName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tld&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There&amp;#39;s a lot of information, so let&amp;#39;s &amp;#39;parse&amp;#39; through it. Here&amp;#39;s a link to &lt;strong&gt;&lt;a href=&quot;http://regexr.com/&quot; target=&quot;_blank&quot;&gt;regexr&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The major topics to discuss prior to seeing this thing work is understanding capture groups, i.e. /(stuff)/, lookarounds (to remove &amp;quot;+relics&amp;quot;), and truly understanding what qualifies for \w+, which is the special grouping for word-like-characters in RegExp. It does include numbers, which is somewhat misleading from the &amp;#39;w&amp;#39;, and it specifically excludes spaces, @, +, &amp;quot;&amp;quot;, &amp;#39;&amp;#39;, slashes, dashes, and other letters that may trip us up.&lt;/p&gt;
+
+&lt;p&gt;The first most natural guess is to use a regexp that equates to &lt;a href=&quot;mailto:stuff@stuff.stuff&quot;&gt;stuff@stuff.stuff&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;email,first.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;and of course, this looks good, right? Then we throw in the capture group, because the capture group will help us remove the &amp;lt;&amp;gt; around the email.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;email,firstcap.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is how capture groups work, shown from the console. The capture group gives us back an array like object that shows us the whole object that was matched in the 0th index, and in the 1st index we have the captured match within a match: i.e.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;capturegroup.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;In production, I&amp;#39;ve found numerous aliases and other information can obscure the email address. Additionally, emails will still be received if you add additional information in the email (we send emails like chris+attachment@chrissalam.com) which will still travel to gmail emails, but will lead to an independent account in our app, which let&amp;#39;s us make new profiles and test things and receive the test emails in once place.&lt;/p&gt;
+
+&lt;p&gt;This however fails went accounting for information sent in the name with plus signs or other terms prior to the @. A picture is worth a thousand words:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;relics.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;From this example, we see we need a capture group that is more detailed, and just capture the word &amp;quot;chris&amp;quot; and not &amp;quot;chris+relics&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;We are going to need something extra special here to just get chris. Here comes a lookaround. Using the &amp;lt;stuff(?=unwantedstuff) template, we start with a &amp;quot;&amp;lt;&amp;quot;, and goes until it sees a &amp;quot;+&amp;quot; or a &amp;quot;@&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;lookarounds.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Domains names and top level domains are simpler to match, here are ways to grab both of those.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;domainName.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;tld.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;So this breaks out regular expressions into several terms, to get chris, chrissalam, and com as three different terms, captures them, then adds them together.&lt;/p&gt;
+
+&lt;p&gt;Hyphenated domains names are another frustrating thing, but this works:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;hyphen.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;hyphensConsole.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;There are other concerns not addressed in this function: Periods in the name of the email (i.e. christopher.salam@gmail.com and christophersalam@gmail.com go to the same inbox).&lt;/p&gt;
+
+&lt;p&gt;Ultimately, you don&amp;#39;t want &amp;quot;Chris Salam&amp;quot; &lt;a href=&quot;mailto:chris@chrissalam.com&quot;&gt;chris@chrissalam.com&lt;/a&gt; and &amp;quot;Christopher Salam&amp;quot; &lt;a href=&quot;mailto:chris@chrissalam.com&quot;&gt;chris@chrissalam.com&lt;/a&gt; to make separate accounts, so this function below uses regex to grab what I really want from this string: -&amp;gt; &amp;quot;chris@chrissalam.com&amp;quot;&lt;/p&gt;
+
+&lt;h2&gt;CID images&lt;/h2&gt;
+
+&lt;p&gt;CID images&lt;/p&gt;
+
+&lt;p&gt;CID images are images tags with embedded url info where base 64 information sits waiting to be parsed back into images and they are found in emails. Part of the work we are doing at Ziploop involves reading through emails using the Gmail API, and one tool has us grab the images with a CID attribute. This particular match was particularly gnarly. Here it is:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot; data-lang=&quot;JavaScript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;lt;img[^&amp;gt;]*src\s*=\s*&amp;quot;cid[^&amp;quot;]*&amp;quot;[^&amp;gt;]*&amp;gt;/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;quot;&lt;img stuff... &gt;&amp;quot; Let&amp;#39;s skip that part.&lt;/p&gt;
+
+&lt;p&gt;[^&amp;gt;]* is a crazy beautiful regexp term that means zero or more of characters that are not &amp;#39;&amp;gt;&amp;#39;. Make sense, right? We are interested in anything else! src is the beginning of an area of interest, helping use find a source attribute within an img tag. /s is whitespace, and /s* means zero or more whitespaces, these are optional. After hitting an equal sign, and eventually, a &amp;quot;cid&amp;quot; tag, we are finding what we need. The information inside the cid tag is huge, it can be many many characters. We can capture this information with parantheses for conversion if we wanted, it would be very similar.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot; data-lang=&quot;JavaScript&quot;&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;lt;img[^&amp;gt;]*src\s*=\s*&amp;quot;cid([^&amp;quot;]*)&amp;quot;[^&amp;gt;]*&amp;gt;/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s what it looks like in action. Very cool!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;cid.png&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Regular Expressions are like a mini-puzzle within the greater puzzle, it&amp;#39;s a great opportunity to learn something new and think again about patterns. We could also argue that software engineering is basically pattern recognition, recognizing something that people need that is repetitive and building a system around capturing that pattern. Hope this was helpful!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 19 Mar 2016 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/regexp@work/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/regexp@work/</guid>
+      </item>
+    
+      <item>
         <title>job seekers</title>
         <description>&lt;p&gt;new Software Engineering Job Seekers: So you&amp;#39;ve finally started to look for a job or have a job already. Great! This is only the beginning of the journey...&lt;/p&gt;
 
-&lt;h1&gt;Continuing Eduction&lt;/h1&gt;
+&lt;h1&gt;Continuing Education&lt;/h1&gt;
 
 &lt;h2&gt;&amp;nbsp; &amp;nbsp; 1. Dive into your next role.&lt;/h2&gt;
 
@@ -1455,159 +1556,6 @@ where the newfunc(args_provided_to_function_one) --&gt;
         <pubDate>Wed, 04 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/currying/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/currying/</guid>
-      </item>
-    
-      <item>
-        <title>projects</title>
-        <description>&lt;p&gt;My beliefs on choosing good projects:&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-balance-scale&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Balance the technologies/frameworks used.&lt;/p&gt;
-
-&lt;p&gt;Your blog and projects will shape you&lt;/p&gt;
-
-&lt;h5&gt;&amp;nbsp; &lt;i class=&quot;fa fa-refresh&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Resume: before and after&lt;/h5&gt;
-
-&lt;p&gt;&lt;img src=&quot;resumes.png&quot; alt=&quot;resume&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Projects and Skills will take up 50% of your resume&lt;/p&gt;
-
-&lt;p&gt;Projects will be your starting point at interviews&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-heart-o&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Love aspects about project&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-heartbeat&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Allow your teammates to have aspects they love.&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-gears&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Spend time to come to consensus&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;venn.jpg&quot; alt=&quot;venn diagram&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-exchange&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Teach the project internally&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-users&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Share the project publicly&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-filter&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Hosting is a big bottleneck&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-clone&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Consider a staging site&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-line-chart&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Plan or talk about ways to grow&lt;/p&gt;
-
-&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://receptacle-.herokuapp.com&quot; target=&quot;_blank&quot;&gt;Receptacle&lt;/a&gt;&lt;/strong&gt; answers where does this unwanted item go?&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;receptacle.png&quot; alt=&quot;receptacle&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Angular Application&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Visuals &amp;amp; UX/UI Emphasis&lt;/p&gt;
-
-&lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Redis &lt;strong&gt;&lt;a href=&quot;http://thenewstack.io/why-the-redis-ecosystem-is-flourishing/&quot;&gt;Key Value&lt;/a&gt;&lt;/strong&gt; -  Pair Database (&lt;strong&gt;&lt;a href=&quot;https://www.airpair.com/express/posts/earn-stack&quot;&gt;EARN&lt;/a&gt;&lt;/strong&gt;)&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;User Input Option&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://video-ke.com&quot; target=&quot;_blank&quot;&gt;Video-ke&lt;/a&gt;&lt;/strong&gt; is a dual video player with crossfader powered by &lt;i class=&quot;fa fa-youtube&quot;&gt;&lt;/i&gt;.&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;videoke.png&quot; alt=&quot;video-ke&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Current Features &amp;amp; Stack&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; jQuery UI &lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt; Bootstrap&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;i class=&quot;fa fa-youtube&quot;&gt;&lt;/i&gt; iFrame API&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Crossfader feature&lt;/p&gt;
-
-&lt;p&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Competetive Karoake&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Voting - Event Music feature&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://sixdribbles.com&quot; target=&quot;_blank&quot;&gt;SixDribbles&lt;/a&gt;&lt;/strong&gt; maps player relationships for the NBA.&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;sixdribbles.png&quot; alt=&quot;sixdribbles&quot;&gt;&lt;/p&gt;
-
-&lt;h5&gt;Current Features &amp;amp; Stack&lt;/h5&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Angular Front-End&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Node/Express Server&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;http://localhost:7474&quot; target=&quot;_blank&quot;&gt;Neo4j Graph Database &lt;i class=&quot;fa fa-share-alt-square&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h5&gt;Future Features, Stack, &amp;amp; Opportunities&lt;/h5&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Add Coaching Relationships&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Mobile (ReactNative)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Desktop &lt;i class=&quot;fa fa-linux&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt; &lt;i class=&quot;fa fa-windows&quot;&gt;&lt;/i&gt; (Electron)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;/node-neo4j&quot; &gt;Node-Neo4j-GraphStory-Heroku&lt;/a&gt;&lt;/strong&gt; blog series coming!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;noheroku.png&quot; alt=&quot;noheroku&quot;&gt;&lt;/p&gt;
-
-&lt;h3&gt;&lt;strong&gt;&lt;a href=&quot;http://katfish.me&quot; target=&quot;_blank&quot;&gt;Katfish&lt;/a&gt;&lt;/strong&gt; lets users create attribute-based profiles for their friends!&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;katfish.jpg&quot; alt=&quot;katfish&quot;&gt;&lt;/p&gt;
-
-&lt;h5&gt;Current Features &amp;amp; Stack&lt;/h5&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Mobile (ReactNative)&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;iOS &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt;, built with xCode IDE&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;  &lt;strong&gt;&lt;a href=&quot; https://katfish.firebaseio.com/&quot; target=&quot;_blank&quot;&gt;Firebase API &lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp;&lt;i class=&quot;fa fa-facebook-square&quot;&gt;&lt;/i&gt; SDK Authentication&lt;/p&gt;
-
-&lt;h5&gt;Future Features &amp;amp; Stack&lt;/h5&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Rebuild for hackathon use&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;strong&gt;&lt;a href=&quot;https://disqus.com/by/chrissalam/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;ReactNative/Firebase &lt;i class=&quot;fa fa-database&quot;&gt;&lt;/i&gt; Library&lt;/em&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h5&gt;Your projects are extremely important&lt;/h5&gt;
-
-&lt;h5&gt;Your projects are what makes you stand out&lt;/h5&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-slack&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Quantity and quality of work at TGA&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-registered&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; &lt;em&gt;Others are under nondisclosure agreements&lt;/em&gt;&lt;/p&gt;
-
-&lt;h5&gt;You will become an preeminent expert&lt;/h5&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Other devs are too busy to learn&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-flag-checkered&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; You may be building the first of it&amp;#39;s kind&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;How long have you spent on this... &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt; hours?
-That makes you an expert.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;...&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;When you figure it out, tell me
-and I&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;ll post your blog.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Be available to help&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-gift&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Share what you know&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-user-plus&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Your peers projects &amp;lt;&amp;gt; your own&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-coffee&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Chance to join community&lt;/p&gt;
-
-&lt;p&gt;...&lt;/p&gt;
-
-&lt;p&gt;...&lt;/p&gt;
-
-&lt;p&gt;...&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &lt;i class=&quot;fa fa-question-circle&quot;&gt;&lt;/i&gt; &amp;nbsp; &amp;nbsp; Questions?&lt;/p&gt;
-</description>
-        <pubDate>Sat, 31 Oct 2015 00:00:00 -0700</pubDate>
-        <link>ChristopherSalam.github.io/projects/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/projects/</guid>
       </item>
     
   </channel>

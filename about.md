@@ -4,21 +4,19 @@ title: About Me
 permalink: /about/
 ---
 
-My name is Christopher Salam and I am an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, **<a href="http://chrissalam.com/environmental">environmental</a>**, and **<a href="http://chrissalam.com/software">software</a>** engineer, currently working at <a target="_blank" href="https://angel.co/ziploop"> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>
+My name is Christopher Salam and I am a **<a href="http://chrissalam.com/software">software</a>** engineer, currently working at <a target="_blank" href="https://angel.co/ziploop"> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>. In the past, I have worked as an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, and **<a href="http://chrissalam.com/environmental">environmental</a>** engineer.
 
-I was in the first cohort of <a href="http://www.telegraphacademy.com/" <a target="_blank"> <strong>Telegraph Academy</strong> <img height="30px" style="display:inline-block" src="tga.png" /> </a>, an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA
+I was in the first cohort of <a href="http://www.telegraphacademy.com/" <a target="_blank"> <strong>Telegraph Academy</strong> <img height="30px" style="display:inline-block" src="tga.png" /> </a> (TGA), an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA. I help coordinate Alumni events for TGA.
 
 Open source projects I've worked on:
 
-&nbsp; &nbsp; &nbsp; <strong><a href="http://katfish.me" target="_blank">Katfish</a></strong>: An honest profile program built in React Native and Firebase
+&nbsp; &nbsp; &nbsp; <strong><a href="http://sixdribbles.com" target="_blank">Six Dribbles</a></strong>: A Bacon Oracle for NBA players built with <a target="_blank" href="http://www.42id.com/articles/anne-stack-angular-js-node-neo4j-and-express/">Angular, Neo4j, Node, and Express</a>.
 
-&nbsp; &nbsp; &nbsp; <strong><a href="http://sixdribbles.com" target="_blank">Six Dribbles</a></strong>: A Bacon Oracle for NBA players built with Angular, Neo4j, Node, and Express.
+&nbsp; &nbsp; &nbsp; <strong><a href="http://video-ke.com" target="_blank">Video-ke</a></strong>: A dual video player with crossfader powered by Youtube, which I am in the process of bringing to <a href="https://facebook.github.io/react/" target="_blank">React </a> and <a href="http://electron.atom.io/" target="_blank"> Electron</a>.
 
-&nbsp; &nbsp; &nbsp; <strong><a href="http://video-ke.com" target="_blank">Video-ke</a></strong>: A dual video player with crossfader powered by Youtube
+&nbsp; &nbsp; &nbsp; <strong><a href="http://katfish.me" target="_blank">Katfish</a></strong>: An honest profile program built in React Native and Firebase.
 
-I work as a freelance developer with <strong><a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a></strong>
-
-My resume can be found at my <strong><a href="http://chrissalam.github.io" target="_blank">github.io </a></strong> or by clicking on "Work" above
+I work as a freelance developer with <strong><a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a></strong>. My resume can be found at my <strong><a href="http://chrissalam.github.io" target="_blank">here</a></strong>.
 
 When growing up, I was really captivated by a television show called the **<a href="http://pretender.wikia.com/wiki/Jarod">Pretender</a>**, in which the protagonist was principally good natured and had the cognitive ability to change professions in each episode. To some extent, getting into software has been a way to pursue all my varied and ever-changing interests.
 

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://chrissalam.com/languages/font-mfizz.css">
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>regexp@work – Christopher Salam – thoughts on software and engineering</title>
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    
+    <meta name="description" content="Christopher Salam I love regular expressions!
+" />
+    <meta property="og:description" content="I love regular expressions!
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+    
+    <meta property="og:title" content="regexp@work" />
+    <meta property="twitter:title" content="regexp@work" />
+    
+
+    <link rel="icon" type="image/ico" href="chrissalam.jpg">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <a href="/tags">:tag</a>
+            <a href="/about">About</a>
+            <a href="/music" target="_blank"><i class="fa fa-music"></i></a>
+            <a href="http://vintagebicycles.info" target="_blank"><i class="fa fa-bicycle"></i></a>
+            <a href="http://christophersalam.github.io" target="_blank"><i class="fa fa-file-text"></i></a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">regexp@work</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#regexp">regexp</a>,
+  
+  <a href="/tags/#work">work</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on March 19, 2016
+  </div>
+
+  <div class="entry">
+    <p>I love regular expressions!</p>
+
+<p>This post is part 4 in a 4 part series. Read the other posts:</p>
+
+<p><strong><a href="/try-regexp" title="Getting Started">Part 1 - Try regexp</a></strong> | <strong><a href="/O(r)" title="O dot R notation">Part 2 - O(r)</a></strong> | <strong><a href="/regexp.js" title="Using lookaheads to remove filetypes">Part 3 - regexp.js</a></strong> | Part 4</p>
+
+<p>So I&#39;ve started my first job at Ziploop, I&#39;m doing full-stack JavaScript, primarily on the backend and much to my delight, I will be and have been working on topics that are heavily involved with Regular Expressions, so this series will continue.</p>
+
+<p>I&#39;ve written a bunch of RegExp gems I wanted to share here, at this point somewhat uncategorized, simply that they&#39;ve come about because of this new job. Enjoy!</p>
+
+<h2>Parse Email</h2>
+
+<p>This first function looks through a full email address, i.e.</p>
+
+<p>&#39;&quot;Christopher Salam&quot; <a href="mailto:chris@chrissalam.com">chris@chrissalam.com</a>&#39;</p>
+
+<p>-&gt; to -&gt;</p>
+
+<p>&#39;chris@chrissalam.com&#39;</p>
+
+<p>Here it is in it&#39;s full glory:</p>
+<div class="highlight"><pre><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">parseEmail</span><span class="p">(</span><span class="nx">emailFull</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="sr">/&lt;/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">emailFull</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">emailFull</span><span class="p">;</span> <span class="p">}</span>
+  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">emailFull</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/&lt;(\w+(?=\+|@))/</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">domainName</span> <span class="o">=</span> <span class="nx">emailFull</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/@(\w+)./</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">tld</span> <span class="o">=</span> <span class="nx">emailFull</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\.(\w+)&gt;/</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">email</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span> <span class="o">+</span> <span class="nx">domainName</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="nx">tld</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">email</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There&#39;s a lot of information, so let&#39;s &#39;parse&#39; through it. Here&#39;s a link to <strong><a href="http://regexr.com/" target="_blank">regexr</a></strong>.</p>
+
+<p>The major topics to discuss prior to seeing this thing work is understanding capture groups, i.e. /(stuff)/, lookarounds (to remove &quot;+relics&quot;), and truly understanding what qualifies for \w+, which is the special grouping for word-like-characters in RegExp. It does include numbers, which is somewhat misleading from the &#39;w&#39;, and it specifically excludes spaces, @, +, &quot;&quot;, &#39;&#39;, slashes, dashes, and other letters that may trip us up.</p>
+
+<p>The first most natural guess is to use a regexp that equates to <a href="mailto:stuff@stuff.stuff">stuff@stuff.stuff</a>.</p>
+
+<p><img src="email,first.png"/></p>
+
+<p>and of course, this looks good, right? Then we throw in the capture group, because the capture group will help us remove the &lt;&gt; around the email.</p>
+
+<p><img src="email,firstcap.png"/></p>
+
+<p>Here is how capture groups work, shown from the console. The capture group gives us back an array like object that shows us the whole object that was matched in the 0th index, and in the 1st index we have the captured match within a match: i.e.</p>
+
+<p><img src="capturegroup.png"/></p>
+
+<p>In production, I&#39;ve found numerous aliases and other information can obscure the email address. Additionally, emails will still be received if you add additional information in the email (we send emails like chris+attachment@chrissalam.com) which will still travel to gmail emails, but will lead to an independent account in our app, which let&#39;s us make new profiles and test things and receive the test emails in once place.</p>
+
+<p>This however fails went accounting for information sent in the name with plus signs or other terms prior to the @. A picture is worth a thousand words:</p>
+
+<p><img src="relics.png"/></p>
+
+<p>From this example, we see we need a capture group that is more detailed, and just capture the word &quot;chris&quot; and not &quot;chris+relics&quot;.</p>
+
+<p>We are going to need something extra special here to just get chris. Here comes a lookaround. Using the &lt;stuff(?=unwantedstuff) template, we start with a &quot;&lt;&quot;, and goes until it sees a &quot;+&quot; or a &quot;@&quot;.</p>
+
+<p><img src="lookarounds.png"/></p>
+
+<p>Domains names and top level domains are simpler to match, here are ways to grab both of those.</p>
+
+<p><img src="domainName.png"/></p>
+
+<p><img src="tld.png"/></p>
+
+<p>So this breaks out regular expressions into several terms, to get chris, chrissalam, and com as three different terms, captures them, then adds them together.</p>
+
+<p>Hyphenated domains names are another frustrating thing, but this works:</p>
+
+<p><img src="hyphen.png"/></p>
+
+<p><img src="hyphensConsole.png"/></p>
+
+<p>There are other concerns not addressed in this function: Periods in the name of the email (i.e. christopher.salam@gmail.com and christophersalam@gmail.com go to the same inbox).</p>
+
+<p>Ultimately, you don&#39;t want &quot;Chris Salam&quot; <a href="mailto:chris@chrissalam.com">chris@chrissalam.com</a> and &quot;Christopher Salam&quot; <a href="mailto:chris@chrissalam.com">chris@chrissalam.com</a> to make separate accounts, so this function below uses regex to grab what I really want from this string: -&gt; &quot;chris@chrissalam.com&quot;</p>
+
+<h2>CID images</h2>
+
+<p>CID images</p>
+
+<p>CID images are images tags with embedded url info where base 64 information sits waiting to be parsed back into images and they are found in emails. Part of the work we are doing at Ziploop involves reading through emails using the Gmail API, and one tool has us grab the images with a CID attribute. This particular match was particularly gnarly. Here it is:</p>
+<div class="highlight"><pre><code class="language-JavaScript" data-lang="JavaScript"><span class="sr">/&lt;img[^&gt;]*src\s*=\s*&quot;cid[^&quot;]*&quot;[^&gt;]*&gt;/</span>
+</code></pre></div>
+<p>&quot;<img stuff... >&quot; Let&#39;s skip that part.</p>
+
+<p>[^&gt;]* is a crazy beautiful regexp term that means zero or more of characters that are not &#39;&gt;&#39;. Make sense, right? We are interested in anything else! src is the beginning of an area of interest, helping use find a source attribute within an img tag. /s is whitespace, and /s* means zero or more whitespaces, these are optional. After hitting an equal sign, and eventually, a &quot;cid&quot; tag, we are finding what we need. The information inside the cid tag is huge, it can be many many characters. We can capture this information with parantheses for conversion if we wanted, it would be very similar.</p>
+<div class="highlight"><pre><code class="language-JavaScript" data-lang="JavaScript"><span class="sr">/&lt;img[^&gt;]*src\s*=\s*&quot;cid([^&quot;]*)&quot;[^&gt;]*&gt;/</span>
+</code></pre></div>
+<p>Here&#39;s what it looks like in action. Very cool!</p>
+
+<p><img src="cid.png"/></p>
+
+<p>Regular Expressions are like a mini-puzzle within the greater puzzle, it&#39;s a great opportunity to learn something new and think again about patterns. We could also argue that software engineering is basically pattern recognition, recognizing something that people need that is repetitive and building a system around capturing that pattern. Hope this was helpful!</p>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = "chrissalam";//'chrissalam';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65733928-2', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/regexp@work/',
+		  'title': 'regexp@work'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>
