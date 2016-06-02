@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://chrissalam.com/languages/font-mfizz.css">
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+  <head>
+    <title>ecosystems – Christopher Salam – thoughts on software and engineering</title>
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    
+    <meta name="description" content="Christopher Salam The challenges I&#39;ve been working on lately fall into the category of ecosystems engineering. Rather than front end or backend challenges, which are largely web technologies, devices and device specific APIs have really moved forward and become standard parts of the full-stack engineer. These technologies (and most technologies we use as Software Engineers) are built in
+" />
+    <meta property="og:description" content="The challenges I&#39;ve been working on lately fall into the category of ecosystems engineering. Rather than front end or backend challenges, which are largely web technologies, devices and device specific APIs have really moved forward and become standard parts of the full-stack engineer. These technologies (and most technologies we use as Software Engineers) are built in
+" />
+    
+    <meta name="author" content="Christopher Salam" />
+    
+    <meta property="og:title" content="ecosystems" />
+    <meta property="twitter:title" content="ecosystems" />
+    
+
+    <link rel="icon" type="image/ico" href="chrissalam.jpg">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Christopher Salam - thoughts on software and engineering" href="/feed.xml" />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src='chrissalam.jpg' /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Christopher Salam</a></h1>
+            <p class="site-description">thoughts on software and engineering</p>
+          </div>
+
+          <nav>
+            <a href="/tags">:tag</a>
+            <a href="/about">About</a>
+            <a href="/music" target="_blank"><i class="fa fa-music"></i></a>
+            <a href="http://vintagebicycles.info" target="_blank"><i class="fa fa-bicycle"></i></a>
+            <a href="http://christophersalam.github.io" target="_blank"><i class="fa fa-file-text"></i></a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="center-align">ecosystems</h1>
+  <div class="center-align"><div class="post-tags">
+  Tags:
+  
+    
+  
+  
+  <a href="/tags/#ecosystems">ecosystems</a>,
+  
+  <a href="/tags/#cordova">cordova</a>,
+  
+  <a href="/tags/#electron">electron</a>,
+  
+  <a href="/tags/#react native">react native</a>
+  
+</div></div>
+
+  <div class="date">
+    Written on June  1, 2016
+  </div>
+
+  <div class="entry">
+    <p>The challenges I&#39;ve been working on lately fall into the category of ecosystems engineering. Rather than front end or backend challenges, which are largely web technologies, devices and device specific APIs have really moved forward and become standard parts of the full-stack engineer. These technologies (and most technologies we use as Software Engineers) are built in</p>
+
+<p>Prior to ziploop, I built apps with React Native and Electron. <a href="https://facebook.github.io/react-native/"> React Native </a> (per their website), enables you to build world-class application experiences on native platforms using a consistent developer experience based on JavaScript and React. React Native was brand new when I picked it up, they hadn&#39;t yet realized the bridge to Android.</p>
+
+<p>Electron is another bridge technology, but allowing you to instead to build applications that leverage desktop software tools in OSX, Windows, and Linux platforms while using Web Technologies. Many great applications, such as Slack, Brave, and Nylas have been built on the platform. The electron shell was first developed when building the Atom text editor, of which I am a dedicated user. The two technologies have since been decoupled, and now you can built apps using Electron. I&#39;ve got an on-going personal electron project that I&#39;m hoping to have ready by the time I get married...</p>
+
+<p>Bridge technologies promise the world, and while they are great, a lot of extra work has to go to make these technologies deliver on their promise. That extra work is something I believe is called ecosystems engineering. They are sometimes called mobile technologies/applications engineering or desktop applications engineering. I love this term, in it&#39;s generality but also because it reminds me of my previous professions. If front-end engineering appeals to the design or artistically-inclined software engineers, and back-end engineering is the calling of accountants and records keepers in us, I think ecosystems engineering appeals to the plumbers out there.</p>
+
+<p>At Ziploop I work on the Cordova plugins to our hybrid web application. We use Cordova to use WebViews to make a web application look like a native mobile application and grabbing onto native APIs. I&#39;ve been able to help the Cordova layer upgrade from UIWebview to WkWebView, and I&#39;ll post about that soon, but I&#39;ve also been able to integrate open source plugins and learn a lot about how mobile technologies work, not to mention learn Objective C, Swift, Java, and pretty much wade through a bunch of code without really caring what language it is in. In the process of exploring the upgrade strategy, I got to try using Crosswalk, another type of bridge technology for mobile platforms. My central belief on why ecosystems engineering is needed and useful is that often frameworks are too bloated and still somehow can&#39;t serve your exact need, and therefore a cobbled together in between solution ends up being the best approach (that is, until it&#39;s later repackaged as it&#39;s own framework and released!). I&#39;m excited to blog about more specific findings, but for now I hope this was helpful.</p>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = "chrissalam";//'chrissalam';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:christopher.salam@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/mrsalam@ucdavis.edu"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/ChristopherSalam"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/christophersalam"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65733928-2', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/ecosystems/',
+		  'title': 'ecosystems'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>

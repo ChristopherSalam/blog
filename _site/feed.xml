@@ -7,6 +7,23 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>ecosystems</title>
+        <description>&lt;p&gt;The challenges I&amp;#39;ve been working on lately fall into the category of ecosystems engineering. Rather than front end or backend challenges, which are largely web technologies, devices and device specific APIs have really moved forward and become standard parts of the full-stack engineer. These technologies (and most technologies we use as Software Engineers) are built in&lt;/p&gt;
+
+&lt;p&gt;Prior to ziploop, I built apps with React Native and Electron. &lt;a href=&quot;https://facebook.github.io/react-native/&quot;&gt; React Native &lt;/a&gt; (per their website), enables you to build world-class application experiences on native platforms using a consistent developer experience based on JavaScript and React. React Native was brand new when I picked it up, they hadn&amp;#39;t yet realized the bridge to Android.&lt;/p&gt;
+
+&lt;p&gt;Electron is another bridge technology, but allowing you to instead to build applications that leverage desktop software tools in OSX, Windows, and Linux platforms while using Web Technologies. Many great applications, such as Slack, Brave, and Nylas have been built on the platform. The electron shell was first developed when building the Atom text editor, of which I am a dedicated user. The two technologies have since been decoupled, and now you can built apps using Electron. I&amp;#39;ve got an on-going personal electron project that I&amp;#39;m hoping to have ready by the time I get married...&lt;/p&gt;
+
+&lt;p&gt;Bridge technologies promise the world, and while they are great, a lot of extra work has to go to make these technologies deliver on their promise. That extra work is something I believe is called ecosystems engineering. They are sometimes called mobile technologies/applications engineering or desktop applications engineering. I love this term, in it&amp;#39;s generality but also because it reminds me of my previous professions. If front-end engineering appeals to the design or artistically-inclined software engineers, and back-end engineering is the calling of accountants and records keepers in us, I think ecosystems engineering appeals to the plumbers out there.&lt;/p&gt;
+
+&lt;p&gt;At Ziploop I work on the Cordova plugins to our hybrid web application. We use Cordova to use WebViews to make a web application look like a native mobile application and grabbing onto native APIs. I&amp;#39;ve been able to help the Cordova layer upgrade from UIWebview to WkWebView, and I&amp;#39;ll post about that soon, but I&amp;#39;ve also been able to integrate open source plugins and learn a lot about how mobile technologies work, not to mention learn Objective C, Swift, Java, and pretty much wade through a bunch of code without really caring what language it is in. In the process of exploring the upgrade strategy, I got to try using Crosswalk, another type of bridge technology for mobile platforms. My central belief on why ecosystems engineering is needed and useful is that often frameworks are too bloated and still somehow can&amp;#39;t serve your exact need, and therefore a cobbled together in between solution ends up being the best approach (that is, until it&amp;#39;s later repackaged as it&amp;#39;s own framework and released!). I&amp;#39;m excited to blog about more specific findings, but for now I hope this was helpful.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Jun 2016 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/ecosystems/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/ecosystems/</guid>
+      </item>
+    
+      <item>
         <title>regexp@work</title>
         <description>&lt;p&gt;I love regular expressions!&lt;/p&gt;
 
@@ -1498,64 +1515,6 @@ BinarySearchTree.prototype.getLCA = function(node, a, b){
         <pubDate>Sat, 07 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/BST/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/BST/</guid>
-      </item>
-    
-      <item>
-        <title>currying</title>
-        <description>&lt;p&gt;Tonight, I watched Cassandra&amp;#39;s talk on functional programming, and I got pretty excited about currying, composing, and piping functions. I wanted to live code some practical examples, as I must admit it took seeing this several times for me to really wrap my head around this topic and I hope this helps!&lt;/p&gt;
-
-&lt;p&gt;I would recommend going to Ramda.js&amp;#39;s website and pulling up a console there. Another option would be to npm install ramda and try these functions there. If you use sublime and do not have a JS build system, try this link from my classmate &lt;a href=&quot;http://jdlawrence.github.io/javascript/closures/2015/08/03/console-inside-sublime-text.html&quot;&gt;Jamil&lt;/a&gt;. You can also grab it from CDN via&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//cdnjs.cloudflare.com/ajax/libs/ramda/0.17.1/ramda.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Currying is a transformation you can do to allow functions to take their some of their arguments at different times. Currying lets us partially fill the functions and keep them in position for later.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;curryArea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;curry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;curryArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// [function]&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;curryArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 10&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Why is this useful?&lt;/p&gt;
-
-&lt;p&gt;There&amp;#39;s a few reasons I think of just off the top:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Asynchronous functions fail because answers haven&amp;#39;t returned yet. If we run a function and leave it ready to catch the next argument we can process more asynchronously.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We can break our entire functions into discrete chunks, allowing preprocessing and storage of information in closures that will eventually process. Also, if they don&amp;#39;t end up processing, rather than get functions run with undefined, we have functions we can assess and pull partial information from.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;It&amp;#39;s a gateway to understanding partial function application, which is even more powerful.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;!--
-
-```javascript
-function that invokes
-var lines = R.invoker(1, &#39;split&#39;)(&#39;/n&#39;);
-var split = R.split(&#39;/n&#39;);
-```
-var getItems = R.compose(
-  R.filter(R.propEq(&#39;eventType&#39;,&quot;ITEM_DESTROYED&quot;)),
-  R.flatten,
-  R.map(R.prop(&#39;events&#39;))
-)
-
-
---&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://alicekamada.github.io/&quot; &gt;&amp;quot;Pointfree Code is code that never refers to the code it handles:
-it focuses on the logic, easier to reason about, and never have to wonder about the state.&amp;quot;&lt;/a&gt;&lt;/p&gt;
-
-&lt;!--Anyways, we had a toy problem earlier in the program that asked us to write the functions for piping and composing functions. A pipe function asked us to create a function such that
-
-```javascript
-var newfunc =  R.pipe(func1, func2, func3)
-```
-
-where the newfunc(args_provided_to_function_one) --&gt;
-
-&lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 04 Nov 2015 00:00:00 -0800</pubDate>
-        <link>ChristopherSalam.github.io/currying/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/currying/</guid>
       </item>
     
   </channel>

@@ -59,63 +59,57 @@
 <script>
 
 var treeData = [
-  { "name": "#javascript", "parent": "null", "children":[
-    { "name": "binding", "parent": "#javascript" },
-    { "name": "#reactnative", "parent": "#javascript", "children": [
-      { "name": "try RN", "parent": "#reactnative"},
-      { "name": "#firebase", "parent": "#reactnative", "children": [
-        { "name": "RN snapshots", "parent": "#firebase" },
-        { "name": "RN updates", "parent": "#firebase" }
-        ]
+  { "name": "#javascript", "children":[
+    { "name": "binding" },
+    { "name": "#reactnative", "children": [
+      { "name": "try RN" },
+      { "name": "#firebase", "children": [
+        { "name": "RN snapshots" },
+        { "name": "RN updates" } ]
       },
-      { "name": "tape tests", "parent": "#reactnative" }
-      ]
-      },
-      { "name": "console", "parent": "#javascript" }
-      ]
-  },
-  { "name": "#neophyte", "parent": "#neophyte", "children": [
-    { "name": "languages", "parent": "#neophyte" },
-    { "name": "#bash", "parent": "#neophyte", "children": [
-      { "name": "try bash", "parent": "#bash" },
-      { "name": "#resources", "parent": "#bash", "children": [
-        { "name": "for newbs", "parent": "#resources" },
-        { "name": "projects", "parent": "#resources" },
-        { "name":"job seekers", "parent": "#resources" }
-        ]
-      },
-      { "name": "bash & blog", "parent": "#bash" }
-      ]
+      { "name": "tape tests" } ]
     },
-    { "name":"packages", "parent": "#neophyte" }
+    { "name": "console" } ]
+  },
+  { "name": "#tips", "children": [
+      { "name": "for newbs" },
+      { "name": "projects", "children": [
+        { "name": "ecosystems" } ]
+      },
+      { "name":"job seekers", "parent": "#resources" } ]
+  },
+  { "name": "#nosql", "children": [
+    { "name": "try redis" },
+    { "name": "#neo4j", "children": [
+      { "name": "query neo4j" },
+      { "name": "collision" },
+      { "name": "node-neo4j" } ]
+    },
+    { "name": "try neo4j" } ]
+  },
+  { "name": "#ds", "children": [
+    { "name": "trees" },
+    { "name": "#paths", "children": [
+      { "name": "matrix paths" },
+      { "name": "array paths" } ]
+    },
+    { "name": "BST" } ]
+  },
+  { "name": "#newb", "children": [
+    { "name": "languages" },
+    { "name": "#bash", "children": [
+      { "name": "try bash" },
+      { "name": "bash & blog" } ]
+    },
+    { "name":"packages" }
     ]
   },
-  { "name": "#nosql", "parent": "#data structures", "children": [
-    { "name": "try redis", "parent": "#nosql" },
-    { "name": "#neo4j", "parent": "#data structures", "children": [
-      { "name": "query neo4j", "parent": "#neo4j"},
-      { "name": "collision", "parent": "#neo4j" },
-      { "name": "node-neo4j", "parent": "#neo4j" }
-      ]
-    },
-    { "name": "try neo4j", "parent": "#nosql" }
-    ]
-  },
-  { "name": "#ds", "parent": "#javascript", "children": [
-    { "name": "trees", "parent": "#ds"},
-    { "name": "#paths", "parent": "#ds", "children": [
-      { "name": "matrix paths", "parent": "#ds"},
-      { "name": "#regexp", "parent": "#ds", "children":[
-        { "name": "try regexp", "parent": "#regexp"},
-        { "name": "regexp.js", "parent": "#regexp"},
-        { "name": "O(r)", "parent": "#regexp" }
-          ]
-      },
-      { "name": "array paths", "parent": "#ds" }
-      ]
-    },
-    { "name": "BST", "parent": "#ds" }
-    ]
+  { "name": "#regexp", "children":[
+    { "name": "try regexp", "children":[
+      { "name": "regexp.js" },
+      { "name": "O(r)" },
+      { "name": "regexp@work" } ]
+    } ]
   }
 ];
 
@@ -228,6 +222,14 @@ for (var q = 0; q < treeData.length; q++) {
 <div class="posts">
 	<h1></h1>
 	<ul class="hex">
+		
+		<li class="hexagon">
+			<a class="hexagon-in1" href="/ecosystems/">
+				<span class="hexagon-in2">
+				  ecosystems
+				</span>
+			</a>
+		</li>
 		
 		<li class="hexagon">
 			<a class="hexagon-in1" href="/regexp@work/">

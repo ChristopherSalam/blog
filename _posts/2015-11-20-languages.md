@@ -3,6 +3,7 @@ layout: post
 title: languages
 tags:
 - intro
+- newb
 ---
 
 **Even if we all speak a different language we find a way to communicate**

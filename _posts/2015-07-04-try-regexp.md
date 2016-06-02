@@ -2,7 +2,7 @@
 layout: post
 title: try regexp
 tags:
-- neophyte
+- newb
 - intro
 - regexp
 - js
