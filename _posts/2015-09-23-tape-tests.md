@@ -3,10 +3,6 @@ layout: post
 title: tape tests
 tags:
 - react
-- reactnative
-- tape
-- testing
-- javascript
 ---
 
 This is part 4 of 4 of the React Native series.

@@ -75,15 +75,14 @@ var svg = d3.select("body div").append("svg")
      "name": "#newb",
      "children": [
       {"name": "languages", "size": 1283},
-      {
-       "name": "#bash",
-       "children": [
-        {"name": "try bash", "size": 1783},
-        {"name": "bash & blog", "size": 783}
-       ]
-      },
+      {"name": "try bash", "size": 1783},
       {"name": "for newbs", "size": 2176},
-      {"name": "packages", "size": 876}
+      {"name": "packages", "size": 876},
+      {"name": "binding", "size": 1558},
+      {"name": "console", "size": 1201},
+      {"name": "projects", "size": 1449},
+      {"name": "job seekers", "size": 1576},
+      {"name": "roles", "size": 1176}
      ]
     },
     {
@@ -99,20 +98,16 @@ var svg = d3.select("body div").append("svg")
      "name": "#nosql",
      "children": [
       {
-       "name": "#neo4j",
+       "name": "#nosql",
        "children": [
+        {"name": "for-newbs", "size": 2521},
         {"name": "try neo4j", "size": 1721},
         {"name": "query neo4j", "size": 1294},
         {"name": "collision", "size": 1200},
-        {"name": "node-neo4j", "size": 730}
-       ]
-      },
-      {"name": "#redis",
-       "children": [
-        {"name": "try redis", "size": 1721},
-       ]
+        {"name": "node-neo4j", "size": 730},
+        {"name": "try redis", "size": 1721} ]
       }
-     ]
+      ]
     },
     {
      "name": "#regexp",
@@ -123,40 +118,18 @@ var svg = d3.select("body div").append("svg")
         {"name": "regexp@work", "size": 1000}
      ]
     },
-    {
-     "name": "#javascript",
-     "children": [
-      {"name": "binding", "size": 1558},
-      {"name": "console", "size": 1201},
-      {
-       "name": "#reactnative",
+    { "name": "#react",
        "children": [
         {"name": "try RN", "size": 1654},
         {"name": "RN snapshots", "size": 1433},
         {"name": "RN updates", "size": 1233},
-        {"name": "tape tests", "size": 1233}
-       ]
-      },
-      {
-       "name": "#firebase",
-       "children": [
-        {"name": "RN snapshots", "size": 1233},
-        {"name": "RN updates", "size": 1233},
+        {"name": "tape tests", "size": 1233},
+        {"name": "ecosystems", "size": 1976}
        ]
       }
-     ]
-    },
-    {
-      "name": "#tips",
-      "children":[
-        {"name": "projects", "size": 1449},
-        {"name": "job seekers", "size": 1576},
-        {"name": "ecosystems", "size": 1976}
-      ]
-    }
-   ]
-  },
-      root = focus,
+    ]
+  };
+    var root = focus,
       nodes = pack.nodes(root),
       view;
 

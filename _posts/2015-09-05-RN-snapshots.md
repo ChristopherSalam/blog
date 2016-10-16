@@ -3,9 +3,7 @@ layout: post
 title: RN snapshots
 tags:
 - react
-- reactnative
 - firebase
-- javascript
 ---
 
 This is part 2 of 4 of the React Native series.

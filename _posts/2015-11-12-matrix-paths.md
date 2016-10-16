@@ -3,7 +3,6 @@ layout: post
 title: matrix paths
 tags:
 - ds
-- javascript
 ---
 
 This is part 2 of 2 of the Path Problem series.

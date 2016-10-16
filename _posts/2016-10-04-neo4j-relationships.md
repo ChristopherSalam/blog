@@ -2,9 +2,7 @@
 layout: post
 title: neo4j relationships
 tags:
-- nosql
 - neo4j
-- database
 - node/express
 ---
 

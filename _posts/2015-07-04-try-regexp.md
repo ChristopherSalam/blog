@@ -2,10 +2,8 @@
 layout: post
 title: try regexp
 tags:
-- newb
-- intro
+- try
 - regexp
-- js
 ---
 
 I love regular expressions!

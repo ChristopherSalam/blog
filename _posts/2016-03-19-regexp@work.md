@@ -3,7 +3,6 @@ layout: post
 title: regexp@work
 tags:
 - regexp
-- work
 ---
 
 I love regular expressions!

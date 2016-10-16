@@ -3,9 +3,7 @@ layout: post
 title: RN updates
 tags:
 - react
-- reactnative
 - firebase
-- javascript
 ---
 
 This is part 3 of 4 of the React Native series.

@@ -2,10 +2,8 @@
 layout: post
 title: ecosystems
 tags:
-- ecosystems
 - cordova
 - electron
-- react native
 ---
 
 The challenges I've been working on lately fall into the category of ecosystems engineering. Rather than front end or backend challenges, which are largely web technologies, devices and device specific APIs have really moved forward and become standard parts of the full-stack engineer. These technologies (and most technologies we use as Software Engineers) are built in

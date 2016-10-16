@@ -2,8 +2,7 @@
 layout: post
 title: languages
 tags:
-- intro
-- newb
+- functional
 ---
 
 **Even if we all speak a different language we find a way to communicate**

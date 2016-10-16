@@ -2,9 +2,7 @@
 layout: post
 title: BST
 tags:
-- javascript
 - ds
-- linked list
 ---
 
 <!--

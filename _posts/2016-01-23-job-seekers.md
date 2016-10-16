@@ -2,7 +2,7 @@
 layout: post
 title: job seekers
 tags:
-- tips
+- newb
 ---
 
 new Software Engineering Job Seekers: So you've finally started to look for a job or have a job already. Great! This is only the beginning of the journey...

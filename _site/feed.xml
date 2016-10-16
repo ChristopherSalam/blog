@@ -7,6 +7,25 @@
     <atom:link href="ChristopherSalam.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>roles</title>
+        <description>&lt;p&gt;In a software engineering startup/company...&lt;/p&gt;
+
+&lt;p&gt;What are the typical roles?&lt;/p&gt;
+
+&lt;p&gt;What do they do?&lt;/p&gt;
+
+&lt;p&gt;To begin, we must undestand how applications are structured.&lt;/p&gt;
+
+&lt;p&gt;Most sites have many different front ends to a single data system.&lt;/p&gt;
+
+&lt;iframe src=&quot;../sites.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Wed, 05 Oct 2016 00:00:00 -0700</pubDate>
+        <link>ChristopherSalam.github.io/roles/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/roles/</guid>
+      </item>
+    
+      <item>
         <title>neo4j relationships</title>
         <description>&lt;p&gt;This post is part 5 in a 5 part series. Read the other posts:&lt;/p&gt;
 
@@ -533,8 +552,8 @@ function detectLoop(sll){
 &lt;p&gt;&lt;strong&gt;This is a stub, there&amp;#39;s more coming&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 30 Nov 2015 00:00:00 -0800</pubDate>
-        <link>ChristopherSalam.github.io/Linked-List/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/Linked-List/</guid>
+        <link>ChristopherSalam.github.io/linked-list/</link>
+        <guid isPermaLink="true">ChristopherSalam.github.io/linked-list/</guid>
       </item>
     
       <item>
@@ -1319,31 +1338,6 @@ you from going where you&amp;#39;ve been before you need to see the board.&lt;/p
         <pubDate>Thu, 12 Nov 2015 00:00:00 -0800</pubDate>
         <link>ChristopherSalam.github.io/matrix-paths/</link>
         <guid isPermaLink="true">ChristopherSalam.github.io/matrix-paths/</guid>
-      </item>
-    
-      <item>
-        <title>agricultural</title>
-        <description>&lt;p&gt;&lt;img src=&quot;farm.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;I did a degree in Agricultural Engineering, now called Biological Systems Engineering, at UC Davis from 2007-2011, mostly because I was interested in working with &lt;strong&gt;&lt;a href=&quot;http://www.cleanworld.com/our-team/&quot;&gt;Dr. Ruihong Zhang&lt;/a&gt;&lt;/strong&gt;, and her experience and research interests in anaerobic digestion of industrial and agricultural waste. We worked on a project in turkey waste digestion, in partnership with Cargill International, one of the largest meat and agricultural processing companies globally, and the results of the study are &lt;strong&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2011PhDT.......144S&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;. In the end the project ended up giving Cargill the information to setup digesters at their processing facilities, potentially setting up a new diversion path for untold millions of gallons of waste.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;cows.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;I also had the opportunity to work &lt;strong&gt;&lt;a href=&quot;http://www.rcmdigesters.com/about-us/team/&quot;&gt;RCM digesters&lt;/a&gt;&lt;/strong&gt; from 2013-2014. RCM Digesters built manure digesters at Cow, Pig, and Chicken farms. I was able to apply a bit of my research and education here, as well as learn alot about Agriculture and Business in general. I worked on five projects, in Minnesota, Massachusetts, Upstate New York, and in North Eastern Australia. I worked on a very specific part of the anaerobic digestion process called hydrogen sulfide scrubbing, a process of removing a compound that is a trace part of the output of the digester, H2S, a chemical that can cause engine damage and is unsafe to inhale (but no where near the quantity that I experienced in &lt;strong&gt;&lt;a href=&quot;http://chrissalam.com/chemical&quot;&gt;Chemical Engineering&lt;/a&gt;&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;paper.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Both of these experiences were particularly humorous to me as a vegetarian, but secretly I do appreciate the consumption of these goods providing me a job, even if I did find it pretty gnarly and unappetizing.&lt;/p&gt;
-
-&lt;p&gt;In this space, I wanted to mention that there are a bunch of really cool and strange hackathon opportunities. I follow the &lt;strong&gt;&lt;a href=&quot;http://www.apps-for-ag.com/&quot;&gt;Aps for Ag hackathon&lt;/a&gt;&lt;/strong&gt; and attended a recent event in &lt;strong&gt;&lt;a href=&quot;http://kvpr.org/post/farmers-turn-tinder-app-inspiration&quot;&gt;Coalinga&lt;/a&gt;&lt;/strong&gt;, and will attend the upcoming event in Davis. Come with me if you are interested! There are not a lot of developers in the agricultural space and it&amp;#39;s an area ripe for simple software solutions.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;cold.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;!-- **This is a stub, there&#39;s more coming** --&gt;
-</description>
-        <pubDate>Tue, 10 Nov 2015 00:00:00 -0800</pubDate>
-        <link>ChristopherSalam.github.io/agricultural/</link>
-        <guid isPermaLink="true">ChristopherSalam.github.io/agricultural/</guid>
       </item>
     
   </channel>
