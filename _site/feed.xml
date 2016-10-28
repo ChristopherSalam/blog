@@ -8,17 +8,49 @@
     
       <item>
         <title>roles</title>
-        <description>&lt;p&gt;In a software engineering startup/company...&lt;/p&gt;
+        <description>&lt;h3&gt;Throughout my bootcamp experience at Telegraph Academy...&lt;/h3&gt;
 
-&lt;p&gt;What are the typical roles?&lt;/p&gt;
+&lt;h3&gt;I kept wondering... what do software engineers do all day?&lt;/h3&gt;
 
-&lt;p&gt;What do they do?&lt;/p&gt;
+&lt;h3&gt;I spent the first few weeks of my job figuring it out.&lt;/h3&gt;
 
-&lt;p&gt;To begin, we must undestand how applications are structured.&lt;/p&gt;
+&lt;h3&gt;To begin, we must understand how applications are structured.&lt;/h3&gt;
 
-&lt;p&gt;Most sites have many different front ends to a single data system.&lt;/p&gt;
+&lt;h5&gt;&amp;quot;A great application has many different front ends accessing a single database.&amp;quot;&lt;/h5&gt;
 
-&lt;iframe src=&quot;../sites.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;../roles/sitemapnoapi.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;&amp;quot;A great application has many different front ends accessing a single database (via API).&amp;quot;&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/sitemap.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;This by no means means there are only one version of each site.&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/mirrors.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;And of course in your development flow there will e plenty of branches.&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/branches.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;But understanding now the different locations will help us think better about jobs.&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/sitewithjobs.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;Full Stack &amp;amp; Data Science&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/frontend.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;Front End &amp;amp; Applications&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/fullstack.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;Back end &amp;amp; API Engineering&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/backend.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h5&gt;All at once again...&lt;/h5&gt;
+
+&lt;iframe src=&quot;../roles/sitewithjobs.html&quot; height=&quot;500px&quot; width=&quot;95%&quot; scrolling=&quot;no&quot; style=&quot;margin: 0 auto; display: block; overflow:hidden;&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Wed, 05 Oct 2016 00:00:00 -0700</pubDate>
         <link>ChristopherSalam.github.io/roles/</link>
