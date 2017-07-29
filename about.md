@@ -4,21 +4,21 @@ title: About Me
 permalink: /about/
 ---
 
-My name is Christopher Salam and I am a **<a href="http://chrissalam.com/software">software</a>** engineer, currently working at <a target="_blank" href="https://angel.co/ziploop"> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>. In the past, I have worked as an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, and **<a href="http://chrissalam.com/environmental">environmental</a>** engineer.
+My name is Christopher Salam and I am a **<a href="http://chrissalam.com/software">software</a>** engineer, currently working at <a target="_blank" href="https://angel.co/ziploop"> <strong>Ziploop</strong> <img height="30px" style="display:inline-block" src="ziploop.png" /> </a>. In the past, I have worked as an **<a href="http://chrissalam.com/agricultural">agricultural</a>**, **<a href="http://chrissalam.com/chemical">chemical</a>**, and **<a href="http://chrissalam.com/environmental">environmental</a>** engineer. I loved the **<a href="http://pretender.wikia.com/wiki/Jarod">Pretender</a>**, a show about protagonist had the cognitive ability to change professions in each episode. To some extent, getting into software has been a way to pursue all my varied and ever-changing interests.
 
-I was in the first cohort of <a href="http://www.telegraphacademy.com/" <a target="_blank"> <strong>Telegraph Academy</strong> <img height="30px" style="display:inline-block" src="tga.png" /> </a> (TGA), an amazing accelerated JavaScript immersive for underrepresented minorities in Berkeley, CA. I help coordinate Alumni events for TGA.
+Projects I help maintain:
 
-Open source projects I've worked on:
+&nbsp; &nbsp; &nbsp; <strong><a href="http://sixdribbles.com" target="_blank">Six Dribbles</a></strong>: A Oracle for NBA players built with React, Neo4j, Node, AWS, and Express</a>.
 
-&nbsp; &nbsp; &nbsp; <strong><a href="http://sixdribbles.com" target="_blank">Six Dribbles</a></strong>: A Bacon Oracle for NBA players built with <a target="_blank" href="http://www.42id.com/articles/anne-stack-angular-js-node-neo4j-and-express/">Angular, Neo4j, Node, and Express</a>.
+&nbsp; &nbsp; &nbsp; <strong><a href="http://video-ke.com" target="_blank">Video-ke</a></strong>: A dual video player with crossfader powered by Youtube, on <a href="http://video-ke.com" target="_blank"> web </a> and <a href="https://github.com/upstanding-biome/Video-ke-D-" target="_blank"> desktop</a>.
 
-&nbsp; &nbsp; &nbsp; <strong><a href="http://video-ke.com" target="_blank">Video-ke</a></strong>: A dual video player with crossfader powered by Youtube, which I am in the process of bringing to <a href="https://facebook.github.io/react/" target="_blank">React </a> and <a href="http://electron.atom.io/" target="_blank"> Electron</a>.
+I have worked as a freelance software engineer with <strong><a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a></strong>. My resume can be found at my <strong><a href="http://chrissalam.github.io" target="_blank">here</a></strong>.
 
-&nbsp; &nbsp; &nbsp; <strong><a href="http://katfish.me" target="_blank">Katfish</a></strong>: An honest profile program built in React Native and Firebase.
+I volunteer weekly to help people learn how to <a href="http://hoodline.com/2017/07/keeping-it-wheel-building-bikes-community-at-longfellow-s-spokeland" target="_blank">repair </a> their own bicycles at <a href="http://www.spokeland.org" target="_blank">Spokeland</a>, in Oakland California.
 
-I work as a freelance developer with <strong><a href="http://www.amyyoshitsu.com" target="_blank">Amy Yoshitsu</a></strong>. My resume can be found at my <strong><a href="http://chrissalam.github.io" target="_blank">here</a></strong>.
+I once owned a <a href="/bus" target="_blank"> party bus </a>.
 
-When growing up, I was really captivated by a television show called the **<a href="http://pretender.wikia.com/wiki/Jarod">Pretender</a>**, in which the protagonist was principally good natured and had the cognitive ability to change professions in each episode. To some extent, getting into software has been a way to pursue all my varied and ever-changing interests.
+I was in the first cohort of <a href="http://www.telegraphacademy.com/" <a target="_blank"> <strong>Telegraph Academy</strong> <img height="30px" style="display:inline-block" src="tga.png" /> </a> (TGA), a JavaScript immersive for underrepresented minorities, now an affiliate of Hack Reactor.
 
 This website uses <strong><a href="https://jekyllrb.com/"> jekyll </a></strong> and <strong><a href="https://github.com/barryclark/jekyll-now">jekyllNow</a></strong> as a static content generator, used <strong><a href="https://pages.github.com/"> github pages </a></strong> before I elected to transition to a full static HTML site, and uses <strong><a href="http://d3js.org/"> d3 </a></strong> to make the posts list in a <strong><a href="https://github.com/mbostock/d3/wiki/Tree-Layout"> tree structure</strong></a> or <strong><a href="http://bl.ocks.org/mbostock/4063530" >petri-dish structure </a></strong>
 

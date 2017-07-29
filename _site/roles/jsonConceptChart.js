@@ -713,7 +713,8 @@ if (document.title == 'mirrors') {
             {title: "Admin Self", id: 5, x: xLoc + 200, y: yLoc + 120},
             {title: "Business", id: 6, x: xLoc - 200, y: yLoc + 240},
             {title: "Business Dev", id: 7, x: xLoc, y: yLoc + 240},
-            {title: "Business Self", id: 8, x: xLoc + 200, y: yLoc + 240} ];
+            {title: "Business Self", id: 8, x: xLoc + 200, y: yLoc + 240},
+            {title: "DevOps Eng", id: 8, x: xLoc, y: yLoc + 320}];
   edges = [ {source: nodes[1], target: nodes[0]},
             {source: nodes[2], target: nodes[1]},
             {source: nodes[4], target: nodes[3]},
